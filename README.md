@@ -4,15 +4,29 @@ basicBot
 IMPORTANT
 ---------
 
-__basicBot is currently being updated to work under plug's update. Please check back here later to see if it is available again.
-Please disable any scripts/extensions which have not been updated by their creators yet, as they may cause issues with the new plug. More info can be found [here](http://blog.plug.dj/2014/07/message-to-those-using-extensions-or-bots/)__
+__basicBot has been updated to work under plug's update. There may still be bugs and functionality is not guaranteed.__
 
-__The repository has been reset to allow for a better organisation of commits and branches.__
+__Make sure to update your bookmark, as the link has changed recently!!!__
+
+__Important changes in version 2.x.x:__
+
+- Now should be fully compatible with Firefox.
+- You can now change the bot's name, no need to make a fork to change it anymore. Available under custom settings as "botName".
+- The bot's variable is now exposed outside of the script. You can access it as the variable "bot" in the console. This should allow for secondary scripts extending the bot without the need to fork and lose support on its basis.
+Be careful when extending it to make sure commands or features interact properly with the rest of them.
+An example script to extend the bot is provided under exampleExtension.js. Please do not fork this repository to just change that file. Details of how to use are provided inside.
+This is NOT needed to run the bot as it is provided, only if you want to add functionality.
+- Command checking has been reworked to facilitate adding commands through secondary scripts as explained above.
+- __There is now support for custom chat messages. This means you can use your own custom wording or translate it into your own language.__
 
 Usage
 -----
 
-_Will be updated after the bot is ready for use._
+Bookmark the following code. To run the bot, run the bookmark.
+
+`javascript:(function(){$.getScript('https://rawgit.com/***REMOVED***/basicBot/master/basicBot.js');})();`
+
+If this does not work, go to https://raw.githubusercontent.com/***REMOVED***/basicBot/master/basicBot.js and copy paste its content into your console (accessible in chrome by pressing f12) when on plug.dj in your community.
 
 ###Commands###
 
@@ -20,11 +34,18 @@ These can be found in [the commands file](https://github.com/***REMOVED***/basic
 
 ###Special settings###
 
-_Will be updated after the bot is ready for use._
+See [the settings guide](https://github.com/***REMOVED***/basicBot/blob/master/setup/settingsGuide.md).
+
+###Translations###
+
+Official translations will be supported. Available ones can be found under [the language folder](https://github.com/***REMOVED***/basicBot/blob/master/lang/langIndex.json). Yuu can set a language in the room settings.
+You can use your own translation or wording by translating the values of in [the english pack](https://github.com/***REMOVED***/basicBot/blob/master/lang/en.json) and uploading it to a public hosting service, like you would for custom room settings. However, you need to put this link into your custom room settings, under chatLink.
+
 
 ###Extending functionality###
 
-_Will be updated after the bot is ready for use._
+An example of the bots functionality being extended can be found [here](https://github.com/***REMOVED***/basicBot/blob/master/setup/exampleExtensions.md).
+Please do not try to if you are not confident in your javascript capabilities.
 
 Credits
 -------
