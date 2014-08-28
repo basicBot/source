@@ -963,6 +963,7 @@
             API.off(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
         },
         startup: function () {
+            loadChat();
             var u = API.getUser();
             if (basicBot.userUtilities.getPermission(u) < 2) return API.chatLog(basicBot.chat.greyuser);
             if (basicBot.userUtilities.getPermission(u) === 2) API.chatLog(basicBot.chat.bouncer);
@@ -971,7 +972,7 @@
             if (basicBot.room.roomstats.launchTime === null) {
                 basicBot.room.roomstats.launchTime = Date.now();
             }
-            loadChat();
+
             for (var j = 0; j < basicBot.room.users.length; j++) {
                 basicBot.room.users[j].inRoom = false;
             }
