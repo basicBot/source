@@ -32,20 +32,16 @@ If this does not work, go to https://raw.githubusercontent.com/Yemasthui/basicBo
 
 These can be found in [the commands file](https://github.com/Yemasthui/basicBot/blob/master/commands.md).
 
-###Special settings###
+###Extending functionality and custom default settings###
 
-See [the settings guide](https://github.com/Yemasthui/basicBot/blob/master/setup/settingsGuide.md).
+basicBot can be customized to fit your needs. Please refer to [the customization repository](https://github.com/Yemasthui/basicBot-customization) for more info.
+Please do not try to if you are not confident in your javascript capabilities.
+
 
 ###Translations###
 
-Official translations will be supported. Available ones can be found under [the language folder](https://github.com/Yemasthui/basicBot/blob/master/lang/langIndex.json). Yuu can set a language in the room settings.
-You can use your own translation or wording by translating the values of in [the english pack](https://github.com/Yemasthui/basicBot/blob/master/lang/en.json) and uploading it to a public hosting service, like you would for custom room settings. However, you need to put this link into your custom room settings, under chatLink.
-
-
-###Extending functionality###
-
-An example of the bots functionality being extended can be found [here](https://github.com/Yemasthui/basicBot/blob/master/setup/exampleExtensions.md).
-Please do not try to if you are not confident in your javascript capabilities.
+Official translations will be supported. Available ones can be found under [the language folder](https://github.com/Yemasthui/basicBot/blob/master/lang/langIndex.json). You can set a language in the room settings.
+You can use your own translation or wording by translating the values of in [the english pack](https://github.com/Yemasthui/basicBot/blob/master/lang/en.json) and uploading it to a public hosting service. Put the link into your custom room settings, under chatLink.
 
 Credits
 -------

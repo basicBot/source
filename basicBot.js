@@ -108,12 +108,13 @@
 
     };
 
+    var botCreator = "Matthew aka. Yemasthui";
+    var botCreatorIDs = [];
+
     var basicBot = {
         version: "2.0.0dev",
         status: false,
         name: "basicBot",
-        creator: "Matthew aka. Yemasthui",
-        creatorIDs: [],
         loggedInID: null,
         scriptLink: "https://rawgit.com/Yemasthui/basicBot/development/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
@@ -313,7 +314,7 @@
                 var u;
                 if (typeof obj === "object") u = obj;
                 else u = API.getUser(obj);
-                if(basicBot.creatorIDs.indexOf(u.id) > -1) return 10;
+                if(botCreatorIDs.indexOf(u.id) > -1) return 10;
                 if (u.gRole < 2) return u.role;
                 else {
                     switch (u.gRole) {
@@ -2213,7 +2214,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        API.sendChat('/me This bot was made by ' + basicBot.creator + '.');
+                        API.sendChat('/me This bot was made by ' + botCreator + '.');
                     }
                 }
             },
