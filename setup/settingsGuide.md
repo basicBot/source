@@ -35,12 +35,14 @@ Try to keep numbers integers: no decimals.
 Strings go between " ", if you want to use " in your string, use \". 
 Booleans are either 'true' or 'false', without the '.
 
+- "language": choose one of the supported language packs, if no valid language is found, it will use the standard pack or a specified pack, type: string
+- "chatLink": link to a json file containing a translated chat pack, type: string
 - "maximumAfk": the amount of minutes a user can be afk for the afkCheck if it's enabled, type: a number
 - "afkRemoval": turn afkCheck on or off, type: boolean             
 - "maximumDc": users that disconnected not longer than this amount of minutes ago, can get their spot back, type: a number 
 - "bouncerPlus": turn the bouncer+ mode on or off, type: boolean                
 - "lockdownEnabled": turn lockdown on or off, lockdown means that only staff can chat, leave it false                
--"lockGuard": turn the lockguard on or off, lockguard makes sure the waitlist isn't locked longer than the maximum allowed time, type: a boolean: true/false
+- "lockGuard": turn the lockguard on or off, lockguard makes sure the waitlist isn't locked longer than the maximum allowed time, type: a boolean: true/false
 - "maximumLocktime": maximum time the waitlist can be locked if lockguard is enabled, type: a number                
 - "cycleGuard": turn the cycleguard on or off, cycleguard makes sure DJ cycle isn't on longer than the allowed amount of minutes, type: boolean
 - "maximumCycletime": maximum time DJ cycle can be enabled if cyleguard is enabled, type: a number                
