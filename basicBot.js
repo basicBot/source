@@ -32,7 +32,7 @@
         }
     };
 
-    var loadChat = function(){
+    var loadChat = function(cb){
         $.get("https://rawgit.com/***REMOVED***/basicBot/development/lang/langIndex.json", function(json){
             var link = basicBot.chatLink;
             if(json !== null && typeof json !== "undefined"){
@@ -49,6 +49,7 @@
                 $.get(link, function (json) {
                     if (json !== null && typeof json !== "undefined") {
                         basicBot.chat = JSON.parse(json);
+                        cb();
                     }
                 });
             }
@@ -56,6 +57,7 @@
                 $.get(basicBot.chatLink, function (json) {
                     if (json !== null && typeof json !== "undefined") {
                         basicBot.chat = JSON.parse(json);
+                        cb();
                     }
                 });
             }
@@ -2532,5 +2534,5 @@
         }
     };
 
-    basicBot.startup();
+    loadChat(basicBot.startup);
 }).call(this);
