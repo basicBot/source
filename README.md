@@ -4,7 +4,7 @@ basicBot
 IMPORTANT
 ---------
 
-__basicBot is currently being updated to work under plug's update from Tuesday, August 28th. Please check back here later to see if it is available again.
+__basicBot is currently being updated to work under plug's update. Please check back here later to see if it is available again.
 Please disable any scripts/extensions which have not been updated by their creators yet, as they may cause issues with the new plug. More info can be found [here](http://blog.plug.dj/2014/07/message-to-those-using-extensions-or-bots/)__
 
 __The repository has been reset to allow for a better organisation of commits and branches.__
@@ -12,7 +12,7 @@ __The repository has been reset to allow for a better organisation of commits an
 Usage
 -----
 
-_Will be updated after the bot has is ready for use._
+_Will be updated after the bot is ready for use._
 
 ###Commands###
 
@@ -20,11 +20,11 @@ These can be found in [the commands file](https://github.com/Yemasthui/basicBot/
 
 ###Special settings###
 
-_Will be updated after the bot has is ready for use._
+_Will be updated after the bot is ready for use._
 
 ###Extending functionality###
 
-_Will be updated after the bot has is ready for use._
+_Will be updated after the bot is ready for use._
 
 Credits
 -------
