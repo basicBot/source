@@ -100,6 +100,7 @@
     "addbotwaitlist": "/me @%%NAME%%, don't try to add me to the waitlist, please.",
     "move": "/me [%%NAME%% used move.]",
     "mutednotime": "/me [@%%NAME%%] Muted @%%USERNAME%%.",
+    "mutedmaxtime": "/me [@%%NAME%%] You can only mute for maximum %%TIME%% minutes.",
     "mutedtime": "/me [@%%NAME%%] Muted @%%USERNAME%% for %%TIME%% minutes.",
     "unmuted": "/me [@%%NAME%%] Unmuted @%%USERNAME%%.",
     "muterank": "/me [@%%NAME%%] You can't mute persons with an equal or higher rank than you.",
