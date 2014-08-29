@@ -28,15 +28,16 @@
     var subChat = function(chat, obj){
         var lit = '%%';
         for(var prop in obj){
-            chat.replace(lit + prop.toUpperCase() + lit, obj[prop]);
+            chat = chat.replace(lit + prop.toUpperCase() + lit, obj[prop]);
         }
+        return chat;
     };
 
     var loadChat = function(cb){
         $.get("https://rawgit.com/***REMOVED***/basicBot/development/lang/langIndex.json", function(json){
             var link = basicBot.chatLink;
             if(json !== null && typeof json !== "undefined"){
-                langIndex = JSON.parse(json);
+                langIndex = json;
                 link = langIndex[basicBot.settings.language];
                 if(basicBot.settings.chatLink !== basicBot.chatLink){
                     link = basicBot.settings.chatLink;
@@ -48,7 +49,7 @@
                 }
                 $.get(link, function (json) {
                     if (json !== null && typeof json !== "undefined") {
-                        basicBot.chat = JSON.parse(json);
+                        basicBot.chat = json;
                         cb();
                     }
                 });
@@ -56,7 +57,7 @@
             else{
                 $.get(basicBot.chatLink, function (json) {
                     if (json !== null && typeof json !== "undefined") {
-                        basicBot.chat = JSON.parse(json);
+                        basicBot.chat = json;
                         cb();
                     }
                 });
@@ -866,11 +867,12 @@
                 var executed = false;
 
                 for (var comm in basicBot.commands) {
-                    var cmdCall = comm.command;
+                    var cmdCall = basicBot.commands[comm].command;
                     if(!Array.isArray(comm.command)) cmdCall = [cmdCall];
                     for(var ind in cmdCall){
                         if (basicBot.settings.commandLiteral + cmdCall[ind] === cmd) {
-                            comm.functionality(chat, basicBot.settings.commandLiteral + cmdCall[ind]);
+                            console.log('executing command');
+                            basicBot.commands[comm].functionality(chat, basicBot.settings.commandLiteral + cmdCall[ind]);
                             executed = true;
                             break;
                         }
@@ -965,11 +967,10 @@
             API.off(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
         },
         startup: function () {
-            loadChat();
             var u = API.getUser();
             if (basicBot.userUtilities.getPermission(u) < 2) return API.chatLog(basicBot.chat.greyuser);
             if (basicBot.userUtilities.getPermission(u) === 2) API.chatLog(basicBot.chat.bouncer);
-            this.connectAPI();
+            basicBot.connectAPI();
             retrieveFromStorage();
             if (basicBot.room.roomstats.launchTime === null) {
                 basicBot.room.roomstats.launchTime = Date.now();
@@ -1008,6 +1009,7 @@
             basicBot.status = true;
             API.sendChat('/cap 1');
             API.setVolume(0);
+            console.log("chat");
             API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version}));
             window.bot = basicBot;
         },
