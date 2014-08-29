@@ -63,6 +63,7 @@
     "usercommands": "usercommands",
     "motd": "MotD",
     "welcomemsg": "welcome message",
+    "songstats": "song statistics",
     "etarestriction": "eta restriction",
     "activeusersintime": "/me [@%%NAME%% There have been %%AMOUNT%% users chatting in the past %%TIME%% minutes.",
     "maximumafktimeset": "/me [@%%NAME%%] Maximum afk duration set to %%TIME%% minutes.",

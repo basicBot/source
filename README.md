@@ -43,6 +43,9 @@ Please do not try to if you are not confident in your javascript capabilities.
 Official translations will be supported. Available ones can be found under [the language folder](https://github.com/***REMOVED***/basicBot/blob/master/lang/langIndex.json). You can set a language in the room settings.
 You can use your own translation or wording by translating the values of in [the English pack](https://github.com/***REMOVED***/basicBot/blob/master/lang/en.json) and uploading it to a public hosting service. Put the link into your custom room settings, under chatLink.
 
+__When translating the chat messages, please not that it is a json format, meaning it is structured as ```"key":"value"```, please only translate the "value" parts, and leave anything between %% (eg. %%NAME%%) as is, they are variables that get filled in by the bot.__
+
+
 Credits
 -------
 
@@ -51,6 +54,10 @@ I would like to thank the following people:
 - Fungus: His Tastybot has been a source of inspiration for most of the features, and his help with coding problems has been invaluable to make this bot.
 - TAT, Origin and other Litebot contributors: Their Litebot has inspired features like Roulette.
 - Henchman: Never knew this undertaking would give me a friend too.
+
+|Language | Translator|
+|:------:|:---------:|
+|Portuguese|[Motel Bible](https://github.com/motelbible)|
 
 
 Copyright
