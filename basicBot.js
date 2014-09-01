@@ -747,7 +747,7 @@
             }
             for (var i = 0; i < users.length; i++) {
                 var user = basicBot.userUtilities.lookupUser(users[i].id);
-                basicBot.userUtilities.updatePosition(user, users[i].wlIndex + 1);
+                basicBot.userUtilities.updatePosition(user, API.getWaitListPosition(users[i].id) + 1);
             }
         },
         chatcleaner: function (chat) {
@@ -810,6 +810,7 @@
                     API.moderateDeleteChat(chat.cid);
                     return true;
                 }
+                /**
                 var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
                 if (plugRoomLinkPatt.exec(msg)) {
                     if (perm === 0) {
@@ -818,6 +819,7 @@
                         return true;
                     }
                 }
+                 **/
                 if (msg.indexOf('http://adf.ly/') > -1) {
                     API.moderateDeleteChat(chat.cid);
                     API.sendChat(subChat(basicBot.chat.adfly, {name: chat.un}));
