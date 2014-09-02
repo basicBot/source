@@ -75,7 +75,7 @@
     "commandslink": "/me Comandos do %%BOTNAME%%: %%LINK%%",
     "eatcookie": "/me ama cookies.",
     "nousercookie": "/em Não vejo %%NAME%% na sala. Vou comer esse cookie sozinho.",
-    "selfcookie": "/me @%%NAME, você é mesquinho, né? Dando cookies a si mesmo, bah. Compartilhe um pouco com os outros!",
+    "selfcookie": "/me @%%NAME%%, você é mesquinho, né? Dando cookies a si mesmo, bah. Compartilhe um pouco com os outros!",
     "cookie": "/me @%%NAMETO%%, @%%NAMEFROM%% %%COOKIE%%",
     "cycleguardtime": "/me [@%%NAME%%] A proteção de ciclo agora é: %%TIME%% minuto(s).",
     "dclookuprank": "/me [@%%NAME%%] Somente Seguranças ou superiores podem usar !dclookup em outros usuários.",
