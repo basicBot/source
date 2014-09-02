@@ -66,6 +66,15 @@
         });
     };
 
+    var retrieveSettings = function(){
+        var settings = JSON.parse(localStorage.getItem("basicBotsettings"));
+        if(settings !== null){
+            for (var prop in settings) {
+                basicBot.settings[prop] = settings[prop];
+            }
+        }
+    };
+
     var retrieveFromStorage = function () {
         var info = localStorage.getItem("basicBotStorageInfo");
         if (info === null) API.chatLog(basicBot.chat.nodatafound);
@@ -125,6 +134,7 @@
         chatLink: "https://rawgit.com/***REMOVED***/basicBot/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
+        retrieveSettings: retrieveSettings,
         settings: {
             botName: "basicBot",
             language: "english",
