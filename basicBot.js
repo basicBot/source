@@ -885,10 +885,10 @@
 
                 for (var comm in basicBot.commands) {
                     var cmdCall = basicBot.commands[comm].command;
-                    if(!Array.isArray(comm.command)) cmdCall = [cmdCall];
-                    for(var ind in cmdCall){
-                        if (basicBot.settings.commandLiteral + cmdCall[ind] === cmd) {
-                            basicBot.commands[comm].functionality(chat, basicBot.settings.commandLiteral + cmdCall[ind]);
+                    if(!Array.isArray(cmdCall)){cmdCall = [cmdCall]}
+                    for(var i = 0; i < cmdCall.length; i++){
+                        if (basicBot.settings.commandLiteral + cmdCall[i] === cmd) {
+                            basicBot.commands[comm].functionality(chat, basicBot.settings.commandLiteral + cmdCall[i]);
                             executed = true;
                             break;
                         }
@@ -1481,7 +1481,6 @@
                             var perm = basicBot.userUtilities.getPermission(chat.uid);
                             if (perm < 2) return API.sendChat(subChat(basicBot.chat.dclookuprank, {name: chat.un}));
                         }
-                        console.log(name);
                         var user = basicBot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
                         var toChat = basicBot.userUtilities.dclookup(user.id);
