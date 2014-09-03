@@ -58,6 +58,7 @@ I would like to thank the following people:
 |Language | Translator|
 |:------:|:---------:|
 |Portuguese|[Motel Bible](https://github.com/motelbible)|
+|French|NDA|
 
 
 Copyright
