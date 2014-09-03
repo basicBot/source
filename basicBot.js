@@ -1030,7 +1030,7 @@
             if(emojibutton.length > 0){
                 emojibutton[0].click();
             }
-            API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version}));
+            loadChat(API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version})));
             window.bot = basicBot;
         },
         commands: {
@@ -2096,6 +2096,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         API.sendChat(basicBot.chat.reload);
+                        storeToStorage();
                         basicBot.disconnectAPI();
                         kill();
                         setTimeout(function () {
