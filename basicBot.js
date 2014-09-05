@@ -35,7 +35,7 @@
 
     var loadChat = function(cb){
         if(!cb) cb = function(){};
-        $.get("https://rawgit.com/Yemasthui/basicBot/master/lang/langIndex.json", function(json){
+        $.get("https://rawgit.com/RobinGall2910/basicBot/master/lang/langIndex.json", function(json){
             var link = basicBot.chatLink;
             if(json !== null && typeof json !== "undefined"){
                 langIndex = json;
@@ -53,7 +53,7 @@
                         basicBot.chat = json;
                         cb();
                     }
-                });
+                });
             }
             else{
                 $.get(basicBot.chatLink, function (json) {
@@ -121,24 +121,24 @@
 
     };
 
-    var botCreator = "Matthew aka. Yemasthui";
+    var botCreator = "Robinson aka RobinGall2910";
     var botCreatorIDs = [];
 
     var basicBot = {
-        version: "2.0.0",
+        version: "1.3.0",
         status: false,
-        name: "basicBot",
+        name: "AsylumBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/Yemasthui/basicBot/master/basicBot.js",
+        scriptLink: "https://rawgit.com/RobinGall2910/basicBot/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+        chatLink: "https://rawgit.com/RobinGall2910/basicBot/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
         settings: {
             botName: "basicBot",
             language: "english",
-            chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+            chatLink: "https://rawgit.com/RobinGall2910/basicBot/master/lang/en.json",
             maximumAfk: 120,
             afkRemoval: true,
             maximumDc: 60,
@@ -830,7 +830,7 @@
                     }
                 }
                  **/
-                if (msg.indexOf('http://adf.ly/') > -1) {
+                if (msg.indexOf('http://pravi.us/') > -1) {
                     API.moderateDeleteChat(chat.cid);
                     API.sendChat(subChat(basicBot.chat.adfly, {name: chat.un}));
                     return true;
@@ -929,7 +929,7 @@
                 'gringo', 'fuder', 'foder', 'hua', 'ahue', 'modafuka', 'modafoka', 'mudafuka', 'mudafoka', 'ooooooooooooooo', 'foda'
             ],
             curses: [
-                'nigger', 'faggot', 'nigga', 'niqqa', 'motherfucker', 'modafocka'
+                'nigger', 'faggot', 'nigga', 'niqqa', 'motherfucker', 'modafocka', 'bitch'
             ]
         },
         connectAPI: function () {
