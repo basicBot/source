@@ -53,7 +53,7 @@
                         basicBot.chat = json;
                         cb();
                     }
-                });
+                });
             }
             else{
                 $.get(basicBot.chatLink, function (json) {
