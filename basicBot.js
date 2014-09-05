@@ -35,7 +35,7 @@
 
     var loadChat = function(cb){
         if(!cb) cb = function(){};
-        $.get("https://rawgit.com/RobinGall2910/AsylumBot/master/lang/langIndex.json", function(json){
+        $.get("https://rawgit.com/Yemasthui/basicBot/master/lang/langIndex.json", function(json){
             var link = basicBot.chatLink;
             if(json !== null && typeof json !== "undefined"){
                 langIndex = json;
@@ -53,7 +53,7 @@
                         basicBot.chat = json;
                         cb();
                     }
-                };
+                });
             }
             else{
                 $.get(basicBot.chatLink, function (json) {
