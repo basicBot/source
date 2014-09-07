@@ -684,6 +684,9 @@
             var lastplay = obj.lastPlay;
             if (typeof lastplay === 'undefined') return void (0);
             if (basicBot.settings.songstats) API.sendChat("/me " + lastplay.media.author + " - " + lastplay.media.title + ": " + lastplay.score.positive + "W/" + lastplay.score.grabs + "G/" + lastplay.score.negative + "M.")
+                                setTimeout(function (id) {
+                        API.moderateDeleteChat(id);
+                    }, 2 * 1000, chat.cid);
             basicBot.room.roomstats.totalWoots += lastplay.score.positive;
             basicBot.room.roomstats.totalMehs += lastplay.score.negative;
             basicBot.room.roomstats.totalCurates += lastplay.score.grabs;
