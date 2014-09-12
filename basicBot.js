@@ -2172,7 +2172,13 @@
                                     position: null,
                                     songCount: 0
                                 };
-                                API.moderateRemoveDJ(user.id);
+                                if(API.getDJ().id === user.id){
+                                    API.moderateForceSkip();
+                                    setTimeout(function(){
+                                        API.moderateRemoveDJ(user.id);
+                                    }, 1*1000, user);
+                                }
+                                else API.moderateRemoveDJ(user.id);
                             } else API.sendChat(subChat(basicBot.chat.removenotinwl, {name: chat.un, username: name}));
                         } else API.sendChat(subChat(basicBot.chat.nouserspecified, {name: chat.un}));
                     }
