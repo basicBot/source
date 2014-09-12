@@ -1382,10 +1382,7 @@
                     else {
                         var currentchat = $('#chat-messages').children();
                         for (var i = 0; i < currentchat.length; i++) {
-                            for (var j = 0; j < currentchat[i].classList.length; j++) {
-                                if (currentchat[i].classList[j].indexOf('cid-') == 0)
-                                    API.moderateDeleteChat(currentchat[i].classList[j].substr(4));
-                            }
+                            API.moderateDeleteChat(currentchat[i].getAttribute("data-cid"));
                         }
                         return API.sendChat(subChat(basicBot.chat.chatcleared,{name: chat.un}));
                     }
