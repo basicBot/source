@@ -125,6 +125,7 @@
     "commandscd": "/me [@%%NAME%%] O tempo de espera de comandos para usuários agora é %%TIME%% segundos.",
     "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: ' + %%WOOT%% + ', mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
     "website": "/me Visite nosso site: %%LINK%%",
-    "youtube": "/me [%%NAME%%] Inscreva-se no nosso canal: %%LINK%%"
+    "youtube": "/me [%%NAME%%] Inscreva-se no nosso canal: %%LINK%%",
+    "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
 
 }
