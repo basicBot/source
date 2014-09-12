@@ -1922,7 +1922,7 @@
                     else {
                         var msg = chat.message;
                         var lockTime = msg.substring(cmd.length + 1);
-                        if (!isNaN(lockTime)) {
+                        if (!isNaN(lockTime) && lockTime !== "") {
                             basicBot.settings.maximumLocktime = lockTime;
                             return API.sendChat(subChat(basicBot.chat.lockguardtime, {name: chat.un, time: basicBot.settings.maximumLocktime}));
                         }
