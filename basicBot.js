@@ -1506,7 +1506,7 @@
                     else {
                         var msg = chat.message;
                         var cycleTime = msg.substring(cmd.length + 1);
-                        if (!isNaN(cycleTime)) {
+                        if (!isNaN(cycleTime) && cycleTime !== "") {
                             basicBot.settings.maximumCycletime = cycleTime;
                             return API.sendChat(subChat(basicBot.chat.cycleguardtime, {name: chat.un, time: basicBot.settings.maximumCycletime}));
                         }
