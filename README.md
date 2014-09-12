@@ -1,6 +1,11 @@
 basicBot
 ========
 
+A not so basic bot for plug.dj 
+
+!!!TO CUSTOMIZE: USE [THIS REPOSITORY](https://github.com/***REMOVED***/basicBot-customization)!!!
+==============================================================================================
+
 IMPORTANT
 ---------
 
@@ -58,7 +63,7 @@ I would like to thank the following people:
 |Language | Translator|
 |:------:|:---------:|
 |Portuguese|[Motel Bible](https://github.com/motelbible)|
-|French|NDA|
+|French|[NDA](https://github.com/NDAthereal)|
 
 
 Copyright
