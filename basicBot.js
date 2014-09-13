@@ -130,7 +130,8 @@
         name: "AsylumBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/RobinGall2910/AsylumBot/master/basicBot.js",
-        cmdLink: "http://git.io/245Ppg",
+        // Goes to: https://github.com/RobinGall2910/AsylumBot/blob/master/commands.md
+        cmdLink: "http://git.io/nWhgaA",
         chatLink: "https://rawgit.com/RobinGall2910/AsylumBot/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
