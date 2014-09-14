@@ -1700,7 +1700,7 @@
                             else API.moderateBanUser(user.id, 1, API.BAN.DAY);
                             setTimeout(function (id, name) {
                                 API.moderateUnbanUser(id);
-                                console.log('Unbanned @' + name + '.');
+                                console.log('Unbanned @' + name + '. ('+id+')');
                             }, time * 60 * 1000, user.id, name);
                         }
                         else API.sendChat(subChat(basicBot.chat.invalidtime, {name: chat.un}));
@@ -2461,14 +2461,15 @@
                         $(".icon-ban").click();
                         setTimeout(function (chat) {
                             var msg = chat.message;
-                            if (msg.length === cmd.length) return API.sendChat()
+                            if (msg.length === cmd.length) return API.sendChat();
                             var name = msg.substring(cmd.length + 2);
                             var bannedUsers = API.getBannedUsers();
                             var found = false;
+                            var bannedUser = null;
                             for (var i = 0; i < bannedUsers.length; i++) {
                                 var user = bannedUsers[i];
                                 if (user.username === name) {
-                                    id = user.id;
+                                    bannedUser = user;
                                     found = true;
                                 }
                             }
@@ -2476,7 +2477,7 @@
                                 $(".icon-chat").click();
                                 return API.sendChat(subChat(basicBot.chat.notbanned, {name: chat.un}));
                             }
-                            API.moderateUnbanUser(user.id);
+                            API.moderateUnbanUser(bannedUser.id);
                             console.log("Unbanned " + name);
                             setTimeout(function () {
                                 $(".icon-chat").click();
