@@ -763,7 +763,7 @@
             };
             clearTimeout(basicBot.room.autoskipTimer);
             if (basicBot.room.autoskip) {
-                var remaining = media.duration * 1000;
+                var remaining = obj.media.duration * 1000;
                 basicBot.room.autoskipTimer = setTimeout(function () {
                     API.moderateForceSkip();
                 }, remaining - 500);
