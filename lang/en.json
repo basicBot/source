@@ -73,6 +73,7 @@
     "brandambassador": "/me A Brand Ambassador is the voice of the plug.dj users. They promote events, engage the community and share the plug.dj message around the world. For more info: http://blog.plug.dj/brand-ambassadors/",
     "bouncerplusrank": "/me [@%%NAME%%] You have to be manager or up to enable Bouncer+.",
     "chatcleared": "/me [@%%NAME%%] Cleared the chat.",
+    "deletechat": "/me [@%%NAME%%] Cleared the chat of %%USERNAME%%.",
     "commandslink": "/me %%BOTNAME%% commands: %%LINK%%",
     "eatcookie": "/me eats a cookie.",
     "nousercookie": "/em doesn't see %%NAME%% in room and eats a cookie himself.",
