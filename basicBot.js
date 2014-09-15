@@ -158,7 +158,7 @@
     var botCreatorIDs = [];
 
     var basicBot = {
-        version: "2.0.2",
+        version: "2.0.3",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -765,8 +765,9 @@
             if (basicBot.room.autoskip) {
                 var remaining = obj.media.duration * 1000;
                 basicBot.room.autoskipTimer = setTimeout(function () {
+                    console.log("Skipping track.");
                     API.moderateForceSkip();
-                }, remaining - 500);
+                }, remaining  + 1000);
             }
             storeToStorage();
 
