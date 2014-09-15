@@ -28,6 +28,7 @@ Bouncer+
 |!afkremoval | | toggles the afk check |
 |!autoskip | | skips songs automatically when they're done (use when the circles-bug happens) |
 |!bouncer+ | | disable bouncer+ |
+|!deletechat | @user | delete all the chats by a certain user |
 |!lock | | lock the waitlist |
 |!lockdown | | lock down the room: only staff can chat |
 |!maxlength | X | specify the maximum length a song can be when timeguard is enabled |

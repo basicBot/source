@@ -26,6 +26,11 @@
     };
 
     var subChat = function(chat, obj){
+        if(typeof chat === "undefined"){
+            API.chatLog("There is a chat text missing.");
+            console.log("There is a chat text missing.");
+            return "[Error] No text message found.";
+        }
         var lit = '%%';
         for(var prop in obj){
             chat = chat.replace(lit + prop.toUpperCase() + lit, obj[prop]);
@@ -158,7 +163,7 @@
     var botCreatorIDs = [];
 
     var basicBot = {
-        version: "2.0.3",
+        version: "2.0.4",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -1534,6 +1539,32 @@
                         if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
                         var toChat = basicBot.userUtilities.dclookup(user.id);
                         API.sendChat(toChat);
+                    }
+                }
+            },
+
+            deletechatCommand: {
+                command: 'deletechat',
+                rank: 'mod',
+                type: 'startsWith',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var msg = chat.message;
+                        if (msg.length === cmd.length) return API.sendChat(subChat(basicBot.chat.nouserspecified, {name: chat.un}));
+                        var name = msg.substring(cmd.length + 2);
+                        var user = basicBot.userUtilities.lookupUserName(name);
+                        if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
+                        var chats = $('.from');
+                        for(var i = 0; i < chats.length; i++){
+                            var n = chats[i].textContent;
+                            if(name.trim() === n.trim()){
+                                var cid = $(chats[i]).parent()[0].getAttribute('data-cid');
+                                API.moderateDeleteChat(cid);
+                            }
+                        }
+                        API.sendChat(subChat(basicBot.chat.deletechat,{name: chat.un, username: name}));
                     }
                 }
             },
