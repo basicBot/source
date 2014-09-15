@@ -75,7 +75,7 @@
     "commandslink": "/me %%BOTNAME%% commandes: %%LINK%%",
     "eatcookie": "/me mange un cookie.",
     "nousercookie": "/me ne voit pas %%NAME%% dans la salle et mange le cookie.",
-    "selfcookie": "/me @%%NAME, tu est un peu radin non ? Te donner des cookies à toi même... Partage les avec d'autres gens !",
+    "selfcookie": "/me @%%NAME%%, tu est un peu radin non ? Te donner des cookies à toi même... Partage les avec d'autres gens !",
     "cookie": "/me @%%NAMETO%%, @%%NAMEFROM%% %%COOKIE%%",
     "cycleguardtime": "/me [@%%NAME%%] Le cycleguard est paramétré pour %%TIME%% minute(s).",
     "dclookuprank": "/me [@%%NAME%%] Uniquement les Bouncers peuvent vérifier pour les autres.",
