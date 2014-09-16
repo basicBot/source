@@ -753,7 +753,7 @@
             var newMedia = obj.media;
             if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
                 var name = obj.dj.username;
-                API.sendChat(subChat(chat.timelimit, {name: name, maxlength: basicBot.settings.maximumSongLength}));
+                API.sendChat(subChat(basicBot.chat.timelimit, {name: name, maxlength: basicBot.settings.maximumSongLength}));
                 API.moderateForceSkip();
             }
             var user = basicBot.userUtilities.lookupUser(obj.dj.id);
