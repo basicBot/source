@@ -13,6 +13,7 @@
     "songknown": "/me :repeat: This song has been played %%PLAYS%% time(s) in the last %%TIMETOTAL%%, last play was %%LASTTIME%% ago. :repeat:",
     "timelimit": "/me @%%NAME%%, your song is longer than %%MAXLENGTH%% minutes, you need permission to play longer songs.",
     "permissionownsong": "/me :up: @%%NAME%% has permission to play their own production!",
+    "isblacklisted": "/me This track is on the %%BLACKLIST%% blacklist! Skipping...",
 
 
     "isopen": "/me The roulette is now open! Type !join to participate!",
@@ -45,6 +46,8 @@
     "invalidtime": "/me [@%%NAME%%] Invalid time specified.",
     "nouserspecified": "/me [@%%NAME%%] No user specified.",
     "invaliduserspecified": "/me [@%%NAME%%] Invalid user specified.",
+    "nolistspecified": "/me [@%%NAME%%] No list specified.",
+    "invalidlistspecified": "/me [@%%NAME%%] Invalid list specified.",
     "novaliduserspecified": "/me [@%%NAME%%] No valid user specified.",
     "nolimitspecified": "/me [@%%NAME%%] No limit specified.",
     "invalidlimitspecified": "/me [@%%NAME%%] Invalid limit.",
@@ -55,6 +58,7 @@
     "afksremoved": "AFK's removed",
     "afklimit": "AFK limit",
     "autoskip": "autoskip",
+    "newblacklisted": "/me [@%%NAME%%] This track belongs on the %%BLACKLIST%% blacklist! [ %%AUTHOR%% - %%TITLE%% - %%MID%% ]",
     "cycleguard": "cycleguard",
     "timeguard": "timeguard",
     "chatfilter": "chatfilter",
