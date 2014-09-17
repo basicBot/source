@@ -37,6 +37,10 @@ If this does not work, go to https://raw.githubusercontent.com/***REMOVED***/bas
 
 These can be found in [the commands file](https://github.com/***REMOVED***/basicBot/blob/master/commands.md).
 
+###Blacklists###
+Examples of blacklists can be found in [the customization repository](https://github.com/***REMOVED***/basicBot-customization/tree/master/blacklists).
+You can add blacklists in the settings of the bot via the methods given in that same repository. See below for more information.
+
 ###Extending functionality and custom default settings###
 
 basicBot can be customized to fit your needs. Please refer to [the customization repository](https://github.com/***REMOVED***/basicBot-customization) for more info.
