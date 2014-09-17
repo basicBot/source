@@ -658,7 +658,6 @@
                         try {
                             (function(l){
                                 $.get(basicBot.settings.blacklists[l], function (data) {
-                                    console.log(data);
                                     if (typeof data === 'string') {
                                         data = JSON.parse(data);
                                     }
@@ -679,7 +678,6 @@
                         }
                     }
                 }
-                setTimeout(function(){console.log(basicBot.room.blacklists)},5000);
             },
             logNewBlacklistedSongs: function () {
                 if (typeof console.table !== 'undefined') {
