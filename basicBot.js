@@ -165,7 +165,7 @@
     var botCreatorIDs = [];
 
     var basicBot = {
-        version: "2.1.1",
+        version: "2.1.2",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -846,8 +846,9 @@
                 var remaining = obj.media.duration * 1000;
                 basicBot.room.autoskipTimer = setTimeout(function () {
                     console.log("Skipping track.");
+                    //API.sendChat('Song stuck, skipping...');
                     API.moderateForceSkip();
-                }, remaining + 1000);
+                }, remaining + 3000);
             }
             storeToStorage();
 
@@ -2217,6 +2218,13 @@
 
                             }
                             else if (time > 30) {
+                                API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
+                                API.sendChat(subChat(basicBot.chat.mutedtime, {name: chat.un, username: name, time: time}));
+                                setTimeout(function (id) {
+                                    API.moderateUnmuteUser(id);
+                                }, time * 60 * 1000, user.id);
+                            }
+                            else if (time > 15) {
                                 API.moderateMuteUser(user.id, 1, API.MUTE.MEDIUM);
                                 API.sendChat(subChat(basicBot.chat.mutedtime, {name: chat.un, username: name, time: time}));
                                 setTimeout(function (id) {
