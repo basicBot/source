@@ -24,7 +24,7 @@
     "adding": "/me Added @%%NAME%% to the queue. Current queue: %%POSITION%%.",
 
 
-    "usernotfound": "/me User not found.",
+    "usernotfound": "/me User not found!",
     "notdisconnected": "/me @%%NAME%% did not disconnect during my time here.",
     "noposition": "/me No last position known. The waitlist needs to update at least once to register a user's last position.",
     "toolongago": "/me @%%NAME%%'s last disconnect (DC or leave) was too long ago: %%TIME%%.",
