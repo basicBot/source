@@ -7,6 +7,19 @@
 
 (function () {
 
+    API.getWaitListPosition = function(id){
+        if(typeof id === 'undefined' || id === null){
+            id = API.getUser().id;
+        }
+        var wl = API.getWaitList();
+        for(var i = 0; i < wl.length; i++){
+            if(wl[i].id === id){
+                return i;
+            }
+        }
+        return -1;
+    };
+
     var kill = function () {
         clearInterval(basicBot.room.autodisableInterval);
         clearInterval(basicBot.room.afkInterval);
@@ -165,7 +178,7 @@
     var botCreatorIDs = [];
 
     var basicBot = {
-        version: "2.1.3",
+        version: "2.1.4",
         status: false,
         name: "basicBot",
         loggedInID: null,
