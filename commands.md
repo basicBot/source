@@ -10,7 +10,7 @@ Manager
 
 |Command | Arguments |  Description |
 |:------:|:---------:|:--------------------------------------:|
-|!afklimit | X | sets the maximum afk time |
+|!afklimit | X | define o tempo máximo afk |
 |!clearchat | |clears the chat |
 |!cycle | | toggle DJ cycle |
 |!cycletimer | X | set the maximum DJ cycle time for when cycleguard is enabled |
@@ -93,7 +93,7 @@ User
 |!cookie | (@user) | give a cookie to user |
 |!dclookup / !dc | | use dclookup on yourself |
 |!emoji | | a link to a list with emoji's |
-|!eta | | shows how long before you reach the booth |
+|!eta | (@user) | mostra quando o usuário vai chegar ao estande |
 |!fb | | links to the room's Facebook page (if set in the settings) |
 |!help | | links to an image to help get people started on plug |
 |!join | | join the roulette if it's up |
