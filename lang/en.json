@@ -8,8 +8,8 @@
     "online": "/me %%BOTNAME%% v%%VERSION%% online!",
 
 
-    "welcome": "/me Welcome %%NAME%%",
-    "welcomeback": "/me Welcome back, %%NAME%%",
+    "welcome": "/me Welcome, %%NAME%%! Enjoy your stay.",
+    "welcomeback": "/me Welcome back, %%NAME%%!",
     "songknown": "/me :repeat: This song has been played %%PLAYS%% time(s) in the last %%TIMETOTAL%%, last play was %%LASTTIME%% ago. :repeat:",
     "timelimit": "/me @%%NAME%%, your song is longer than %%MAXLENGTH%% minutes, you need permission to play longer songs.",
     "permissionownsong": "/me :up: @%%NAME%% has permission to play their own production!",
@@ -26,14 +26,14 @@
 
     "usernotfound": "/me User not found.",
     "notdisconnected": "/me @%%NAME%% did not disconnect during my time here.",
-    "noposition": "/me No last position known. The waitlist needs to update at least once to register a user's last position.",
+    "noposition": "/me No last position known.",
     "toolongago": "/me @%%NAME%%'s last disconnect (DC or leave) was too long ago: %%TIME%%.",
-    "valid": "/me @%%NAME%% disconnected %%TIME%% ago and should be at position %%POSITION%%.",
+    "valid": "/me @%%NAME%% left %%TIME%% ago and should be at position %%POSITION%%.",
 
 
-    "warning1": "/me @%%NAME%%, you have been afk for %%TIME%%, please respond within 2 minutes or you will be removed.",
-    "warning2": "/me @%%NAME%%, you will be removed due to AFK soon if you don't respond.",
-    "afkremove": "/me @%%NAME%%, you have been removed for being afk for %%TIME%%. You were at position %%POSITION%%. Chat at least once every %%MAXIMUMAFK%% minutes if you want to play a song.",
+    "warning1": "/me @%%NAME%%, you have been AFK for %%TIME%%! Please respond within 2 minutes or you will be removed.",
+    "warning2": "/me @%%NAME%%, you will be removed for being AFK soon if you don't respond.",
+    "afkremove": "/me @%%NAME%%, you have been removed for being AFK for %%TIME%%. You were at position %%POSITION%%. Chat at least once every %%MAXIMUMAFK%% minutes if you want to play a song.",
 
 
     "caps": "/me @%%NAME%%, unglue your capslock button please.",
