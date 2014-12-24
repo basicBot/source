@@ -243,7 +243,7 @@
             youtubeLink: null,
             website: "http://tagpro.gg/" ,
             intervalMessages: ["Hi, I am the bot for this room. I recommend getting PlugCubed: https://plugcubed.net/Install for autowoot, background and flairs.", "Someday I’ll take over the world. :) ", "\"I love Mussolnini\" - Mussolini", "I want to make bot babies.", "Tagpro is awsum.", "MostDeaths is the deaths co-most", "SaraAlba is zoubir.", "It's Sunna outside.", "zirconium pls", "Save our SOSFILMZ", "Bots need love too <3 ", "wutwubwutwubwutwub", "Don’t be so Ruud", "Thank you for being here <3", "\"Np, I like being here\" – wut", "DostMeaths is our BnD expert.", "http://i.imgur.com/Hj5TUIC.png - Defender", "\"Today I didn’t saw a boobie\" – Selkie", "The best thing about Beyoncé is… everything – MothsDeast", "It’s Pantry Thyme!", "Hi FoxtrotDK! <3", "If you like this room, please tell other TagPro players about it!", "Hola sukoley! <3 ", "ProDjmx is our EDM expert"],
-            messageInterval: 10,
+            messageInterval: 1,
             songstats: false,
             commandLiteral: "!",
             blacklists: {
