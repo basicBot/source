@@ -8,7 +8,7 @@
 (function () {
 
     API.getWaitListPosition = function(id){
-        if(typeof id === 'undefined' || id === null){
+        if(typeof id === 'undefined' || id === null){F
             id = API.getUser().id;
         }
         var wl = API.getWaitList();
@@ -1134,7 +1134,7 @@
                 return 'Function.'
             };
             var u = API.getUser();
-            if (basicBot.userUtilities.getPermission(u) < 2) return API.chatLog(basicBot.chat.greyuser);
+            if (basicBot.userUtilities.getPermission(u) < 0) return API.chatLog(basicBot.chat.greyuser);
             if (basicBot.userUtilities.getPermission(u) === 2) API.chatLog(basicBot.chat.bouncer);
             basicBot.connectAPI();
             API.moderateDeleteChat = function (cid) {
