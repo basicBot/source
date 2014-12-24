@@ -54,7 +54,7 @@
     var loadChat = function (cb) {
         if (!cb) cb = function () {
         };
-        $.get("https://rawgit.com/Yemasthui/basicBot/master/lang/langIndex.json", function (json) {
+        $.get("https://rawgit.com/jamiedukeellis/basicBot/master/lang/langIndex.json", function (json) {
             var link = basicBot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -182,16 +182,16 @@
         status: false,
         name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/Yemasthui/basicBot/master/basicBot.js",
-        cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+        scriptLink: "https://rawgit.com/jamiedukeellis/basicBot/master/basicBot.js",
+        cmdLink: "Coming soon",
+        chatLink: "https://rawgit.com/jamiedukeellis/basicBot/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
         settings: {
             botName: "basicBot",
             language: "english",
-            chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+            chatLink: "https://rawgit.com/jamiedukeellis/basicBot/master/lang/en.json",
             maximumAfk: 120,
             afkRemoval: true,
             maximumDc: 60,
@@ -220,7 +220,7 @@
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 5,
-            motd: "Temporary Message of the Day",
+            motd: "Welcome to EpicMusic!",
             filterChat: true,
             etaRestriction: false,
             welcome: true,
@@ -235,8 +235,8 @@
             songstats: true,
             commandLiteral: "!",
             blacklists: {
-                NSFW: "https://rawgit.com/Yemasthui/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
-                OP: "https://rawgit.com/Yemasthui/basicBot-customization/master/blacklists/ExampleOPlist.json"
+                NSFW: "https://rawgit.com/jamiedukeellis/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
+                OP: "https://rawgit.com/jamiedukeellis/basicBot-customization/master/blacklists/ExampleOPlist.json"
             }
         },
         room: {
@@ -1745,16 +1745,16 @@
                 }
             },
 
-            fbCommand: {
-                command: 'fb',
+            jamieCommand: {
+                command: 'jamie',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        if (typeof basicBot.settings.fbLink === "string")
-                            API.sendChat(subChat(basicBot.chat.facebook, {link: basicBot.settings.fbLink}));
+                        var link = "Hai der!";
+                        API.sendChat(subChat(basicBot.chat.starterhelp, {link: link}));
                     }
                 }
             },
