@@ -112,12 +112,12 @@
     "muterank": "/me [@%%NAME%%] You can't mute persons with an equal or higher rank than you.",
     "oplist": "/me OP list: %%LINK%%",
     "pong": "/me Pong!",
-    "reload": "/me Be right back.",
+    "reload": "/me Now Purring!",
     "removenotinwl": "/me [@%%NAME%%] Specified user @%%USERNAME%% is not in the waitlist.",
     "roomrules": "/me Please find the room rules here: %%LINK%%",
     "sessionstats": "/me [@%%NAME%%] Total woots: %%WOOTS%%, total mehs: %%MEHS%%, total grabs: %%GRABS%%.",
     "skip": "/me [%%NAME%% used skip.]",
-    "madeby": "/me This bot was made by %%NAME%%.",
+    "madeby": "/me This bot was made by JDev!.",
     "activefor": "I have been active for %%TIME%%.",
     "swapinvalid": "/me [@%%NAME%%] Invalid user specified. (No names with spaces!)",
     "swapwlonly": "/me [@%%NAME%%] Please only swap users that are in the waitlist!",
@@ -130,7 +130,7 @@
     "unmuterank": "/me [@%%NAME%%] You can't unmute persons with an equal or higher rank than you.",
     "commandscd": "/me [@%%NAME%%] The cooldown for commands by users is now set to %%TIME%% seconds.",
     "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: ' + %%WOOT%% + ', mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
-    "website": "/me Please visit our website: %%LINK%%",
+    "website": "/me Please visit our website: http://jamieduke.net",
     "youtube": "/me [%%NAME%%] Subscribe to us on youtube: %%LINK%%",
     "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
 }
