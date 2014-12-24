@@ -174,13 +174,13 @@
         return m;
     };
 
-    var botCreator = "Matthew aka. Yemasthui";
+    var botCreator = "Jamie aka Jdev. ";
     var botCreatorIDs = [];
 
     var basicBot = {
         version: "2.1.4",
         status: false,
-        name: "basicBot",
+        name: "EpicMusicBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/jamiedukeellis/basicBot/master/basicBot.js",
         cmdLink: "Coming soon",
@@ -189,7 +189,7 @@
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
         settings: {
-            botName: "basicBot",
+            botName: "EpicMusicBott",
             language: "english",
             chatLink: "https://rawgit.com/jamiedukeellis/basicBot/master/lang/en.json",
             maximumAfk: 120,
