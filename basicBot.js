@@ -219,13 +219,13 @@
                 ["s", "The song you played had bad sound quality or no sound. Try again. "],
                 ["nsfw", "The song you contained was NSFW (image or sound). Try again. "],
                 ["ns", "The song you contained was NSFW (image or sound). Try again. "],
-                ["unavailable", "The song you played was not available for some users. Try again. "]
-                ["nv", "The song you played was not available for some users. Try again. "]
-                ["notavailable", "The song you played was not available for some users. Try again. "]
-                ["u", "The song you played was not available for some users. Try again. "]
-                ["na", "The song you played was not available for some users. Try again. "]
-                ["dont", "This song or video is not appropriate for this room. Try again. Warning: if you do this too often, it might result in a (temporary) ban. "]
-                ["ban", "This song or video is not appropriate for this room. Try again. Warning: if you do this again, it might result in a ban. "]
+                ["unavailable", "The song you played was not available for some users. Try again. "],
+                ["nv", "The song you played was not available for some users. Try again. "],
+                ["notavailable", "The song you played was not available for some users. Try again. "],
+                ["u", "The song you played was not available for some users. Try again. "],
+                ["na", "The song you played was not available for some users. Try again. "],
+                ["dont", "This song or video is not appropriate for this room. Try again. Warning: if you do this too often, it might result in a (temporary) ban. "],
+                ["ban", "This song or video is not appropriate for this room. Try again. Warning: if you do this again, it might result in a ban. "],
                 
             ],
             afkpositionCheck: 1,
