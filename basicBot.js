@@ -188,6 +188,7 @@
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
+        retrieveFromStorage: retrieveFromStorage,
         settings: {
             botName: "basicBot",
             language: "english",
