@@ -1848,7 +1848,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var link = "http://i.imgur.com/SBAso1N.jpg";
-                        API.sendChat(subChat('Roll:'));
+                        API.sendChat(subChat('Roll:', math.floor(math.random())));
                     }
                 }
             },
