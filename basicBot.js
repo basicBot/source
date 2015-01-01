@@ -208,25 +208,15 @@
             usercommandsEnabled: true,
             lockskipPosition: 1,
             lockskipReasons: [
-                ["theme", "This song does not fit the room theme. Try again. "],
-                ["troll", "This song does not fit the room theme. Try again. "],
-                ["op", "This song is overplayed. Try again. "],
-                ["history", "This song is in the history. Try again. "],
-                ["h", "This song is in the history. Try again. "],
-                ["long", "Your song is too long, try again. "],
-                ["l", "Your song is too long, try again. "],
-                ["sound", "The song you played had bad sound quality or no sound. Try again. "],
-                ["s", "The song you played had bad sound quality or no sound. Try again. "],
-                ["nsfw", "The song you contained was NSFW (image or sound). Try again. "],
-                ["ns", "The song you contained was NSFW (image or sound). Try again. "],
-                ["unavailable", "The song you played was not available for some users. Try again. "],
-                ["nv", "The song you played was not available for some users. Try again. "],
-                ["notavailable", "The song you played was not available for some users. Try again. "],
-                ["u", "The song you played was not available for some users. Try again. "],
-                ["na", "The song you played was not available for some users. Try again. "],
-                ["dont", "This song or video is not appropriate for this room. Try again. Warning: if you do this too often, it might result in a (temporary) ban. "],
-                ["ban", "This song or video is not appropriate for this room. Try again. Warning: if you do this again, it might result in a ban. "],
-                
+                [["theme", "troll"], "This song does not fit the room theme. Try again. "],
+                [["overplayed", "op"], "This song is overplayed. Try again. "],
+                [["his", "history"], "This song has been played very recently. Try again. "],
+                [["long", "length"], "Your song is too long, try again. "],
+                [["sound"], "The song you played had bad sound quality or no sound. Try again. "],
+                [["nsfw", "unsafe"], "The song you contained was NSFW (image or sound). Try again. "],
+                [["unavailable"], "The song you played was not available for some users. Try again. "],
+                [["dont"], "This song or video is not appropriate for this room. If you do this too often, it might result in a (temporary) ban. "],
+                [["ban"], "This song or video is not appropriate for this room. If you do this again, it might result in a ban. "],
             ],
             afkpositionCheck: 1,
             afkRankCheck: "residentdj",
@@ -2042,10 +2032,12 @@
                             var reason = msg.substring(cmd.length + 1);
                             for (var i = 0; i < basicBot.settings.lockskipReasons.length; i++) {
                                 var r = basicBot.settings.lockskipReasons[i][0];
-                                if (reason.indexOf(r) !== -1) {
-                                    validReason = true;
-                                    msgSend += basicBot.settings.lockskipReasons[i][1];
-                                }
+								for(var j = 0; j < r.length; j++) {
+									if (reason.indexOf(r[i]) !== -1) {
+										validReason = true;
+										msgSend += basicBot.settings.lockskipReasons[i][1];
+									}
+								}
                             }
                             if (validReason) {
                                 API.sendChat(subChat(basicBot.chat.usedlockskip, {name: chat.un}));
