@@ -209,13 +209,13 @@
             usercommandsEnabled: true,
             lockskipPosition: 1,
             lockskipReasons: [
-                [["theme", "troll"], "This song does not fit the room theme. Try again. "],
-                [["overplayed", "op"], "This song is overplayed. Try again. "],
-                [["his", "history"], "This song has been played very recently. Try again. "],
-                [["long", "length"], "Your song is too long, try again. "],
-                [["sound"], "The song you played had bad sound quality or no sound. Try again. "],
-                [["nsfw", "unsafe"], "The song you contained was NSFW (image or sound). Try again. "],
-                [["unavailable"], "The song you played was not available for some users. Try again. "],
+                [["theme", "troll"], "This song does not fit the room theme. "],
+                [["overplayed", "op"], "This song is overplayed. "],
+                [["his", "history"], "This song has been played very recently. "],
+                [["long", "length"], "Your song is too long. "],
+                [["sound"], "The song you played had bad sound quality or no sound. "],
+                [["nsfw", "unsafe"], "The song you contained was NSFW (image or sound). "],
+                [["unavailable"], "The song you played was not available for some users. "],
                 [["dont"], "This song or video is not appropriate for this room. If you do this too often, it might result in a (temporary) ban. "],
                 [["ban"], "This song or video is not appropriate for this room. If you do this again, it might result in a ban. "],
             ],
@@ -2078,7 +2078,7 @@
                                 setTimeout(function (id) {
                                     API.moderateForceSkip();
                                     basicBot.room.skippable = false;
-                                    API.sendChat(msgSend);
+                                    API.sendChat(msgSend + "Try again.");
                                     setTimeout(function () {
                                         basicBot.room.skippable = true
                                     }, 5 * 1000);
