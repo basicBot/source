@@ -2063,9 +2063,11 @@
                             var reason = msg.substring(cmd.length + 1);
                             for (var i = 0; i < basicBot.settings.lockskipReasons.length; i++) {
                                 var r = basicBot.settings.lockskipReasons[i][0];
+								var found = false;
 								for(var j = 0; j < r.length; j++) {
-									if (reason.indexOf(r[j]) !== -1) {
+									if (reason.indexOf(r[j]) !== -1 && !found) {
 										validReason = true;
+										found = true;
 										msgSend += basicBot.settings.lockskipReasons[i][1];
 									}
 								}
