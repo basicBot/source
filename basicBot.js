@@ -2064,7 +2064,7 @@
                             for (var i = 0; i < basicBot.settings.lockskipReasons.length; i++) {
                                 var r = basicBot.settings.lockskipReasons[i][0];
 								for(var j = 0; j < r.length; j++) {
-									if (reason.indexOf(r[i]) !== -1) {
+									if (reason.indexOf(r[j]) !== -1) {
 										validReason = true;
 										msgSend += basicBot.settings.lockskipReasons[i][1];
 									}
