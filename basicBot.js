@@ -202,6 +202,8 @@
             maximumLocktime: 10,
             cycleGuard: true,
             maximumCycletime: 10,
+            voteSkip: false,
+            voteSkipLimit: 10,
             timeGuard: true,
             maximumSongLength: 10,
             autodisable: true,
@@ -791,6 +793,18 @@
                     }
                 }
             }
+
+            var mehs = API.getScore().negative;
+            var woots = API.getScore().positive;
+            var dj = API.getDJ();
+
+            if (basicBot.settings.voteSkip) {
+                if ((mehs - woots) >= (basicBot.settings.voteSkipLimit)) {
+                    API.sendChat('/me @' + dj.username + ', your song has exceeded the maximum amount of mehs needed to skip.');
+                    API.moderateForceSkip();
+                }
+            }
+
         },
         eventCurateupdate: function (obj) {
             for (var i = 0; i < basicBot.room.users.length; i++) {
@@ -1651,6 +1665,49 @@
                         }
                         else return API.sendChat(subChat(basicBot.chat.invalidtime, {name: chat.un}));
 
+                    }
+                }
+            },
+
+            voteskipCommand: {
+                command: 'voteskip',
+                rank: 'manager',
+                type: 'startsWith',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var msg = chat.message;
+                        if (msg.length <= cmd.length + 1) return API.sendChat('/me Voteskip limit is currently set to a difference of ' + basicBot.settings.voteSkipLimit + ' mehs.');
+                        var argument = msg.substring(cmd.length + 1);
+                        if (!basicBot.settings.voteSkip) basicBot.settings.voteSkip = !basicBot.settings.voteSkip;
+                        if (isNaN(argument)) {
+                            API.sendChat('/me Invalid voteskip limit, please try again using a number to signify the number of mehs.');
+                        }
+                        else {
+                            basicBot.settings.voteSkipLimit = argument;
+                            API.sendChat('/me Voteskip limit set to ' + basicBot.settings.voteSkipLimit + '.');
+                        }
+                    }
+                }
+            },
+
+            togglevoteskipCommand: {
+                command: 'togglevoteskip',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.voteSkip) {
+                            basicBot.settings.voteSkip = !basicBot.settings.voteSkip;
+                            API.sendChat('/me [@' + chat.un + '] voteskip disabled.');
+                        }
+                        else {
+                            basicBot.settings.motdEnabled = !basicBot.settings.motdEnabled;
+                            API.sendChat('/me [@' + chat.un + '] voteskip enabled.');
+                        }
                     }
                 }
             },
@@ -2518,6 +2575,11 @@
 
                         msg += basicBot.chat.chatfilter + ': ';
                         if (basicBot.settings.filterChat) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.voteskip + ': ';
+                        if (Qbot.settings.voteskip) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
 
