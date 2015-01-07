@@ -128,7 +128,7 @@
     "notmuted": "/me [@%%NAME%%] cet utilisateur n'a pas été rendu muet.",
     "unmuterank": "/me [@%%NAME%%] Vous ne pouvez pas rendre la parole à un utilisateur avec un rang égal ou supérieur au votre.",
     "commandscd": "/me [@%%NAME%%] Le temps d'attente pour les commandes utilisateur ont été ajustées à %%TIME%% secondes.",
-    "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: ' + %%WOOT%% + ', mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
+    "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
     "website": "/me Visitez notre site Internet: %%LINK%%",
     "youtube": "/me [%%NAME%%] Abonnez-vous à notre chaîne Youtube: %%LINK%%",
     "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
