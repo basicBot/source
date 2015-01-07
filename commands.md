@@ -18,6 +18,7 @@ Manager
 |!refresh | | refreshes the browser of whoever runs the bot |
 |!usercmdcd | X | set the cooldown on commands by grey users |
 |!usercommands | | toggle user commands |
+|!voteskip | (X) | when no argument is specified, returns the current voteskip limit, when X is specified, voteskip limit is updated to the new specified limit. |
 
 Bouncer+
 --------
@@ -69,6 +70,7 @@ Bouncer
 |!status | | display the bot's status and some settings |
 |!timeguard | | toggle the timeguard |
 |!togglemotd | | toggle the motd |
+|!togglevoteskip | | toggle the voteskip |
 |!unban | @user | unban user |
 |!unmute | | unmute user |
 |!voteratio | @user | display the vote statistic for a user |
