@@ -800,7 +800,7 @@
 
             if (basicBot.settings.voteSkip) {
                 if ((mehs - woots) >= (basicBot.settings.voteSkipLimit)) {
-                    API.sendChat('/me @' + dj.username + ', your song has exceeded the maximum amount of mehs needed to skip.');
+                    API.sendChat(subChat(basicBot.chat.voteskipexceededlimit, {name: dj.username, limit: basicBot.settings.voteSkipLimit}));
                     API.moderateForceSkip();
                 }
             }
@@ -1678,15 +1678,15 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var msg = chat.message;
-                        if (msg.length <= cmd.length + 1) return API.sendChat('/me Voteskip limit is currently set to a difference of ' + basicBot.settings.voteSkipLimit + ' mehs.');
+                        if (msg.length <= cmd.length + 1) return API.sendChat(subChat(basicBot.chat.voteskiplimit, {name: chat.un, limit: basicBot.settings.voteSkipLimit}));
                         var argument = msg.substring(cmd.length + 1);
                         if (!basicBot.settings.voteSkip) basicBot.settings.voteSkip = !basicBot.settings.voteSkip;
                         if (isNaN(argument)) {
-                            API.sendChat('/me Invalid voteskip limit, please try again using a number to signify the number of mehs.');
+                            API.sendChat(subChat(basicBot.chat.voteskipinvalidlimit, {name: chat.un}));
                         }
                         else {
                             basicBot.settings.voteSkipLimit = argument;
-                            API.sendChat('/me Voteskip limit set to ' + basicBot.settings.voteSkipLimit + '.');
+                            API.sendChat(subChat(basicBot.chat.voteskipsetlimit, {name: chat.un, limit: basicBot.settings.voteSkipLimit}));
                         }
                     }
                 }
@@ -1702,11 +1702,11 @@
                     else {
                         if (basicBot.settings.voteSkip) {
                             basicBot.settings.voteSkip = !basicBot.settings.voteSkip;
-                            API.sendChat('/me [@' + chat.un + '] voteskip disabled.');
+                            API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.voteskip}));
                         }
                         else {
                             basicBot.settings.motdEnabled = !basicBot.settings.motdEnabled;
-                            API.sendChat('/me [@' + chat.un + '] voteskip enabled.');
+                            API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.voteskip}));
                         }
                     }
                 }
