@@ -1936,7 +1936,7 @@
             },
 
             killCommand: {
-                command: 'idk',
+                command: ':neutral_face:',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
