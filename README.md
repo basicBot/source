@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Yemasthui/basicBot.png?label=ready&title=Ready)](https://waffle.io/Yemasthui/basicBot)
 basicBot
 ========
 
