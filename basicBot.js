@@ -178,10 +178,10 @@
     var botCreatorIDs = [];
 
     var basicBot = {
-        version: "0.0.6",
+        version: "0.0.7",
         status: false,
         name: "Tangbot",
-        loggedInID: null,
+        loggedInID: "tangbot",
         scriptLink: "https://rawgit.com/robotoid/basicBot/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
         chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
@@ -1936,7 +1936,7 @@
             },
 
             killCommand: {
-                command: 'kill',
+                command: 'idk',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2370,7 +2370,7 @@
             },
 
             reloadCommand: {
-                command: 'reload',
+                command: 'kill',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
