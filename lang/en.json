@@ -5,7 +5,7 @@
     "datarestored": "Previously stored data successfully retrieved.",
     "greyuser": "Only bouncers and up can run a bot.",
     "bouncer": "The bot can't move people when it's run as a bouncer.",
-    "online": "/me %%BOTNAME%% v%%VERSION%% online!",
+    "online": "/me Tangbot v%%VERSION%% online!",
 
 
     "welcome": "/me Welcome %%NAME%%",
@@ -94,7 +94,7 @@
     "jointime": "/me [@%%NAMEFROM%%] @%%USERNAME%% has been in the room for %%TIME%%.",
     "kickrank": "/me [@%%NAME%%] you can't kick users with an equal or higher rank than you!",
     "kick": "/me [@%%NAME%%], @%%USERNAME%% you are being kicked from the community for %%TIME%% minutes.",
-    "kill": "/me bot is kill; rest in rip.",
+    "kill": "/me Be right back.",
     "rouletteleave": "/me @%%NAME%% left the roulette!",
     "songlink": "/me [@%%NAME%%] Link to current song: %%LINK%%",
     "usedlockskip": "/me [%%NAME%% used lockskip.]",
@@ -112,7 +112,7 @@
     "muterank": "/me [@%%NAME%%] You can't mute persons with an equal or higher rank than you.",
     "oplist": "/me OP list: %%LINK%%",
     "pong": "/me Pong!",
-    "reload": "/me brb",
+    "reload": "/me Shutting down.",
     "removenotinwl": "/me [@%%NAME%%] Specified user @%%USERNAME%% is not in the waitlist.",
     "roomrules": "/me Please find the room rules here: %%LINK%%",
     "sessionstats": "/me [@%%NAME%%] Total woots: %%WOOTS%%, total mehs: %%MEHS%%, total grabs: %%GRABS%%.",
