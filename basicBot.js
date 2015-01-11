@@ -252,7 +252,7 @@
 				"Thank you for being here <3",
 				"\"np I like being here\" – wut",
 				"Laurens is the nicest guy ever.",
-				"\"Today I didn’t see a boobie\" – Selkie",
+				"\"Today I didn’t saw a boobie\" – Selkie",
 				"\"The best thing about Beyoncé is… everything\" – MothsDeast",
 				"It’s Pantry Thyme!",
 				"What does the FoxtrotDK say?",
