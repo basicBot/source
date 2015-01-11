@@ -178,7 +178,7 @@
     var botCreatorIDs = [];
 
     var basicBot = {
-        version: "0.0.7",
+        version: "0.0.7 (the fuck you edit)",
         status: false,
         name: "Tangbot",
         loggedInID: "tangbot",
