@@ -69,6 +69,7 @@ Bouncer
 |!skip | | skip the current song |
 |!status | | display the bot's status and some settings |
 |!timeguard | | toggle the timeguard |
+|!togglebl | | toggle the blacklist |
 |!togglemotd | | toggle the motd |
 |!togglevoteskip | | toggle the voteskip |
 |!unban | @user | unban user |
