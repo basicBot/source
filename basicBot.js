@@ -845,12 +845,12 @@
 
             var mid = obj.media.format + ':' + obj.media.cid;
             for (var bl in basicBot.room.blacklists) {
-								if (basicBot.settings.blacklistEnabled) {
-										if (basicBot.room.blacklists[bl].indexOf(mid) > -1) {
-												API.sendChat(subChat(basicBot.chat.isblacklisted, {blacklist: bl}));
-												return API.moderateForceSkip();
-										}
-								}
+                if (basicBot.settings.blacklistEnabled) {
+                    if (basicBot.room.blacklists[bl].indexOf(mid) > -1) {
+                        API.sendChat(subChat(basicBot.chat.isblacklisted, {blacklist: bl}));
+                        return API.moderateForceSkip();
+                    }
+                }
             }
 
             var alreadyPlayed = false;
