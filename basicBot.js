@@ -2560,6 +2560,11 @@
                         if (basicBot.settings.bouncerPlus) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
+												
+                        msg += basicBot.chat.blacklist + ': ';
+                        if (basicBot.settings.blacklistEnabled) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
 
                         msg += basicBot.chat.lockguard + ': ';
                         if (basicBot.settings.lockGuard) msg += 'ON';
