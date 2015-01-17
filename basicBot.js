@@ -216,6 +216,7 @@
                 [["sound"], "The song you played had bad sound quality or no sound. "],
                 [["nsfw", "unsafe"], "The song you contained was NSFW (image or sound). "],
                 [["unavailable"], "The song you played was not available for some users. "],
+				[["attribution", "copyright"], "The song you played was not uploaded by its original creator. We only want songs with the right attribution, try again."],
                 [["dont"], "This song or video is not appropriate for this room. If you do this too often, it might result in a (temporary) ban. "],
                 [["ban"], "This song or video is not appropriate for this room. If you do this again, it might result in a ban. "],
             ],
