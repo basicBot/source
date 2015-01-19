@@ -49,7 +49,8 @@ Bouncer
 |!afkreset | @user | resets the afk time of user |
 |!afktime | @user | shows how long user has been afk |
 |!ban | @user | bans user for 1 day |
-|!blacklist / !bl | blacklistname | add the song to the specified blacklist
+|!blacklist / !bl | blacklistname | add the song to the specified blacklist |
+|!blinfo | | get information required to blacklist a song |
 |!cycleguard | | toggles the cycleguard |
 |!dclookup / !dc | (@user) | do dclookup for user |
 |!english | @user | ask user to speak english (asked in the language they set plug to) |
