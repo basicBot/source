@@ -120,7 +120,7 @@
                 API.chatLog(basicBot.chat.datarestored);
             }
         }
-        var json_sett = null;
+        /*var json_sett = null;
         var roominfo = document.getElementById("room-info");
         info = roominfo.textContent;
         var ref_bot = "@basicBot=";
@@ -139,7 +139,7 @@
                     }
                 }
             });
-        }
+        }*/
 
     };
 
