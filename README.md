@@ -5,6 +5,10 @@ A not so basic bot for plug.dj
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Yemasthui/basicBot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![facebook group](http://i.bnzi.uk/facebook-group-badge.svg)](https://facebook.com/groups/basicBot)
 
+Created by [Yemasthui](https://github.com/Yemasthui) but now maintained by [Benzi](https://github.com/Benzi).
+
+(You can email me via hi@bnzi.uk or send me a message on [Gitter](https://gitter.im/Benzi) if you have any queries about the bot)
+
 
 !!!TO CUSTOMIZE: USE [THIS REPOSITORY](https://github.com/Yemasthui/basicBot-customization)!!!
 ==============================================================================================
