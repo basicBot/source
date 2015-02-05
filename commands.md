@@ -48,6 +48,7 @@ Bouncer
 |!active | (X) | shows how many users chatted in the past X minutes. If no X specified, 60 is set as default |
 |!afkreset | @user | resets the afk time of user |
 |!afktime | @user | shows how long user has been afk |
+|!autodisable | | toggle the autodisable |
 |!ban | @user | bans user for 1 day |
 |!blacklist / !bl | blacklistname | add the song to the specified blacklist |
 |!blinfo | | get information required to blacklist a song |
