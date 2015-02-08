@@ -174,11 +174,12 @@
         return m;
     };
 
-    var botCreator = "Matthew aka. Yemasthui";
-    var botCreatorIDs = [];
+    var botCreator = "Matthew (Yemasthui)";
+    var botMaintainer = "Benzi (Quoona)"
+    var botCreatorIDs = ["3851534", "3934992"];
 
     var basicBot = {
-        version: "2.1.4",
+        version: "2.2.1",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -396,7 +397,9 @@
                 var u;
                 if (typeof obj === "object") u = obj;
                 else u = API.getUser(obj);
-                if (botCreatorIDs.indexOf(u.id) > -1) return 10;
+                for (var i = 0; i < botCreatorIDs.length; i++) {
+                    if (botCreatorIDs[i].indexOf(u.id) > -1) return 10;
+                }
                 if (u.gRole < 2) return u.role;
                 else {
                     switch (u.gRole) {
@@ -2576,7 +2579,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        API.sendChat('/me This bot was made by ' + botCreator + '.');
+                        API.sendChat('/me This bot was created by ' + botCreator + ', but is now maintained by ' + botMaintainer + ".");
                     }
                 }
             },
