@@ -1855,7 +1855,45 @@
                     }
                 }
             },
-
+            lemonadeCommand: {
+                command: 'lemonade',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var link = "http://i.imgur.com/SBAso1N.jpg";
+                        API.sendChat(subChat('/me That\'s some good lemonade'));
+                    }
+                }
+            },
+            oysterCommand: {
+                command: 'oyster',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var link = "http://i.imgur.com/SBAso1N.jpg";
+                        API.sendChat(subChat('/me Click clack. You are an oyster.'));
+                    }
+                }
+            },
+            thumbCommand: {
+                command: 'thumbsup',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var link = "http://i.imgur.com/SBAso1N.jpg";
+                        API.sendChat(subChat(':thumbsup:'));
+                    }
+                }
+            },
             joinCommand: {
                 command: 'join',
                 rank: 'user',
