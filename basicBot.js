@@ -1848,7 +1848,10 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var link = "http://i.imgur.com/SBAso1N.jpg";
-                        API.sendChat(subChat('/me I don\'t get what thing you think you\'re accomplishing by using this command. I don\'t get the thing I accomplished making this command.'));
+                        API.sendChat(subChat('/me oh shit.'));
+                        API.sendChat(subChat('/me oh shit.'));
+                        API.sendChat(subChat('/me oh shit.'));
+                        API.sendChat(subChat('/me oh shit.'));API.sendChat(subChat('/me oh shit.'));
                     }
                 }
             },
