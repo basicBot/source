@@ -1851,7 +1851,7 @@
                         API.sendChat(subChat('/me oh shit.'));
                         API.sendChat(subChat('/me oh shit.'));
                         API.sendChat(subChat('/me oh shit.'));
-                        API.sendChat(subChat('/me oh shit.'));API.sendChat(subChat('/me oh shit.'));
+                        API.sendChat(subChat('/me oh shit.'));
                     }
                 }
             },
