@@ -1894,6 +1894,49 @@
                     }
                 }
             },
+            kCommand: {
+                command: 'k',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var link = "http://i.imgur.com/SBAso1N.jpg";
+                        API.sendChat(subChat('/me Potassi-yum'));
+                    }
+                }
+            },
+            analCommand: {
+                command: 'anal',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var link = "http://i.imgur.com/SBAso1N.jpg";
+                        API.sendChat(subChat('/me not now i have a headache'));
+                    }
+                }
+            },
+            jdwCommand: {
+                command: 'jennydeathwhen',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var link = "http://i.imgur.com/SBAso1N.jpg";
+                        API.sendChat(subChat('j d w'));
+                        API.sendChat(subChat('e e h'));
+                        API.sendChat(subChat('n a e'));
+                        API.sendChat(subChat('n t n'));
+                        API.sendChat(subChat('y h '));
+                    }
+                }
+            },
             joinCommand: {
                 command: 'join',
                 rank: 'user',
