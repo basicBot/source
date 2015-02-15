@@ -1959,7 +1959,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var link = "http://i.imgur.com/SBAso1N.jpg";
-                        API.sendChat(subChat('/me Insufficient privelege'));
+                        API.sendChat(subChat('/me Insufficient privilege.'));
                     }
                 }
             },
@@ -2480,7 +2480,7 @@
             },
 
             reloadCommand: {
-                command: 'sudo kill',
+                command: 'sudokill',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
