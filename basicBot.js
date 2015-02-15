@@ -1937,6 +1937,19 @@
                     }
                 }
             },
+            memearrowCommand: {
+                command: '>',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var link = "http://i.imgur.com/SBAso1N.jpg";
+                        API.sendChat(subChat('/me who are you quoting?'));
+                    }
+                }
+            },
             joinCommand: {
                 command: 'join',
                 rank: 'user',
