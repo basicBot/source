@@ -73,7 +73,7 @@
     "afkstatusreset": "/me [@%%NAME%%] Status AFK resetado: @%%USERNAME%%.",
     "inactivefor": "/me [@%%NAME%%] @%%USERNAME%% esteve inativo por %%TIME%%.",
     "autowoot": "/me Nós recomendamos plugCubed para autowoot: http://plugcubed.net/",
-    "brandambassador": "/me Um Embaixador de Marca é a voz dos usuários da plug.dj. Eles promovem eventos, ajudam as comunidades e divulgam a plug.dj para todo o mundod. Mais info: http://blog.plug.dj/brand-ambassadors/",
+    "brandambassador": "/me Um Embaixador de Marca é a voz dos usuários da plug.dj. Eles promovem eventos, ajudam as comunidades e divulgam a plug.dj para todo o mundod. Mais info: https://plug.dj/ba",
     "bouncerplusrank": "/me [@%%NAME%%] Você precisa ser Coordenador ou superior para ativar o Bouncer+.",
     "chatcleared": "/me [@%%NAME%%] O chat foi limpo.",
     "deletechat": "/me [@%%NAME%%] O chat de %%USERNAME%% foi limpo.",
