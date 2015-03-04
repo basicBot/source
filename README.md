@@ -90,7 +90,9 @@ This software is not for profit, any extension, or unauthorised person providing
 Disclaimer
 ----------
 
-This bot is developed independently. Changes may be made without notice. There is no guarantee for the perfect functioning.
+This bot is developed independently. Changes may be made without notice. There is no guarantee for the bot to be functioning perfectly.
 Plug.dj admins have the right to request changes. 
 By using this chatbot you agree to not use it for violating plug.dj's Terms of Service. 
-You also agree not to alter the bot's code. Any requests for changes can be requested via email, through github or via plug.dj.
+You also agree not to alter the bot's code, unless in the cases explicitly stated above, for personal use, or for the sole purpose of submitting a pull request with a bug fix or a feature update, at which point it will be looked at and decided by the authors of the project.
+Please refer to the original author/repository at all times, even on personal forks that are not private.
+Any requests for changes can be requested via email, through github or via plug.dj.
