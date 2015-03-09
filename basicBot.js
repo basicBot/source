@@ -881,10 +881,7 @@
                 var apihistory = API.getHistory();
                 for (var i = 0; i < apihistory.length; i++) {
                     if (apihistory[i].media.cid === obj.media.cid) {
-                        var firstPlayed = basicBot.room.historyList[i][1];
-                        var plays = basicBot.room.historyList[i].length - 1;
-                        var lastPlayed = basicBot.room.historyList[i][plays];
-                        API.sendChat(subChat(basicBot.chat.songknown, {name: chat.un, plays: plays, timetotal: basicBot.roomUtilities.msToStr(Date.now() - basicBot.room.roomstats.launchTime), lasttime: basicBot.roomUtilities.msToStr(Date.now() - lastPlayed)}));
+                        API.sendChat(subChat(basicBot.chat.songknown, {name: chat.un}));
                         API.moderateForceSkip();
                         basicBot.room.historyList[i].push(+new Date());
                         alreadyPlayed = true;
