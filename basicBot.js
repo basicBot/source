@@ -176,7 +176,7 @@
 
     var botCreator = "Matthew (Yemasthui)";
     var botMaintainer = "Benzi (Quoona)"
-    var botCreatorIDs = ["3851534", "3934992", "4105209"];
+    var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
         version: "2.2.1",
