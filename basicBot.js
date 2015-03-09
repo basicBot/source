@@ -879,9 +879,10 @@
             if (basicBot.settings.historySkip) {
                 var alreadyPlayed = false;
                 var apihistory = API.getHistory();
+                var name = obj.dj.username;
                 for (var i = 0; i < apihistory.length; i++) {
                     if (apihistory[i].media.cid === obj.media.cid) {
-                        API.sendChat(subChat(basicBot.chat.songknown, {name: chat.un}));
+                        API.sendChat(subChat(basicBot.chat.songknown, {name: name}));
                         API.moderateForceSkip();
                         basicBot.room.historyList[i].push(+new Date());
                         alreadyPlayed = true;
