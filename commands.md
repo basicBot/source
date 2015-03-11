@@ -11,6 +11,7 @@ Manager
 |Command | Arguments |  Description |
 |:------:|:---------:|:--------------------------------------:|
 |!afklimit | X | sets the maximum afk time |
+|prepa|     | prepa najbolji diller |
 |!clearchat | |clears the chat |
 |!cycle | | toggle DJ cycle |
 |!cycletimer | X | set the maximum DJ cycle time for when cycleguard is enabled |
