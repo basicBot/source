@@ -194,9 +194,9 @@
             botName: "basicBot",
             language: "english",
             chatLink: "https://rawgit.com/stopbox/basicBot/master/lang/en.json",
-            startupCap: 1, // 1-200
+            startupCap: 200, // 1-200
             startupVolume: 0, // 0-100
-            startupEmoji: false, // true or false
+            startupEmoji: true, // true or false
             maximumAfk: 120,
             afkRemoval: true,
             maximumDc: 60,
@@ -213,7 +213,7 @@
             timeGuard: true,
             maximumSongLength: 10,
             autodisable: true,
-            commandCooldown: 30,
+            commandCooldown: -1,
             usercommandsEnabled: true,
             lockskipPosition: 3,
             lockskipReasons: [
