@@ -2471,7 +2471,7 @@
                 }
             },
 
-            pingCommand: {
+          /*pingCommand: {
                 command: 'ping',
                 rank: 'user',
                 type: 'exact',
@@ -2482,7 +2482,7 @@
                         API.sendChat(basicBot.chat.pong)
                     }
                 }
-            },
+            },*/
 
             refreshCommand: {
                 command: 'refresh',
