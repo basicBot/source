@@ -176,7 +176,7 @@
 
     var botCreator = "Matthew (Yemasthui)";
     var botMaintainer = "Benzi (Quoona)"
-    var botCreatorIDs = ["3851534", "4105209"];
+    var botCreatorIDs = [];
 
     var basicBot = {
         version: "2.2.2",
@@ -861,7 +861,7 @@
                 }
             }
 
-            /*var alreadyPlayed = false;
+            var alreadyPlayed = false;
             for (var i = 0; i < basicBot.room.historyList.length; i++) {
                 if (basicBot.room.historyList[i][0] === obj.media.cid) {
                     var firstPlayed = basicBot.room.historyList[i][1];
@@ -870,11 +870,12 @@
                     API.sendChat(subChat(basicBot.chat.songknown, {plays: plays, timetotal: basicBot.roomUtilities.msToStr(Date.now() - firstPlayed), lasttime: basicBot.roomUtilities.msToStr(Date.now() - lastPlayed)}));
                     basicBot.room.historyList[i].push(+new Date());
                     alreadyPlayed = true;
+                    return API.moderateForceSkip();
                 }
             }
             if (!alreadyPlayed) {
                 basicBot.room.historyList.push([obj.media.cid, +new Date()]);
-            }*/
+            }
 
             if (basicBot.settings.historySkip) {
                 var alreadyPlayed = false;
