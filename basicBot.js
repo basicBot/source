@@ -2472,19 +2472,6 @@
                 }
             },
 
-          /*pingCommand: {
-                command: 'ping',
-                rank: 'user',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        API.sendChat(basicBot.chat.pong)
-                    }
-                }
-            },*/
-
             refreshCommand: {
                 command: 'refresh',
                 rank: 'manager',
@@ -2654,19 +2641,6 @@
                             basicBot.settings.songstats = !basicBot.settings.songstats;
                             return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.songstats}));
                         }
-                    }
-                }
-            },
-
-            sourceCommand: {
-                command: 'source',
-                rank: 'user',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        API.sendChat('/me This bot was created by ' + botCreator + ', but is now maintained by ' + botMaintainer + ".");
                     }
                 }
             },
