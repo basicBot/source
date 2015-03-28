@@ -1641,7 +1641,7 @@
                 }
             },
 
-            cookieCommand: {
+/*            cookieCommand: {
                 command: 'cookie',
                 rank: 'user',
                 type: 'startsWith',
@@ -1696,7 +1696,7 @@
                         }
                     }
                 }
-            },
+            },*/
 
             cycleCommand: {
                 command: 'cycle',
