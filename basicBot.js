@@ -878,10 +878,10 @@
             }
             
             if (alreadyPlayed) {
-                var SkipTimer = window.setInterval(function() {
+                var SkipTimer = window.setInterval((function() {
                     API.moderateForceSkip();
                     window.clearInterval(SkipTimer);
-                }, 1000L);
+                }), 1000L);
             }
             
             if (!alreadyPlayed) {
