@@ -653,7 +653,7 @@
                     clearTimeout(basicBot.room.cycleTimer);
                 }
             },
-            intervalMessage: function () {
+          /*intervalMessage: function () {
                 var interval;
                 if (basicBot.settings.motdEnabled) interval = basicBot.settings.motdInterval;
                 else interval = basicBot.settings.messageInterval;
@@ -669,7 +669,7 @@
                     }
                     API.sendChat('/me ' + msg);
                 }
-            },
+            },*/
             updateBlacklists: function () {
                 for (var bl in basicBot.settings.blacklists) {
                     basicBot.room.blacklists[bl] = [];
@@ -861,6 +861,10 @@
                 }
             }
 
+            if (basicBot.room.historyList.length >= 30) {
+                basicBot.room.historyList.length = 0;
+            }
+            
             var alreadyPlayed = false;
             for (var i = 0; i < basicBot.room.historyList.length; i++) {
                 if (basicBot.room.historyList[i][0] === obj.media.cid) {
@@ -870,9 +874,16 @@
                     API.sendChat(subChat(basicBot.chat.songknown, {plays: plays, timetotal: basicBot.roomUtilities.msToStr(Date.now() - firstPlayed), lasttime: basicBot.roomUtilities.msToStr(Date.now() - lastPlayed)}));
                     basicBot.room.historyList[i].push(+new Date());
                     alreadyPlayed = true;
-                    API.moderateForceSkip();
                 }
             }
+            
+            if (alreadyPlayed) {
+                var SkipTimer = setInterval(function() {
+                    API.moderateForceSkip();
+                    window.clearInterval(SkipTimer);
+                }, 1000L);
+            }
+            
             if (!alreadyPlayed) {
                 basicBot.room.historyList.push([obj.media.cid, +new Date()]);
             }
