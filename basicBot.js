@@ -878,7 +878,7 @@
             }
             
             if (alreadyPlayed) {
-                var SkipTimer = setInterval(function() {
+                var SkipTimer = window.setInterval(function() {
                     API.moderateForceSkip();
                     window.clearInterval(SkipTimer);
                 }, 1000L);
