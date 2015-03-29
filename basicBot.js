@@ -862,7 +862,7 @@
             }
 
             if (basicBot.room.historyList.length >= 30) {
-                basicBot.room.historyList.length = 0
+                basicBot.room.historyList.length = 0;
             }
             
             var alreadyPlayed = false;
@@ -878,10 +878,7 @@
             }
             
             if (alreadyPlayed) {
-                var SkipTimer = window.setInterval(function() {
-                    API.moderateForceSkip();
-                    window.clearInterval(SkipTimer);
-                }, 1000);
+                API.moderateForceSkip();
             }
             
             if (!alreadyPlayed) {
