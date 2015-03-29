@@ -861,7 +861,7 @@
                 }
             }
 
-            if (basicBot.room.historyList.length <= 30) {
+            if (basicBot.room.historyList.length > 30) {
                 basicBot.room.historyList.length = 0;
             }
             
