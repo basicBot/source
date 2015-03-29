@@ -881,7 +881,7 @@
                 var SkipTimer = window.setInterval(function() {
                     API.moderateForceSkip();
                     window.clearInterval(SkipTimer);
-                }, 1000L)
+                }, 1000);
             }
             
             if (!alreadyPlayed) {
