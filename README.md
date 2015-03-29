@@ -12,7 +12,7 @@ Stay updated on **basicBot**'s development by following the project on Twitter [
 
 Created by [***REMOVED***](https://github.com/***REMOVED***) but now maintained by [Benzi](https://github.com/Benzi).
 
-(You can email me via hi@bnzi.uk or send me a message on [Gitter](https://gitter.im/Benzi) if you have any queries about the bot)
+(You can email me via hi@benzi.io or send me a message on [Gitter](https://gitter.im/Benzi) if you have any queries about the bot)
 
 !!!TO CUSTOMIZE: USE [THIS REPOSITORY](https://github.com/***REMOVED***/basicBot-customization)!!!
 ==============================================================================================
