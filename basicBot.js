@@ -861,7 +861,7 @@
                 }
             }
 
-            if (basicBot.room.historyList.length >= 30) {
+            if (basicBot.room.historyList.length <= 30) {
                 basicBot.room.historyList.length = 0;
             }
             
@@ -874,11 +874,8 @@
                     API.sendChat(subChat(basicBot.chat.songknown, {plays: plays, timetotal: basicBot.roomUtilities.msToStr(Date.now() - firstPlayed), lasttime: basicBot.roomUtilities.msToStr(Date.now() - lastPlayed)}));
                     basicBot.room.historyList[i].push(+new Date());
                     alreadyPlayed = true;
+                    API.moderateForceSkip();
                 }
-            }
-            
-            if (alreadyPlayed) {
-                API.moderateForceSkip();
             }
             
             if (!alreadyPlayed) {
