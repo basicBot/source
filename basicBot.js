@@ -181,7 +181,7 @@
     var basicBot = {
         version: "2.2.2",
         status: false,
-        name: "basicBot",
+        name: "Gatogato!!" ,
         loggedInID: null,
         scriptLink: "https://rawgit.com/Yemasthui/basicBot/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
@@ -191,8 +191,8 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
-            language: "english",
+            botName: "Gatogato!!",
+            language: "Portuguese",
             chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
@@ -217,13 +217,13 @@
             usercommandsEnabled: true,
             lockskipPosition: 3,
             lockskipReasons: [
-                ["theme", "This song does not fit the room theme. "],
-                ["op", "This song is on the OP list. "],
-                ["history", "This song is in the history. "],
-                ["mix", "You played a mix, which is against the rules. "],
-                ["sound", "The song you played had bad sound quality or no sound. "],
-                ["nsfw", "The song you contained was NSFW (image or sound). "],
-                ["unavailable", "The song you played was not available for some users. "]
+                [ "tema" , "Essa música não se encaixa no tema do quarto . "] ,
+                [ "op" , " Esta canção está na lista de OP . "] ,
+                [" história ", " Esta canção está na história . "] ,
+                [ "mix ", "Você jogou um mix , que é contra as regras. "] ,
+                [ "som" , " A canção que você jogou teve má qualidade do som ou nenhum som . "] ,
+                [" NSFW ", " A música que continha era NSFW ( imagem ou som). "] ,
+                [ "indisponível ", " A canção que você jogou não estava disponível para alguns usuários. "]
             ],
             afkpositionCheck: 15,
             afkRankCheck: "ambassador",
@@ -1019,7 +1019,7 @@
                     API.sendChat(subChat(basicBot.chat.adfly, {name: chat.un}));
                     return true;
                 }
-                if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
+                if (msg.indexOf('autojoin não foi ativado') > 0 || msg.indexOf('AFK mensagem não foi ativado') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
                     API.moderateDeleteChat(chat.cid);
                     return true;
                 }
@@ -1644,26 +1644,24 @@
                 command: 'cookie',
                 rank: 'user',
                 type: 'startsWith',
-                cookies: ['has given you a chocolate chip cookie!',
-                    'has given you a soft homemade oatmeal cookie!',
-                    'has given you a plain, dry, old cookie. It was the last one in the bag. Gross.',
-                    'gives you a sugar cookie. What, no frosting and sprinkles? 0/10 would not touch.',
-                    'gives you a chocolate chip cookie. Oh wait, those are raisins. Bleck!',
-                    'gives you an enormous cookie. Poking it gives you more cookies. Weird.',
-                    'gives you a fortune cookie. It reads "Why aren\'t you working on any projects?"',
-                    'gives you a fortune cookie. It reads "Give that special someone a compliment"',
-                    'gives you a fortune cookie. It reads "Take a risk!"',
-                    'gives you a fortune cookie. It reads "Go outside."',
-                    'gives you a fortune cookie. It reads "Don\'t forget to eat your veggies!"',
-                    'gives you a fortune cookie. It reads "Do you even lift?"',
-                    'gives you a fortune cookie. It reads "m808 pls"',
-                    'gives you a fortune cookie. It reads "If you move your hips, you\'ll get all the ladies."',
-                    'gives you a fortune cookie. It reads "I love you."',
-                    'gives you a Golden Cookie. You can\'t eat it because it is made of gold. Dammit.',
-                    'gives you an Oreo cookie with a glass of milk!',
-                    'gives you a rainbow cookie made with love :heart:',
-                    'gives you an old cookie that was left out in the rain, it\'s moldy.',
-                    'bakes you fresh cookies, it smells amazing.'
+                cookies: ['deu-lhe um biscoito de chocolate!',
+                    'deu-lhe um biscoito de aveia caseiro macio!',
+                    'deu-lhe um biscoito podre e sujo. Era o último do pacote. Que nojo!',
+                    'deu-lhe um bolinho de açúcar... O quê? Sem estrelinhas e povilho? Eu não tocaria.',
+                    'deu-lhe um biscoito de chocolate. Oh, não, são passas. Eca!',
+                    'deu-lhe um enorme biscoito. Quando o toca, ele se duplica num outro biscoito... estranho',
+                    'deu-lhe um biscoito da sorte, tem escrito: "Por que você não está trabalhando?"',
+                    'deu-lhe um biscoito da sorte, tem escrito: "Comprimente agora a pessoa que você ama"',
+                    'deu-lhe um biscoito da sorte, tem escrito: "Chupe um negão!"',
+                    'deu-lhe um biscoito da sorte, tem escrito: "Saia desse computador!"',
+                    'deu-lhe um biscoito da sorte, tem escrito: "Não esqueça de comer os vegetais"',
+                    'deu-lhe um biscoito da sorte, tem escrito: "Se você mecher o quadril, vão te achar sexy!',
+                    'deu-lhe um biscoito da sorte, tem escrito: "Eu te amo"',
+                    'deu-lhe um biscoito de ouro, mas não dá pra comer... Droga!',
+                    'deu-lhe um Oreo e um copo de leite.',
+                    'deu-lhe um biscoito de arco-íris feito com amor :heart:',
+                    'deu-lhe um biscoito que fio esquecido na chuva... eu não comeria.',
+                    'te trouxe biscoitos fresquinhos... parecem deliciosos!'
                 ],
                 getCookie: function () {
                     var c = Math.floor(Math.random() * this.cookies.length);
