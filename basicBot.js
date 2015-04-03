@@ -2,7 +2,7 @@
 
     function extend() {
         if (!window.bot) {
-            return setTimeout(extend, 1 * 1000);
+            return setTimeout(extend, 4 * 1000);
         }
 
         var bot = window.bot;
@@ -59,7 +59,7 @@
 
         localStorage.setItem("basicBotsettings", JSON.stringify({
         botName: "Olá,bem vindo infeliz e volte sempre arrombado :point_right: :ok_hand: ",
-        language: "portuguese",
+        language: "Portuguese",
         chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/pt.json",
         startupCap: 1,
         startupVolume: 50,
@@ -76,7 +76,7 @@
         voteSkip: true,
         voteSkipLimit: 10,
         timeGuard: true,
-        maximumSongLength: 8.30,
+        maximumSongLength: 5.00,
         autodisable: true,
         commandCooldown: 30,
         usercommandsEnabled: true,
