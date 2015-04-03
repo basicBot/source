@@ -17,7 +17,10 @@
 
     "isopen": "/me A roleta foi iniciada! Use !join para participar!",
     "winnerpicked": "/me Um vencedor foi escolhido! @%%NAME%% ganhou a posição %%POSITION%%.",
-
+    
+    "ball": "/me A pergunta de %%NAME%% foi: \"%%QUESTION%%\" e a resposta de %%BOTNAME%% é: \"%%RESPONSE%%\"",
+    "notghosting": "[%%NAME1%%] %%NAME2%% não virou fantasma.",
+    "ghosting": "[%%NAME1%%] %%NAME2%% deve ter virado fantasma.",
 
     "alreadyadding": "/me Usuário já está sendo adicionado! Posição desejada alterada para %%POSITION%%.",
     "adding": "/me @%%NAME%% foi adicionado à fila. Posição atual: %%POSITION%%.",
@@ -41,6 +44,10 @@
     "roomadvertising": "@%%NAME%%, não poste link de outras comunidades, por favor.",
     "adfly": "@%%NAME%%, por favor mude seu script autowoot. Nós sugerimos plugCubed: http://plugcubed.net/",
 
+    "validgiftags": "/me [@%%NAME%%] http://media.giphy.com/media/%%ID%%/giphy.gif [Tags: %%TAGS%%]",
+    "invalidgiftags": "/me [@%%NAME%%] Tag inválida, tente algo diferente. [Tags: %%TAGS%%]",
+    "validgifrandom": "/me [@%%NAME%%] http://media.giphy.com/media/%%ID%%/giphy.gif [GIF randômica]",
+    "invalidgifrandom": "/me [@%%NAME%%] Instância inválida, tente novamente.",
 
     "invalidtime": "/me [@%%NAME%%] Tempo inválido.",
     "nouserspecified": "/me [@%%NAME%%] Usuário não especificado.",
@@ -51,6 +58,7 @@
     "nolimitspecified": "/me [@%%NAME%%] Limite não especificado.",
     "invalidlimitspecified": "/me [@%%NAME%%] Limite inválido.",
     "invalidpositionspecified": "/me [@%%NAME%%] Posição inválida.",
+    "whois": "/me [%%NAME1%%] Usuário: %%NAME2%%, ID: %%ID%%, Rank: %%RANK%%, Registro: %%JOINED%%, Nível: %%LEVEL%%, Linguagem: %%LANGUAGE%%, Avatar: %%AVATAR%%, Status: %%STATUS%%%%PROFILE%%",
     "toggleon": "/me [@%%NAME%%] %%FUNCTION%% ativado.",
     "toggleoff": "/me [@%%NAME%%] %%FUNCTION%% desativado.",
     "afkremoval": "Remoção de AFK",
@@ -103,6 +111,7 @@
     "kickrank": "/me [@%%NAME%%] Você não pode kickar alguém do mesmo rank ou superior!",
     "kick": "[@%%NAME%%], @%%USERNAME%% você está sendo kickado da comunidade por %%TIME%% minutos.",
     "kill": "/me Desligando...",
+    "logout": "/me [@%%NAME%%] Deslogando %%BOTNAME%%",
     "rouletteleave": "/me @%%NAME%% deixou a roleta!",
     "songlink": "/me [@%%NAME%%] Link para a música atual: %%LINK%%",
     "usedlockskip": "/me [%%NAME%% usou 'lockskip'.]",
@@ -141,5 +150,5 @@
     "website": "/me Visite nosso site: %%LINK%%",
     "youtube": "/me [%%NAME%%] Inscreva-se no nosso canal: %%LINK%%",
     "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
-
+    "purchase": "/me [@%%NAME%%] Compre mais Plug Notes: https://plug.dj/purchase"
 }
