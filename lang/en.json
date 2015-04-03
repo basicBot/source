@@ -19,6 +19,10 @@
     "isopen": "/me The roulette is now open! Type !join to participate!",
     "winnerpicked": "/me A winner has been picked! @%%NAME%% to position %%POSITION%%.",
 
+    "ball": "/me %%NAME%%'s question was: \"%%QUESTION%%\" and %%BOTNAME%%'s response is: \"%%RESPONSE%%\"",
+
+    "notghosting": "[%%NAME1%%] %%NAME2%% is not ghosting.",
+    "ghosting": "[%%NAME1%%] %%NAME2%% is either ghosting or not here.",
 
     "alreadyadding": "/me User is already being added! Changed the desired position to %%POSITION%%.",
     "adding": "/me Added @%%NAME%% to the queue. Current queue: %%POSITION%%.",
@@ -42,6 +46,11 @@
     "roomadvertising": "/me @%%NAME%%, don't post links to other rooms please.",
     "adfly": "/me @%%NAME%%, please change your autowoot program. We suggest PlugCubed: http://plugcubed.net/",
 
+    "validgiftags": "/me [@%%NAME%%] http://media.giphy.com/media/%%ID%%/giphy.gif [Tags: %%TAGS%%]",
+    "invalidgiftags": "/me [@%%NAME%%] Invalid tags, try something different. [Tags: %%TAGS%%]",
+    "validgifrandom": "/me [@%%NAME%%] http://media.giphy.com/media/%%ID%%/giphy.gif [Random GIF]",
+    "invalidgifrandom": "/me [@%%NAME%%] Invalid request, try again.",
+
 
     "invalidtime": "/me [@%%NAME%%] Invalid time specified.",
     "nouserspecified": "/me [@%%NAME%%] No user specified.",
@@ -52,6 +61,7 @@
     "nolimitspecified": "/me [@%%NAME%%] No limit specified.",
     "invalidlimitspecified": "/me [@%%NAME%%] Invalid limit.",
     "invalidpositionspecified": "/me [@%%NAME%%] Invalid position specified.",
+    "whois": "/me [%%NAME1%%] Username: %%NAME2%%, ID: %%ID%%, Rank: %%RANK%%, Joined: %%JOINED%%, Level: %%LEVEL%%, Language: %%LANGUAGE%%, Avatar: %%AVATAR%%, Status: %%STATUS%%%%PROFILE%%",
     "toggleon": "/me [@%%NAME%%] %%FUNCTION%% enabled.",
     "toggleoff": "/me [@%%NAME%%] %%FUNCTION%% disabled.",
     "afkremoval": "AFK removal",
@@ -104,6 +114,7 @@
     "kickrank": "/me [@%%NAME%%] you can't kick users with an equal or higher rank than you!",
     "kick": "/me [@%%NAME%%], @%%USERNAME%% you are being kicked from the community for %%TIME%% minutes.",
     "kill": "/me Shutting down.",
+    "logout": "/me [@%%NAME%%] Logging out %%BOTNAME%%",
     "rouletteleave": "/me @%%NAME%% left the roulette!",
     "songlink": "/me [@%%NAME%%] Link to current song: %%LINK%%",
     "usedlockskip": "/me [%%NAME%% used lockskip.]",
@@ -141,5 +152,6 @@
     "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
     "website": "/me Please visit our website: %%LINK%%",
     "youtube": "/me [%%NAME%%] Subscribe to us on youtube: %%LINK%%",
-    "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
+    "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M.",
+    "purchase": "/me [@%%NAME%%] Stock up on plug notes: https://plug.dj/purchase"
 }
