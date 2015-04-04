@@ -2413,27 +2413,21 @@
                 }
             },
 
-            /*logoutCommand: {
+            logoutCommand: {
                 command: 'logout',
-                rank: 'mod',
+                rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        $(".icon-site-logo").click();
-                        setTimeout(function (chat) {
-                            API.sendChat(subChat(basicBot.chat.logout, {name: chat.un, botname: basicBot.settings.botName}));
-                            setTimeout(function () {
-                                $(".icon-logout-grey").click();
-                            }, 1000);
-                        }, 1000, chat);
+                        API.sendChat(subChat(basicBot.chat.logout, {name: chat.un, botname: basicBot.settings.botName}));
+                        setTimeout(function () {
+                            $(".logout").mousedown()
+                        }, 1000);
                     }
                 }
-            },*/
-
-            // TODO: Fix !logout command.
-
+            },
 
             maxlengthCommand: {
                 command: 'maxlength',
