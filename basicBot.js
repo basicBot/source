@@ -2413,7 +2413,7 @@
                 }
             },
 
-            logoutCommand: {
+            /*logoutCommand: {
                 command: 'logout',
                 rank: 'mod',
                 type: 'exact',
@@ -2430,7 +2430,9 @@
                         }, 1000, chat);
                     }
                 }
-            },
+            },*/
+
+            // TODO: Fix !logout command.
 
 
             maxlengthCommand: {
