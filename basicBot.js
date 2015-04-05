@@ -1,9 +1,14 @@
 (function () {
-
+    
+    var fork = "motelbible";
+		
+		
     function extend() {
+        
         if (!window.bot) {
             return setTimeout(extend, 1 * 1000);
         }
+
 
         var bot = window.bot;
         
