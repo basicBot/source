@@ -2,7 +2,7 @@
 
     function extend() {
         if (!window.bot) {
-            return setTimeout(extend, 4 * 1000);
+            return setTimeout(extend, 1 * 1000);
         }
 
         var bot = window.bot;
@@ -56,12 +56,11 @@
         
         bot.loadChat();
     }
-
         localStorage.setItem("basicBotsettings", JSON.stringify({
-        botName: "Olá,bem vindo infeliz e volte sempre arrombado :point_right: :ok_hand: ",
-        language: "Portuguese",
+        botName: "Olá,bem vindo infeliz e volte sempre arrombado :point_right: :ok_hand:",
+        language: "portuguese",
         chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/pt.json",
-        startupCap: 1,
+        startupCap: 4,
         startupVolume: 50,
         startupEmoji: true,
         maximumAfk: 60,
@@ -76,7 +75,7 @@
         voteSkip: true,
         voteSkipLimit: 10,
         timeGuard: true,
-        maximumSongLength: 5.00,
+        maximumSongLength: 8.30,
         autodisable: true,
         commandCooldown: 30,
         usercommandsEnabled: true,
@@ -95,19 +94,19 @@
         motdEnabled: true,
         motdInterval: 8,
         motd: "!roulette",
-        filterChat: false,
+        filterChat: true,
         etaRestriction: true,
         welcome: true,
         opLink: null,
         rulesLink: null,
-        themeLink: null,
+        themeLink: "http://i.imgur.com/u36VR4n.png,"
         fbLink: "null",
         youtubeLink: null,
         website: "null",
         intervalMessages: [],
         messageInterval: 5,
         songstats: false,
-        commandLiteral: "!",
+        commandLiteral: "!","/"
         blacklists: {
             NSFW: "https://rawgit.com/Yemasthui/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
             OP: "https://rawgit.com/Yemasthui/basicBot-customization/master/blacklists/ExampleOPlist.json"
