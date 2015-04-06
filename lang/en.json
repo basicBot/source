@@ -64,6 +64,7 @@
     "whois": "/me [%%NAME1%%] Username: %%NAME2%%, ID: %%ID%%, Rank: %%RANK%%, Joined: %%JOINED%%, Level: %%LEVEL%%, Language: %%LANGUAGE%%, Avatar: %%AVATAR%%, Status: %%STATUS%%%%PROFILE%%",
     "toggleon": "/me [@%%NAME%%] %%FUNCTION%% enabled.",
     "toggleoff": "/me [@%%NAME%%] %%FUNCTION%% disabled.",
+    "cmddeletion": "command deletion",
     "afkremoval": "AFK removal",
     "afksremoved": "AFK's removed",
     "afklimit": "AFK limit",
