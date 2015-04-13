@@ -16,6 +16,7 @@ if (typeof tastyPlugShutDown != 'undefined') tastyPlugShutDown();
         show: true,
         autowoot: false,
         autojoin: false,
+        automeh: false,
         chatmentions: false,
         joinnotifs: {toggle:false,ranks:false,friends:false,lvl1:false},
         msgs: [],
