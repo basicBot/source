@@ -1496,7 +1496,15 @@
                         var lastActive = basicBot.userUtilities.getLastActivity(user);
                         var inactivity = Date.now() - lastActive;
                         var time = basicBot.roomUtilities.msToStr(inactivity);
+
+                        var launchT = basicBot.room.roomstats.launchTime;
+                        var durationOnline = Date.now() - launchT;
+
+                        if (inactivity >= durationOnline){
+                            API.sendChat(subChat(basicBot.chat.inactivelonger, {botname: basicBot.settings.botName, name: chat.un, username: name}));
+                        } else {
                         API.sendChat(subChat(basicBot.chat.inactivefor, {name: chat.un, username: name, time: time}));
+                        }
                     }
                 }
             },
@@ -1885,11 +1893,29 @@
                         var user = basicBot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
                         var chats = $('.from');
+                        var message = $('.message');
+                        var emote = $('.emote');
+                        var from = $('.un.clickable');
                         for (var i = 0; i < chats.length; i++) {
-                            var n = chats[i].textContent;
+                            var n = from[i].textContent;
                             if (name.trim() === n.trim()) {
-                                var cid = $(chats[i]).parent()[0].getAttribute('data-cid');
-                                API.moderateDeleteChat(cid);
+
+                                // var messagecid = $(message)[i].getAttribute('data-cid');
+                                // var emotecid = $(emote)[i].getAttribute('data-cid');
+                                // API.moderateDeleteChat(messagecid);
+
+                                // try {
+                                //     API.moderateDeleteChat(messagecid);
+                                // }
+                                // finally {
+                                //     API.moderateDeleteChat(emotecid);
+                                // }
+
+                                if (typeof $(message)[i].getAttribute('data-cid') == "undefined"){
+                                    API.moderateDeleteChat($(emote)[i].getAttribute('data-cid')); // works well with normal messages but not with emotes due to emotes and messages are seperate.
+                                } else {
+                                    API.moderateDeleteChat($(message)[i].getAttribute('data-cid'));
+                                }
                             }
                         }
                         API.sendChat(subChat(basicBot.chat.deletechat, {name: chat.un, username: name}));
