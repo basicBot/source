@@ -132,5 +132,4 @@
     "website": "/me Visitez notre site Internet: %%LINK%%",
     "youtube": "/me [%%NAME%%] Abonnez-vous à notre chaîne Youtube: %%LINK%%",
     "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
-
 }
