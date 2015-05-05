@@ -73,7 +73,7 @@
     "afkstatusreset": "/me [@%%NAME%%] Réinitialisation du statut AFK de @%%USERNAME%%.",
     "inactivefor": "/me [@%%NAME%%] @%%USERNAME%% a été inactif pour %%TIME%%.",
     "autowoot": "/me Nous recommandons PlugCubes pour l'autowooting: http://plugcubed.net/",
-    "brandambassador": "/me Un Brand Ambassador est la voix des utilisateurs de plug.dj. Il promouvoient les évènements, font participer la communauté et partagent le message de plug.dj autour du monde. Pour plus d'info: http://blog.plug.dj/brand-ambassadors/",
+    "brandambassador": "/me Un Brand Ambassador est la voix des utilisateurs de plug.dj. Il promouvoient les évènements, font participer la communauté et partagent le message de plug.dj autour du monde. Pour plus d'info: https://plug.dj/ba",
     "bouncerplusrank": "/me [@%%NAME%%] Vous devez être Manager pour pouvoir activer Bouncer+.",
     "chatcleared": "/me [@%%NAME%%] A nettoyé le chat.",
     "deletechat": "/me [@%%NAME%%] A nettoyé le chat de %%USERNAME%%.",
@@ -128,7 +128,7 @@
     "notmuted": "/me [@%%NAME%%] cet utilisateur n'a pas été rendu muet.",
     "unmuterank": "/me [@%%NAME%%] Vous ne pouvez pas rendre la parole à un utilisateur avec un rang égal ou supérieur au votre.",
     "commandscd": "/me [@%%NAME%%] Le temps d'attente pour les commandes utilisateur ont été ajustées à %%TIME%% secondes.",
-    "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: ' + %%WOOT%% + ', mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
+    "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
     "website": "/me Visitez notre site Internet: %%LINK%%",
     "youtube": "/me [%%NAME%%] Abonnez-vous à notre chaîne Youtube: %%LINK%%",
     "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."

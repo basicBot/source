@@ -3,6 +3,21 @@ basicBot
 
 A not so basic bot for plug.dj - edited especially for /tagpro
 
+<<<<<<< HEAD
+=======
+[GET THE GOOGLE CHROME EXTENSION HERE!!!](http://s.bnzi.uk/bscbtxtnsn)
+---------------------------------------------------------------------
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Yemasthui/basicBot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![facebook group](http://i.bnzi.uk/97dW.svg)](https://facebook.com/groups/basicBot) [![twitter](http://i.bnzi.uk/4KEn.svg)](https://twitter.com/bscBt)
+
+Stay updated on **basicBot**'s development by following the project on Twitter [@bscBt](http://twitter.com/bscBt)
+
+Created by [Yemasthui](https://github.com/Yemasthui) but now maintained by [Benzi](https://github.com/Benzi).
+
+(You can email me via hi@bnzi.uk or send me a message on [Gitter](https://gitter.im/Benzi) if you have any queries about the bot)
+
+!!!TO CUSTOMIZE: USE [THIS REPOSITORY](https://github.com/Yemasthui/basicBot-customization)!!!
+>>>>>>> d8fa95d3c82e866b16f5d13dbad0b98d38e26887
 ==============================================================================================
 
 IMPORTANT
@@ -81,7 +96,13 @@ This software is not for profit, any extension, or unauthorised person providing
 Disclaimer
 ----------
 
-This bot is developed independently. Changes may be made without notice. There is no guarantee for the perfect functioning.
+This bot is developed independently. Changes may be made without notice. There is no guarantee for the bot to be functioning perfectly.
 Plug.dj admins have the right to request changes. 
 By using this chatbot you agree to not use it for violating plug.dj's Terms of Service. 
+<<<<<<< HEAD
 You also agree not to alter the bot's code. Any requests for changes can be requested via email, through github or via plug.dj.
+=======
+You also agree not to alter the bot's code, unless in the cases explicitly stated above, for personal use, or for the sole purpose of submitting a pull request with a bug fix or a feature update, at which point it will be looked at and decided by the authors of the project.
+Please refer to the original author/repository at all times, even on personal forks that are not private.
+Any requests for changes can be requested via email, through github or via plug.dj.
+>>>>>>> d8fa95d3c82e866b16f5d13dbad0b98d38e26887

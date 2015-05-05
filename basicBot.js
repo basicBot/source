@@ -120,7 +120,7 @@
                 API.chatLog(basicBot.chat.datarestored);
             }
         }
-        var json_sett = null;
+        /*var json_sett = null;
         var roominfo = document.getElementById("room-info");
         info = roominfo.textContent;
         var ref_bot = "@basicBot=";
@@ -139,7 +139,7 @@
                     }
                 }
             });
-        }
+        }*/
 
     };
 
@@ -174,11 +174,17 @@
         return m;
     };
 
+<<<<<<< HEAD
     var botCreator = "Matthew aka. RuudVerbeek";
     var botCreatorIDs = [];
+=======
+    var botCreator = "Matthew (Yemasthui)";
+    var botMaintainer = "Benzi (Quoona)"
+    var botCreatorIDs = ["3851534", "4105209"];
+>>>>>>> d8fa95d3c82e866b16f5d13dbad0b98d38e26887
 
     var basicBot = {
-        version: "2.1.4",
+        version: "2.2.2",
         status: false,
         name: "TagPro Bot",
         loggedInID: null,
@@ -192,16 +198,31 @@
         settings: {
             botName: "TagPro Bot",
             language: "english",
+<<<<<<< HEAD
             chatLink: "https://rawgit.com/RuudVerbeek/basicBot/master/lang/en.json",
             maximumAfk: 180,
             afkRemoval: true,
             maximumDc: 180,
             bouncerPlus: false,
+=======
+            chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+            startupCap: 1, // 1-200
+            startupVolume: 0, // 0-100
+            startupEmoji: false, // true or false
+            maximumAfk: 120,
+            afkRemoval: true,
+            maximumDc: 60,
+            bouncerPlus: true,
+            blacklistEnabled: true,
+>>>>>>> d8fa95d3c82e866b16f5d13dbad0b98d38e26887
             lockdownEnabled: false,
             lockGuard: false,
             maximumLocktime: 10,
             cycleGuard: true,
             maximumCycletime: 10,
+            voteSkip: false,
+            voteSkipLimit: 10,
+            historySkip: false,
             timeGuard: true,
             maximumSongLength: 8,
             autodisable: false,
@@ -421,7 +442,9 @@
                 var u;
                 if (typeof obj === "object") u = obj;
                 else u = API.getUser(obj);
-                if (botCreatorIDs.indexOf(u.id) > -1) return 10;
+                for (var i = 0; i < botCreatorIDs.length; i++) {
+                    if (botCreatorIDs[i].indexOf(u.id) > -1) return 10;
+                }
                 if (u.gRole < 2) return u.role;
                 else {
                     switch (u.gRole) {
@@ -819,6 +842,18 @@
                     }
                 }
             }
+
+            var mehs = API.getScore().negative;
+            var woots = API.getScore().positive;
+            var dj = API.getDJ();
+
+            if (basicBot.settings.voteSkip) {
+                if ((mehs - woots) >= (basicBot.settings.voteSkipLimit)) {
+                    API.sendChat(subChat(basicBot.chat.voteskipexceededlimit, {name: dj.username, limit: basicBot.settings.voteSkipLimit}));
+                    API.moderateForceSkip();
+                }
+            }
+
         },
         eventCurateupdate: function (obj) {
             for (var i = 0; i < basicBot.room.users.length; i++) {
@@ -828,6 +863,7 @@
             }
         },
         eventDjadvance: function (obj) {
+            $("#woot").click();
             var user = basicBot.userUtilities.lookupUser(obj.dj.id)
             for(var i = 0; i < basicBot.room.users.length; i++){
                 if(basicBot.room.users[i].id === user.id){
@@ -858,13 +894,15 @@
 
             var mid = obj.media.format + ':' + obj.media.cid;
             for (var bl in basicBot.room.blacklists) {
-                if (basicBot.room.blacklists[bl].indexOf(mid) > -1) {
-                    API.sendChat(subChat(basicBot.chat.isblacklisted, {blacklist: bl}));
-                    return API.moderateForceSkip();
+                if (basicBot.settings.blacklistEnabled) {
+                    if (basicBot.room.blacklists[bl].indexOf(mid) > -1) {
+                        API.sendChat(subChat(basicBot.chat.isblacklisted, {blacklist: bl}));
+                        return API.moderateForceSkip();
+                    }
                 }
             }
 
-            var alreadyPlayed = false;
+            /*var alreadyPlayed = false;
             for (var i = 0; i < basicBot.room.historyList.length; i++) {
                 if (basicBot.room.historyList[i][0] === obj.media.cid) {
                     var firstPlayed = basicBot.room.historyList[i][1];
@@ -877,6 +915,23 @@
             }
             if (!alreadyPlayed) {
                 basicBot.room.historyList.push([obj.media.cid, +new Date()]);
+            }*/
+
+            if (basicBot.settings.historySkip) {
+                var alreadyPlayed = false;
+                var apihistory = API.getHistory();
+                var name = obj.dj.username;
+                for (var i = 0; i < apihistory.length; i++) {
+                    if (apihistory[i].media.cid === obj.media.cid) {
+                        API.sendChat(subChat(basicBot.chat.songknown, {name: name}));
+                        API.moderateForceSkip();
+                        basicBot.room.historyList[i].push(+new Date());
+                        alreadyPlayed = true;
+                    }
+                }
+                if (!alreadyPlayed) {
+                    basicBot.room.historyList.push([obj.media.cid, +new Date()]);
+                }
             }
             var newMedia = obj.media;
             if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
@@ -1214,12 +1269,25 @@
             }, 60 * 60 * 1000);
             basicBot.loggedInID = API.getUser().id;
             basicBot.status = true;
-            API.sendChat('/cap 1');
-            API.setVolume(0);
-            var emojibutton = $(".icon-emoji-on");
-            if (emojibutton.length > 0) {
-                emojibutton[0].click();
+            API.sendChat('/cap ' + basicBot.settings.startupCap);
+            API.setVolume(basicBot.settings.startupVolume);
+            $("#woot").click();
+            if (basicBot.settings.startupEmoji) {
+                var emojibuttonoff = $(".icon-emoji-off");
+                if (emojibuttonoff.length > 0) {
+                    emojibuttonoff[0].click();
+                }
+                API.chatLog(':smile: Emojis enabled.');
             }
+            else {
+                var emojibuttonon = $(".icon-emoji-on");
+                if (emojibuttonon.length > 0) {
+                    emojibuttonon[0].click();
+                }
+                API.chatLog('Emojis disabled.');
+            }
+            API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
+            API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
             loadChat(API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version})));
         },
         commands: {
@@ -1417,6 +1485,27 @@
                 }
             },
 
+            autodisableCommand: {
+                command: 'autodisable',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.autodisable) {
+                            basicBot.settings.autodisable = !basicBot.settings.autodisable;
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.autodisable}));
+                        }
+                        else {
+                            basicBot.settings.autodisable = !basicBot.settings.autodisable;
+                            return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.autodisable}));
+                        }
+
+                    }
+                }
+            },
+
             autoskipCommand: {
                 command: 'autoskip',
                 rank: 'mod',
@@ -1510,6 +1599,26 @@
                                 basicBot.room.newBlacklistedSongFunction(track);
                             }
                         }
+                    }
+                }
+            },
+
+            blinfoCommand: {
+                command: 'blinfo',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var author = API.getMedia().author;
+                        var title = API.getMedia().title;
+                        var name = chat.un;
+                        var format = API.getMedia().format;
+                        var cid = API.getMedia().cid;
+                        var songid = format + ":" + cid;
+
+                        API.sendChat(subChat(basicBot.chat.blinfo, {name: name, author: author, title: title, songid: songid}));
                     }
                 }
             },
@@ -1683,6 +1792,49 @@
                 }
             },
 
+            voteskipCommand: {
+                command: 'voteskip',
+                rank: 'manager',
+                type: 'startsWith',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var msg = chat.message;
+                        if (msg.length <= cmd.length + 1) return API.sendChat(subChat(basicBot.chat.voteskiplimit, {name: chat.un, limit: basicBot.settings.voteSkipLimit}));
+                        var argument = msg.substring(cmd.length + 1);
+                        if (!basicBot.settings.voteSkip) basicBot.settings.voteSkip = !basicBot.settings.voteSkip;
+                        if (isNaN(argument)) {
+                            API.sendChat(subChat(basicBot.chat.voteskipinvalidlimit, {name: chat.un}));
+                        }
+                        else {
+                            basicBot.settings.voteSkipLimit = argument;
+                            API.sendChat(subChat(basicBot.chat.voteskipsetlimit, {name: chat.un, limit: basicBot.settings.voteSkipLimit}));
+                        }
+                    }
+                }
+            },
+
+            togglevoteskipCommand: {
+                command: 'togglevoteskip',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.voteSkip) {
+                            basicBot.settings.voteSkip = !basicBot.settings.voteSkip;
+                            API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.voteskip}));
+                        }
+                        else {
+                            basicBot.settings.voteSkip = !basicBot.settings.voteSkip;
+                            API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.voteskip}));
+                        }
+                    }
+                }
+            },
+
             dclookupCommand: {
                 command: ['dclookup', 'dc'],
                 rank: 'user',
@@ -1707,7 +1859,7 @@
                 }
             },
 
-            deletechatCommand: {
+            /*deletechatCommand: {
                 command: 'deletechat',
                 rank: 'mod',
                 type: 'startsWith',
@@ -1731,7 +1883,7 @@
                         API.sendChat(subChat(basicBot.chat.deletechat, {name: chat.un, username: name}));
                     }
                 }
-            },
+            },*/
 
             emojiCommand: {
                 command: 'emoji',
@@ -1743,6 +1895,39 @@
                     else {
                         var link = 'http://www.emoji-cheat-sheet.com/';
                         API.sendChat(subChat(basicBot.chat.emojilist, {link: link}));
+                    }
+                }
+            },
+
+            englishCommand: {
+                command: 'english',
+                rank: 'bouncer',
+                type: 'startsWith',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if(chat.message.length === cmd.length) return API.sendChat('/me No user specified.');
+                        var name = chat.message.substring(cmd.length + 2);
+                        var user = basicBot.userUtilities.lookupUserName(name);
+                        if(typeof user === 'boolean') return API.sendChat('/me Invalid user specified.');
+                        var lang = basicBot.userUtilities.getUser(user).language;
+                        var ch = '/me @' + name + ' ';
+                        switch(lang){
+                            case 'en': break;
+                            case 'da': ch += 'Vær venlig at tale engelsk.'; break;
+                            case 'de': ch += 'Bitte sprechen Sie Englisch.'; break;
+                            case 'es': ch += 'Por favor, hable Inglés.'; break;
+                            case 'fr': ch += 'Parlez anglais, s\'il vous plaît.'; break;
+                            case 'nl': ch += 'Spreek Engels, alstublieft.'; break;
+                            case 'pl': ch += 'Proszę mówić po angielsku.'; break;
+                            case 'pt': ch += 'Por favor, fale Inglês.'; break;
+                            case 'sk': ch += 'Hovorte po anglicky, prosím.'; break;
+                            case 'cs': ch += 'Mluvte prosím anglicky.'; break;
+                            case 'sr': ch += 'Молим Вас, говорите енглески.'; break;                                  
+                        }
+                        ch += ' English please.';
+                        API.sendChat(ch);
                     }
                 }
             },
@@ -1818,6 +2003,26 @@
                     else {
                         var link = "http://i.imgur.com/SBAso1N.jpg";
                         API.sendChat(subChat(basicBot.chat.starterhelp, {link: link}));
+                    }
+                }
+            },
+
+            historyskipCommand: {
+                command: 'historyskip',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        if (basicBot.settings.historySkip) {
+                            basicBot.settings.historySkip = !basicBot.settings.historySkip;
+                            API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.historyskip}));
+                        }
+                        else {
+                            basicBot.settings.historySkip = !basicBot.settings.historySkip;
+                            API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.historyskip}));
+                        }
                     }
                 }
             },
@@ -2010,7 +2215,7 @@
                     else {
                         if (basicBot.settings.lockGuard) {
                             basicBot.settings.lockGuard = !basicBot.settings.lockGuard;
-                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.lockdown}));
+                            return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.lockguard}));
                         }
                         else {
                             basicBot.settings.lockGuard = !basicBot.settings.lockGuard;
@@ -2505,7 +2710,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        API.sendChat('/me This bot was made by ' + botCreator + '.');
+                        API.sendChat('/me This bot was created by ' + botCreator + ', but is now maintained by ' + botMaintainer + ".");
                     }
                 }
             },
@@ -2532,6 +2737,11 @@
                         if (basicBot.settings.bouncerPlus) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
+												
+                        msg += basicBot.chat.blacklist + ': ';
+                        if (basicBot.settings.blacklistEnabled) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
 
                         msg += basicBot.chat.lockguard + ': ';
                         if (basicBot.settings.lockGuard) msg += 'ON';
@@ -2550,6 +2760,16 @@
 
                         msg += basicBot.chat.chatfilter + ': ';
                         if (basicBot.settings.filterChat) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.historyskip + ': ';
+                        if (basicBot.settings.historySkip) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+
+                        msg += basicBot.chat.voteskip + ': ';
+                        if (basicBot.settings.voteSkip) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
 
@@ -2636,6 +2856,24 @@
                 }
             },
 
+            toggleblCommand: {
+                command: 'togglebl',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var temp = basicBot.settings.blacklistEnabled;
+                        basicBot.settings.blacklistEnabled = !temp;
+                        if (basicBot.settings.blacklistEnabled) {
+                          return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.blacklist}));
+                        }
+                        else return API.sendChat(subChat(basicBot.chat.toggleoff, {name: chat.un, 'function': basicBot.chat.blacklist}));
+                    }
+                }
+            },
+						
             togglemotdCommand: {
                 command: 'togglemotd',
                 rank: 'bouncer',
