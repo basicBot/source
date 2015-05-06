@@ -80,6 +80,8 @@ I would like to thank the following people:
 |Portuguese|[Motel Bible](https://github.com/motelbible)|
 |French|[NDA](https://github.com/NDAthereal)|
 
+(I would also like to thank everyone who contributed in translating the bot via the [translation centre](http://translate.benzi.io))
+
 
 Copyright
 ---------
