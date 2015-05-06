@@ -2277,6 +2277,7 @@
                             }
                             else {
                                 basicBot.settings.language = argument;
+                                loadChat();
                                 API.sendChat(subChat(basicBot.chat.langset, {language: basicBot.settings.language}));
                             }
                         });
