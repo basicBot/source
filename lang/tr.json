@@ -1,8 +1,8 @@
 {
     "nodatafound": "Veriler bulunamadi.",
-    "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
-    "langerror": "\/me The language you've selected isn't available. Please visit %%LINK%% to find a list of languages available.",
-    "langset": "\/me Language now set to: %%LANGUAGE%%",
+    "currentlang": "\/me Bot dili degistirildi: %%LANGUAGE%%",
+    "langerror": "\/me Sectiginiz dil bulunamadi. Dil listesi icin %%LINK%% linkine tiklayin.",
+    "langset": "\/me Odo dili suanda degistirildi: %%LANGUAGE%%",
     "retrievingdata": "Yedeklenen veriler aliniyor.",
     "datarestored": "Yedeklenen verielr basariyla alindi.",
     "greyuser": "Botu sadece yetkililer calistirabilir.",

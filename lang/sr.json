@@ -1,8 +1,8 @@
 {
     "nodatafound": "Prethodni podaci nisu prona\u0111eni.",
-    "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
-    "langerror": "\/me The language you've selected isn't available. Please visit %%LINK%% to find a list of languages available.",
-    "langset": "\/me Language now set to: %%LANGUAGE%%",
+    "currentlang": "\/me Jezik podesen na: %%LANGUAGE%%",
+    "langerror": "\/me Jezik koji ste odabrali nije dostupan. Posjeti %%LINK%% da bi pronasao dostupne jezike.",
+    "langset": "\/me Jezik je sada podesen na: %%LANGUAGE%%",
     "retrievingdata": "Preuzimanje prethodno sa\u010duvani podataka.",
     "datarestored": "Prethodno sa\u010duvani podaci uspije\u0161no preuzeti.",
     "greyuser": "Samo bounceri i vi\u0161i rank mogu pokrenuti bota.",
