@@ -1,5 +1,8 @@
 {
     "nodatafound": "Prethodni podaci nisu prona\u0111eni.",
+    "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
+    "langerror": "\/me The language you've selected isn't available. Please visit %%LINK%% to find a list of languages available.",
+    "langset": "\/me Language now set to: %%LANGUAGE%%",
     "retrievingdata": "Preuzimanje prethodno sa\u010duvani podataka.",
     "datarestored": "Prethodno sa\u010duvani podaci uspije\u0161no preuzeti.",
     "greyuser": "Samo bounceri i vi\u0161i rank mogu pokrenuti bota.",
@@ -23,7 +26,7 @@
     "noposition": "\/me Zadnja pozicija nepoznata. Listu cekanja treba a\u017eurirati najmanje jednom da bi se registrovala zadnja pozicija korisnika.",
     "toolongago": "\/me @%%NAME%% zadnji diskonekt (DC ili leave) je bio davno: %%TIME%%.",
     "valid": "\/me @%%NAME%% se diskonektovao prije %%TIME%% i trebao bi biti na poziciji %%POSITION%%.",
-    "warning1": "\/me @%%NAME%%, ti si afk%%TIME%%, molim odgovori u roku od 2 min ili \u010de\u0161 biti uklonjen sa liste \u010dekanja.",
+    "warning1": "\/me @%%NAME%%, ti si afk %%TIME%%, molim odgovori u roku od 2 min ili \u010de\u0161 biti uklonjen sa liste \u010dekanja.",
     "warning2": "\/me @%%NAME%%, uskoro \u010de\u0161 biti uklonjen sa liste zbog afk ukoliko ne odgovori\u0161.",
     "afkremove": "\/me @%%NAME%%, izba\u010den si sa liste \u010dekanja zbog afk %%TIME%%. Bio si na poziciji %%POSITION%%. Pi\u0161i bar svako %%MAXIMUMAFK%% minuta ako zelis da pu\u0161ta\u0161 pjesme.",
     "caps": "\/me @%%NAME%%, isklju\u010di caps, molim.",

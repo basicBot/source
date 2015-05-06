@@ -1,5 +1,8 @@
 {
     "nodatafound": "No previous data found.",
+    "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
+    "langerror": "\/me The language you've selected isn't available. Please visit %%LINK%% to find a list of languages available.",
+    "langset": "\/me Language now set to: %%LANGUAGE%%",
     "retrievingdata": "Retrieving previously stored data.",
     "datarestored": "Previously stored data successfully retrieved.",
     "greyuser": "Only bouncers and up can run a bot.",

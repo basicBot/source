@@ -1,5 +1,8 @@
 {
     "nodatafound": "Aucune donn\u00e9e trouv\u00e9e.",
+    "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
+    "langerror": "\/me The language you've selected isn't available. Please visit %%LINK%% to find a list of languages available.",
+    "langset": "\/me Language now set to: %%LANGUAGE%%",
     "retrievingdata": "R\u00e9cup\u00e9ration des donn\u00e9es.",
     "datarestored": "Succ\u00e8s de la r\u00e9cup\u00e9ration des donn\u00e9s.",
     "greyuser": "Uniquement les Videurs et les rangs sup\u00e9rieurs peuvent lancer le bot.",

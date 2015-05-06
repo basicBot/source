@@ -1,5 +1,8 @@
 {
     "nodatafound": "Dados anteriores n\u00e3o encontrados.",
+    "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
+    "langerror": "\/me The language you've selected isn't available. Please visit %%LINK%% to find a list of languages available.",
+    "langset": "\/me Language now set to: %%LANGUAGE%%",
     "retrievingdata": "Recuperando dados armazenados anteriormente.",
     "datarestored": "Dados armazenados anteriormente recuperados com \u00eaxito.",
     "greyuser": "Apenas Seguran\u00e7as ou superiores podem usar o bot.",
