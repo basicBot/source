@@ -179,7 +179,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.3.4",
+        version: "1.1",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -191,7 +191,7 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
+            botName: "CodeSpringerBot",
             language: "english",
             chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
             startupCap: 1, // 1-200
@@ -265,7 +265,7 @@
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 5,
-            motd: "Temporary Message of the Day",
+            motd: "Welcome to CodeSpringerVille",
             filterChat: true,
             etaRestriction: false,
             welcome: true,
@@ -1158,7 +1158,7 @@
                 'gringo', 'fuder', 'foder', 'hua', 'ahue', 'modafuka', 'modafoka', 'mudafuka', 'mudafoka', 'ooooooooooooooo', 'foda'
             ],
             curses: [
-                'nigger', 'faggot', 'nigga', 'niqqa', 'motherfucker', 'modafocka'
+                'nigger', 'faggot', 'nigga', 'niqqa', 'motherfucker', 'modafocka','fuck','shit',
             ]
         },
         connectAPI: function () {
@@ -2241,7 +2241,7 @@
 
             killCommand: {
                 command: 'kill',
-                rank: 'bouncer',
+                rank: 'host',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
@@ -2701,7 +2701,7 @@
 
             refreshCommand: {
                 command: 'refresh',
-                rank: 'manager',
+                rank: 'host',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
@@ -2719,7 +2719,7 @@
 
             reloadCommand: {
                 command: 'reload',
-                rank: 'bouncer',
+                rank: 'host',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
@@ -2948,11 +2948,6 @@
                         else msg += 'OFF';
                         msg += '. ';
 
-                        msg += basicBot.chat.autoskip + ': ';
-                        if (basicBot.room.autoskip) msg += 'ON';
-                        else msg += 'OFF';
-                        msg += '. ';
-                        
                         var launchT = basicBot.room.roomstats.launchTime;
                         var durationOnline = Date.now() - launchT;
                         var since = basicBot.roomUtilities.msToStr(durationOnline);
@@ -3422,3 +3417,4 @@
 
     loadChat(basicBot.startup);
 }).call(this);
+
