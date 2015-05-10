@@ -2948,6 +2948,11 @@
                         else msg += 'OFF';
                         msg += '. ';
 
+                        msg += basicBot.chat.autoskip + ': ';
+                        if (basicBot.room.autoskip) msg += 'ON';
+                        else msg += 'OFF';
+                        msg += '. ';
+                        
                         var launchT = basicBot.room.roomstats.launchTime;
                         var durationOnline = Date.now() - launchT;
                         var since = basicBot.roomUtilities.msToStr(durationOnline);
