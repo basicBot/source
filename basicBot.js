@@ -898,37 +898,36 @@
                 }
             }
 
-            /*var alreadyPlayed = false;
-            for (var i = 0; i < basicBot.room.historyList.length; i++) {
-                if (basicBot.room.historyList[i][0] === obj.media.cid) {
-                    var firstPlayed = basicBot.room.historyList[i][1];
-                    var plays = basicBot.room.historyList[i].length - 1;
-                    var lastPlayed = basicBot.room.historyList[i][plays];
-                    API.sendChat(subChat(basicBot.chat.songknown, {plays: plays, timetotal: basicBot.roomUtilities.msToStr(Date.now() - firstPlayed), lasttime: basicBot.roomUtilities.msToStr(Date.now() - lastPlayed)}));
-                    basicBot.room.historyList[i].push(+new Date());
-                    alreadyPlayed = true;
-                }
-            }
-            if (!alreadyPlayed) {
-                basicBot.room.historyList.push([obj.media.cid, +new Date()]);
-            }*/
-
+            clearTimeout(historySkip);
             if (basicBot.settings.historySkip) {
                 var alreadyPlayed = false;
                 var apihistory = API.getHistory();
                 var name = obj.dj.username;
-                for (var i = 0; i < apihistory.length; i++) {
-                    if (apihistory[i].media.cid === obj.media.cid) {
-                        API.sendChat(subChat(basicBot.chat.songknown, {name: name}));
-                        API.moderateForceSkip();
-                        basicBot.room.historyList[i].push(+new Date());
-                        alreadyPlayed = true;
+                var historySkip = setTimeout(function () {
+                    for (var i = 0; i < apihistory.length; i++) {
+                        if (apihistory[i].media.cid === obj.media.cid) {
+                            API.sendChat(subChat(basicBot.chat.songknown, {name: name}));
+                            API.moderateForceSkip();
+                            basicBot.room.historyList[i].push(+new Date());
+                            alreadyPlayed = true;
+                        }
                     }
-                }
-                if (!alreadyPlayed) {
-                    basicBot.room.historyList.push([obj.media.cid, +new Date()]);
-                }
+                    if (!alreadyPlayed) {
+                        basicBot.room.historyList.push([obj.media.cid, +new Date()]);
+                    }
+                }, 2000);
             }
+
+            clearTimeout(basicBot.room.autoskipTimer);
+            if (basicBot.room.autoskip) {
+                var remaining = obj.media.duration * 1000;
+                basicBot.room.autoskipTimer = setTimeout(function () {
+                    console.log("Skipping track.");
+                    //API.sendChat('Song stuck, skipping...');
+                    API.moderateForceSkip();
+                }, remaining + 3000);
+            }
+
             var newMedia = obj.media;
             if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
                 var name = obj.dj.username;
