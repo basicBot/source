@@ -862,7 +862,6 @@
                     }
                 }
             }
-
             clearTimeout(historySkip);
             if (basicBot.settings.historySkip) {
                 var alreadyPlayed = false;
@@ -882,17 +881,6 @@
                     }
                 }, 2000);
             }
-
-            clearTimeout(basicBot.room.autoskipTimer);
-            if (basicBot.room.autoskip) {
-                var remaining = obj.media.duration * 1000;
-                basicBot.room.autoskipTimer = setTimeout(function () {
-                    console.log("Skipping track.");
-                    //API.sendChat('Song stuck, skipping...');
-                    API.moderateForceSkip();
-                }, remaining + 3000);
-            }
-
             var newMedia = obj.media;
             if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
                 var name = obj.dj.username;
