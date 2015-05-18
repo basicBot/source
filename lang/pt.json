@@ -168,6 +168,8 @@
     "maxlengthtime": "\/me [@%%NAME%%] A dura\u00e7\u00e3o m\u00e1xima de tempo agora \u00e9 %%TIME%% minutos.",
     "motdset": "\/me Mensagem do Dia:  %%MSG%%",
     "motdintervalset": "\/me Intervalo da Mensagem do Dia: %%INTERVAL%% m\u00fasicas.",
+    "currentbotname": "\/me Bot name currently set to: %%BOTNAME%%",
+    "botnameset": "\/me Bot name now set to: %%BOTNAME%%",
     "addbotwaitlist": "\/me @%%NAME%%, n\u00e3o tente me adicionar \u00e0 fila de espera, por favor.",
     "move": "\/me [%%NAME%% usou 'move'.]",
     "mutednotime": "\/me [@%%NAME%%] @%%USERNAME%% mutado.",

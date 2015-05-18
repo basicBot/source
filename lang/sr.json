@@ -168,6 +168,8 @@
     "maxlengthtime": "\/me [@%%NAME%%] Maksimalno trajanje pesme pode\u0161eno na %%TIME%% minuta.",
     "motdset": "\/me Poruka Dana pode\u0161ena na: %%MSG%%",
     "motdintervalset": "\/me Interval Poruke dana pode\u0161en na %%INTERVAL%%.",
+    "currentbotname": "\/me Bot name currently set to: %%BOTNAME%%",
+    "botnameset": "\/me Bot name now set to: %%BOTNAME%%",
     "addbotwaitlist": "\/me @%%NAME%%, nemoj da me dodaje\u0161 na listu \u010dekanja, molim.",
     "move": "\/me [%%NAME%% je koristio preme\u0161tanje.]",
     "mutednotime": "\/me [@%%NAME%%] Je uti\u0161ao @%%USERNAME%%.",

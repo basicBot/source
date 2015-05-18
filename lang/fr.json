@@ -168,6 +168,8 @@
     "maxlengthtime": "\/me [@%%NAME%%] La dur\u00e9e maximum d'une musique est maintenant de %%TIME%% minutes.",
     "motdset": "\/me Le MotD est maintenant : %%MSG%%",
     "motdintervalset": "\/me L'intervalle du MotD est maintenant de %%INTERVAL%%.",
+    "currentbotname": "\/me Bot name currently set to: %%BOTNAME%%",
+    "botnameset": "\/me Bot name now set to: %%BOTNAME%%",
     "addbotwaitlist": "\/me @%%NAME%%, n'essaye pas de m'ajouter \u00e0 la liste d'attente, merci.",
     "move": "\/me [%%NAME%% a utilis\u00e9 move.]",
     "mutednotime": "\/me [@%%NAME%%] A rendu muet @%%USERNAME%%.",
