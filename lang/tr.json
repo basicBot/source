@@ -168,6 +168,8 @@
     "maxlengthtime": "\/me [@%%NAME%%] Maksimum sarki uzunlugu %%TIME%% dakikadir.",
     "motdset": "\/me Duyuru ayarlandi:  %%MSG%%",
     "motdintervalset": "\/me Duyuru araligi %%INTERVAL%%.",
+    "currentbotname": "\/me Bot name currently set to: %%BOTNAME%%",
+    "botnameset": "\/me Bot name now set to: %%BOTNAME%%",
     "addbotwaitlist": "\/me @%%NAME%%, lutfen beni dj listesine eklemeyin.",
     "move": "\/me [%%NAME%% tasindi.]",
     "mutednotime": "\/me [@%%NAME%%] artik @%%USERNAME%% susturuldu.",

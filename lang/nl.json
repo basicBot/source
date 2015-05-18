@@ -168,6 +168,8 @@
     "maxlengthtime": "\/me [@%%NAME%%] De maximum lengte van een nummer is ingesteld op %%TIME%% minuten.",
     "motdset": "\/me MotD ingesteld op: %%MSG%%",
     "motdintervalset": "\/me MotD interval ingesteld op %%INTERVAL%%.",
+    "currentbotname": "\/me Bot name currently set to: %%BOTNAME%%",
+    "botnameset": "\/me Bot name now set to: %%BOTNAME%%",
     "addbotwaitlist": "\/me @%%NAME%%, probeer mij niet toe te voegen aan de wachtlijst, alsjeblieft.",
     "move": "\/me [%%NAME%% gebruikte move.]",
     "mutednotime": "\/me [@%%NAME%%] Heeft @%%USERNAME%% gemute.",
