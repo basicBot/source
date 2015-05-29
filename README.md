@@ -63,7 +63,7 @@ Please do not try to if you are not confident in your javascript capabilities.
 Official translations will be supported. Available ones can be found under [the language folder](https://github.com/Yemasthui/basicBot/blob/master/lang/langIndex.json). You can set a language in the room settings.
 You can use your own translation or wording by translating the values of in [the English pack](https://github.com/Yemasthui/basicBot/blob/master/lang/en.json) and uploading it to a public hosting service. Put the link into your custom room settings, under chatLink.
 
-__When translating the chat messages, please not that it is a json format, meaning it is structured as ```"key":"value"```, please only translate the "value" parts, and leave anything between %% (eg. %%NAME%%) as is, they are variables that get filled in by the bot.__
+__When translating the chat messages, please note that it is a json format, meaning it is structured as ```"key":"value"```, please only translate the "value" parts, and leave anything between %% (eg. %%NAME%%) as is, they are variables that get filled in by the bot.__
 
 
 Credits
