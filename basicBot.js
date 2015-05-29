@@ -962,6 +962,10 @@
                 API.sendChat(subChat(basicBot.chat.askskip, {name: chat.un}));
                 return true;
             }
+            if (basicBot.settings.cmddeletion && msg.startsWith('!')) {
+                API.moderateDeleteChat(chat.cid);
+                return true;
+            }
             for (var j = 0; j < basicBot.chatUtilities.spam.length; j++) {
                 if (msg === basicBot.chatUtilities.spam[j]) {
                     API.sendChat(subChat(basicBot.chat.spam, {name: chat.un}));
@@ -1081,9 +1085,6 @@
                     }, basicBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
-                    if (basicBot.settings.cmdDeletion) {
-                        API.moderateDeleteChat(chat.cid);
-                    }
                     basicBot.room.allcommand = false;
                     setTimeout(function () {
                         basicBot.room.allcommand = true;
