@@ -161,6 +161,12 @@
         return arr;
     };
 
+    if (typeof String.prototype.startsWith != 'function') {
+      String.prototype.startsWith = function( str ) {
+        return this.substring( 0, str.length ) === str;
+      }
+    };
+
     var linkFixer = function (msg) {
         var parts = msg.splitBetween('<a href="', '<\/a>');
         for (var i = 1; i < parts.length; i = i + 2) {
