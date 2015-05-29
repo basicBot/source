@@ -179,7 +179,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.4.5",
+        version: "2.4.6",
         status: false,
         name: "basicBot",
         loggedInID: null,
