@@ -1030,7 +1030,7 @@
                 if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === basicBot.loggedInID) {
                     setTimeout(function (id) {
                         API.moderateDeleteChat(id);
-                    }, 2 * 1000, chat.cid);
+                    }, 5 * 1000, chat.cid);
                     return true;
                 }
                 return false;
@@ -1047,7 +1047,7 @@
                 else return false;
                 var userPerm = basicBot.userUtilities.getPermission(chat.uid);
                 //console.log("name: " + chat.un + ", perm: " + userPerm);
-                if (chat.message !== basicBot.settings.commandLiteral + "join" && chat.message !== basicBot.settings.commandLiteral + "leave") {
+                if (chat.message !== basicBot.settings.commandLiteral + 'join' && chat.message !== basicBot.settings.commandLiteral + "leave") {
                     if (userPerm === 0 && !basicBot.room.usercommand) return void (0);
                     if (!basicBot.room.allcommand) return void (0);
                 }
