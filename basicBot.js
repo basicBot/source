@@ -993,9 +993,8 @@
                     API.moderateDeleteChat(chat.cid);
                     return true;
                 }
-                if (basicBot.settings.cmddeletion && msg.startsWith(basicBot.settings.commandLiteral)) {
+                if (basicBot.settings.cmdDeletion && msg.startsWith(basicBot.settings.commandLiteral)) {
                     API.moderateDeleteChat(chat.cid);
-                    return true;
                 }
                 /**
                  var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -1085,6 +1084,9 @@
                     }, basicBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
+                    /*if (basicBot.settings.cmdDeletion) {
+                        API.moderateDeleteChat(chat.cid);
+                    }*/
                     basicBot.room.allcommand = false;
                     setTimeout(function () {
                         basicBot.room.allcommand = true;
