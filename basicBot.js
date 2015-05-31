@@ -788,10 +788,18 @@
             }
         },
         eventUserleave: function (user) {
+            var previousDJ = API.getHistory()[1].user.id;
+            var lastDJ = API.getHistory()[0].user.id;
             for (var i = 0; i < basicBot.room.users.length; i++) {
                 if (basicBot.room.users[i].id === user.id) {
                     basicBot.userUtilities.updateDC(basicBot.room.users[i]);
                     basicBot.room.users[i].inRoom = false;
+                    if (lastDJ == user.id || previousDJ == user.id){
+                        var user = basicBot.userUtilities.lookupUser(basicBot.room.users[i].id);
+                        basicBot.userUtilities.updatePosition(user, 0);
+                        user.lastDC.time = null;
+                        user.lastDC.position = user.lastKnownPosition;
+                    }
                 }
             }
         },
