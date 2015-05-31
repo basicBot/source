@@ -786,6 +786,7 @@
                         API.sendChat(subChat(basicBot.chat.welcome, {name: user.username}));
                     }, 1 * 1000, user);
             }
+            storeToStorage();
         },
         eventUserleave: function (user) {
             for (var i = 0; i < basicBot.room.users.length; i++) {
@@ -794,6 +795,7 @@
                     basicBot.room.users[i].inRoom = false;
                 }
             }
+            storeToStorage();
         },
         eventVoteupdate: function (obj) {
             for (var i = 0; i < basicBot.room.users.length; i++) {
