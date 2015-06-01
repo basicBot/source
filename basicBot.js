@@ -178,6 +178,14 @@
         return m;
     };
 
+    var decodeEntities = function (s) {
+        var str, temp = document.createElement('p');
+        temp.innerHTML = s;
+        str = temp.textContent || temp.innerText;
+        temp = null;
+        return str;
+    };
+
     var botCreator = "Matthew (Yemasthui)";
     var botMaintainer = "Benzi (Quoona)"
     var botCreatorIDs = ["3851534", "4105209"];
@@ -733,6 +741,7 @@
         },
         eventChat: function (chat) {
             chat.message = linkFixer(chat.message);
+            chat.message = decodeEntities(chat.message);
             chat.message = chat.message.trim();
             for (var i = 0; i < basicBot.room.users.length; i++) {
                 if (basicBot.room.users[i].id === chat.uid) {
