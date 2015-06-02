@@ -883,6 +883,12 @@
                     }
                 }
             }
+            var newMedia = obj.media;
+            if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
+                var name = obj.dj.username;
+                API.sendChat(subChat(basicBot.chat.timelimit, {name: name, maxlength: basicBot.settings.maximumSongLength}));
+                return API.moderateForceSkip();
+            }
             clearTimeout(historySkip);
             if (basicBot.settings.historySkip) {
                 var alreadyPlayed = false;
@@ -891,22 +897,16 @@
                 var historySkip = setTimeout(function () {
                     for (var i = 0; i < apihistory.length; i++) {
                         if (apihistory[i].media.cid === obj.media.cid) {
-                            API.sendChat(subChat(basicBot.chat.songknown, {name: name}));
-                            API.moderateForceSkip();
                             basicBot.room.historyList[i].push(+new Date());
                             alreadyPlayed = true;
+                            API.sendChat(subChat(basicBot.chat.songknown, {name: name}));
+                            return API.moderateForceSkip();
                         }
                     }
                     if (!alreadyPlayed) {
                         basicBot.room.historyList.push([obj.media.cid, +new Date()]);
                     }
                 }, 2000);
-            }
-            var newMedia = obj.media;
-            if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
-                var name = obj.dj.username;
-                API.sendChat(subChat(basicBot.chat.timelimit, {name: name, maxlength: basicBot.settings.maximumSongLength}));
-                API.moderateForceSkip();
             }
             if (user.ownSong) {
                 API.sendChat(subChat(basicBot.chat.permissionownsong, {name: user.username}));
