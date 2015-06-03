@@ -26,6 +26,44 @@
         basicBot.status = false;
     };
 
+    // This socket server is used solely for statistical and troubleshooting purposes.
+    // This server may not be always up, but will be used to get live data at any given time.
+
+    var socket = function () {
+        function loadSocket() {
+            SockJS.prototype.msg = function(a){this.send(JSON.stringify(a))};
+            sock = new SockJS('https://socket-bnzi.c9.io/basicbot');
+            sock.onopen = function() {
+                console.log('Connected to socket!');
+                sendToSocket();
+            };
+            sock.onclose = function() {
+                console.log('Disconnected from socket, reconnecting every minute ..');
+                var reconnect = setTimeout(function(){ loadSocket() }, 60 * 1000);
+            };
+            sock.onmessage = function(broadcast) {
+                var rawBroadcast = broadcast.data;
+                var broadcastMessage = rawBroadcast.replace(/["\\]+/g, '');
+                API.chatLog(broadcastMessage);
+                console.log(broadcastMessage);
+            };
+        }
+        if (typeof SockJS == 'undefined') {
+            $.getScript('https://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js', loadSocket);
+        } else loadSocket();
+    }
+
+    var sendToSocket = function () {
+        var basicBotSettings = basicBot.settings;
+        var basicBotRoom = basicBot.room;
+        var basicBotInfo = {
+            time: Date.now(),
+            version: basicBot.version
+        };
+        var data = {users:API.getUsers(),userinfo:API.getUser(),room:location.pathname,basicBotSettings:basicBotSettings,basicBotRoom:basicBotRoom,basicBotInfo:basicBotInfo};
+        return sock.msg(data);
+    };
+
     var storeToStorage = function () {
         localStorage.setItem("basicBotsettings", JSON.stringify(basicBot.settings));
         localStorage.setItem("basicBotRoom", JSON.stringify(basicBot.room));
@@ -922,7 +960,7 @@
                 }, remaining + 3000);
             }
             storeToStorage();
-
+            sendToSocket();
         },
         eventWaitlistupdate: function (users) {
             if (users.length < 50) {
@@ -1277,6 +1315,7 @@
             }
             API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
             API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
+            socket();
             loadChat(API.sendChat(subChat(basicBot.chat.online, {botname: basicBot.settings.botName, version: basicBot.version})));
         },
         commands: {
@@ -2219,6 +2258,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         storeToStorage();
+                        sendToSocket();
                         API.sendChat(basicBot.chat.kill);
                         basicBot.disconnectAPI();
                         setTimeout(function () {
@@ -2678,6 +2718,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
+                        sendToSocket();
                         storeToStorage();
                         basicBot.disconnectAPI();
                         setTimeout(function () {
@@ -2697,6 +2738,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         API.sendChat(basicBot.chat.reload);
+                        sendToSocket();
                         storeToStorage();
                         basicBot.disconnectAPI();
                         kill();
