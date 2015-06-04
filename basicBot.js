@@ -1999,13 +1999,14 @@
                         var user = basicBot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
                         var pos = API.getWaitListPosition(user.id);
+                        var realpos = pos + 1;
                         if (name == dj) return API.sendChat(subChat(basicBot.chat.youaredj, {name: name}));
                         if (pos < 0) return API.sendChat(subChat(basicBot.chat.notinwaitlist, {name: name}));
                         if (pos == 0) return API.sendChat(subChat(basicBot.chat.youarenext, {name: name}));
                         var timeRemaining = API.getTimeRemaining();
                         var estimateMS = ((pos + 1) * 4 * 60 + timeRemaining) * 1000;
                         var estimateString = basicBot.roomUtilities.msToStr(estimateMS);
-                        API.sendChat(subChat(basicBot.chat.eta, {name: name, time: estimateString}));
+                        API.sendChat(subChat(basicBot.chat.eta, {name: name, time: estimateString, position: realpos}));
                     }
                 }
             },
