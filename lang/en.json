@@ -153,7 +153,7 @@
     "notinwaitlist": "\/me @%%NAME%%, you are not on the waitlist.",
     "youarenext": "\/me @%%NAME%%, you are DJing after this song.",
     "youaredj": "\/me @%%NAME%%, you are currently DJing.",
-    "eta": "\/me @%%NAME%% you are position %%POSITION%% in the waitlist and will reach the booth in approximately %%TIME%%.",
+    "eta": "\/me @%%NAME%%, you are position %%POSITION%% in the waitlist and will reach the booth in approximately %%TIME%%.",
     "facebook": "\/me Like us on facebook: %%LINK%%",
     "starterhelp": "\/me This image will get you started on plug: %%LINK%%",
     "roulettejoin": "@%%NAME%% joined the roulette! (!leave if you regret it)",
