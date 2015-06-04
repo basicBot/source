@@ -1990,6 +1990,7 @@
                     else {
                         var perm = basicBot.userUtilities.getPermission(chat.uid);
                         var msg = chat.message;
+                        var dj = API.getDJ().username;
                         var name;
                         if (msg.length > cmd.length) {
                             if (perm < 2) return void (0);
@@ -1998,7 +1999,9 @@
                         var user = basicBot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
                         var pos = API.getWaitListPosition(user.id);
+                        if (name == dj) return API.sendChat(subChat(basicBot.chat.youaredj, {name: name}));
                         if (pos < 0) return API.sendChat(subChat(basicBot.chat.notinwaitlist, {name: name}));
+                        if (pos == 0) return API.sendChat(subChat(basicBot.chat.youarenext, {name: name}));
                         var timeRemaining = API.getTimeRemaining();
                         var estimateMS = ((pos + 1) * 4 * 60 + timeRemaining) * 1000;
                         var estimateString = basicBot.roomUtilities.msToStr(estimateMS);
