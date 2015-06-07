@@ -3515,16 +3515,6 @@
                                 } else if (rawlang == "ms"){
                                     var language = "Malay"
                                 }
-                                var rawstatus = API.getUser(id).status;
-                                if (rawstatus == "0"){
-                                    var status = "Available";
-                                } else if (rawstatus == "1"){
-                                    var status = "Away";
-                                } else if (rawstatus == "2"){
-                                    var status = "Working";
-                                } else if (rawstatus == "3"){
-                                    var status = "Gaming"
-                                }
                                 var rawrank = API.getUser(id).role;
                                 if (rawrank == "0"){
                                     var rank = "User";
@@ -3545,12 +3535,12 @@
                                 }
                                 var slug = API.getUser(id).slug;
                                 if (typeof slug !== 'undefined') {
-                                    var profile = ", Profile: http://plug.dj/@/" + slug;
+                                    var profile = "https://plug.dj/@/" + slug;
                                 } else {
-                                    var profile = "";
+                                    var profile = "~";
                                 }
 
-                                API.sendChat(subChat(basicBot.chat.whois, {name1: chat.un, name2: name, id: id, avatar: avatar, profile: profile, language: language, level: level, status: status, joined: joined, rank: rank}));
+                                API.sendChat(subChat(basicBot.chat.whois, {name1: chat.un, name2: name, id: id, avatar: avatar, profile: profile, language: language, level: level, joined: joined, rank: rank}));
                             }
                         }
                     }
