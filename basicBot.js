@@ -694,34 +694,32 @@
                 }
             },
             smartSkip: function () {
-                if (basicBot.room.skippable) {
-                    var dj = API.getDJ();
-                    var id = dj.id;
-                    var waitlistlength = API.getWaitList().length;
-                    var locked = false;
-                    basicBot.room.queueable = false;
+                var dj = API.getDJ();
+                var id = dj.id;
+                var waitlistlength = API.getWaitList().length;
+                var locked = false;
+                basicBot.room.queueable = false;
 
-                    if (waitlistlength == 50) {
-                        basicBot.roomUtilities.booth.lockBooth();
-                        locked = true;
-                    }
-                    setTimeout(function (id) {
-                        API.moderateForceSkip();
-                        basicBot.room.skippable = false;
-                        setTimeout(function () {
-                            basicBot.room.skippable = true
-                        }, 2 * 1000);
-                        setTimeout(function (id) {
-                            basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
-                            basicBot.room.queueable = true;
-                            if (locked) {
-                                setTimeout(function () {
-                                    basicBot.roomUtilities.booth.unlockBooth();
-                                }, 500);
-                            }
-                        }, 1000, id);
-                    }, 500, id);
+                if (waitlistlength == 50) {
+                    basicBot.roomUtilities.booth.lockBooth();
+                    locked = true;
                 }
+                setTimeout(function (id) {
+                    API.moderateForceSkip();
+                    basicBot.room.skippable = false;
+                    setTimeout(function () {
+                        basicBot.room.skippable = true
+                    }, 2 * 1000);
+                    setTimeout(function (id) {
+                        basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
+                        basicBot.room.queueable = true;
+                        if (locked) {
+                            setTimeout(function () {
+                                basicBot.roomUtilities.booth.unlockBooth();
+                            }, 500);
+                        }
+                    }, 1000, id);
+                }, 500, id);
             },
             changeDJCycle: function () {
                 var toggle = $(".cycle-toggle");
