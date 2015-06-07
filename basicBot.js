@@ -231,7 +231,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.7.8",
+        version: "2.7.9",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -2972,6 +2972,7 @@
 
                             var timeLeft = API.getTimeRemaining();
                             var timeElapsed = API.getTimeElapsed();
+                            var dj = API.getDJ();
                             var name = dj.username;
                             var msgSend = '@' + name + ' : ';
 
