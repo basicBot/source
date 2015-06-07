@@ -707,9 +707,11 @@
                 }
                 setTimeout(function (id) {
                     API.moderateForceSkip();
-                    if (typeof reason !== 'undefined') {
-                        API.sendChat(reason);
-                    }
+                    setTimeout(function () {
+                        if (typeof reason !== 'undefined') {
+                            API.sendChat(reason);
+                        }
+                    }, 500);
                     basicBot.room.skippable = false;
                     setTimeout(function () {
                         basicBot.room.skippable = true
