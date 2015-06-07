@@ -713,17 +713,17 @@
                     basicBot.room.skippable = false;
                     setTimeout(function () {
                         basicBot.room.skippable = true
-                    }, 2 * 1000);
+                    }, 5 * 1000);
                     setTimeout(function (id) {
                         basicBot.userUtilities.moveUser(id, basicBot.settings.skipPosition, false);
                         basicBot.room.queueable = true;
                         if (locked) {
                             setTimeout(function () {
                                 basicBot.roomUtilities.booth.unlockBooth();
-                            }, 500);
+                            }, 1000);
                         }
-                    }, 500, id);
-                }, 500, id);
+                    }, 1500, id);
+                }, 1000, id);
             },
             changeDJCycle: function () {
                 var toggle = $(".cycle-toggle");
