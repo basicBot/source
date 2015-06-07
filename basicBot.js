@@ -3006,7 +3006,9 @@
                                 }
                                 else {
                                     API.moderateForceSkip();
-                                    API.sendChat(msgSend);
+                                    setTimeout(function () {
+                                        API.sendChat(msgSend);
+                                    }, 500);
                                 }
                             }
                         }
