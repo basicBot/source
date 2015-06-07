@@ -1491,7 +1491,12 @@
                         var now = Date.now();
                         var chatters = 0;
                         var time;
-                        if (msg.length === cmd.length) time = 60;
+
+                        var launchT = basicBot.room.roomstats.launchTime;
+                        var durationOnline = Date.now() - launchT;
+                        var since = durationOnline / 1000;
+
+                        if (msg.length === cmd.length) time = since;
                         else {
                             time = msg.substring(cmd.length + 1);
                             if (isNaN(time)) return API.sendChat(subChat(basicBot.chat.invalidtime, {name: chat.un}));
