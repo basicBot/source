@@ -706,10 +706,10 @@
                     locked = true;
                 }
                 setTimeout(function (id) {
+                    API.moderateForceSkip();
                     if (typeof reason !== 'undefined') {
                         API.sendChat(reason);
                     }
-                    API.moderateForceSkip();
                     basicBot.room.skippable = false;
                     setTimeout(function () {
                         basicBot.room.skippable = true
@@ -722,9 +722,8 @@
                                 basicBot.roomUtilities.booth.unlockBooth();
                             }, 500);
                         }
-                    }, 1000, id);
+                    }, 500, id);
                 }, 500, id);
-                return void (0);
             },
             changeDJCycle: function () {
                 var toggle = $(".cycle-toggle");
@@ -2974,7 +2973,7 @@
                             var timeElapsed = API.getTimeElapsed();
                             var dj = API.getDJ();
                             var name = dj.username;
-                            var msgSend = '@' + name + ' : ';
+                            var msgSend = '@' + name + ', ';
 
                             if (chat.message.length === cmd.length) {
                                 API.sendChat(subChat(basicBot.chat.usedskip, {name: chat.un}));
