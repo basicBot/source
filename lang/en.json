@@ -68,6 +68,7 @@
     "welcome": "\/me Welcome %%NAME%%",
     "welcomeback": "\/me Welcome back, %%NAME%%",
     "songknown": "\/me @%%NAME%%, this song is in the DJ history.",
+    "notavailable": "\/me @%%NAME%%, the song you played was not available.",
     "timelimit": "\/me @%%NAME%%, your song is longer than %%MAXLENGTH%% minutes, you need permission to play longer songs.",
     "permissionownsong": "\/me :up: @%%NAME%% has permission to play their own production!",
     "isblacklisted": "\/me This track is on the %%BLACKLIST%% blacklist! Skipping...",
