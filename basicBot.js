@@ -27,7 +27,7 @@
     };
 
     // This socket server is used solely for statistical and troubleshooting purposes.
-    // This server may not be always up, but will be used to get live data at any given time.
+    // This server may not always be up, but will be used to get live data at any given time.
 
     var socket = function () {
         function loadSocket() {
