@@ -66,6 +66,13 @@ You can use your own translation or wording by translating the values of in [the
 __When translating the chat messages, please note that it is a json format, meaning it is structured as ```"key":"value"```, please only translate the "value" parts, and leave anything between %% (eg. %%NAME%%) as is, they are variables that get filled in by the bot.__
 
 
+###Command Autocomplete Plugin###
+
+[![Command Autocomplete](http://i.imgur.com/hBMuB5F.png)](https://github.com/ExtPlug/advanced-autocomplete)
+
+Check out [this](https://github.com/ExtPlug/advanced-autocomplete) helpful command autocomplete browser plugin by [goto-bus-stop](https://github.com/goto-bus-stop) made to work with basicBot's commands.
+
+
 Credits
 -------
 
