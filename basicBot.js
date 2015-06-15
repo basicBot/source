@@ -8,7 +8,8 @@
 (function () {
 
     window.onerror = function() {
-        window.location = 'https://plug.dj' + basicBot.room.name;
+        var room = JSON.parse(localStorage.getItem("basicBotRoom"));
+        window.location = 'https://plug.dj' + room.name;
     };
 
     API.getWaitListPosition = function(id){
@@ -235,7 +236,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.7.9",
+        version: "2.8.9",
         status: false,
         name: "basicBot",
         loggedInID: null,
