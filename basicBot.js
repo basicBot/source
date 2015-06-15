@@ -251,7 +251,7 @@
             botName: "basicBot",
             language: "english",
             chatLink: "https://rawgit.com/***REMOVED***/basicBot/master/lang/en.json",
-            roomLock: true, // Requires an extension to re-load the script
+            roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
             startupEmoji: false, // true or false
