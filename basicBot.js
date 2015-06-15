@@ -7,6 +7,10 @@
 
 (function () {
 
+    window.onerror = function() {
+        window.location = 'https://plug.dj' + basicBot.room.name;
+    };
+
     API.getWaitListPosition = function(id){
         if(typeof id === 'undefined' || id === null){
             id = API.getUser().id;
@@ -246,6 +250,7 @@
             botName: "basicBot",
             language: "english",
             chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+            roomLock: true, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
             startupEmoji: false, // true or false
@@ -305,6 +310,7 @@
             }
         },
         room: {
+            name: null,
             users: [],
             afkList: [],
             mutedUsers: [],
@@ -1339,22 +1345,29 @@
                 })
             };
 
-            var roomURL = window.location.pathname;
+            basicBot.room.name = window.location.pathname;
             var Check;
 
+            console.log(basicBot.room.name);
+
             var detect = function(){
-                if(roomURL != window.location.pathname){
-                    clearInterval(Check)
+                if(basicBot.room.name != window.location.pathname){
                     console.log("Killing bot after room change.");
                     storeToStorage();
                     basicBot.disconnectAPI();
                     setTimeout(function () {
                         kill();
                     }, 1000);
+                    if (basicBot.settings.roomLock){
+                        window.location = 'https://plug.dj' + basicBot.room.name;
+                    }
+                    else {
+                        clearInterval(Check);
+                    }
                 }
             };
 
-            Check = setInterval(function(){ detect() }, 100);
+            Check = setInterval(function(){ detect() }, 2000);
 
             retrieveSettings();
             retrieveFromStorage();
