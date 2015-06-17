@@ -61,6 +61,7 @@ Bouncer
 |!eta | (@user) | shows when user will reach the booth |
 |!filter | | toggles the chat filter |
 |!forceskip | | forceskips the current song |
+|!historyskip | | toggles the history skip |
 |!jointime | @user | shows how long the user has been in the room |
 |!kick | (X) | kicks user for X minutes, default is 0.25 minutes (15 seconds) |
 |!kill | | shut down the bot |
