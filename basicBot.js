@@ -2437,7 +2437,7 @@
                             var langIndex = json;
                             var link = langIndex[argument.toLowerCase()];
                             if (typeof link === "undefined") {
-                                API.sendChat(subChat(basicBot.chat.langerror, {link: "http://git.io/vJ9nI"}));
+                                API.sendChat(subChat(basicBot.chat.langerror, {link: "https://github.com/VladasX/basicBot/blob/master/lang/langIndex.json"}));
                             }
                             else {
                                 basicBot.settings.language = argument;
