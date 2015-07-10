@@ -12,7 +12,7 @@ Manager
 |:------:|:---------:|:--------------------------------------:|
 |!afklimit | X | sets the maximum afk time |
 |!botname | (botname) | change the default bot name |
-|!bouncer+ | | disable bouncer+ |
+|!bouncer+ | | toggle bouncer+ |
 |!skippos | X | set the position to which skip and lockskip moves the dj |
 |!clearchat | |clears the chat |
 |!cycle | | toggle DJ cycle |
@@ -75,7 +75,6 @@ Bouncer
 |!restricteta | | toggles the restriction on eta: grey users can use it once an hour |
 |!sessionstats | | display stats for the current session |
 |!skip | (reason) | skips the dj using smartskip. actions such as locking and moving user depends on various factors (the position the dj is moved to can be set with !skippos) |
-|!historyskip | | skips all songs in the dj history |
 |!status | | display the bot's status and some settings |
 |!timeguard | | toggle the timeguard |
 |!togglebl | | toggle the blacklist |
