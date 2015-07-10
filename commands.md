@@ -12,11 +12,14 @@ Manager
 |:------:|:---------:|:--------------------------------------:|
 |!afklimit | X | sets the maximum afk time |
 |!botname | (botname) | change the default bot name |
+|!bouncer+ | | disable bouncer+ |
+|!skippos | X | set the position to which skip and lockskip moves the dj |
 |!clearchat | |clears the chat |
 |!cycle | | toggle DJ cycle |
 |!cycletimer | X | set the maximum DJ cycle time for when cycleguard is enabled |
 |!language | (language) | specify the language you would like the bot to use |
 |!locktimer | X | set the maximum time the waitlist can be locked if lockguard is enabled |
+|!maxlength | X | specify the maximum length a song can be when timeguard is enabled |
 |!logout | | logs out account bot is hosted on |
 |!refresh | | refreshes the browser of whoever runs the bot |
 |!usercmdcd | X | set the cooldown on commands by grey users |
@@ -31,11 +34,9 @@ Bouncer+
 |!add | @user | add user to the waitlist |
 |!afkremoval | | toggles the afk check |
 |!autoskip | | skips songs automatically when they're done (use when the circles-bug happens) |
-|!bouncer+ | | disable bouncer+ |
 |~~!deletechat~~ | ~~@user~~ | ~~delete all the chats by a certain user~~ |
 |!lock | | lock the waitlist |
 |!lockdown | | lock down the room: only staff can chat |
-|!maxlength | X | specify the maximum length a song can be when timeguard is enabled |
 |!move | @user (X) | moves user to position X on the waitlist, default is position 1 |
 |!remove | @user | remove user from the waitlist |
 |!roulette | | start a roulette |
@@ -54,6 +55,7 @@ Bouncer
 |!autodisable | | toggle the autodisable |
 |!ban | @user | bans user for 1 day |
 |!blacklist / !bl | blacklistname | add the song to the specified blacklist |
+|!commanddeletion | | toggles if bot commands gets deleted |
 |!blinfo | | get information required to blacklist a song |
 |!cycleguard | | toggles the cycleguard |
 |!dclookup / !dc | (@user) | do dclookup for user |
@@ -73,7 +75,7 @@ Bouncer
 |!restricteta | | toggles the restriction on eta: grey users can use it once an hour |
 |!sessionstats | | display stats for the current session |
 |!skip | (reason) | skips the dj using smartskip. actions such as locking and moving user depends on various factors (the position the dj is moved to can be set with !skippos) |
-|!skippos | X | set the position to which skip and lockskip moves the dj |
+|!historyskip | | skips all songs in the dj history |
 |!status | | display the bot's status and some settings |
 |!timeguard | | toggle the timeguard |
 |!togglebl | | toggle the blacklist |
