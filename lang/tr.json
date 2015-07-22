@@ -43,7 +43,7 @@
         "Outlook iyi.",
         "Bu say\u0131lmaz.",
         "Evet, dogru zamanda.",
-        "Benim kaynaklarim desteklemiyor.",
+        "Definitely not.",
         "Kesinlikle hay\u0131r.",
         "Beklemek zorundas\u0131n.",
         "\u015e\u00fcphelerim var.",
@@ -53,8 +53,7 @@
         "\u0130yi g\u00f6r\u00fcn\u00fcyor.",
         "Muhtemelen.",
         "Dalga m\u0131 ge\u00e7iyorsun ?",
-        "Bunun icin kumar oynamayin :)",
-        "Unut gitsin."
+        "Bunun icin kumar oynamayin :)"
     ],
     "nodatafound": "Veriler bulunamadi.",
     "currentlang": "\/me Suanki bot dili: %%LANGUAGE%%",
