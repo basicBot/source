@@ -43,7 +43,6 @@
         "Outlook baik.",
         "Jangan mengharapkan ia.",
         "Ya, dalam masa yang sewajarnya.",
-        "Definitely not.",
         "Sudah pasti tidak.",
         "Anda perlu menunggu.",
         "Saya mempunyai keraguan saya.",
@@ -53,7 +52,8 @@
         "Kelihatan baik!",
         "Mungkin.",
         "Adakah anda bergurau?",
-        "Jangan bertaruh di atasnya."
+        "Jangan bertaruh di atasnya.",
+        "Lupakan mengenainya."
     ],
     "nodatafound": "Tiada data sebelumnya dijumpai.",
     "currentlang": "\/me Bahasa semasa tetap pada: %%LANGUAGE%%",

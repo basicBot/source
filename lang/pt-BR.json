@@ -43,9 +43,8 @@
         "Parece bom.",
         "N\u00e3o conte com isso.",
         "Sim, em seu devido tempo.",
-        "Definitely not.",
         "Definitivamente n\u00e3o.",
-        "Voc\u00ea vai ter que esperar...",
+        "Voc\u00ea ter\u00e1 que esperar.",
         "Eu tenho minhas d\u00favidas.",
         "Um tanto...",
         "Parece bom para mim!",
@@ -53,7 +52,8 @@
         "Claro!",
         "Provavelmente.",
         "Est\u00e1 brincando?",
-        "N\u00e3o aposte nisso."
+        "N\u00e3o aposte nisso.",
+        "Esque\u00e7a isso."
     ],
     "nodatafound": "Dados anteriores n\u00e3o encontrados.",
     "currentlang": "\/me Idioma definido: %%LANGUAGE%%",
