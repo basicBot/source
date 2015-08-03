@@ -236,7 +236,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.8.10",
+        version: "2.8.11",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -251,6 +251,7 @@
             botName: "basicBot",
             language: "english",
             chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+            scriptLink: "https://rawgit.com/Yemasthui/basicBot/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
@@ -2878,7 +2879,7 @@
                         basicBot.disconnectAPI();
                         kill();
                         setTimeout(function () {
-                            $.getScript(basicBot.scriptLink);
+                            $.getScript(basicBot.settings.scriptLink);
                         }, 2000);
                     }
                 }
