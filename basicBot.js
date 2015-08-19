@@ -210,7 +210,7 @@
       return this.substring(0, str.length) === str;
     };
 
-    var linkFixer = function (msg) {
+    function linkFixer(msg) {
         var parts = msg.splitBetween('<a href="', '<\/a>');
         for (var i = 1; i < parts.length; i = i + 2) {
             var link = parts[i].split('"')[0];
@@ -223,7 +223,7 @@
         return m;
     };
 
-    var decodeEntities = function (s) {
+    function decodeEntities(s) {
         var str, temp = document.createElement('p');
         temp.innerHTML = s;
         str = temp.textContent || temp.innerText;
