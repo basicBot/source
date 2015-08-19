@@ -16,10 +16,10 @@ Developers
 -------------
 
 __Current:__
- - [Benzi]() __(Maintainer)__
+ - [Benzi](https://github.com/Benzi) __(Maintainer)__
 
 __Past:__
- - [Yemasthui]() __(Creator)__
+ - [Yemasthui](https://github.com/Yemasthui) __(Creator)__
 
 ###__IMPORTANT__
 
