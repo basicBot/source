@@ -34,7 +34,7 @@ Bouncer+
 |!add | @user | add user to the waitlist |
 |!afkremoval | | toggles the afk check |
 |!autoskip | | skips songs automatically when they're done (use when the circles-bug happens) |
-|~~!deletechat~~ | ~~@user~~ | ~~delete all the chats by a certain user~~ |
+|!deletechat | @user | delete all the chats by a certain user |
 |!lock | | lock the waitlist |
 |!lockdown | | lock down the room: only staff can chat |
 |!move | @user (X) | moves user to position X on the waitlist, default is position 1 |
