@@ -44,7 +44,6 @@
         "No cuentes con ello.",
         "Si, en su debido tiempo.",
         "Definitely not.",
-        "Definitivamente no.",
         "Tendras que esperar.",
         "Tengo mis dudas.",
         "Se ve normal.",
@@ -53,7 +52,8 @@
         "\u00a1Pinta bien!",
         "Probablemente.",
         "\u00bfEstas bromeando?",
-        "No apuestes en ello."
+        "No apuestes en ello.",
+        "Olvidalo..."
     ],
     "nodatafound": "No se ha encontrado datos anteriores.",
     "currentlang": "\/me Idioma actualmente puesto en %%LANGUAGE%%",
