@@ -1,5 +1,5 @@
 /**
- *Copyright 2015 basicTeam
+ *Copyright 2015 bscBot
  *Modifications (including forks) of the code to fit personal needs are allowed only for personal use and should refer back to the original source.
  *This software is not for profit, any extension, or unauthorised person providing this software is not authorised to be in a position of any monetary gain from this use of this software. Any and all money gained under the use of the software (which includes donations) must be passed on to the original author.
  */
@@ -99,7 +99,7 @@
     var loadChat = function (cb) {
         if (!cb) cb = function () {
         };
-        $.get("https://rawgit.com/basicTeam/basicBot/master/lang/langIndex.json", function (json) {
+        $.get("https://rawgit.com/bscBot/source/master/lang/langIndex.json", function (json) {
             var link = basicBot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -240,9 +240,9 @@
         status: false,
         name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/basicTeam/basicBot/master/basicBot.js",
+        scriptLink: "https://rawgit.com/bscBot/source/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/basicTeam/basicBot/master/lang/en.json",
+        chatLink: "https://rawgit.com/bscBot/source/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
@@ -250,8 +250,8 @@
         settings: {
             botName: "basicBot",
             language: "english",
-            chatLink: "https://rawgit.com/basicTeam/basicBot/master/lang/en.json",
-            scriptLink: "https://rawgit.com/basicTeam/basicBot/master/basicBot.js",
+            chatLink: "https://rawgit.com/bscBot/source/master/lang/en.json",
+            scriptLink: "https://rawgit.com/bscBot/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
@@ -307,9 +307,9 @@
             songstats: true,
             commandLiteral: "!",
             blacklists: {
-                NSFW: "https://rawgit.com/basicTeam/basicBot-customization/master/blacklists/NSFWlist.json",
-                OP: "https://rawgit.com/basicTeam/basicBot-customization/master/blacklists/OPlist.json",
-                BANNED: "https://rawgit.com/basicTeam/basicBot-customization/master/blacklists/BANNEDlist.json"
+                NSFW: "https://rawgit.com/bscBot/custom/master/blacklists/NSFWlist.json",
+                OP: "https://rawgit.com/bscBot/custom/master/blacklists/OPlist.json",
+                BANNED: "https://rawgit.com/bscBot/custom/master/blacklists/BANNEDlist.json"
             }
         },
         room: {
@@ -2473,7 +2473,7 @@
                         if (msg.length <= cmd.length + 1) return API.sendChat(subChat(basicBot.chat.currentlang, {language: basicBot.settings.language}));
                         var argument = msg.substring(cmd.length + 1);
 
-                        $.get("https://rawgit.com/basicTeam/basicBot/master/lang/langIndex.json", function (json) {
+                        $.get("https://rawgit.com/bscBot/source/master/lang/langIndex.json", function (json) {
                             var langIndex = json;
                             var link = langIndex[argument.toLowerCase()];
                             if (typeof link === "undefined") {
