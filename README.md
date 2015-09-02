@@ -6,7 +6,7 @@
 [CLICK HERE TO CUSTOMISE BASICBOT!](https://github.com/bscBot/custom)
 -
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bscBot/source?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![facebook group](https://ssl.benzi.io/dump/facebook-group-badge.svg)](https://facebook.com/groups/basicBot) [![twitter](https://ssl.benzi.io/dump/twitter-badge.svg)](https://twitter.com/bscbt)
+[![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook group](https://ssl.benzi.io/dump/facebook-group-badge.svg)](https://facebook.com/groups/basicBot) [![twitter](https://ssl.benzi.io/dump/twitter-badge.svg)](https://twitter.com/bscbt)
 
 Email enquiries: [bnz.mngn [at] gmail [dot] com](mailto:bnz.mngn@gmail.com)
 
