@@ -3215,8 +3215,8 @@
                         */
 
                         // This is a more efficient solution
-                        if (msg.length > 241){
-                            var split = msg.match(/.{1,241}/g);
+                        if (msg.length > 238){
+                            var split = msg.match(/.{1,238}/g);
                             for (var i = 0; i < split.length; i++) {
                                 var func = function(index) {
                                     setTimeout(function() {
