@@ -202,5 +202,9 @@
     "voteratio": "\/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, taxa\/propor\u00e7\u00e3o (w\/m): %%RATIO%%.",
     "website": "\/me Visite nosso site: %%LINK%%",
     "youtube": "\/me [%%NAME%%] Inscreva-se no nosso canal: %%LINK%%",
-    "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M."
+    "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
+    "thorNotClose": "\/me @%%NAME%%, you're not worthy of getting close to the hammer!",
+    "thorcd": "\/me @%%NAME%% you can try to lift the hammer in %%TIME%% minutes.",
+    "thorWorthy": "\/me @%%NAME%% you're worthy of the hammer :hammer:, congratulations!",
+    "thorNotWorthy": "\/me @%%NAME%% you're not worthy of the hammer."
 }

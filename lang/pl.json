@@ -72,7 +72,7 @@
     "permissionownsong": "\/me :up: @%%NAME%% posiada uprawnienia aby gra\u0107 swoje w\u0142asne produkcje",
     "isblacklisted": "\/me Utw\u00f3r znajduje si\u0119 na %%BLACKLIST%% li\u015bcie. Pomijam...",
     "isopen": "\/me Ruletka w\u0142\u0105czona! Wpisz !join aby do\u0142\u0105czy\u0107! (Wylosowana osoba zostanie przeniesiona na losowe miejsce w kolejce).",
-    "winnerpicked": "\/me Zwyci\u0119zca zosta\u0142 wybrany! @%%NAME%% przeniesionty na pozycj\u0119 %%POSITION%%.",
+    "winnerpicked": "\/me Zwyci\u0119zca zosta\u0142 wybrany! @%%NAME%% przeniesiony na pozycj\u0119 %%POSITION%%.",
     "ball": "\/me %%NAME%% zapyta\u0142: \"%%QUESTION%%\" i %%BOTNAME%% odpowiada: \"%%RESPONSE%%\"",
     "notghosting": "[%%NAME1%%] %%NAME2%% nie ghostuje.",
     "ghosting": "[%%NAME1%%] %%NAME2%% albo ghostuje albo go nie ma.",
@@ -202,5 +202,9 @@
     "voteratio": "\/me [@%%NAME%%] @%%USERNAME%% ~ wooty: %%WOOT%%, mehy: %%MEHS%%, \u015brednia (w\/m): %%RATIO%%.",
     "website": "\/me Zapraszamy do odwiedzenia naszej strony internetowej: %%LINK%%",
     "youtube": "\/me  [%%NAME%%] Subskrybuj nas na youtube: %%LINK%%",
-    "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M."
+    "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
+    "thorNotClose": "\/me @%%NAME%%, you're not worthy of getting close to the hammer!",
+    "thorcd": "\/me @%%NAME%% you can try to lift the hammer in %%TIME%% minutes.",
+    "thorWorthy": "\/me @%%NAME%% you're worthy of the hammer :hammer:, congratulations!",
+    "thorNotWorthy": "\/me @%%NAME%% you're not worthy of the hammer."
 }

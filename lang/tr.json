@@ -202,5 +202,9 @@
     "voteratio": "\/me [@%%NAME%%] @%%USERNAME%% ~ WOOT: %%WOOT%%, MEH: %%MEHS%%, ORAN (W\/M): %%RATIO%%.",
     "website": "\/me Sitemizi ziyaret edin: %%LINK%%",
     "youtube": "\/me [%%NAME%%] Youtube kanalimiza abone olun: %%LINK%%",
-    "songstatistics": "\/me :arrow_right: %%ARTIST%% - %%TITLE%%: %%WOOTS%%:+1:\/\\%%GRABS%%:sparkling_heart:\/\\%%MEHS%%:-1:."
+    "songstatistics": "\/me :arrow_right: %%ARTIST%% - %%TITLE%%: %%WOOTS%%:+1:\/\\%%GRABS%%:sparkling_heart:\/\\%%MEHS%%:-1:.",
+    "thorNotClose": "\/me @%%NAME%%, you're not worthy of getting close to the hammer!",
+    "thorcd": "\/me @%%NAME%% you can try to lift the hammer in %%TIME%% minutes.",
+    "thorWorthy": "\/me @%%NAME%% you're worthy of the hammer :hammer:, congratulations!",
+    "thorNotWorthy": "\/me @%%NAME%% you're not worthy of the hammer."
 }
