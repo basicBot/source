@@ -3311,7 +3311,7 @@
                               worthy = worthyAlg == 10 ? true : false;
 
                           for (var i = 0; i < djlist.length; i++) {
-                              if (djlist[i] == id)
+                              if (djlist[i].id == id)
                                   inDjList = true;
                           }
 
@@ -3349,18 +3349,15 @@
                           }
 
                           if (worthy) {
-                              if (API.getWaitListPosition(id) != 1)
-                                  basicBot.userUtilities.moveUser(id, 1, false);
-                              return API.sendChat(subChat(basicBot.chat.thorWorthy, {name: from}));
-                          } else if (!inDjList) {
-                              return API.sendChat(subChat(basicBot.chat.thorNotClose, {name: from}));
-                          } else if (API.getWaitListPosition(id) != djlist.length) {
-                              basicBot.userUtilities.moveUser(id, djlist.length, false);
-                              return API.sendChat(subChat(basicBot.chat.thorNotWorthy, {name: from}));
+                            if (API.getWaitListPosition(id) != 0)
+                            basicBot.userUtilities.moveUser(id, 1, false);
+                            API.sendChat(subChat(basicBot.chat.thorWorthy, {name: from}));
                           } else {
-                              return API.sendChat(subChat(basicBot.chat.thorNotWorthy, {name: from}));
+                            if (API.getWaitListPosition(id) != djlist.length - 1)
+                            basicBot.userUtilities.moveUser(id, djlist.length, false);
+                            API.sendChat(subChat(basicBot.chat.thorNotWorthy, {name: from}));
                           }
-                      }
+                        }
                     }
                 }
             },
