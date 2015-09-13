@@ -278,8 +278,8 @@
             autodisable: true,
             commandCooldown: 30,
             usercommandsEnabled: true,
-            thorCommand: true,
-            thorInterval: 10,
+            thorCommand: false,
+            thorCooldown: 10,
             skipPosition: 3,
             skipReasons: [
                 ["theme", "This song does not fit the room theme. "],
@@ -3325,7 +3325,7 @@
                               }
 
                               if (usedThor) {
-                                  timeInMinutes = (basicBot.settings.thorInterval + 1) - (Math.floor((oldTime - Date.now()) * Math.pow(10, -5)) * -1);
+                                  timeInMinutes = (basicBot.settings.thorCooldown + 1) - (Math.floor((oldTime - Date.now()) * Math.pow(10, -5)) * -1);
                                   thorCd = timeInMinutes > 0 ? true : false;
                                   if (thorCd == false)
                                       basicBot.room.usersUsedThor.splice(indexArrUsedThor, 1);
@@ -3337,12 +3337,7 @@
                               }
                           }
 
-                          if (isDj && worthy == true) {
-                              return API.sendChat(subChat(basicBot.chat.thorWorthy, {name: from}));
-                          } else if (isDj && worthy == false) {
-                              API.moderateForceSkip();
-                              return API.sendChat(subChat(basicBot.chat.thorNotWorthy, {name: from}));
-                          } else if (!inDjList) {
+                          if (!inDjList) {
                               return API.sendChat(subChat(basicBot.chat.thorNotClose, {name: from}));
                           } else if (thorCd) {
                               return API.sendChat(subChat(basicBot.chat.thorcd, {name: from, time: timeInMinutes}));

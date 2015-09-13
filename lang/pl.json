@@ -203,8 +203,8 @@
     "website": "\/me Zapraszamy do odwiedzenia naszej strony internetowej: %%LINK%%",
     "youtube": "\/me  [%%NAME%%] Subskrybuj nas na youtube: %%LINK%%",
     "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
-    "thorNotClose": "\/me @%%NAME%%, you're not worthy of getting close to the hammer!",
-    "thorcd": "\/me @%%NAME%% you can try to lift the hammer in %%TIME%% minutes.",
-    "thorWorthy": "\/me @%%NAME%% you're worthy of the hammer :hammer:, congratulations!",
-    "thorNotWorthy": "\/me @%%NAME%% you're not worthy of the hammer."
+    "thorNotClose": "\/me @%%NAME%%, nie jeste\u015b godzien aby podej\u015b\u0107 do m\u0142ota!",
+    "thorcd": "\/me @%%NAME%% mo\u017cesz spr\u00f3bowa\u0107 podnie\u015b\u0107 m\u0142ot za %%TIME%% minut.",
+    "thorWorthy": "\/me @%%NAME%% jeste\u015b godzien m\u0142ota :hammer:, gratulacje!",
+    "thorNotWorthy": "\/me @%%NAME%% nie jeste\u015b godzien m\u0142ota."
 }
