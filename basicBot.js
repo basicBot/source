@@ -238,7 +238,7 @@
     var basicBot = {
         version: "2.8.15",
         status: false,
-        name: "basicBot",
+        name: "BatuhanBotGJ",
         loggedInID: null,
         scriptLink: "https://rawgit.com/bscBot/source/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
@@ -249,7 +249,7 @@
         retrieveFromStorage: retrieveFromStorage,
         settings: {
             botName: "basicBot",
-            language: "english",
+            language: turkish,
             chatLink: "https://rawgit.com/bscBot/source/master/lang/en.json",
             scriptLink: "https://rawgit.com/bscBot/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
@@ -294,7 +294,7 @@
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 5,
-            motd: "Temporary Message of the Day",
+            motd: "Odamıza hoşgeldiniz" ,
             filterChat: true,
             etaRestriction: false,
             welcome: true,
