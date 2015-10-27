@@ -1,6 +1,25 @@
 basicBot
 ========
 
+!!! PLUG.DJ HAS GONE. RIP BASIC BOT, ITS BEEN FUN. !!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 A not so basic bot for plug.dj 
 
 !!!TO CUSTOMIZE: USE [THIS REPOSITORY](https://github.com/Yemasthui/basicBot-customization)!!!
