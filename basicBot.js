@@ -9,7 +9,7 @@
 
     /*window.onerror = function() {
         var room = JSON.parse(localStorage.getItem("basicBotRoom"));
-        window.location = 'https://plug.dj' + room.name;
+        window.location = 'https://stg.plug.dj' + room.name;
     };*/
 
     API.getWaitListPosition = function(id){
@@ -1350,7 +1350,7 @@
             basicBot.connectAPI();
             API.moderateDeleteChat = function (cid) {
                 $.ajax({
-                    url: "https://plug.dj/_/chat/" + cid,
+                    url: "https://stg.plug.dj/_/chat/" + cid,
                     type: "DELETE"
                 })
             };
@@ -1369,7 +1369,7 @@
                         kill();
                     }, 1000);
                     if (basicBot.settings.roomLock){
-                        window.location = 'https://plug.dj' + basicBot.room.name;
+                        window.location = 'https://stg.plug.dj' + basicBot.room.name;
                     }
                     else {
                         clearInterval(Check);
@@ -3724,7 +3724,7 @@
                                 }
                                 var slug = API.getUser(id).slug;
                                 if (typeof slug !== 'undefined') {
-                                    var profile = "https://plug.dj/@/" + slug;
+                                    var profile = "https://stg.plug.dj/@/" + slug;
                                 } else {
                                     var profile = "~";
                                 }
