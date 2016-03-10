@@ -5,7 +5,7 @@
 
 #Important - Deprecation Notice (See Note)
 
-Plug DJ Inc has ceased operations as of the 29th of September, 2015. Basic Bot therefore no longer has any use, as the site is offline. Thanks for everybody that was involved.
+Plug DJ has ceased operations as of the 29th of September, 2015. Basic Bot therefore no longer has any use, as the site is offline. Thanks for everybody that was involved.
 
 __Note: Plug.dj has been acquired, and the staging domain is available as work is done to bring the site back to normality and stability. The bot has been edited for a single time only to work with the staging domain. As soon as the public domain comes available again, the domain will be changed and basic bot will not work with staging.__
 
@@ -36,7 +36,7 @@ __I would also like to thank everyone who contributed in translating the bot via
 
 ### Copyright
 
-Copyright &copy; 2014-2015 bscBot
+Copyright &copy; 2014-2016 bscBot
 
 Modifications (including forks) of the code to fit personal needs are allowed only for personal use and should refer back to the original source.
 This software is not for profit, any extension, or unauthorised person providing this software is not authorised to be in a position of any monetary gain from this use of this software. Any and all money gained under the use of the software (which includes donations) must be passed on to the original author.
