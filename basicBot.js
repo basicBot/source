@@ -713,9 +713,11 @@
                 var waitlistlength = API.getWaitList().length;
                 var locked = false;
                 basicBot.room.queueable = false;
-
+                $.getJSON('https://stg.plug.dj/_/rooms/state', function(data) {
                 if (waitlistlength == 50) {
-                    basicBot.roomUtilities.booth.lockBooth();
+                    if (data.data[0].booth.shouldCycle) {
+                    basicBot.roomUtilities.changeDJCycle();
+                    }
                     locked = true;
                 }
                 setTimeout(function (id) {
@@ -734,11 +736,12 @@
                         basicBot.room.queueable = true;
                         if (locked) {
                             setTimeout(function () {
-                                basicBot.roomUtilities.booth.unlockBooth();
+                                basicBot.roomUtilities.changeDJCycle();
                             }, 1000);
                         }
                     }, 1500, id);
                 }, 1000, id);
+                });
             },
             changeDJCycle: function () {
                 $.getJSON('https://stg.plug.dj/_/rooms/state', function(data) {
