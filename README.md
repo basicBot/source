@@ -3,7 +3,7 @@
 [![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook group](https://ssl.benzi.io/dump/facebook-group-badge.svg)](https://facebook.com/groups/basicBot) [![twitter](https://ssl.benzi.io/dump/twitter-badge.svg)](https://twitter.com/bscbt)
 
 
-#Important - Deprecation Notice (See Note)
+# Important - Deprecation Notice (See Note)
 
 Plug DJ Inc has ceased operations as of the 29th of September, 2015. Basic Bot therefore no longer has any use, as the site is offline. Thanks for everybody that was involved.
 
@@ -12,8 +12,38 @@ __Note: Plug.dj has been acquired, and the staging domain is available as work i
 Email enquiries: [bnz.mngn [at] gmail [dot] com](mailto:bnz.mngn@gmail.com)
 
 
+Usage
+-----
+Bookmark the following code. To run the bot, run the bookmark.
+`javascript:(function(){$.getScript('https://rawgit.com/bscBot/source/master/basicBot.js');})();`
+
+If this does not work, go to https://raw.githubusercontent.com/bscBot/source/master/basicBot.js and copy paste its content into your console (accessible in chrome by pressing F12) when on plug.dj in your community.
+
+
+Commands
+--------
+These can be found in [the commands file](https://github.com/bscBot/source/blob/master/commands.md).
+
+
+Blacklists
+----------
+Examples of blacklists can be found in [the customization repository](https://github.com/bscBot/custom/tree/master/blacklists).
+You can add blacklists in the settings of the bot via the methods given in that same repository. See below for more information.
+
+
+Extending functionality and custom default settings
+---------------------------------------------------
+basicBot can be customized to fit your needs. Please refer to [the customization repository](https://github.com/bscBot/custom) for more info.
+Please do not try to if you are not confident in your javascript capabilities.
+
+
+basicBot Chrome Extension
+-------------------------
+[Get the Official basicBot Chrome Extension](https://chrome.google.com/webstore/detail/basicbot/bjinmbkeneigmkkkpcmcokphbjkepeie)
+
+
 Developers
--------------
+----------
  - [Benzi](https://github.com/Benzi) __(Maintainer)__
 
 
@@ -43,7 +73,7 @@ This software is not for profit, any extension, or unauthorised person providing
 
 
 Disclaimer
-------------
+----------
 
 This bot is developed independently. Changes may be made without notice. There is no guarantee for the bot to be functioning perfectly.
 plug.dj admins have the right to request changes.
