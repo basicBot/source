@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, sila tutup capslock butang.",
     "askskip": "\/me @%%NAME%%, Jangan meminta untuk melangkau.",
     "spam": "\/me @%%NAME%%, sila jangan spam.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, sila jangan pos link ke bilik-bilik lain.",
     "adfly": "\/me @%%NAME%%, sila tukar autowoot program anda. Kami mencadangkan Plugcubed: http:\/\/plugcubed.net",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/i.giphy.com\/%%ID%%.gif [Tag: %%TAGS%%]",

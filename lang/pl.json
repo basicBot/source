@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, wy\u0142\u0105cz capslocka.",
     "askskip": "\/me @%%NAME%%, nie pytaj o skipy.",
     "spam": "\/me @%%NAME%%, nie spamuj.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, nie podawaj link\u00f3w do innych spo\u0142eczno\u015bci.",
     "adfly": "\/me @%%NAME%%, zmie\u0144 sw\u00f3j program do autowoot\u00f3w. Polecamy PlugCubed: http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/i.giphy.com\/%%ID%%.gif [Tagi: %%TAGS%%]",

@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, L\u016bdzu, neturi CAPSLOCK pogu.",
     "askskip": "\/me @%%NAME%%, neprasi lai izlai\u017e.",
     "spam": "\/me @%%NAME%%, l\u016bdzu, nespamo.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, l\u016bdzu, neliec saites uz cit\u0101m kopien\u0101m.",
     "adfly": "\/me @%%NAME%%, L\u016bdzu mainiet savu \"autowoot\" programmu. M\u0113s iesak\u0101m \u0161o.  http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] [%%TAGS%%] http:\/\/media.giphy.com\/media\/%%ID%%\/giphy.gif",

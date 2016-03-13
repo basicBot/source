@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, lutfen CAPSLOCK tusunu kapatin.",
     "askskip": "\/me @%%NAME%%, neden gecildigini sormayin.",
     "spam": "\/me @%%NAME%%, lutfen spam yapmayin.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, diger odalarin reklamini yapmayin.",
     "adfly": "\/me @%%NAME%%, lutfen otowootunuzu degistirin. Onerilen: http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/media.giphy.com\/media\/%%ID%%\/giphy.gif [Etiketler: %%TAGS%%]",

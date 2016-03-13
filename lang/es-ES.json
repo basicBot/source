@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, no chatees en mayusculas por favor.",
     "askskip": "\/me @%%NAME%%, no pidas skips.",
     "spam": "\/me @%%NAME%%, por favor no spamees.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, no postees links hacia otras salas por favor.",
     "adfly": "\/me @%%NAME%%, por favor cambia tu programa de \"autogenial\". Te sugerimos PlugCubed: http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/i.giphy.com\/%%ID%%.gif [Tags: %%TAGS%%]",

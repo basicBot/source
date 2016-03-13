@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, unglue your capslock button please.",
     "askskip": "\/me @%%NAME%%, don't ask for skips.",
     "spam": "\/me @%%NAME%%, please don't spam.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, don't post links to other rooms please.",
     "adfly": "\/me @%%NAME%%, please change your autowoot program. We suggest PlugCubed: http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/i.giphy.com\/%%ID%%.gif [Tags: %%TAGS%%]",

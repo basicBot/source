@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, isklju\u010di caps, molim.",
     "askskip": "\/me @%%NAME%%, ne tra\u017ei skip.",
     "spam": "\/me @%%NAME%%, molim, ne spamaj.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, ne postavljaj linkove drugih soba.",
     "adfly": "\/me @%%NAME%%, promeni tvoj autowoot program. Mi preporu\u010dujemo PlugCubed: http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/media.giphy.com\/media\/%%ID%%\/giphy.gif [Oznaka: %%TAGS%%]",

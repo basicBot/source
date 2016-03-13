@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, d\u00e9collez votre bouton verrmaj, merci.",
     "askskip": "\/me @%%NAME%%, ne demandez pas de passer une musique.",
     "spam": "\/me @%%NAME%%, merci de ne pas spammer.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, ne postez pas de liens menant vers d'autres salles.",
     "adfly": "\/me @%%NAME%%, merci de changer votre programme d'Autowoot. Nous vous sugg\u00e9rons PlugCubed : http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/i.giphy.com\/%%ID%%.gif [Tags: %%TAGS%%]",

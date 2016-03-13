@@ -89,6 +89,7 @@
     "caps": "\/me @%%NAME%%, zet je capslock uit alsjeblieft.",
     "askskip": "\/me @%%NAME%%, vraag alstublieft niet voor skips.",
     "spam": "\/me @%%NAME%%, spam alsjeblieft niet.",
+    "curses": "\/me @%%NAME%%, please don't curse.",
     "roomadvertising": "\/me @%%NAME%%, link alsjeblieft geen andere gemeenschappen.",
     "adfly": "\/me @%%NAME%%, verander alsjeblieft je autowoot programma. Wij raden PlugCubed aan: http:\/\/plugcubed.net\/",
     "validgiftags": "\/me [@%%NAME%%] http:\/\/media.giphy.com\/media\/%%ID%%\/giphy.gif [Tags: %%TAGS%%]",
