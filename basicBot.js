@@ -54,7 +54,7 @@
             };
         }
         if (typeof SockJS == 'undefined') {
-            $.getScript('https://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js', loadSocket);
+            $.getScript('https://cdn.jsdelivr.net/sockjs/1.0.3/sockjs.min.js', loadSocket);
         } else loadSocket();
     }
 
@@ -743,20 +743,20 @@
             changeDJCycle: function () {
                 $.getJSON('https://stg.plug.dj/_/rooms/state', function(data) {
                     if (data.data[0].booth.shouldCycle) { // checks "" "shouldCycle": true "" if its true
-                        API.moderateDJCycle(false); // Disables the DJ Cycle 
+                        API.moderateDJCycle(false); // Disables the DJ Cycle
                         clearTimeout(basicBot.room.cycleTimer); // Clear the cycleguard timer
                     } else { // If cycle is already disable; enable it
                         if (basicBot.settings.cycleGuard) { // Is cycle guard on?
-                        API.moderateDJCycle(true); // Enables DJ cycle  
+                        API.moderateDJCycle(true); // Enables DJ cycle
                         basicBot.room.cycleTimer = setTimeout(function () {  // Start timer
                             API.moderateDJCycle(false); // Disable cycle
                         }, basicBot.settings.maximumCycletime * 60 * 1000); // The time
-                        } else { // So cycleguard is not on? 
-                         API.moderateDJCycle(true); // Enables DJ cycle   
+                        } else { // So cycleguard is not on?
+                         API.moderateDJCycle(true); // Enables DJ cycle
                         }
                     };
                 });
-            }, 
+            },
             intervalMessage: function () {
                 var interval;
                 if (basicBot.settings.motdEnabled) interval = basicBot.settings.motdInterval;
