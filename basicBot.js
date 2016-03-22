@@ -236,32 +236,32 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.8.15",
+        version: "6.6.66",
         status: false,
-        name: "basicBot",
+        name: "NoisyBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/bscBot/source/master/basicBot.js",
+        scriptLink: "https://rawgit.com/NoisYmenT/source/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/bscBot/source/master/lang/en.json",
+        chatLink: "https://rawgit.com/NoisYmenT/source/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
+            botName: "NoisyBot",
             language: "english",
-            chatLink: "https://rawgit.com/bscBot/source/master/lang/en.json",
-            scriptLink: "https://rawgit.com/bscBot/source/master/basicBot.js",
+            chatLink: "https://rawgit.com/NoisYmenT/source/master/lang/en.json",
+            scriptLink: "https://rawgit.com/NoisYmenT/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
-            startupCap: 1, // 1-200
-            startupVolume: 0, // 0-100
-            startupEmoji: false, // true or false
-            autowoot: true,
+            startupCap: 50, // 1-200
+            startupVolume: 25, // 0-100
+            startupEmoji: true, // true or false
+            autowoot: false,
             autoskip: false,
             smartSkip: true,
             cmdDeletion: true,
-            maximumAfk: 120,
-            afkRemoval: true,
+            maximumAfk: 0,
+            afkRemoval: false,
             maximumDc: 60,
             bouncerPlus: true,
             blacklistEnabled: true,
@@ -273,8 +273,8 @@
             voteSkip: false,
             voteSkipLimit: 10,
             historySkip: false,
-            timeGuard: true,
-            maximumSongLength: 10,
+            timeGuard: false,
+            maximumSongLength: 0,
             autodisable: true,
             commandCooldown: 30,
             usercommandsEnabled: true,
@@ -294,10 +294,10 @@
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 5,
-            motd: "Temporary Message of the Day",
-            filterChat: true,
+            motd: "Deez Nuts!",
+            filterChat: false,
             etaRestriction: false,
-            welcome: true,
+            welcome: false,
             opLink: null,
             rulesLink: null,
             themeLink: null,
