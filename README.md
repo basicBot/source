@@ -9,7 +9,7 @@ Plug DJ Inc has ceased operations as of the 29th of September, 2015. Basic Bot t
 
 __Note: Plug.dj has been acquired, and the staging domain is available as work is done to bring the site back to normality and stability. The bot has been edited for a single time only to work with the staging domain. As soon as the public domain comes available again, the domain will be changed and basic bot will not work with staging.__
 
-Email enquiries: [bnz.mngn [at] gmail [dot] com](mailto:bnz.mngn@gmail.com)
+Email enquiries: [hi@benzi.io](mailto:hi@benzi.io)
 
 
 Usage
