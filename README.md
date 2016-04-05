@@ -1,6 +1,6 @@
 # basicBot (source)
 
-[![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook group](./assets/facebook-group-badge.svg)](https://facebook.com/groups/basicBot) [![twitter](./assets/twitter-badge.svg)](https://twitter.com/bscbt)
+[![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook group](https://img.shields.io/badge/facebook-group-3b5998.svg?style=flat)](https://facebook.com/groups/basicBot) [![twitter](https://img.shields.io/badge/twitter-%20-55acee.svg?style=flat)](https://twitter.com/bscbt)
 
 
 # Important - Deprecation Notice (See Note)
