@@ -7,9 +7,9 @@
 Usage
 -----
 Bookmark the following code. To run the bot, run the bookmark.
-`javascript:(function(){$.getScript('https://rawgit.com/basicBot/source/master/basicBot.js');})();`
+`javascript:(function(){$.getScript('https://rawgit.com/javascripto/basicBot-v2/master/basicBot.js');})();`
 
-If this does not work, go to https://raw.githubusercontent.com/basicBot/source/master/basicBot.js and copy paste its content into your console (accessible in chrome by pressing F12) when on plug.dj in your community.
+If this does not work, go to https://rawgit.com/javascripto/basicBot-v2/master/basicBot.js and copy paste its content into your console (accessible in chrome by pressing F12) when on plug.dj in your community.
 
 
 Commands
