@@ -1,4 +1,4 @@
-# basicBot Orginal [link](https://github.com/basicBot/source)
+Orginal basicBot [link](https://github.com/basicBot/source)
 
 # basicBot (source)
 
