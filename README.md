@@ -14,7 +14,7 @@ If this does not work, go to https://rawgit.com/javascripto/basicBot-v2/master/b
 
 Commands
 --------
-These can be found in [the commands file](https://github.com/basicBot/source/blob/master/commands.md).
+These can be found in [the commands file](https://github.com/javascripto/basicBot-v2/blob/master/commands.md).
 
 
 Blacklists
@@ -37,6 +37,7 @@ basicBot Chrome Extension
 Developers
 ----------
  - [Benzi](https://github.com/Benzi) __(Maintainer)__
+ - [Javascript:](https://github.com/javascripto) __(V2 Creator/Editor)__
 
 
 Credits
@@ -52,9 +53,6 @@ I would like to thank the following people:
 |:------:|:---------:|
 |Portuguese|[Motel Bible](https://github.com/motelbible)|
 |French|[NDA](https://github.com/NDAthereal)|
-
-__I would also like to thank everyone who contributed in translating the bot via the [translation centre](http://translate.benzi.io/admin/collaborators)__
-
 
 ### Copyright
 
