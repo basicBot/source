@@ -3,6 +3,7 @@ Orginal basicBot [link](https://github.com/basicBot/source)
 # changelog
 [0.0.1] - 2016-06-04 Added:
 - !clearchat changed into !cc
+- !thor changed into !slots
 - New languages Lithuanian (Completed) and Swedish (Working on it)
 - !help link added for commands page
 
