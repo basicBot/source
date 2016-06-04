@@ -1,4 +1,5 @@
 Orginal basicBot [link](https://github.com/basicBot/source)
+Website [link](http://javascripto.github.io/basicBot-v2/)
 
 # changelog
 [0.0.1] - 2016-06-04 Added:
