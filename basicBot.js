@@ -2146,6 +2146,7 @@
                             case 'sk': ch += 'Hovorte po anglicky, prosím.'; break;
                             case 'cs': ch += 'Mluvte prosím anglicky.'; break;
                             case 'sr': ch += 'Молим Вас, говорите енглески.'; break;
+                            case 'ltu': ch += 'Prašome kalbėti angliškai.'; break;
                         }
                         ch += ' English please.';
                         API.sendChat(ch);
