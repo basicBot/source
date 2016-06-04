@@ -3,7 +3,8 @@ Orginal basicBot [link](https://github.com/basicBot/source)
 # changelog
 [0.0.1] - 2016-06-04 Added:
 - !clearchat changed into !cc
-- Creating new languages (Swedish and Lithuanian) [Still Under Construction]
+- New languages Lithuanian (Completed) and Swedish (Working on it)
+- !help link added for commands page
 
 # basicBot v2 (source)
 
