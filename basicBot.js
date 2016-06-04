@@ -1868,7 +1868,7 @@
             },
 
             clearchatCommand: {
-                command: 'clearchat',
+                command: 'cc',
                 rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
