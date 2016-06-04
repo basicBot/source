@@ -1,5 +1,9 @@
 Orginal basicBot [link](https://github.com/basicBot/source)
 
+# changelog
+- Last basicBot v2 uppdate 2016-06-04
+- Nothing changed yet.
+
 # basicBot v2 (source)
 
 [![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook group](https://img.shields.io/badge/facebook-group-3b5998.svg?style=flat)](https://facebook.com/groups/basicBot) [![twitter](https://img.shields.io/twitter/follow/bscbt.svg?style=social)](https://twitter.com/bscbt)
