@@ -62,6 +62,7 @@ I would like to thank the following people:
 |:------:|:---------:|
 |Portuguese|[Motel Bible](https://github.com/motelbible)|
 |French|[NDA](https://github.com/NDAthereal)|
+|Lithuanian|[DontTakeItSerious](https://github.com/DontTakeItSerious) + [Javascript:](https://github.com/javascripto)
 
 ### Copyright
 
