@@ -3657,6 +3657,8 @@
                                     var language = "Dutch"
                                 } else if (rawlang == "ms"){
                                     var language = "Malay"
+                                } else if (rawlang == "ltu"){
+                                    var language = "Lithuanian"
                                 }
                                 var rawrank = API.getUser(id).role;
                                 if (rawrank == "0"){
