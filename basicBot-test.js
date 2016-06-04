@@ -238,20 +238,20 @@
     var basicBot = {
         version: "0.0.1",
         status: false,
-        name: "basicBot v2",
+        name: "basicBot-v2",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/javascripto/basicBot-v2/master/basicBot.js",
-        cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/javascripto/basicBot-v2/master/lang/en.json",
+        scriptLink: "https://rawgit.com/javascripto/basicBot-v2/master/basicBot-test.js",
+        cmdLink: "https://git.io/vofmh",
+        chatLink: "https://rawgit.com/javascripto/basicBot-v2/master/lang/ltu.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot v2",
-            language: "english",
-            chatLink: "https://rawgit.com/javascripto/basicBot-v2/master/lang/en.json",
-            scriptLink: "https://rawgit.com/javascripto/basicBot-v2/master/basicBot.js",
+            botName: "basicBot-v2",
+            language: "lithuanian",
+            chatLink: "https://rawgit.com/javascripto/basicBot-v2/master/lang/ltu.json",
+            scriptLink: "https://rawgit.com/javascripto/basicBot-v2/master/basicBot-test.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
             startupVolume: 20, // 0-100
