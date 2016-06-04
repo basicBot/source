@@ -2337,7 +2337,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        var link = "Commands: https://git.io/vofmh";
+                        var link = "https://git.io/vofmh";
                         API.sendChat(subChat(basicBot.chat.starterhelp, {link: link}));
                     }
                 }
