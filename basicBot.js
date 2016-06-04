@@ -2476,11 +2476,11 @@
                         if (msg.length <= cmd.length + 1) return API.sendChat(subChat(basicBot.chat.currentlang, {language: basicBot.settings.language}));
                         var argument = msg.substring(cmd.length + 1);
 
-                        $.get("https://rawgit.com/basicBot/source/master/lang/langIndex.json", function (json) {
+                        $.get("https://rawgit.com/javascripto/basicBot-v2/master/lang/langIndex.json", function (json) {
                             var langIndex = json;
                             var link = langIndex[argument.toLowerCase()];
                             if (typeof link === "undefined") {
-                                API.sendChat(subChat(basicBot.chat.langerror, {link: "http://git.io/vJ9nI"}));
+                                API.sendChat(subChat(basicBot.chat.langerror, {link: "https://git.io/vofY5"}));
                             }
                             else {
                                 basicBot.settings.language = argument;
