@@ -14,7 +14,7 @@ Manager
 |!botname | (botname) | change the default bot name |
 |!bouncer+ | | toggle bouncer+ |
 |!skippos | X | set the position to which skip and lockskip moves the dj |
-|!clearchat | |clears the chat |
+|~~!clearchat~~ !cc | |clears the chat |
 |!cycle | | toggle DJ cycle |
 |!cycletimer | X | set the maximum DJ cycle time for when cycleguard is enabled |
 |!language | (language) | specify the language you would like the bot to use |
