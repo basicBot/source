@@ -1,7 +1,8 @@
 Orginal basicBot [link](https://github.com/basicBot/source)
 
 # changelog
-- Last basicBot v2 uppdate 2016-06-04
+Last basicBot v2 uppdate 2016-06-04
+
 - clearchatCommand: !clearchat changed into !cc
 
 # basicBot v2 (source)
