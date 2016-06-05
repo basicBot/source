@@ -29,25 +29,18 @@ These can be found in [the commands file](https://github.com/javascripto/basicBo
 
 Blacklists
 ----------
-Examples of blacklists can be found in [the customization repository](https://github.com/basicBot/custom/tree/master/blacklists).
-You can add blacklists in the settings of the bot via the methods given in that same repository. See below for more information.
+Blacklists can be added in the settings through either links to raw json files with the same format as those in the examples provided (forking and using rawgit's development link is a great way to do this), or replacing the link with a custom function that loads your lists into the bot (this option requires extensive knowledge of javascript and a good understanding of the bot's inner workings).
 
+To update your lists manually, you can use the details specified in chat messages after a song is blacklisted, or use either of these in the console periodically:
 
-Extending functionality and custom default settings
----------------------------------------------------
-basicBot can be customized to fit your needs. Please refer to [the customization repository](https://github.com/basicBot/custom) for more info.
-Please do not try to if you are not confident in your javascript capabilities.
-
-
-basicBot Chrome Extension
--------------------------
-[Get the Official basicBot Chrome Extension](https://chrome.google.com/webstore/detail/basicbot/bjinmbkeneigmkkkpcmcokphbjkepeie)
+bot.getNewBlacklistedSongs(); //get a javascript object
+bot.logNewBlacklistedSongs(); //get a list
 
 
 Developers
 ----------
- - [Benzi](https://github.com/Benzi) __(Maintainer)__
- - [Javascript:](https://github.com/javascripto) __(V2 Creator/Editor)__
+ - [Benzi](https://github.com/Benzi) __(basicBot Maintainer)__
+ - [Javascript:](https://github.com/javascripto) __(basicBot-V2 Creator/Editor)__
 
 
 Credits
