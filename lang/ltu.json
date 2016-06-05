@@ -64,7 +64,7 @@
     "greyuser": "Tu negali naudoti šios komandos..",
     "bouncer": "Botas negali perkelti šio žaidėjo.",
     "online": "\/me %%BOTNAME%% prisijungė į serverį!",
-    "welcome": "\/me Sveikas atvykęs į %%NAME%%! Linkime gerai čia praleisti savo laiką!",
+    "welcome": "\/me Sveikas atvykęs į mūsų serverį, %%NAME%%! Linkime gerai čia praleisti savo laiką!",
     "welcomeback": "\/me Sveikas sugrįžęs į mūsų serverį, %%NAME%%",
     "songknown": "\/me @%%NAME%%, ši daina jau buvo neseniai leista.",
     "notavailable": "\/me @%%NAME%%, daina kurią norite paleisti yra negalima.",
