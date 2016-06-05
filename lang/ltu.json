@@ -164,7 +164,7 @@
     "logout": "\/me [@%%NAME%%] Atsijungia %%BOTNAME%%",
     "rouletteleave": "\/me @%%NAME%% išėjo iš ruletės žaidimo!",
     "songlink": "\/me [@%%NAME%%] Nuoroda į dabar grojančią dainą: %%LINK%%",
-    "usedlockskip": "\/me [%%NAME%% panaudojo "lockskip"]",
+    "usedlockskip": "\/me [%%NAME%% panaudojo lockskip]",
     "usedskip": "\/me [%%NAME%% buvo praleistas]",
     "skippos": "\/me [@%%NAME%%] norintys groti dabar bus perkelti į %%POSITION%% poziciją kai jie praleis savo ėjimą.",
     "lockguardtime": "\/me [@%%NAME%%] "Lockguard" buvo nustatytas į %%TIME%% minutes.",
