@@ -12,7 +12,7 @@ Orginal basicBot [link](https://github.com/basicBot/source)
 [![Gitter](https://badges.gitter.im/javascripto/basicBot-v2.svg)](https://gitter.im/javascripto/basicBot-v2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook page](https://img.shields.io/badge/facebook-page-blue.svg)](https://www.facebook.com/BasicBot-v2-1722384808035534/)
 [![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg?maxAge=2592000)](https://github.com/javascripto/basicBot-v2.git)
-
+[![Possible Languages](https://img.shields.io/badge/languages-14-orange.svg)]()
 
 
 Usage
