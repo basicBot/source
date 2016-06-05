@@ -186,7 +186,7 @@
     "removenotinwl": "\/me [@%%NAME%%] Nurodytas asmuo @%%USERNAME%% nėra laukiamajame sąraše.",
     "roomrules": "\/me Kambario taisykles galite rasti: %%LINK%%",
     "sessionstats": "\/me [@%%NAME%%] Viso patikimų: %%WOOTS%%, viso nepatikimų: %%MEHS%%, viso prisidėjimų į savo grojaraštį: %%GRABS%%.",
-    "forceskip": "\/me [%%NAME%% panaudojo "forceskip"]",
+    "forceskip": "\/me [%%NAME%% panaudojo priverstina muzikos praleidima]",
     "madeby": "\/me Šis botas buvo sukurtas šio žaidėjo: %%NAME%%.",
     "activefor": "Aš buvau aktyvus šiam laiko tarpui. %%TIME%%.",
     "swapinvalid": "\/me [@%%NAME%%] Nustatytas netinkamas žaidėjas. (Vardai su tarpais negalimi!)",
