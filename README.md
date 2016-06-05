@@ -9,6 +9,7 @@ Orginal basicBot [link](https://github.com/basicBot/source)
 
 # basicBot v2 (source)
 
+[![Gitter](https://badges.gitter.im/javascripto/basicBot-v2.svg)](https://gitter.im/javascripto/basicBot-v2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook group](https://img.shields.io/badge/facebook-group-3b5998.svg?style=flat)](https://facebook.com/groups/basicBot) [![twitter](https://img.shields.io/twitter/follow/bscbt.svg?style=social)](https://twitter.com/bscbt)
 
 
