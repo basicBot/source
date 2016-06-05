@@ -34,6 +34,7 @@ Blacklists can be added in the settings through either links to raw json files w
 To update your lists manually, you can use the details specified in chat messages after a song is blacklisted, or use either of these in the console periodically:
 
 bot.getNewBlacklistedSongs(); //get a javascript object
+
 bot.logNewBlacklistedSongs(); //get a list
 
 
