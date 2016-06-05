@@ -138,7 +138,7 @@
     "inactivefor": "\/me [@%%NAME%%] @%%USERNAME%% buvo neaktyvus jau %%TIME%% minučių.",
     "inactivelonger": "\/me [@%%NAME%%] @%%USERNAME%% buvo neaktyvus ilgiau nei %%BOTNAME%% yra prisijungęs.",
     "autowoot": "\/me Mes rekomenduojame PlugCubed automatiniam balsavimui už dainą (patinka): http:\/\/plugcubed.net\/",
-    "brandambassador": "\/me Rangas "Brand Ambassador" yra plug.dj lankytojų balsas. Jie rengia renginius, They promote events, užsiima su bendruomene ir dalinasi plug.dj žinutėmis po visą pasaulį. Daugiau informacijos: https:\/\/plug.dj\/ba",
+    "brandambassador": "\/me Rangas Ambassador yra plug.dj lankytojų balsas. Jie rengia renginius, They promote events, užsiima su bendruomene ir dalinasi plug.dj žinutėmis po visą pasaulį. Daugiau informacijos: https:\/\/plug.dj\/ba",
     "bouncerplusrank": "\/me [@%%NAME%%] Jūs turite būti aukštesnio rango..",
     "chatcleared": "\/me [@%%NAME%%] Išvalė pokalbių lango turinį.",
     "deletechat": "\/me [@%%NAME%%] Išvalė %%USERNAME%% žaidėjo pokalbio turinį.",
