@@ -167,7 +167,7 @@
     "usedlockskip": "\/me [%%NAME%% panaudojo lockskip]",
     "usedskip": "\/me [%%NAME%% buvo praleistas]",
     "skippos": "\/me [@%%NAME%%] norintys groti dabar bus perkelti į %%POSITION%% poziciją kai jie praleis savo ėjimą.",
-    "lockguardtime": "\/me [@%%NAME%%] "Lockguard" buvo nustatytas į %%TIME%% minutes.",
+    "lockguardtime": "\/me [@%%NAME%%] Lockguard buvo nustatytas į %%TIME%% minutes.",
     "maxlengthtime": "\/me [@%%NAME%%] Maksimali dainos trukmė buvo nustatyta į %%TIME%% minutes.",
     "motdset": "\/me Pastovioji žinutė buvo nustatyta į:  %%MSG%%",
     "motdintervalset": "\/me Pastoviosios žinutės pasikartojimas buvo nustatytas į %%INTERVAL%%.",
