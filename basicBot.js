@@ -254,7 +254,7 @@
             chatLink: "https://rawgit.com/javascripto/basicBot-v2/master/lang/en.json",
             scriptLink: "https://rawgit.com/javascripto/basicBot-v2/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
-            startupCap: 1, // 1-200
+            startupCap: 200, // 1-200
             startupVolume: 20, // 0-100
             startupEmoji: false, // true or false
             autowoot: true,
@@ -295,7 +295,7 @@
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 5,
-            motd: "Temporary Message of the Day",
+            motd: "Welcome to this room, i hope you will have gr8 time here.",
             filterChat: true,
             etaRestriction: false,
             welcome: true,
@@ -3089,7 +3089,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        API.sendChat('/me This bot was created by ' + botCreator + ', but is now maintained by ' + botMaintainer + ".");
+                        API.sendChat('/me This bot was created by ' + botCreator + ', maintained by ' + botMaintainer + "," ' and now developed by ' + botEditor + ".");
                     }
                 }
             },
