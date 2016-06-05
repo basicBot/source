@@ -1,0 +1,13 @@
+{
+    "1":{
+        "mid": "1:NSFWsongID1"
+    },
+    "2":{
+        "title": "This is a NSFW song",
+        "author": "The NSFW band",
+        "mid": "1:NSFWsongID2"
+    },
+    "3":{
+        "mid": "1:NSFWsongID3"
+    }
+}
