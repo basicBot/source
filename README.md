@@ -16,6 +16,10 @@ Orginal basicBot [link](https://github.com/basicBot/source)
 
 Usage
 -----
+
+To get Title, Author and Formad with ID type in this in console: 
+`API.getMedia().title + " | " + API.getMedia().author + " | " + API.getMedia().format + ":" + API.getMedia().cid` = Song Name | Author | format:id
+
 Bookmark the following code. To run the bot, run the bookmark.
 `javascript:(function(){$.getScript('https://rawgit.com/javascripto/basicBot-v2/master/basicBot.js');})();`
 
