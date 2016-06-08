@@ -1505,7 +1505,7 @@
              **/
 
             activeCommand: {
-                command: 'active',
+                command: 'aktyvus',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1538,7 +1538,7 @@
             },
 
             addCommand: {
-                command: 'add',
+                command: 'prideti',
                 rank: 'mod',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1562,7 +1562,7 @@
             },
 
             afklimitCommand: {
-                command: 'afklimit',
+                command: 'afklimitas',
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1582,7 +1582,7 @@
             },
 
             afkremovalCommand: {
-                command: 'afkremoval',
+                command: 'afkismetimas',
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -1606,7 +1606,7 @@
             },
 
             afkresetCommand: {
-                command: 'afkreset',
+                command: 'afkatstatymas',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1625,7 +1625,7 @@
             },
 
             afktimeCommand: {
-                command: 'afktime',
+                command: 'afklaikas',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1654,7 +1654,7 @@
             },
 
             autodisableCommand: {
-                command: 'autodisable',
+                command: 'autoisjungimas',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -1675,7 +1675,7 @@
             },
 
             autoskipCommand: {
-                command: 'autoskip',
+                command: 'autopraleidimas',
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -1722,7 +1722,7 @@
             },
 
             ballCommand: {
-                command: ['8ball', 'ask'],
+                command: ['8ball', 'klausk'],
                 rank: 'user',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1741,7 +1741,7 @@
             },
 
             banCommand: {
-                command: 'ban',
+                command: 'uzblokuoti',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1849,7 +1849,7 @@
             },
 
             botnameCommand: {
-                command: 'botname',
+                command: 'botovardas',
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -1885,7 +1885,7 @@
             },
 
             commandsCommand: {
-                command: 'commands',
+                command: 'komandos',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -1918,7 +1918,7 @@
             },
 
             cookieCommand: {
-                command: 'cookie',
+                command: 'sausainis',
                 rank: 'user',
                 type: 'startsWith',
                 getCookie: function (chat) {
@@ -1954,7 +1954,7 @@
             },
 
             cycleCommand: {
-                command: 'cycle',
+                command: 'ratas',
                 rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -1967,7 +1967,7 @@
             },
 
             cycleguardCommand: {
-                command: 'cycleguard',
+                command: 'ratoapsauga',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -1988,7 +1988,7 @@
             },
 
             cycletimerCommand: {
-                command: 'cycletimer',
+                command: 'ratolaikas',
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2082,7 +2082,7 @@
             */
 
             deletechatCommand: {
-                command: 'deletechat',
+                command: 'dc',
                 rank: 'mod',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2121,7 +2121,7 @@
             },
 
             englishCommand: {
-                command: 'english',
+                command: 'anglu',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2200,7 +2200,7 @@
             },
 
             filterCommand: {
-                command: 'filter',
+                command: 'filtras',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2239,7 +2239,7 @@
             },
 
             ghostbusterCommand: {
-                command: 'ghostbuster',
+                command: 'gb',
                 rank: 'user',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2331,7 +2331,7 @@
             },
 
             helpCommand: {
-                command: 'help',
+                command: ['pagalba', 'help'],
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2345,7 +2345,7 @@
             },
 
             historyskipCommand: {
-                command: 'historyskip',
+                command: 'hs',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2365,7 +2365,7 @@
             },
 
             joinCommand: {
-                command: 'join',
+                command: 'prisijunkt',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2381,7 +2381,7 @@
             },
 
             jointimeCommand: {
-                command: 'jointime',
+                command: ['prisijungimolaikas', 'ps'],
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2402,7 +2402,7 @@
             },
 
             kickCommand: {
-                command: 'kick',
+                command: ['kick', 'ismesti'],
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2447,7 +2447,7 @@
             },
 
             killCommand: {
-                command: 'kill',
+                command: 'isjungti',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2466,7 +2466,7 @@
             },
 
             languageCommand: {
-                command: 'language',
+                command: 'kalba',
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2494,7 +2494,7 @@
             },
 
             leaveCommand: {
-                command: 'leave',
+                command: 'iseiti',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2511,7 +2511,7 @@
             },
 
             linkCommand: {
-                command: 'link',
+                command: 'nuoroda',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2541,7 +2541,7 @@
             },
 
             lockCommand: {
-                command: 'lock',
+                command: 'uzrakinti',
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2554,7 +2554,7 @@
             },
 
             lockdownCommand: {
-                command: 'lockdown',
+                command: 'uzrakintivisai',
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2572,7 +2572,7 @@
             },
 
             lockguardCommand: {
-                command: 'lockguard',
+                command: 'uzrakinimoapsauga',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2592,7 +2592,7 @@
             },
 
             lockskipCommand: {
-                command: 'lockskip',
+                command: 'uzrakintiskip',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2661,7 +2661,7 @@
             },
 
             locktimerCommand: {
-                command: 'locktimer',
+                command: 'uzrakintilaikmati',
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2680,7 +2680,7 @@
             },
 
             logoutCommand: {
-                command: 'logout',
+                command: 'atsijungti',
                 rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2696,7 +2696,7 @@
             },
 
             maxlengthCommand: {
-                command: 'maxlength',
+                command: 'dainosilgis',
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2739,7 +2739,7 @@
             },
 
             moveCommand: {
-                command: 'move',
+                command: 'perkelti',
                 rank: 'mod',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2772,7 +2772,7 @@
             },
 
             muteCommand: {
-                command: 'mute',
+                command: 'uztildyti',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2854,7 +2854,7 @@
             },
 
             refreshCommand: {
-                command: 'refresh',
+                command: 'perkrauti',
                 rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2873,7 +2873,7 @@
             },
 
             reloadCommand: {
-                command: 'reload',
+                command: 'perrestartuoti',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2893,7 +2893,7 @@
             },
 
             removeCommand: {
-                command: 'remove',
+                command: 'issimti',
                 rank: 'mod',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -2959,7 +2959,7 @@
             },
 
             rulesCommand: {
-                command: 'rules',
+                command: 'taisykles',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -2973,7 +2973,7 @@
             },
 
             sessionstatsCommand: {
-                command: 'sessionstats',
+                command: 'ss',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3061,7 +3061,7 @@
             },
 
             songstatsCommand: {
-                command: 'songstats',
+                command: 'daina',
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3094,7 +3094,7 @@
             },
 
             statusCommand: {
-                command: 'status',
+                command: 'statusas',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3203,7 +3203,7 @@
             },
 
             swapCommand: {
-                command: 'swap',
+                command: 'sukeisti',
                 rank: 'mod',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -3253,7 +3253,7 @@
             },
 
             themeCommand: {
-                command: 'theme',
+                command: 'tema',
                 rank: 'user',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3267,7 +3267,7 @@
             },
 
             thorCommand: {
-              command: 'slots',
+              command: 'slotai',
               rank: 'user',
               type: 'exact',
               functionality: function (chat, cmd) {
@@ -3336,7 +3336,7 @@
             },
 
             timeguardCommand: {
-                command: 'timeguard',
+                command: 'laikoapsauga',
                 rank: 'bouncer',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3415,7 +3415,7 @@
             },
 
             unbanCommand: {
-                command: 'unban',
+                command: 'atblokuoti',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -3445,7 +3445,7 @@
             },
 
             unlockCommand: {
-                command: 'unlock',
+                command: 'atrakinti',
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
@@ -3458,7 +3458,7 @@
             },
 
             unmuteCommand: {
-                command: 'unmute',
+                command: 'attildyti',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -3538,7 +3538,7 @@
             },
 
             voteratioCommand: {
-                command: 'voteratio',
+                command: 'vr',
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
@@ -3558,7 +3558,7 @@
             },
 
             voteskipCommand: {
-                command: 'voteskip',
+                command: 'vs',
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function (chat, cmd) {
