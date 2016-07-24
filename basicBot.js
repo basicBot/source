@@ -236,7 +236,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.8.17",
+        version: "2.9.17",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -1884,15 +1884,16 @@
                 }
             },
 
-            commandsCommand: {
-                command: 'commands',
-                rank: 'user',
+            clearlocalstorageCommand: {
+                command: 'clearlocalstorage',
+                rank: 'manager',
                 type: 'exact',
                 functionality: function (chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        API.sendChat(subChat(basicBot.chat.commandslink, {botname: basicBot.settings.botName, link: basicBot.cmdLink}));
+                        localStorage.clear();
+                        API.chatLog('Cleared localstorage, please refresh the page!');
                     }
                 }
             },
@@ -1913,6 +1914,19 @@
                             basicBot.settings.cmdDeletion = !basicBot.settings.cmdDeletion;
                             API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.cmddeletion}));
                         }
+                    }
+                }
+            },
+
+            commandsCommand: {
+                command: 'commands',
+                rank: 'user',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        API.sendChat(subChat(basicBot.chat.commandslink, {botname: basicBot.settings.botName, link: basicBot.cmdLink}));
                     }
                 }
             },
