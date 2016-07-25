@@ -236,7 +236,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.9.17",
+        version: "2.9.1",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -275,7 +275,7 @@
             historySkip: false,
             timeGuard: true,
             maximumSongLength: 10,
-            autodisable: true,
+            autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
             thorCommand: false,
