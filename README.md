@@ -48,10 +48,12 @@ I would like to thank the following people:
 - TAT, Origin and other Litebot contributors: Their Litebot has inspired features like Roulette.
 - Henchman: Never knew this undertaking would give me a friend too.
 
-|Language | Translator|
-|:------:|:---------:|
-|Portuguese|[Motel Bible](https://github.com/motelbible)|
-|French|[NDA](https://github.com/NDAthereal)|
+##### Translators:
+
+| Language | Translator |
+| :--: | :--: |
+| Portuguese | [Motel Bible](https://github.com/motelbible) |
+| French | [NDA](https://github.com/NDAthereal) |
 
 __I would also like to thank everyone who contributed in translating the bot via the [translation centre](https://basicbot.oneskyapp.com/admin/collaborators)__
 

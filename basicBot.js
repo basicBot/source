@@ -233,7 +233,7 @@
 
     var botCreator = "Yemasthui";
     var botMaintainer = "Benzi"
-    var botCreatorIDs = ["3851534", "4105209"];
+    var botCreatorIDs = ["3851534", "4105209", "3934992"];
 
     var basicBot = {
         version: "2.9.1",
@@ -653,6 +653,7 @@
                 }
             },
             afkCheck: function () {
+                console.log('afk check triggered');
                 if (!basicBot.status || !basicBot.settings.afkRemoval) return void (0);
                 var rank = basicBot.roomUtilities.rankToNumber(basicBot.settings.afkRankCheck);
                 var djlist = API.getWaitList();
@@ -671,27 +672,28 @@
                                 var time = basicBot.roomUtilities.msToStr(inactivity);
                                 var warncount = user.afkWarningCount;
                                 if (inactivity > basicBot.settings.maximumAfk * 60 * 1000) {
+                                    console.log('inactive user:', user);
                                     if (warncount === 0) {
+                                        console.log('warncount 0:', name);
                                         API.sendChat(subChat(basicBot.chat.warning1, {name: name, time: time}));
                                         user.afkWarningCount = 3;
                                         user.afkCountdown = setTimeout(function (userToChange) {
                                             userToChange.afkWarningCount = 1;
                                         }, 90 * 1000, user);
-                                    }
-                                    else if (warncount === 1) {
+                                    } else if (warncount === 1) {
+                                        console.log('warncount 1:', name);
                                         API.sendChat(subChat(basicBot.chat.warning2, {name: name}));
                                         user.afkWarningCount = 3;
                                         user.afkCountdown = setTimeout(function (userToChange) {
                                             userToChange.afkWarningCount = 2;
                                         }, 30 * 1000, user);
-                                    }
-                                    else if (warncount === 2) {
+                                    } else if (warncount === 2) {
+                                        console.log('warncount 2:', name);
                                         var pos = API.getWaitListPosition(id);
                                         if (pos !== -1) {
                                             pos++;
                                             basicBot.room.afkList.push([id, Date.now(), pos]);
                                             user.lastDC = {
-
                                                 time: null,
                                                 position: null,
                                                 songCount: 0
