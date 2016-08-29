@@ -2663,7 +2663,7 @@
                                     basicBot.room.skippable = false;
                                     API.sendChat(msgSend);
                                     setTimeout(function () {
-                                        basicBot.room.skippable = true
+                                        basicBot.room.skippable = true;
                                     }, 5 * 1000);
                                     setTimeout(function (id) {
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
