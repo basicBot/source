@@ -771,7 +771,7 @@
                         var messageNumber = basicBot.room.roomstats.songCount % basicBot.settings.intervalMessages.length;
                         msg = basicBot.settings.intervalMessages[messageNumber];
                     }
-                    API.sendChat('/me ' + msg);
+                    API.sendChat('/me '+msg);
                 }
             },
             updateBlacklists: function () {
@@ -3722,3 +3722,5 @@
 
     loadChat(basicBot.startup);
 }).call(this);
+
+// isebella sux
