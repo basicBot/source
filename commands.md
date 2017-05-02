@@ -11,7 +11,7 @@ Manager
 |Command | Arguments |  Description |
 |:------:|:---------:|:--------------------------------------:|
 |!afklimit | X | sets the maximum afk time |
-|!botname | (botname) | change the default bot name |
+|!botname | (Kambario botas paleistas!) | change the default bot name |
 |!bouncer+ | | toggle bouncer+ |
 |!skippos | X | set the position to which skip and lockskip moves the dj |
 |!clearchat | |clears the chat |
