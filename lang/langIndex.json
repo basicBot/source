@@ -1,15 +1,16 @@
 {
+    "chinese": "https://rawgit.com/basicBot/source/master/lang/zh-TW.json",
     "czech": "https://rawgit.com/basicBot/source/master/lang/cs.json",
-    "german": "https://rawgit.com/basicBot/source/master/lang/de.json",
-    "english": "https://rawgit.com/basicBot/source/master/lang/en.json",
-    "spanish": "https://rawgit.com/basicBot/source/master/lang/es-ES.json",
-    "french": "https://rawgit.com/basicBot/source/master/lang/fr.json",
-    "latvian": "https://rawgit.com/basicBot/source/master/lang/lv-LV.json",
-    "malay": "https://rawgit.com/basicBot/source/master/lang/ms.json",
     "dutch": "https://rawgit.com/basicBot/source/master/lang/nl.json",
+    "english": "https://rawgit.com/basicBot/source/master/lang/en.json",
+    "french": "https://rawgit.com/basicBot/source/master/lang/fr.json",
+    "german": "https://rawgit.com/basicBot/source/master/lang/de.json",
+    "latvian": "https://rawgit.com/basicBot/source/master/lang/lv-LV.json",
+    "lithuanian": "https://rawgit.com/basicBot/source/master/lang/lt-LT.json",
+    "malay": "https://rawgit.com/basicBot/source/master/lang/ms.json",
     "polish": "https://rawgit.com/basicBot/source/master/lang/pl.json",
     "portuguese": "https://rawgit.com/basicBot/source/master/lang/pt-BR.json",
     "serbian": "https://rawgit.com/basicBot/source/master/lang/sr.json",
-    "turkish": "https://rawgit.com/basicBot/source/master/lang/tr.json",
-    "chinese": "https://rawgit.com/basicBot/source/master/lang/zh-TW.json"
+    "spanish": "https://rawgit.com/basicBot/source/master/lang/es-ES.json",
+    "turkish": "https://rawgit.com/basicBot/source/master/lang/tr.json"
 }
