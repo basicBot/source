@@ -4,37 +4,38 @@
 
 Email enquiries: [hi [at] benzi [dot] io](mailto:hi@benzi.io)
 
-Usage
------
+### Usage
+
 Bookmark the following code. To run the bot, run the bookmark.
-`javascript:(function(){$.getScript('https://rawgit.com/basicBot/source/master/basicBot.js');})();`
 
-If this does not work, go to https://raw.githubusercontent.com/basicBot/source/master/basicBot.js and copy paste its content into your console (accessible in chrome by pressing F12) when on plug.dj in your community.
+```
+javascript:(function(){$.getScript('https://rawgit.com/basicBot/source/master/basicBot.js');})();
+```
 
+If this does not work, go to [basicBot.js](https://raw.githubusercontent.com/basicBot/source/master/basicBot.js) and copy paste its content into your console (accessible in chrome by pressing F12) when on plug.dj in your community.
 
-Commands
---------
-These can be found in [the commands file](https://github.com/basicBot/source/blob/master/commands.md).
+### Commands
 
+These can be found in [the commands file](commands.md).
 
-Blacklists
-----------
+### Blacklists
+
 Examples of blacklists can be found in [the customization repository](https://github.com/basicBot/custom/tree/master/blacklists).
 You can add blacklists in the settings of the bot via the methods given in that same repository. See below for more information.
 
 
-Extending functionality and custom default settings
----------------------------------------------------
+### Extending functionality and custom default settings
+
 basicBot can be customized to fit your needs. Please refer to [the customization repository](https://github.com/basicBot/custom) for more info.
 Please do not try to if you are not confident in your javascript capabilities.
 
+<!--
+### basicBot Chrome Extension
 
-basicBot Chrome Extension
--------------------------
 [Get the Official basicBot Chrome Extension](https://chrome.google.com/webstore/detail/basicbot/bjinmbkeneigmkkkpcmcokphbjkepeie)
+-->
 
-Credits
---------
+### Credits
 
 |Developers|
 |:--------:|
@@ -85,20 +86,18 @@ I would like to thank everyone who have contributed in translating the bot via [
 |[Yenn](https://twitter.com/tsy_yenn)|Chinese (Taiwan), Malay|
 |Јовев Немања|Serbian|
 
-### Copyright
+### License
 
 Copyright &copy; 2014-2017 basicBot
 
 Modifications (including forks) of the code to fit personal needs are allowed only for personal use and should refer back to the original source.
 This software is not for profit, any extension, or unauthorised person providing this software is not authorised to be in a position of any monetary gain from this use of this software. Any and all money gained under the use of the software (which includes donations) must be passed on to the original author.
 
-
-Disclaimer
-----------
+### Disclaimer
 
 This bot is developed independently. Changes may be made without notice. There is no guarantee for the bot to be functioning perfectly.
 plug.dj admins have the right to request changes.
-By using this chatbot you agree to not use it for violating plug.dj's Terms of Service.
+By using this chatbot you agree to not use it for violating [plug.dj's Terms of Service](https://plug.dj/terms).
 You also agree not to alter the bot's code, unless in the cases explicitly stated above, for personal use, or for the sole purpose of submitting a pull request with a bug fix or a feature update, at which point it will be looked at and decided by the authors of the project.
 Please refer to the original author/repository at all times, even on personal forks that are not private.
-Any requests for changes can be requested via email, through github or via plug.dj.
+Any requests for changes can be requested via email, through GitHub or via plug.dj.
