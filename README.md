@@ -33,32 +33,61 @@ basicBot Chrome Extension
 -------------------------
 [Get the Official basicBot Chrome Extension](https://chrome.google.com/webstore/detail/basicbot/bjinmbkeneigmkkkpcmcokphbjkepeie)
 
-
-Developers
-----------
- - [Benzi](https://github.com/Benzi) __(Maintainer)__
-
-
 Credits
 --------
 
-I would like to thank the following people:
+|Developers|
+|:--------:|
+ |[![Benzi](https://www.gravatar.com/avatar/a9a9e27f874dadfaf0e21e8ecf8e9833.jpg?s=100)](https://github.com/Benzi)|
+ |**[Benzi](https://github.com/Benzi)**|
+
+#### Special thanks :sparkles:
 
 - Fungus: His Tastybot has been a source of inspiration for most of the features, and his help with coding problems has been invaluable to make this bot.
 - TAT, Origin and other Litebot contributors: Their Litebot has inspired features like Roulette.
 - Henchman: Never knew this undertaking would give me a friend too.
 
-|Language | Translator|
-|:------:|:---------:|
-|Portuguese|[Motel Bible](https://github.com/motelbible)|
-|French|[NDA](https://github.com/NDAthereal)|
+#### Translations :globe_with_meridians:
 
-__I would also like to thank everyone who contributed in translating the bot via the [translation centre](https://basicbot.oneskyapp.com/admin/collaborators)__
+I would like to thank everyone who have contributed in translating the bot via [Transifex](https://www.transifex.com/basicbot/basicbot) :pray:
 
+|Translator | Languages|
+|:---------:|:--------:|
+|3GoneS|Lithuanian|
+|ajdin291|Serbian|
+|Bart Boom|Dutch|
+|cirktv|Dutch|
+|clone287|Turkish|
+|DivinityRSPS|German|
+|[Filly](https://github.com/fillylumi)|French|
+|Gradure|Dutch|
+|H0LYbear|Turkish|
+|hadi555|German|
+|[Hasztagg](https://github.com/Hasztagg)|Polish|
+|Helvijs Baumanis|Latvian|
+|Inga Deveiko|Latvian|
+|Janis Petrovskis|Latvian|
+|Leopard105|Czech|
+|linusworld|Chinese (Taiwan)|
+|Liutauras Vaitkus|Lithuanian|
+|Łukasz Strzałek|Polish|
+|[Mikey Wazowsky](https://github.com/MikeyWazowsky)|Polish|
+|[Motel Bible](https://github.com/motelbible)|Portuguese|
+|[NDA](https://github.com/NDAthereal)|French|
+|Patrick H-Hansen|Danish|
+|Rie|Danish|
+|Schokin|Spanish|
+|Shone|Serbian|
+|smt287|Turkish|
+|Tessi Tess Randysková|Czech|
+|TIGJERUX|Latvian|
+|xMaxist|Dutch|
+|[Yenn](https://twitter.com/tsy_yenn)|Chinese (Taiwan), Malay|
+|Јовев Немања|Serbian|
 
 ### Copyright
 
-Copyright &copy; 2014-2016 basicBot
+Copyright &copy; 2014-2017 basicBot
 
 Modifications (including forks) of the code to fit personal needs are allowed only for personal use and should refer back to the original source.
 This software is not for profit, any extension, or unauthorised person providing this software is not authorised to be in a position of any monetary gain from this use of this software. Any and all money gained under the use of the software (which includes donations) must be passed on to the original author.
