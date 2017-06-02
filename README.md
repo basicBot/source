@@ -1,12 +1,14 @@
-# basicBot (source)
+![basicBot](http://i.imgur.com/efwl0PS.png)
 
-[![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![facebook group](https://img.shields.io/badge/facebook-group-3b5998.svg?style=flat)](https://facebook.com/groups/basicBot) [![twitter](https://img.shields.io/twitter/follow/bscbt.svg?style=social)](https://twitter.com/bscbt)
+### Contact
 
-Email enquiries: [hi [at] benzi [dot] io](mailto:hi@benzi.io)
+[![Slack](https://basicbot.herokuapp.com/badge.svg)](https://basicbot.herokuapp.com/) [![Facebook group](https://img.shields.io/badge/facebook-group-3b5998.svg?style=flat)](https://facebook.com/groups/basicBot) [![Twitter](https://img.shields.io/twitter/follow/bscbt.svg?style=social)](https://twitter.com/bscbt)
+
+Email enquiries: [hi[at]benzi[dot]io](mailto:hi@benzi.io)
 
 ### Usage
 
-Bookmark the following code. To run the bot, run the bookmark.
+Bookmark the following code. To run the bot, click the bookmark.
 
 ```
 javascript:(function(){$.getScript('https://rawgit.com/basicBot/source/master/basicBot.js');})();
@@ -16,7 +18,7 @@ If this does not work, go to [basicBot.js](https://raw.githubusercontent.com/bas
 
 ### Commands
 
-These can be found in [the commands file](commands.md).
+These can be found in [the commands list](commands.md).
 
 ### Blacklists
 
@@ -27,7 +29,7 @@ You can add blacklists in the settings of the bot via the methods given in that 
 ### Extending functionality and custom default settings
 
 basicBot can be customized to fit your needs. Please refer to [the customization repository](https://github.com/basicBot/custom) for more info.
-Please do not try to if you are not confident in your javascript capabilities.
+Please do not try to if you are not confident in your JavaScript capabilities.
 
 <!--
 ### basicBot Chrome Extension
@@ -37,10 +39,10 @@ Please do not try to if you are not confident in your javascript capabilities.
 
 ### Credits
 
-|Developers|
-|:--------:|
- |[![Benzi](https://www.gravatar.com/avatar/a9a9e27f874dadfaf0e21e8ecf8e9833.jpg?s=100)](https://github.com/Benzi)|
- |**[Benzi](https://github.com/Benzi)**|
+| Developers |
+|:----------:|
+| [![Benzi](https://www.gravatar.com/avatar/a9a9e27f874dadfaf0e21e8ecf8e9833.jpg?s=100)](https://github.com/Benzi) |
+| **[Benzi](https://github.com/Benzi)** |
 
 #### Special thanks :sparkles:
 
@@ -52,39 +54,39 @@ Please do not try to if you are not confident in your javascript capabilities.
 
 I would like to thank everyone who have contributed in translating the bot via [Transifex](https://www.transifex.com/basicbot/basicbot) :pray:
 
-|Translator | Languages|
-|:---------:|:--------:|
-|3GoneS|Lithuanian|
-|ajdin291|Serbian|
-|Bart Boom|Dutch|
-|cirktv|Dutch|
-|clone287|Turkish|
-|DivinityRSPS|German|
-|[Filly](https://github.com/fillylumi)|French|
-|Gradure|Dutch|
-|H0LYbear|Turkish|
-|hadi555|German|
-|[Hasztagg](https://github.com/Hasztagg)|Polish|
-|Helvijs Baumanis|Latvian|
-|Inga Deveiko|Latvian|
-|Janis Petrovskis|Latvian|
-|Leopard105|Czech|
-|linusworld|Chinese (Taiwan)|
-|Liutauras Vaitkus|Lithuanian|
-|Łukasz Strzałek|Polish|
-|[Mikey Wazowsky](https://github.com/MikeyWazowsky)|Polish|
-|[Motel Bible](https://github.com/motelbible)|Portuguese|
-|[NDA](https://github.com/NDAthereal)|French|
-|Patrick H-Hansen|Danish|
-|Rie|Danish|
-|Schokin|Spanish|
-|Shone|Serbian|
-|smt287|Turkish|
-|Tessi Tess Randysková|Czech|
-|TIGJERUX|Latvian|
-|xMaxist|Dutch|
-|[Yenn](https://twitter.com/tsy_yenn)|Chinese (Taiwan), Malay|
-|Јовев Немања|Serbian|
+| Translator | Languages |
+|:----------:|:---------:|
+| 3GoneS | Lithuanian |
+| ajdin291 | Serbian |
+| Bart Boom | Dutch |
+| cirktv| Dutch |
+| clone287 | Turkish |
+| DivinityRSPS | German |
+| [Filly](https://github.com/fillylumi) | French |
+| Gradure | Dutch |
+| H0LYbear | Turkish |
+| hadi555 | German |
+| [Hasztagg](https://github.com/Hasztagg) | Polish |
+| Helvijs Baumanis | Latvian |
+| Inga Deveiko | Latvian |
+| Janis Petrovskis | Latvian |
+| Leopard105 | Czech |
+| linusworld | Chinese (Taiwan) |
+| Liutauras Vaitkus | Lithuanian |
+| Łukasz Strzałek | Polish |
+| [Mikey Wazowsky](https://github.com/MikeyWazowsky) | Polish |
+| [Motel Bible](https://github.com/motelbible) | Portuguese |
+| [NDA](https://github.com/NDAthereal) | French |
+| Patrick H-Hansen | Danish |
+| Rie | Danish |
+| Schokin | Spanish |
+| Shone | Serbian |
+| smt287 | Turkish |
+| Tessi Tess Randysková | Czech |
+| TIGJERUX | Latvian |
+| xMaxist | Dutch |
+| [Yenn](https://twitter.com/tsy_yenn) | Chinese (Taiwan), Malay |
+| Јовев Немања | Serbian |
 
 ### License
 
