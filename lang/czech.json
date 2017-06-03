@@ -1,0 +1,136 @@
+{
+
+    "nodatafound": "Předchozí data nenalezena.",
+    "retrievingdata": "Obnovování předchozích dat.",
+    "datarestored": "Předchozí data byla úspěšně obnovena.",
+    "greyuser": "Pouze vyhazovači a výš mohou spustit bota.",
+    "bouncer": "Bot nemůže přesouvat lidi, jestliže je spuštěn vyhazovačem.",
+    "online": "/me %%BOTNAME%% %%VERSION%% online!",
+
+
+    "welcome": "/me Vítej %%NAME%%",
+    "welcomeback": "/me Vítej, %%NAME%% :))",
+    "songknown": "/me :repeat: Tato písnička byla puštěna %%PLAYS%% v posledních %%TIMETOTAL%%, poslední puštění bylo %%LASTTIME%% . :repeat:",
+    "timelimit": "/me @%%NAME%%, tvoje písnička je delší jak %%MAXLENGTH%% minut, potřebuješ oprávnění k puštění delší písničky.",
+    "permissionownsong": "/me :up: @%%NAME%% má oprávnění pustit své vlastní produkce!",
+    "isblacklisted": "/me Tato písnička je na %%BLACKLIST%% blacklistu! Přeskakuji...",
+
+
+    "isopen": "/me Ruleta otevřena ! Napiš !join aby si se zúčastnil rulety!",
+    "winnerpicked": "/me Vítěz byl vybrán! @%%NAME%% na pozici %%POSITION%%.",
+
+
+    "alreadyadding": "/me uživatel již byl přidán! Přesunut na požadovanou pozici %%POSITION%%.",
+    "adding": "/me Uživatel @%%NAME%% byl přidán do fronty. Aktuální pozice: %%POSITION%%.",
+
+
+    "usernotfound": "/me Uživatel nenalezen
+    "notdisconnected": "/me Uživatel @%%NAME%% se neodpojil za dobu co tu si.",
+    "noposition": "/me Poslení pozice je neznámá. Waitlist je potřeba updatovat je potřeba alespoň jedna poslední zaregistrovaná pozice uživatele.",
+    "toolongago": "/me Uživatelovo @%%NAME%%'s poslední odpojení, bylo před dlouhou dobou: %%TIME%%.",
+    "valid": "/me Uživatel @%%NAME%% odpojen před %%TIME%% a měl by být na pozici %%POSITION%%.",
+
+
+    "warning1": "/me @%%NAME%%, byl jsi AFK %%TIME%%, prosím zareaguj do 2 minut nebo budeš odebrán."
+    "warning2": "/me @%%NAME%%, budeš odebrán kvůli AFK pokud brzo nezareaguješ."
+    "afkodebrání": "/me @%%NAME%%, byl jsi odebrán protože jsi byl afk %%TIME%%. Jsi na pozici %%POSITION%%. Musíš napsat jednou každých %%MAXIMUMAFK%% minut pokud chceš hrát písničky.",
+
+
+    "caps": "/já @%%NAME%%, Vypni svůj caps lock prosím.",
+    /me @%%JMÉNO%%, nežádej o přeskočení. 
+    /me @%%JMÉNO%%, prosím nespamuj.
+    "roomadvertising": "/me @%%NAME%%, Nezveřejňuj odkazy na jiné roomky prosím.",
+    "adfly": "/me @%%NAME%%, prosím změn svůj Autowoot program. Doporučujeme PlugCubed: http://plugcubed.net/ ",
+
+
+    "invalidtime": "/me [@%%NAME%%] Zadán neplatný čas.",
+    "nouserspecified": "/me [@%%NAME%%] Není zadán žádný uživatel.",
+    "invaliduserspecified": "/me [@%%NAME%%] Zadán neplatný uživatel.",
+    "nolistspecified": "/me [@%%NAME%%] Není zadán seznam.",
+    "invalidlistspecified": "/me [@%%NAME%%] zadán neplatný seznam.",
+    "invaliduserspecified": "/me [@%%NAME%%] Zadán neplatný uživatel.",
+    "nolimitspecified": "/me [@%%NAME%%] limit není zadán.",
+    "invalidlimitspecified": "/me [@%%NAME%%] Neplatný limit.",
+    "invalidpositionspecified": "/me [@%%NAME%%] Špatně zadaná pozice.",
+    "toggleon": "/me [@%%NAME%%] %%FUNCTION%% povoleno."
+    "toggleoff": "/me [@%%NAME%%] %%FUNCTION%% zakázána."
+    "afkremoval": "AFK odstranění",
+    "afksremoved": "AFK odebrání",
+    "afklimit": "AFK limit",
+    "autoskip": "autopřeskočení",
+    "newblacklisted": "/me [@%%NAME%%] Tato píseň je v Černé Listině %%BLACKLIST%% Černálistina! [ %%AUTHOR%% - %%TITLE%% - %%MID%% ]",
+    "cycleguard": "cycleguard",
+    "timeguard": "timeguard",
+    "chatfilter": "chatfilter",
+    "lockdown": "lockdown",
+    "lockguard": "lockguard",
+    "usercommands": "uživatelské příkazy",
+    "motd": "MotD",
+    "welcomemsg": "Uvítací zpráva",
+    "songstats": "Statistiky písničky",
+    "etarestriction": "eta restriction",
+    "activeusersintime": "/me [@%%NAME%% Bylo zde %%AMOUNT%% lidí kteří psali před %%TIME%% minutami.",
+    "maximumafktimeset": "/me [@%%NAME%%] Maximální AFK čas byl nastaven na %%TIME%% minut.",
+    "afkstatusreset": "/me [@%%NAME%%] Resetování AFK statusu pro uživatele @%%USERNAME%%.",
+    "inactivefor": "/me [@%%NAME%%] Uživatel @%%USERNAME%% byl neaktivní po dobu %%TIME%%.",
+    "autowoot": "/me Naše roomka doporučuje p^3 pro Autowoot a pozadí : http://plugcubed.net/",
+    "brandambassador": "/me Velvyslanec je hlasem plug.dj uživatelů. Podporuje akce, zapojuje komunitu a sdílí plug.dj zprávy po celém světě. pro více informací: http://blog.plug.dj/brand-ambassadors/",
+    "bouncerplusrank": "/me [@%%NAME%%] Musíš být manažer a výš aby si mohl zapnout Vyhazovač+.",
+    "chatcleared": "/me [@%%NAME%%] Chat byl vyčištěn.",
+    "deletechat": "/me [@%%NAME%%] Vyčistit chat od %%USERNAME%%.",
+    "commandslink": "/me %%BOTNAME%% Příkazy: %%LINK%%",
+    "eatcookie": "/me Jím sušenku.",
+    "nousercookie": "/em nevidí %%NAME%% v pokoji a sušenky jí sám.",
+    "selfcookie": "/me @%%NAME%%, jsi chamtivý, viď? Dáváš sobě sušenky, bah. Zdílej něco s ostatními!",
+    "cookie": "/me @%%NAMETO%%, @%%NAMEFROM%% %%COOKIE%%",
+    "cycleguardtime": "/me [@%%NAME%%] Strážce DJ cyklu byl nastaven na %%TIME%% minut(y).",
+    "dclookuprank": "/me [@%%NAME%%] pouze vyhazovači a výše mohou udělat vyhledávání pro ostatní.",
+    "emojilist": "/me Emoji seznam: %%LINK%%",
+    "notinwaitlist": "/me @%%NAME%%, Nejsi ve frontě.",
+    "eta": "/me @%%NAME%% Budete hrát přibližně za %%TIME%%.",
+    "facebook": "/me Dej nám like na facebook: %%LINK%%",
+    "starterhelp": "/me Tento obrázek vám pomůže se začátkama: %%LINK%%",
+    "roulettejoin": "/me @%%NAME%% se připojil do rulety! (!leave pokud litujete.)",
+    "jointime": "/me [@%%NAMEFROM%%] @%%USERNAME%% byl v roomce na %%TIME%%.",
+    "kickrank": "/me [@%%NAME%%] nemůžeš vyhodit uživatele stejné či vyšší hodnosti!",
+    "kick": "/me [@%%NAME%%], @%%USERNAME%%byl jsi vyhozen z komunity na %%TIME%% minut.",
+    "kill": "/me Zabil mě @%%USERNAME%%.",
+    "rouletteleave": "/me @%%NAME%% Opustil ruletu!",
+    "songlink": "/me [@%%NAME%%] Odkaz na aktuální písničku: %%LINK%%",
+    "usedlockskip": "/me [%%NAME%% použil lockskip.]",
+    "lockskippos": "/me [@%%NAME%%] Lockskip nyní přesunul DJ na pozici %%POSITION%%.",
+    "lockguardtime": "/me [@%%NAME%%] Strážce byl nastaven na %%TIME%% minut(y).",
+    "maxlengthtime": "/me [@%%NAME%%] Maximální délka písniček byla nastavena na %%TIME%% minut.",
+    "motdset": "/me MotD nastaven na:  %%MSG%%",
+    "motdintervalset": "/me MotD interval byl nastaven na %%INTERVAL%%.",
+    "addbotwaitlist": "/me @%%NAME%%, nesnaž se mě přidat do waitlistu.",
+    "move": "/me [%%NAME%% se přesunul.]",
+    "mutednotime": "/me [@%%NAME%%] Ztlumil @%%USERNAME%%.",
+    "mutedmaxtime": "/me [@%%NAME%%] Můžeš někoho ztlumit max. na %%TIME%% minut.",
+    "mutedtime": "/me [@%%NAME%%] Ztlumil @%%USERNAME%% na %%TIME%% minut.",
+    "unmuted": "/me [@%%NAME%%] Zrušil ztlumení @%%USERNAME%%.",
+    "muterank": "/me [@%%NAME%%] Nemůžeš ztlumit nikoho se stejnými, či vyššími pravomocemi než si ty",
+    "oplist": "/me Staff list: %%LINK%%",
+    "pong": "/me ty se asi hodně nudíš co ?!",
+    "reload": "/me Budu hned zpátky.",
+    "removenotinwl": "/me [@%%NAME%%] Specifikovaný uživatel @%%USERNAME%% není ve waitlistu"
+    "roomrules": "/me Prosím, pravidla roomky najdeš na: %%LINK%%",
+    "sessionstats": "/me [@%%NAME%%] Celkem Wootů: %%WOOTS%%, Celkem Mehů: %%MEHS%%, Ukradených písniček: %%GRABS%%.",
+    "skip": "/me [%%NAME%% použil skip.]"
+    "madeby": "/me Tenhle bot byl vytvořen %%NAME%%"
+    "activefor": "Byl jsem aktivní %%TIME%%."
+    "swapinvalid": "/me [@%%NAME%%] Uživatel nebyl nalezen. (Žádné jména s mezerama!)",
+    "swapwlonly": "/me [@%%NAME%%] Prosím prohazuj pouze uživatele, kteří jsou ve Waitlistu!",
+    "swapping": "/me Vyměňuji %%NAME1%% s %%NAME2%%."
+    "genres": "/me Zde najde povolené žánry této komunity: %%LINK%%",
+    "notbanned": "/me [@%%NAME%%] Tenhle uživatel nebyl zabanován."
+    "unmutedeveryone": "/me [@%%NAME%%] Odtlumil všechny."
+    "unmuteeveryonerank": "/me [@%%NAME%%] Jenom manažeři a výš můžou zrušit ztlumení u všech najednou."
+    "notmuted": "/me [@%%NAME%%] Tento uživatel nebyl ztlumen."
+    "unmuterank": "/me [@%%NAME%%] Nemůžeš povolit mluvení nikomu kdo má stejné, či vyšší pravomoce než máš ty",
+    "commandscd": "/me [@%%NAME%%] Prodleva pro příkazy od uživatelů je nyní nastavena na %%TIME%% sekund.",
+    "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ Wooty: ' + %%WOOT%% + ', Mehy: %%MEHS%%, ratio (w/m): %%RATIO%%.",
+    "website": "/me Prosím navštivte naší stránku: %%LINK%%",
+    "youtube": "/me [%%NAME%%] Odebírej nás na youtube: %%LINK%%"
+    "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
+}
