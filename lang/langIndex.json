@@ -5,12 +5,12 @@
     "english": "https://rawgit.com/basicBot/source/master/lang/en.json",
     "french": "https://rawgit.com/basicBot/source/master/lang/fr.json",
     "german": "https://rawgit.com/basicBot/source/master/lang/de.json",
-    "latvian": "https://rawgit.com/basicBot/source/master/lang/lv-LV.json",
-    "lithuanian": "https://rawgit.com/basicBot/source/master/lang/lt-LT.json",
+    "latvian": "https://rawgit.com/basicBot/source/master/lang/lv.json",
+    "lithuanian": "https://rawgit.com/basicBot/source/master/lang/lt.json",
     "malay": "https://rawgit.com/basicBot/source/master/lang/ms.json",
     "polish": "https://rawgit.com/basicBot/source/master/lang/pl.json",
     "portuguese": "https://rawgit.com/basicBot/source/master/lang/pt-BR.json",
     "serbian": "https://rawgit.com/basicBot/source/master/lang/sr.json",
-    "spanish": "https://rawgit.com/basicBot/source/master/lang/es-ES.json",
+    "spanish": "https://rawgit.com/basicBot/source/master/lang/es.json",
     "turkish": "https://rawgit.com/basicBot/source/master/lang/tr.json"
 }
