@@ -3509,7 +3509,21 @@
                     }
                 }
             },
-
+          uptimeCommand: {
+                command: 'uptime',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                    var launchT = basicBot.room.roomstats.launchTime;
+                        var durationOnline = Date.now() - launchT;
+                        var since = basicBot.roomUtilities.msToStr(durationOnline);
+                        API.sendChat(subChat(basicBot.chat.activefor {time: since}));    
+                         }
+                     }
+             },
             usercmdcdCommand: {
                 command: 'usercmdcd',
                 rank: 'manager',
