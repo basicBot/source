@@ -3147,6 +3147,9 @@
                         if (basicBot.settings.timeGuard) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
+												
+                        msg += 'max song length: ' + basicBot.settings.maximumSongLength;
+                        msg += '. ';
 
                         msg += basicBot.chat.chatfilter + ': ';
                         if (basicBot.settings.filterChat) msg += 'ON';
