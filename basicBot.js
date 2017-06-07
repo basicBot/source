@@ -247,8 +247,8 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
-            language: "english",
+            botName: "Trezz",
+            language: "portuguese",
             chatLink: "https://rawgit.com/basicBot/source/master/lang/en.json",
             scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
