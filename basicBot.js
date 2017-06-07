@@ -230,14 +230,14 @@
         return str;
     };
 
-    var botCreator = "Yemasthui";
-    var botMaintainer = "Benzi"
-    var botCreatorIDs = ["3851534", "4105209"];
+    var botCreator = "Bianca";
+    var botMaintainer = "Biianca"
+    var botCreatorIDs = ["3715846"];
 
     var basicBot = {
         version: "2.9.2",
         status: false,
-        name: "basicBot",
+        name: "Bot Bianca",
         loggedInID: null,
         scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
@@ -247,13 +247,13 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
-            language: "english",
-            chatLink: "https://rawgit.com/basicBot/source/master/lang/en.json",
+            botName: "Olá sejam todos bem vindos <3",
+            language: "Portuguese",
+            chatLink: "https://rawgit.com/basicBot/source/master/lang/pt-BR.json",
             scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
-            startupVolume: 0, // 0-100
+            startupVolume: 100, // 0-100
             startupEmoji: false, // true or false
             autowoot: true,
             autoskip: false,
@@ -291,9 +291,9 @@
             ],
             afkpositionCheck: 15,
             afkRankCheck: "ambassador",
-            motdEnabled: false,
+            motdEnabled: true,
             motdInterval: 5,
-            motd: "Temporary Message of the Day",
+            motd: "!Roulluete",
             filterChat: true,
             etaRestriction: false,
             welcome: true,
