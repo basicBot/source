@@ -235,7 +235,7 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "2.9.2",
+        version: "2.9.3",
         status: false,
         name: "basicBot",
         loggedInID: null,
@@ -1340,9 +1340,6 @@
             API.off(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
         },
         startup: function () {
-            Function.prototype.toString = function () {
-                return 'Function.'
-            };
             var u = API.getUser();
             if (basicBot.userUtilities.getPermission(u) < 2) return API.chatLog(basicBot.chat.greyuser);
             if (basicBot.userUtilities.getPermission(u) === 2) API.chatLog(basicBot.chat.bouncer);
