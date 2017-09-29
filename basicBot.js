@@ -1495,21 +1495,6 @@
                 version: basicBot.version
             })));
         },
-
-/*
-        if (u.gRole == 0) return u.role;
-        else {
-            switch (u.gRole) {
-                case 3:
-                case 3000:
-                    return (1*(API.ROLE.HOST-API.ROLE.COHOST))+API.ROLE.HOST;
-                case 5:
-                case 5000:
-                    return (2*(API.ROLE.HOST-API.ROLE.COHOST))+API.ROLE.HOST;
-            }
-        }
-        return 0;
-*/
         commands: {
             executable: function(minRank, chat) {
                 var id = chat.uid;
@@ -4136,7 +4121,7 @@
                                 } else if (rawlang == 'bg') {
                                     var language = 'Bulgarian';
                                 } else if (rawlang == 'cs') {
-                                    var language = 'Czech';;
+                                    var language = 'Czech';
                                 } else if (rawlang == 'fi') {
                                     var language = 'Finnish';
                                 } else if (rawlang == 'fr') {
