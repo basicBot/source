@@ -976,6 +976,7 @@
             }
         },
         eventDjadvance: function(obj) {
+            if (!obj.dj) return;
             if (basicBot.settings.autowoot) {
                 $('#woot').click(); // autowoot
             }
@@ -1114,6 +1115,8 @@
                 var remaining = obj.media.duration * 1000;
                 var startcid = API.getMedia().cid;
                 basicBot.room.autoskipTimer = setTimeout(function() {
+                    if (!API.getMedia()) return;
+                    
                     var endcid = API.getMedia().cid;
                     if (startcid === endcid) {
                         //API.sendChat('Song stuck, skipping...');
