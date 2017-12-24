@@ -246,7 +246,7 @@
     var botCreatorIDs = [3851534, 4105209];
 
     var basicBot = {
-        version: '2.11.2',
+        version: '2.11.3',
         status: false,
         name: 'basicBot',
         loggedInID: null,
@@ -1116,7 +1116,7 @@
                 var startcid = API.getMedia().cid;
                 basicBot.room.autoskipTimer = setTimeout(function() {
                     if (!API.getMedia()) return;
-                    
+
                     var endcid = API.getMedia().cid;
                     if (startcid === endcid) {
                         //API.sendChat('Song stuck, skipping...');
