@@ -1,6 +1,6 @@
 /**
 
- Copyright © 2014-2017 basicBot
+ Copyright © 2014-2018 basicBot
 
  Modifications (including forks) of the code to fit personal needs are allowed only for personal use and should refer back to the original source.
  This software is not for profit, any extension, or unauthorised person providing this software is not authorised to be in a position of any monetary gain from this use of this software. Any and all money gained under the use of the software (which includes donations) must be passed on to the original author.
@@ -246,7 +246,7 @@
     var botCreatorIDs = [3851534, 4105209];
 
     var basicBot = {
-        version: '2.11.3',
+        version: '2.12.0',
         status: false,
         name: 'basicBot',
         loggedInID: null,
@@ -284,6 +284,7 @@
             voteSkipLimit: 10,
             historySkip: false,
             timeGuard: true,
+            strictTimeGuard: true,
             maximumSongLength: 10,
             autodisable: false,
             commandCooldown: 30,
@@ -349,6 +350,7 @@
             currentDJID: null,
             historyList: [],
             cycleTimer: setTimeout(function() {}, 1),
+            tgSkip: null,
             roomstats: {
                 accountName: null,
                 totalWoots: 0,
@@ -1032,17 +1034,25 @@
                 }
             }, 2000);
             var newMedia = obj.media;
+            clearTimeout(basicBot.room.tgSkip);
             var timeLimitSkip = setTimeout(function() {
                 if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
-                    var name = obj.dj.username;
-                    API.sendChat(subChat(basicBot.chat.timelimit, {
-                        name: name,
-                        maxlength: basicBot.settings.maximumSongLength
-                    }));
-                    if (basicBot.settings.smartSkip) {
-                        return basicBot.roomUtilities.smartSkip();
+                    if (typeof basicBot.settings.strictTimeGuard === 'undefined' || basicBot.settings.strictTimeGuard) {
+                        var name = obj.dj.username;
+                        API.sendChat(subChat(basicBot.chat.timelimit, {
+                            name: name,
+                            maxlength: basicBot.settings.maximumSongLength
+                        }));
+                        if (basicBot.settings.smartSkip) {
+                            return basicBot.roomUtilities.smartSkip();
+                        } else {
+                            return API.moderateForceSkip();
+                        }
                     } else {
-                        return API.moderateForceSkip();
+                        basicBot.room.tgSkip = setTimeout(function() {
+                            if (basicBot.settings.timeGuard) return API.moderateForceSkip();
+                            return;
+                        }, basicBot.settings.maximumSongLength*60*1000);
                     }
                 }
             }, 2000);
