@@ -2571,6 +2571,20 @@
                 }
             },
 
+            grabCommand: {
+                command: 'grab',
+                rank: 'user',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        $('#grab').click();
+                        $('.pop-menu.grab > .menu > ul > li:first-child').mousedown();
+                    }
+                }
+            },
+
             helpCommand: {
                 command: 'help',
                 rank: 'user',
@@ -2814,6 +2828,66 @@
                                     }));
                                 });
                             }
+                        }
+                    }
+                }
+            },
+
+            listjoinCommand: {
+                command: ['listjoin', 'jumpup'],
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        el = $('#dj-button');
+
+                        // Check that bot is not already djing or waiting.
+                        if(el.hasClass('is-join') || el.hasClass('is-wait')){
+                            el.click();
+                        }
+                    }
+                }
+            },
+
+            listleaveCommand: {
+                command: ['listleave', 'jumpdown'],
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        el = $('#dj-button');
+
+                        // Check that the bot is djing or waiting.
+                        if(el.hasClass('is-quit') || el.hasClass('is-leave')){
+                            el.click();
+                            setTimeout(function (){
+                                $('#dialog-confirm > .dialog-frame .submit').click();
+                            }, 500);
+                        }
+                    }
+                }
+            },
+
+            listtoggleCommand: {
+                command: ['listtoggle', 'botdj', 'dj'],
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        el = $('#dj-button');
+                        el.click();
+
+                        // If we are quitting or leaving, handle the confirmation popup.
+                        if(el.hasClass('is-quit') || el.hasClass('is-leave')){
+                            setTimeout(function (){
+                                $('#dialog-confirm > .dialog-frame .submit').click();
+                            }, 500);
                         }
                     }
                 }
@@ -3353,6 +3427,26 @@
                             mehs: mehs,
                             grabs: grabs
                         }));
+                    }
+                }
+            },
+
+
+            shuffleCommand: {
+                command: 'shuffle',
+                rank: 'mod',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        $('#playlist-button').click();
+                        setTimeout(function(){
+                            $('#playlist-shuffle-button').click();
+                        }, 250);
+                        setTimeout(function(){
+                            $('#playlist-button').click();
+                        }, 500);
                     }
                 }
             },
