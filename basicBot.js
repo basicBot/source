@@ -3524,7 +3524,7 @@
 
             showplaylistsCommand: {
                 command: ['showplaylists', 'botpls'],
-                rank: 'manager',
+                rank: 'bouncer',
                 type: 'exact',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
@@ -3833,7 +3833,7 @@
 
             switchPlaylistCommand: {
                 command: ['switchplaylist', 'botpl'],
-                rank: 'manager',
+                rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);

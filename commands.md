@@ -38,10 +38,8 @@
 | !move | @user (X) | moves user to position X on the waitlist, default is position 1. |
 | !remove | @user | remove user from the waitlist. |
 | !roulette | — | start a roulette. |
-| !showplaylists / !botpls | - | makes the bot list its playlists. (See Bot DJ section of README.md) |
 | !songstats | — | toggle song statistics. |
 | !swap | @user1 @user2 | swaps the position of two users in the waitlist. |
-| !switchplaylist / !botpl | @playlistID | playlistID can be either the full playlist name, or the id of the playlist in the list displayed by !showplaylists (See Bot DJ section of README.md)
 | !unlock | — | unlock the waitlist. |
 | !welcome | — | toggle the welcome message on user join. |
 | !woot | — | makes the bot woot the current song. |
@@ -79,9 +77,11 @@
 | !reload | — | reload the bot. |
 | !restricteta | — | toggles the restriction on eta: grey users can use it once an hour. |
 | !sessionstats | — | display stats for the current session. |
+| !showplaylists / !botpls | - | makes the bot list its playlists. (See Bot DJ section of README.md) |
 | !shuffle | - | Tell the bot to shuffle their playlist, useful after !grab if the bot is djing. (See Bot DJ section of README.md) |
 | !skip / !smartskip | (reason) | skips the dj using smartskip. actions such as locking and moving user depends on various factors (the position the dj is moved to can be set with `!skippos`). |
 | !status | — | display the bot's status and some settings. |
+| !switchplaylist / !botpl | @playlistID | playlistID can be either the full playlist name, or the id of the playlist in the list displayed by !showplaylists (See Bot DJ section of README.md) |
 | !timeguard | — | toggle the timeguard. |
 | !togglebl | — | toggle the blacklist. |
 | !togglemotd | — | toggle the motd. |

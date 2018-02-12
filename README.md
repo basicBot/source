@@ -33,7 +33,7 @@ Expected usage:
 Grab - Adding to the bot playlist:
 Run the !grab command to tell the bot to grab the current song. The song will be added to the bot's current active playlist.
 
-Users with Bouncer+ permissions in the room can also use !showplaylists or !botpls to list the bot's available playlists and !switchplaylist or !botpl to switch the bot's current playlist.
+Users can also use !showplaylists or !botpls to list the bot's available playlists and !switchplaylist or !botpl to switch the bot's current playlist.
 
 ### Blacklists
 
