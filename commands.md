@@ -38,8 +38,10 @@
 | !move | @user (X) | moves user to position X on the waitlist, default is position 1. |
 | !remove | @user | remove user from the waitlist. |
 | !roulette | — | start a roulette. |
+| !showplaylists / !botpls | - | makes the bot list its playlists. (See Bot DJ section of README.md) |
 | !songstats | — | toggle song statistics. |
 | !swap | @user1 @user2 | swaps the position of two users in the waitlist. |
+| !switchplaylist / !botpl | @playlistID | playlistID can be either the full playlist name, or the id of the playlist in the list displayed by !showplaylists (See Bot DJ section of README.md)
 | !unlock | — | unlock the waitlist. |
 | !welcome | — | toggle the welcome message on user join. |
 | !woot | — | makes the bot woot the current song. |
@@ -62,7 +64,7 @@
 | !eta | (@user) | shows when user will reach the booth. |
 | !filter | — | toggles the chat filter. |
 | !forceskip / !fs | — | forceskips the current song. |
-| !grab | - | Tells the bot to grab the current song and add to their playlist. (See Bot DJ section of README.md) |
+| !grab | - | Tells the bot to grab the current song and add to their current playlist. (See Bot DJ section of README.md) |
 | !historyskip | — | toggles the history skip. |
 | !jointime | @user | shows how long the user has been in the room. |
 | !kick | (X) | kicks user for X minutes, default is 0.25 minutes (15 seconds). |

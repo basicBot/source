@@ -576,7 +576,120 @@
                 return msg;
             }
         },
+        botInterfaceUtilities: {
+            grab: function() {
+                $('#grab').click();
+                setTimeout(function (){
+                    $('.pop-menu.grab > .menu > ul > li > i.icon-check-purple').parent().mousedown();
+                }, 500);
+            },
+            listJoin: function() {
+                el = $('#dj-button');
+                // Check that bot is not already djing or waiting.
+                if(el.hasClass('is-join') || el.hasClass('is-wait')){
+                    el.click();
+                }
+            },
+            listLeave: function() {
+                el = $('#dj-button');
+                // Check that the bot is djing or waiting.
+                if(el.hasClass('is-quit') || el.hasClass('is-leave')){
+                    el.click();
+                    setTimeout(function (){
+                        $('#dialog-confirm > .dialog-frame .submit').click();
+                    }, 500);
+                }
+            },
+            listToggle: function() {
+                el = $('#dj-button');
+                el.click();
+                // If we are quitting or leaving, handle the confirmation popup.
+                if(el.hasClass('is-quit') || el.hasClass('is-leave')){
+                    setTimeout(function (){
+                        $('#dialog-confirm > .dialog-frame .submit').click();
+                    }, 500);
+                }
+            },
+            meh: function() {
+                $('#meh').click();
+            },
+            togglePlaylistDrawer: function(wait){
+                if ($.isNumeric(wait)) {
+                    // If we were passed a wait time, wait.
+                    setTimeout(function(){
+                        $('#playlist-button').click();
+                    }, wait);
+                }else{
+                    // no wait time, do it now.
+                    $('#playlist-button').click();
+                }
+            },
+            showPlaylists: function() {
+                basicBot.botInterfaceUtilities.togglePlaylistDrawer();
+                setTimeout(function(){
+                    var playlists = $('#playlist-menu .row').map(function( index ){
+                        var lead = '---   ';
+                        var trail = '  ---';
+                        if($(this).hasClass('selected') === true) {
+                            lead = '==> ';
+                            var trail = '  ===';
+                        }
+                        var id = index+1;
 
+                        var msg = lead + id + ": " + $( this ).children('.name').text() + trail;
+                        return msg;
+                    }).get();
+                    var len = playlists.length;
+                    var msg = '';
+                    var waittime = 250;
+                    for(var i = 0; i < len; i++) {
+                        waittime += 250;
+                        setTimeout(function(msg){
+                            API.sendChat(msg);
+                        }, waittime, playlists[i]);
+                    }
+                    basicBot.botInterfaceUtilities.togglePlaylistDrawer(1500);
+
+                }, 500);
+            },
+            shufflePlaylist: function() {
+                basicBot.botInterfaceUtilities.togglePlaylistDrawer();
+                setTimeout(function(){
+                    $('#playlist-shuffle-button').click();
+                    basicBot.botInterfaceUtilities.togglePlaylistDrawer(500);
+                }, 250);
+            },
+            switchPlaylist: function(listname) {
+                basicBot.botInterfaceUtilities.togglePlaylistDrawer();
+                if($.isNumeric(listname)) {
+                    setTimeout(function(){
+                        $('#playlist-menu .container .row:nth-child('+listname+')').mouseup();
+                        setTimeout(function(){
+                            $('#playlist-menu .container .row:nth-child('+listname+')').children('.activate-button').click();
+                        }, 500);
+                    }, 250);
+                }else{
+                    setTimeout(function(){
+                        el = $('#playlist-menu span:contains("'+listname+'")');
+                        if(el.length > 0){
+                            $('#playlist-menu span:contains("'+listname+'")').parent().mouseup();
+                            setTimeout(function(){
+                                $('#playlist-menu span:contains("'+listname+'")').siblings('.activate-button').click();
+                            }, 500);
+                        }
+                    }, 500);
+                }
+                basicBot.botInterfaceUtilities.togglePlaylistDrawer(500);
+
+                setTimeout(function(){
+                    basicBot.botInterfaceUtilities.showPlaylists();
+                }, 1000)
+
+            },
+            woot: function() {
+                $('#woot').click();
+            }
+        },
         roomUtilities: {
             rankToNumber: function(rankString) {
                 var rankInt = null;
@@ -2579,8 +2692,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $('#grab').click();
-                        $('.pop-menu.grab > .menu > ul > li:first-child').mousedown();
+                        basicBot.botInterfaceUtilities.grab();
                     }
                 }
             },
@@ -2841,12 +2953,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        el = $('#dj-button');
-
-                        // Check that bot is not already djing or waiting.
-                        if(el.hasClass('is-join') || el.hasClass('is-wait')){
-                            el.click();
-                        }
+                       basicBot.botInterfaceUtilities.listJoin();
                     }
                 }
             },
@@ -2859,15 +2966,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        el = $('#dj-button');
-
-                        // Check that the bot is djing or waiting.
-                        if(el.hasClass('is-quit') || el.hasClass('is-leave')){
-                            el.click();
-                            setTimeout(function (){
-                                $('#dialog-confirm > .dialog-frame .submit').click();
-                            }, 500);
-                        }
+                        basicBot.botInterfaceUtilities.listLeave();
                     }
                 }
             },
@@ -2880,15 +2979,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        el = $('#dj-button');
-                        el.click();
-
-                        // If we are quitting or leaving, handle the confirmation popup.
-                        if(el.hasClass('is-quit') || el.hasClass('is-leave')){
-                            setTimeout(function (){
-                                $('#dialog-confirm > .dialog-frame .submit').click();
-                            }, 500);
-                        }
+                        basicBot.botInterfaceUtilities.listToggle();
                     }
                 }
             },
@@ -3100,7 +3191,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $('#meh').click();
+                        basicBot.botInterfaceUtilities.meh();
                     }
                 }
             },
@@ -3431,22 +3522,28 @@
                 }
             },
 
-
-            shuffleCommand: {
-                command: 'shuffle',
-                rank: 'mod',
+            showplaylistsCommand: {
+                command: ['showplaylists', 'botpls'],
+                rank: 'manager',
                 type: 'exact',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $('#playlist-button').click();
-                        setTimeout(function(){
-                            $('#playlist-shuffle-button').click();
-                        }, 250);
-                        setTimeout(function(){
-                            $('#playlist-button').click();
-                        }, 500);
+                        basicBot.botInterfaceUtilities.showplaylists();
+                    }
+                }
+            },
+
+            shuffleCommand: {
+                command: 'shuffle',
+                rank: 'manager',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        basicBot.botInterfaceUtilities.shufflePlaylist();
                     }
                 }
             },
@@ -3730,6 +3827,23 @@
                                 basicBot.userUtilities.moveUser(user2.id, p1, false);
                             }, 2000, user2, p1);
                         }
+                    }
+                }
+            },
+
+            switchPlaylistCommand: {
+                command: ['switchplaylist', 'botpl'],
+                rank: 'manager',
+                type: 'startsWith',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        var msg = chat.message;
+                        if (msg.length === cmd.length) return;
+
+                        var listname = msg.substring(cmd.length + 1);
+                        basicBot.botInterfaceUtilities.switchPlaylist(listname);
                     }
                 }
             },
@@ -4297,7 +4411,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $('#woot').click();
+                        basicBot.botInterfaceUtilities.woot();
                     }
                 }
             },

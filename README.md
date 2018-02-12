@@ -31,7 +31,9 @@ Expected usage:
 3. When done, type !listleave, !jumpdown, or !dj to have your bot leave the waitlist.
 
 Grab - Adding to the bot playlist:
-Run the !grab command to tell the bot to grab the current song. The song will always be added to the playlist that appears at the top of the bot's grab popup menu and will be moved to the bottom of the playlist.
+Run the !grab command to tell the bot to grab the current song. The song will be added to the bot's current active playlist.
+
+Users with Bouncer+ permissions in the room can also use !showplaylists or !botpls to list the bot's available playlists and !switchplaylist or !botpl to switch the bot's current playlist.
 
 ### Blacklists
 
