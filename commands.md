@@ -41,7 +41,7 @@
 | !songstats | — | toggle song statistics. |
 | !swap | @user1 @user2 | swaps the position of two users in the waitlist. |
 | !unlock | — | unlock the waitlist. |
-| !welcome | — | toggle the welcome message on user join. |
+| !welcome | — | Seja Bem Vindo Ao Pop Of Music
 | !woot | — | makes the bot woot the current song. |
 
 ### Bouncer
@@ -114,7 +114,7 @@
 | !ping | — | returns pong! |
 | !rules | — | links to the rules (if set in the settings). |
 | !source | — | returns a link to the basicBot repository on GitHub. |
-| !theme | — | links to the room's theme (if set in the settings). |
-| !thor | — | users get moved to position 1 in the waitlist if they're worthy of Thor's hammer. |
+| !tema | — | Tema
+| !Furar | — | moved posição 1 si ganhar
 | !website | — | links to the room's website (if set in the settings). |
 | !youtube | — | links to the room's youtube page (if set in the settings). |
