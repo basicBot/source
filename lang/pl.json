@@ -65,7 +65,7 @@
     "bouncer": "Bot nie może przenosić ludzi w kolejce, gdy jest uruchomiony jako bramkarz.",
     "online": "\/me %%BOTNAME%% v%%VERSION%% online!",
     "welcome": "\/me Witaj %%NAME%%",
-    "welcomeback": "\/me Witaj ponownie, %%NAME%%",
+    "welcomeback": "\/me %%NAME%% witaj ponownie!",
     "songknown": "\/me @%%NAME%%, utw\u00f3r jest w historii.",
     "notavailable": "/me @%%NAME%%, utwór nie był dostępny.",
     "timelimit": "/me @%%NAME%%, wybrany utwór jest dłuższy niż %%MAXLENGTH%% minut(y), potrzebujesz zgody na puszczanie dłuższych piosenek.",
