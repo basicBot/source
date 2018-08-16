@@ -2535,7 +2535,7 @@
                                     }));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgiftags, {
-                                        name: chat.un,
+                                        name: chat.un
                                         //tags: commatag
                                     }));
                                 }
