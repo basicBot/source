@@ -2530,7 +2530,7 @@
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {
                                        'Here is yer damn gif,',
                                         name: chat.un,
-                                        id: id,
+                                        id: id
                                         //tags: commatag
                                     }));
                                 } else {
