@@ -2359,7 +2359,7 @@
                                 ch += 'Молим Вас, говорите енглески.';
                                 break;
                         }
-                        ch += ' English please.';
+                        ch += ' English please. And we gonna make mexico pay for it';
                         API.sendChat(ch);
                     }
                 }
@@ -2528,14 +2528,15 @@
                             get_id(api_key, tag, function(id) {
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {
+                                       'Here is yer damn gif,',
                                         name: chat.un,
                                         id: id,
-                                        tags: commatag
+                                        //tags: commatag
                                     }));
                                 } else {
                                     API.sendChat(subChat(basicBot.chat.invalidgiftags, {
                                         name: chat.un,
-                                        tags: commatag
+                                        //tags: commatag
                                     }));
                                 }
                             });
