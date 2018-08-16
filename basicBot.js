@@ -2312,7 +2312,7 @@
             },
 
             englishCommand: {
-                command: ['english', 'MAGA'},
+                command: ['english', 'MAGA'],
                 rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
