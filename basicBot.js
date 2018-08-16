@@ -2528,7 +2528,7 @@
                             get_id(api_key, tag, function(id) {
                                 if (typeof id !== 'undefined') {
                                     API.sendChat(subChat(basicBot.chat.validgiftags, {
-                                       'Here is yer damn gif,',
+                                        //'Here is yer damn gif,',
                                         name: chat.un,
                                         id: id
                                         //tags: commatag
