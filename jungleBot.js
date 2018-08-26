@@ -1581,7 +1581,7 @@
               API.sendChat("MrDestructoid Clap");
             }
           }
-        };
+        },
         
         //MrDestructoid in natural habitat 
         mackygeeCommand = {
@@ -1595,7 +1595,7 @@
               API.sendChat("/me *claps*");
             }
           }
-        };
+        },
         
         //MrDestructoid woots
         wootCommand = {
@@ -1610,7 +1610,7 @@
               API.sendChat("MrDestructoid Clap");
             }
           }
-        };
+        },
         
         //MrDestructoid ResidentSleeper
         ResidentSleeperCommand = {
@@ -1624,7 +1624,7 @@
               API.sendChat("ResidentSleeper Clap");
             }
           }
-        };
+        },
         
           //MrDestructoid sparkle
         sparkleCommand = {
@@ -1638,7 +1638,7 @@
               API.sendChat("/sparkle");
             }
           }
-        };
+        },
         
         //MrDestructoid exportchat
         exportchatCommand = {
@@ -1652,7 +1652,7 @@
               API.sendChat("/exportchat");
             }
           }
-        };
+        },
         
         
         //cute robot
@@ -1667,7 +1667,7 @@
               API.sendChat("AYAYA Clap");
             }
           }
-        };
+        },
         
         //MrDestructoid voteemotespam
         voteemotespamCommand = {
@@ -1681,7 +1681,7 @@
               API.sendChat("/voteemotespam");
             }
           }
-        };
+        },
         
         // Nightcore command
         nightcoreCommand = {
@@ -1695,7 +1695,7 @@
               API.sendChat("MrDestructoid says: If you're about to queue a nightcore song, just look up the original and queue that instead.");
             }
           }
-        };
+        },
         
         // MrDestructoid clapping
         commandsCommand = {
@@ -1709,7 +1709,7 @@
               API.sendChat("Find the bot commands for this channel here: https://git.io/fN5eb#bot-commands");
             }
           }
-        };
+        },
         
         
          // RCS help
@@ -1724,7 +1724,7 @@
               API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj");
             }
           }
-        };
+        },
         
          // Emotes help
         emotesCommand = {
@@ -1738,7 +1738,7 @@
               API.sendChat("To use emotes when you have RCS installed type colons like :this:. Alternatively, install the GTE extension and add xqcow in the settings: https://chrome.google.com/webstore/detail/global-twitch-emotes/pgniedifoejifjkndekolimjeclnokkb");
             }
           }
-        };
+        },
 
          // Twitch link
         twitchCommand = {
@@ -1752,7 +1752,7 @@
               API.sendChat("xQc's Twitch: https://www.twitch.tv/xqcow");
             }
           }
-        };
+        },
         
          // Discord link
         discordCommand = {
@@ -1766,7 +1766,7 @@
               API.sendChat("xQc's Discord: https://discord.gg/xqcow");
             }
           }
-        };
+        },
 			
 			
 			
