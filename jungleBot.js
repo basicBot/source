@@ -1545,7 +1545,7 @@
 
             },
 
-  
+  /*
             command: {
                 command: 'cmd',
                 rank: 'user/bouncer/mod/manager',
@@ -1558,7 +1558,7 @@
                     }
                 }
             },
-            */
+    */
 
 
 			// START OF COMMANDS
