@@ -1570,8 +1570,8 @@
 		// MrDestructoid clapping
 
 
-       clapCommand = {
-          command: 'clap',
+       clapCommand: {
+		  command: 'clap',
           rank: 'user',
           type: 'exact',
           functionality: function (chat, cmd) {
@@ -1584,7 +1584,7 @@
         },
 
         //MrDestructoid in natural habitat
-        mackygeeCommand = {
+        mackygeeCommand: {
           command: 'mackygee',
           rank: 'user',
           type: 'exact',
@@ -1598,7 +1598,7 @@
         },
 
         //MrDestructoid woots
-        wootCommand = {
+        wootCommand: {
           command: 'woot',
           rank: 'residentdj',
           type: 'exact',
@@ -1613,7 +1613,7 @@
         },
 
         //MrDestructoid ResidentSleeper
-        ResidentSleeperCommand = {
+        ResidentSleeperCommand: {
           command: 'sleeper',
           rank: 'residentdj',
           type: 'exact',
@@ -1627,7 +1627,7 @@
         },
 
           //MrDestructoid sparkle
-        sparkleCommand = {
+        sparkleCommand: {
           command: 'sparkle',
           rank: 'residentdj',
           type: 'exact',
@@ -1641,7 +1641,7 @@
         },
 
         //MrDestructoid exportchat
-        exportchatCommand = {
+        exportchatCommand: {
           command: 'exportchat',
           rank: 'manager',
           type: 'exact',
@@ -1656,7 +1656,7 @@
 
 
         //cute robot
-        ayayaCommand = {
+        ayayaCommand: {
           command: 'ayaya',
           rank: 'residentdj',
           type: 'exact',
@@ -1670,7 +1670,7 @@
         },
 
         //MrDestructoid voteemotespam
-        voteemotespamCommand = {
+        voteemotespamCommand: {
           command: 'votespam',
           rank: 'manager',
           type: 'exact',
@@ -1684,7 +1684,7 @@
         },
 
         // Nightcore command
-        nightcoreCommand = {
+        nightcoreCommand: {
           command: 'nightcore',
           rank: 'user',
           type: 'exact',
@@ -1698,7 +1698,7 @@
         },
 
         // MrDestructoid clapping
-        commandsCommand = {
+        commandsCommand: {
           command: 'commands',
           rank: 'user',
           type: 'exact',
@@ -1713,7 +1713,7 @@
 
 
          // RCS help
-        rcsCommand = {
+        rcsCommand: {
           command: 'rcs',
           rank: 'user',
           type: 'exact',
@@ -1727,7 +1727,7 @@
         },
 
          // Emotes help
-        emotesCommand = {
+        emotesCommand: {
           command: ['emotes', 'downloadpoggers'],
           rank: 'user',
           type: 'exact',
@@ -1741,7 +1741,7 @@
         },
 
          // Twitch link
-        twitchCommand = {
+        twitchCommand: {
           command: 'twitch',
           rank: 'user',
           type: 'exact',
@@ -1755,7 +1755,7 @@
         },
 
          // Discord link
-        discordCommand = {
+        discordCommand: {
           command: 'discord',
           rank: 'user',
           type: 'exact',
