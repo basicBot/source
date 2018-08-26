@@ -1560,20 +1560,20 @@
             },
             */
 
-			
-			// START OF COMMANDS 
-			
+
+			// START OF COMMANDS
+
 				// START OF CUSTOM COMMANDS
-				
-			
-			
+
+			/*
+
 		// MrDestructoid clapping
-			
-			
+
+
        clapCommand = {
-          command: 'clap',  
-          rank: 'user', 
-          type: 'exact', 
+          command: 'clap',
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1582,12 +1582,12 @@
             }
           }
         },
-        
-        //MrDestructoid in natural habitat 
+
+        //MrDestructoid in natural habitat
         mackygeeCommand = {
-          command: 'mackygee',  
-          rank: 'user', 
-          type: 'exact', 
+          command: 'mackygee',
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1596,12 +1596,12 @@
             }
           }
         },
-        
+
         //MrDestructoid woots
         wootCommand = {
-          command: 'woot',  
-          rank: 'residentdj', 
-          type: 'exact', 
+          command: 'woot',
+          rank: 'residentdj',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1611,12 +1611,12 @@
             }
           }
         },
-        
+
         //MrDestructoid ResidentSleeper
         ResidentSleeperCommand = {
-          command: 'sleeper',  
-          rank: 'residentdj', 
-          type: 'exact', 
+          command: 'sleeper',
+          rank: 'residentdj',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1625,12 +1625,12 @@
             }
           }
         },
-        
+
           //MrDestructoid sparkle
         sparkleCommand = {
-          command: 'sparkle',  
-          rank: 'residentdj', 
-          type: 'exact', 
+          command: 'sparkle',
+          rank: 'residentdj',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1639,12 +1639,12 @@
             }
           }
         },
-        
+
         //MrDestructoid exportchat
         exportchatCommand = {
-          command: 'exportchat',  
-          rank: 'manager', 
-          type: 'exact', 
+          command: 'exportchat',
+          rank: 'manager',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1653,13 +1653,13 @@
             }
           }
         },
-        
-        
+
+
         //cute robot
         ayayaCommand = {
-          command: 'ayaya',  
-          rank: 'residentdj', 
-          type: 'exact', 
+          command: 'ayaya',
+          rank: 'residentdj',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1668,12 +1668,12 @@
             }
           }
         },
-        
+
         //MrDestructoid voteemotespam
         voteemotespamCommand = {
-          command: 'votespam',  
-          rank: 'manager', 
-          type: 'exact', 
+          command: 'votespam',
+          rank: 'manager',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1682,12 +1682,12 @@
             }
           }
         },
-        
+
         // Nightcore command
         nightcoreCommand = {
-          command: 'nightcore',  
-          rank: 'user', 
-          type: 'exact', 
+          command: 'nightcore',
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1696,12 +1696,12 @@
             }
           }
         },
-        
+
         // MrDestructoid clapping
         commandsCommand = {
-          command: 'commands',  
-          rank: 'user', 
-          type: 'exact', 
+          command: 'commands',
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1710,13 +1710,13 @@
             }
           }
         },
-        
-        
+
+
          // RCS help
         rcsCommand = {
-          command: 'rcs',  
-          rank: 'user', 
-          type: 'exact', 
+          command: 'rcs',
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1725,12 +1725,12 @@
             }
           }
         },
-        
+
          // Emotes help
         emotesCommand = {
-          command: ['emotes', 'downloadpoggers'],  
-          rank: 'user', 
-          type: 'exact', 
+          command: ['emotes', 'downloadpoggers'],
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1742,9 +1742,9 @@
 
          // Twitch link
         twitchCommand = {
-          command: 'twitch',  
-          rank: 'user', 
-          type: 'exact', 
+          command: 'twitch',
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1753,12 +1753,12 @@
             }
           }
         },
-        
+
          // Discord link
         discordCommand = {
-          command: 'discord',  
-          rank: 'user', 
-          type: 'exact', 
+          command: 'discord',
+          rank: 'user',
+          type: 'exact',
           functionality: function (chat, cmd) {
             if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
             if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
@@ -1767,13 +1767,13 @@
             }
           }
         },
-			
-			
-			
-			
+
+
+
+
 		//END OF CUSTOM COMMANDS
-			
-			
+
+		*/
             activeCommand: {
                 command: 'active',
                 rank: 'bouncer',
@@ -2278,7 +2278,7 @@
                 }
             },
 
-           
+
 
             cookieCommand: {
                 command: 'cookie',
@@ -4255,7 +4255,7 @@
                 }
             },
 
-            
+
 
             welcomeCommand: {
                 command: 'welcome',
