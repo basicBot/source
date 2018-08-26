@@ -1545,7 +1545,12 @@
 
             },
 
-  /*
+
+	// START OF COMMANDS
+
+		// START OF CUSTOM COMMANDS
+
+			/*
             command: {
                 command: 'cmd',
                 rank: 'user/bouncer/mod/manager',
@@ -1558,19 +1563,10 @@
                     }
                 }
             },
-    */
-
-
-			// START OF COMMANDS
-
-				// START OF CUSTOM COMMANDS
-
-			
+            */
 
 		// MrDestructoid clapping
-
-
-       clapCommand: {
+		clapCommand: {
 		  command: 'clap',
           rank: 'user',
           type: 'exact',
@@ -1654,7 +1650,6 @@
           }
         },
 
-
         //cute robot
         ayayaCommand: {
           command: 'ayaya',
@@ -1710,7 +1705,6 @@
             }
           }
         },
-
 
          // RCS help
         rcsCommand: {
