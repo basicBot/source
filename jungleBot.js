@@ -1514,6 +1514,7 @@
                         minPerm = (1*(API.ROLE.HOST-API.ROLE.COHOST))+API.ROLE.HOST;
                         break;
                     case 'host':
+                    case 'host':
                         minPerm = API.ROLE.HOST;
                         break;
                     case 'cohost':
@@ -4370,18 +4371,6 @@
                 }
             },
 
-            wootCommand: {
-                command: 'woot',
-                rank: 'mod',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        $('#woot').click();
-                    }
-                }
-            },
 
             youtubeCommand: {
                 command: 'youtube',
