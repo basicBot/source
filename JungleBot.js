@@ -1566,6 +1566,215 @@
 			
 			// START OF COMMANDS 
 			
+				// START OF CUSTOM COMMANDS
+				
+			/*
+				// MrDestructoid clapping
+			
+			
+       bot.commands.clapCommand = {
+          command: 'clap',  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("MrDestructoid Clap");
+            }
+          }
+        };
+        
+        //MrDestructoid in natural habitat 
+        bot.commands.mackygeeCommand = {
+          command: 'mackygee',  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("/me *claps*");
+            }
+          }
+        };
+        
+        //MrDestructoid woots
+        bot.commands.wootCommand = {
+          command: 'woot',  
+          rank: 'residentdj', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("/woot");
+              API.sendChat("MrDestructoid Clap");
+            }
+          }
+        };
+        
+        //MrDestructoid ResidentSleeper
+        bot.commands.ResidentSleeperCommand = {
+          command: 'sleeper',  
+          rank: 'residentdj', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("ResidentSleeper Clap");
+            }
+          }
+        };
+        
+          //MrDestructoid sparkle
+        bot.commands.sparkleCommand = {
+          command: 'sparkle',  
+          rank: 'residentdj', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("/sparkle");
+            }
+          }
+        };
+        
+        //MrDestructoid exportchat
+        bot.commands.exportchatCommand = {
+          command: 'exportchat',  
+          rank: 'manager', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("/exportchat");
+            }
+          }
+        };
+        
+        
+        //cute robot
+        bot.commands.ayayaCommand = {
+          command: 'ayaya',  
+          rank: 'residentdj', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("AYAYA Clap");
+            }
+          }
+        };
+        
+        //MrDestructoid voteemotespam
+        bot.commands.voteemotespamCommand = {
+          command: 'votespam',  
+          rank: 'manager', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("/voteemotespam");
+            }
+          }
+        };
+        
+        // Nightcore command
+        bot.commands.nightcoreCommand = {
+          command: 'nightcore',  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("MrDestructoid says: If you're about to queue a nightcore song, just look up the original and queue that instead.");
+            }
+          }
+        };
+        
+        // MrDestructoid clapping
+        bot.commands.commandsCommand = {
+          command: 'commands',  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("Find the bot commands for this channel here: https://git.io/fN5eb#bot-commands");
+            }
+          }
+        };
+        
+        
+         // RCS help
+        bot.commands.rcsCommand = {
+          command: 'rcs',  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj");
+            }
+          }
+        };
+        
+         // Emotes help
+        bot.commands.emotesCommand = {
+          command: ['emotes', 'downloadpoggers'],  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("To use emotes when you have RCS installed type colons like :this:. Alternatively, install the GTE extension and add xqcow in the settings: https://chrome.google.com/webstore/detail/global-twitch-emotes/pgniedifoejifjkndekolimjeclnokkb");
+            }
+          }
+        };
+
+         // Twitch link
+        bot.commands.twitchCommand = {
+          command: 'twitch',  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("xQc's Twitch: https://www.twitch.tv/xqcow");
+            }
+          }
+        };
+        
+         // Discord link
+        bot.commands.discordCommand = {
+          command: 'discord',  
+          rank: 'user', 
+          type: 'exact', 
+          functionality: function (chat, cmd) {
+            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+            if (!bot.commands.executable(this.rank, chat)) return void (0);
+            else {
+              API.sendChat("xQc's Discord: https://discord.gg/xqcow");
+            }
+          }
+        };
+			
+			
+			*/
+			
+		//END OF CUSTOM COMMANDS
+			
 			
             activeCommand: {
                 command: 'active',
@@ -4062,21 +4271,7 @@
                 }
             },
 
-            websiteCommand: {
-                command: 'website',
-                rank: 'user',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        if (typeof jungleBot.settings.website === 'string')
-                            API.sendChat(subChat(jungleBot.chat.website, {
-                                link: jungleBot.settings.website
-                            }));
-                    }
-                }
-            },
+            
 
             welcomeCommand: {
                 command: 'welcome',
