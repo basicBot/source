@@ -320,7 +320,7 @@
 			songstats: false,
 			commandLiteral: '!',
 			blacklists: {
-				BANNED: 'https://rawgit.com/HarryMcKenzie/custom/master/blacklists/BANNEDlist.json'
+				BANNED: 'https://rawgit.com/HarryMcKenzie/source/master/blacklists/BANNEDlist.json'
 						}
         },
         room: {
