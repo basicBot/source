@@ -1545,7 +1545,7 @@
 
             },
 
-            /*
+  
             command: {
                 command: 'cmd',
                 rank: 'user/bouncer/mod/manager',
@@ -1565,7 +1565,7 @@
 
 				// START OF CUSTOM COMMANDS
 
-			/*
+			
 
 		// MrDestructoid clapping
 
@@ -1697,7 +1697,7 @@
           }
         },
 
-        // MrDestructoid clapping
+        // Show commands
         commandsCommand: {
           command: 'commands',
           rank: 'user',
@@ -1773,7 +1773,7 @@
 
 		//END OF CUSTOM COMMANDS
 
-		*/
+		
             activeCommand: {
                 command: 'active',
                 rank: 'bouncer',
