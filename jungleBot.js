@@ -259,7 +259,7 @@
         settings: {
             botName: 'JungleBot',
 			language: 'english',
-			chatLink: 'https://rawgit.com/HarryMcKenzie/custom/master/lang/en.json',
+			chatLink: 'https://rawgit.com/HarryMcKenzie/source/master/lang/en.json',
 			scriptLink: 'https://rawgit.com/basicBot/source/master/basicBot.js',
 			roomLock: false, // Requires an extension to re-load the script
 			startupCap: 1, // 1-200
@@ -3436,7 +3436,7 @@
 
             reloadCommand: {
                 command: 'reload',
-                rank: 'bouncer',
+                rank: 'manager',
                 type: 'exact',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
