@@ -1576,11 +1576,16 @@
                 rank: 'residentdj',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
+					
+					
+					
+					
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
+						var uname = msg.substr(cmd.length + 2);
 						API.sendChat(subChat(jungleBot.chat.weirdchamp, {
-                            name: chat.un,
+                            name: uname,
                         }));
                     }
                 }
