@@ -290,7 +290,7 @@
 			usercommandsEnabled: true,
 			thorCommand: false,
 			thorCooldown: 1100,
-			skipPosition: 50,
+			skipPosition: 0,
 			skipReasons: [
 				['theme', 'This song does not fit the room theme. '],
 				['op', 'This song is on the OP list. '],
@@ -313,7 +313,7 @@
 			rulesLink: 'http://bit.ly/xqcs-jungle',
 			themeLink: null,
 			fbLink: null,
-			youtubeLink: 'bit.ly/xQcYT',
+			youtubeLink: 'http://youtube.com/xqcow',
 			website: 'http://twitch.tv/xqcow',
 			intervalMessages: ["The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj", "Connect with xQc: Stream: http://twitch.tv/xqcow Twitter: https://twitter.com/xqc YouTube: http://yoube.com/xQcOW Discord: http://discord.gg/xqcow (you don't have to be a sub)", "FAQ for new users on the channel: http://bit.ly/jungle-dj-help"],
 			messageInterval: 11,
@@ -1862,7 +1862,7 @@
             },
 
             afklimitCommand: {
-                command: 'afklimit',
+			command: ['afklimit', 'maximumafk', 'maxafktime'],
                 rank: 'manager',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
@@ -2623,21 +2623,7 @@
                 }
             },
 
-            fbCommand: {
-                command: 'fb',
-                rank: 'user',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        if (typeof jungleBot.settings.fbLink === 'string')
-                            API.sendChat(subChat(jungleBot.chat.facebook, {
-                                link: jungleBot.settings.fbLink
-                            }));
-                    }
-                }
-            },
+            
 
             filterCommand: {
                 command: 'filter',
@@ -3781,7 +3767,7 @@
 
                         // This is a more efficient solution
                         if (msg.length > 250) {
-                            var split = msg.match(/.{1,250}/g);
+                            var split = msg.match(/.{1,242}/g);
                             for (var i = 0; i < split.length; i++) {
                                 var func = function(index) {
                                     setTimeout(function() {
