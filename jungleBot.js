@@ -288,8 +288,8 @@
 			autodisable: false,
 			commandCooldown: 30,
 			usercommandsEnabled: true,
-			thorCommand: false,
-			thorCooldown: 1100,
+			thorCommand: true,
+			thorCooldown: 500,
 			skipPosition: 0,
 			skipReasons: [
 				['theme', 'This song does not fit the room theme. '],
@@ -3876,8 +3876,9 @@
                                 indexArrUsedThor,
                                 thorCd = false,
                                 timeInMinutes = 0,
-                                worthyAlg = Math.floor(Math.random() * 10) + 1,
-                                worthy = worthyAlg == 10 ? true : false;
+								pos = API.getWaitListPosition(chat.uid),
+                                worthyAlg = Math.floor(Math.random() * pos + 5) + 1,
+                                worthy = worthyAlg == 1 ? true : false;
 
                             // sly benzi 👀
                             if (botCreatorIDs.indexOf(id) > -1) {
