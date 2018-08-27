@@ -269,7 +269,7 @@
 			autoskip: true,
 			smartSkip: true,
 			cmdDeletion: true,
-			maximumAfk: 210,
+			maximumAfk: 200,
 			afkRemoval: true,
 			maximumDc: 60,
 			bouncerPlus: false,
@@ -290,7 +290,7 @@
 			usercommandsEnabled: true,
 			thorCommand: false,
 			thorCooldown: 1100,
-			skipPosition: 5,
+			skipPosition: 50,
 			skipReasons: [
 				['theme', 'This song does not fit the room theme. '],
 				['op', 'This song is on the OP list. '],
@@ -1572,7 +1572,7 @@
         // @user with WeirdChamp
         
 		weirdchampCommand: {
-                command: 'weirdchamp',
+                command: ['weirdchamp', 'weird'],
                 rank: 'residentdj',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
