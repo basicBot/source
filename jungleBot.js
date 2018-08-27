@@ -3877,7 +3877,7 @@
                                 thorCd = false,
                                 timeInMinutes = 0,
 								pos = API.getWaitListPosition(chat.uid),
-                                worthyAlg = Math.floor(Math.random() * pos + 1) + 1,
+                                worthyAlg = Math.floor(Math.random() * pos) + 1,
                                 worthy = worthyAlg == 1 ? true : false;
 
                             // sly benzi 👀
