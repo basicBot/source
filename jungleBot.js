@@ -260,7 +260,7 @@
             botName: 'JungleBot',
 			language: 'english',
 			chatLink: 'https://rawgit.com/HarryMcKenzie/source/master/lang/en.json',
-			scriptLink: 'https://rawgit.com/HarryMcKenzie/source/master/basicBot.js',
+			scriptLink: 'https://rawgit.com/HarryMcKenzie/source/master/jungleBot.js',
 			roomLock: false, // Requires an extension to re-load the script
 			startupCap: 1, // 1-200
 			startupVolume: 0, // 0-100
