@@ -288,7 +288,7 @@
 			autodisable: false,
 			commandCooldown: 30,
 			usercommandsEnabled: true,
-			thorCommand: true,
+			thorCommand: false,
 			thorCooldown: 500,
 			skipPosition: 0,
 			skipReasons: [
@@ -3934,7 +3934,8 @@
                                     name: from
                                 }));
                             } else {
-                                API.moderateRemoveDJ(from.id);
+                                if (API.getWaitListPosition(id) != djlist.length - 1)
+                                    jungleBot.userUtilities.moveUser(id, djlist.length, false);
                                 API.sendChat(subChat(jungleBot.chat.thorNotWorthy, {
                                     name: from
                                 }));
