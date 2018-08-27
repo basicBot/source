@@ -181,7 +181,7 @@
     "youaredj": "\/me @%%NAME%%, you are currently DJing.",
     "eta": "\/me @%%NAME%%, you are position %%POSITION%% in the waitlist and will reach the booth in approximately %%TIME%%.",
     "facebook": "\/me Like us on facebook: %%LINK%%",
-    "starterhelp": "'How do I play my song?' Starter help here: http:\/\/bit.ly\/xqcs-junglehelp",
+    "starterhelp": "'How do I play my song?' Starter help here: https:\/\/git.io\/fN5eb#how-can-i-dj",
     "roulettejoin": "@%%NAME%% joined the roulette! (!leave if you regret it)",
     "jointime": "\/me [@%%NAMEFROM%%] @%%USERNAME%% has been in the room for %%TIME%%.",
     "kickrank": "\/me [@%%NAME%%] you can't kick users with an equal or higher rank than you!",
