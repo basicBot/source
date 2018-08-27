@@ -3934,8 +3934,7 @@
                                     name: from
                                 }));
                             } else {
-                                if (API.getWaitListPosition(id) != djlist.length - 1)
-                                    jungleBot.userUtilities.moveUser(id, djlist.length, false);
+                                API.moderateRemoveDJ(from.id);
                                 API.sendChat(subChat(jungleBot.chat.thorNotWorthy, {
                                     name: from
                                 }));
