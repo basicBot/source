@@ -158,7 +158,7 @@
     "voteskipinvalidlimit": "\/me [@%%NAME%%] Invalid voteskip limit, please try again using a number to signify the number of mehs.",
     "voteskipsetlimit": "\/me [@%%NAME%%] Voteskip limit set to %%LIMIT%%.",
     "activeusersintime": "\/me [@%%NAME%%] There have been %%AMOUNT%% users chatting in the past %%TIME%% minutes. :FeelsOkayMan:",
-    "maximumafktimeset": "\/me [@%%NAME%%] Maximum afk duration set to %%TIME%% minutes. :sodaDatSheffy:",
+    "maximumafktimeset": "\/me [@%%NAME%%] Maximum afk duration set to %%TIME%% minutes. :DatSheffy:",
     "afkstatusreset": "\/me [@%%NAME%%] Reset the afk status of @%%USERNAME%%.",
     "inactivefor": "\/me [@%%NAME%%] @%%USERNAME%% has been inactive for %%TIME%%.",
     "inactivelonger": "\/me [@%%NAME%%] @%%USERNAME%% has been inactive longer than %%BOTNAME%%'s been online.",
