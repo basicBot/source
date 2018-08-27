@@ -260,7 +260,7 @@
             botName: 'JungleBot',
 			language: 'english',
 			chatLink: 'https://rawgit.com/HarryMcKenzie/source/master/lang/en.json',
-			scriptLink: 'https://rawgit.com/basicBot/source/master/basicBot.js',
+			scriptLink: 'https://rawgit.com/HarryMcKenzie/source/master/basicBot.js',
 			roomLock: false, // Requires an extension to re-load the script
 			startupCap: 1, // 1-200
 			startupVolume: 0, // 0-100
@@ -275,7 +275,7 @@
 			bouncerPlus: false,
 			blacklistEnabled: true,
 			lockdownEnabled: false,
-			lockGuard: true,
+			lockGuard: false,
 			maximumLocktime: 10,
 			cycleGuard: true,
 			maximumCycletime: 10,
@@ -283,7 +283,7 @@
 			voteSkipLimit: 69,
 			historySkip: false,
 			timeGuard: true,
-			strictTimeGuard: false,
+			strictTimeGuard: true,
 			maximumSongLength: 10,
 			autodisable: false,
 			commandCooldown: 30,
@@ -315,8 +315,8 @@
 			fbLink: null,
 			youtubeLink: 'bit.ly/xQcYT',
 			website: 'http://twitch.tv/xqcow',
-			intervalMessages: ["The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj", "Connect with xQc: Stream: http://twitch.tv/xqcow Twitter: https://twitter.com/xqc YouTube: http://yoube.com/xQcOW Discord: http://discord.gg/xqcow (you don't have to be a sub)", "FAQ for new users on the channel: http://bit.ly/jungle-dj"],
-			messageInterval: 16,
+			intervalMessages: ["The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj", "Connect with xQc: Stream: http://twitch.tv/xqcow Twitter: https://twitter.com/xqc YouTube: http://yoube.com/xQcOW Discord: http://discord.gg/xqcow (you don't have to be a sub)", "FAQ for new users on the channel: http://bit.ly/jungle-dj-help"],
+			messageInterval: 11,
 			songstats: false,
 			commandLiteral: '!',
 			blacklists: {
@@ -1578,14 +1578,14 @@
                 functionality: function(chat, cmd) {
 					
 					var msg = chat.message;
-					var uname = msg.substr(cmd.length + 1);
+					var cmdmsg = msg.substr(cmd.length + 1);
 					
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
 						
 						API.sendChat(subChat(jungleBot.chat.weirdchamp, {
-                            name: uname,
+                            name: cmdmsg,
                         }));
                     }
                 }
@@ -2804,7 +2804,7 @@
 
             historyskipCommand: {
                 command: 'historyskip',
-                rank: 'bouncer',
+                rank: 'manager',
                 type: 'exact',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
