@@ -1566,55 +1566,57 @@
             },
             */
 
-		// MrDestructoid clapping
-		
-		
+
+
         // @user with WeirdChamp
-        
+
 		weirdchampCommand: {
                 command: ['weirdchamp', 'weird'],
                 rank: 'residentdj',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
-					
+
 					var msg = chat.message;
 					var cmdmsg = msg.substr(cmd.length + 1);
-					
+
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-						
+
 						API.sendChat(subChat(jungleBot.chat.weirdchamp, {
                             name: cmdmsg,
                         }));
                     }
                 }
             },
-		
-		
-	//@user with Attitude
-		
+
+
+	//(◕‿◕✿) CHAT IS RUNNING IN POSITIVE CHAT OR BAN MODE (◕‿◕✿)
+
 		attitudeCommand: {
                 command: ['attitude', 'negativity'],
                 rank: 'residentdj',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
-					
+
 					var msg = chat.message;
 					var cmdmsg = msg.substr(cmd.length + 1);
-					
+
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-						
+
 						API.sendChat(subChat(jungleBot.chat.attitude, {
                             name: cmdmsg,
                         }));
                     }
                 }
             },
-		
-		
+
+
+  // MrDestructoid clapping
+        				
+
 		clapCommand: {
 		  command: 'clap',
           rank: 'user',
@@ -1817,7 +1819,7 @@
 
 		//END OF CUSTOM COMMANDS
 
-		
+
             activeCommand: {
                 command: 'active',
                 rank: 'bouncer',
@@ -2647,7 +2649,7 @@
                 }
             },
 
-            
+
 
             filterCommand: {
                 command: 'filter',
