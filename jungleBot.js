@@ -315,7 +315,7 @@
 			fbLink: null,
 			youtubeLink: 'http://youtube.com/xqcow',
 			website: 'http://twitch.tv/xqcow',
-			intervalMessages: ["The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj", "Connect with xQc: Stream: http://twitch.tv/xqcow Twitter: https://twitter.com/xqc YouTube: http://yoube.com/xQcOW Discord: http://discord.gg/xqcow (you don't have to be a sub)", "FAQ for new users on the channel: http://bit.ly/jungle-dj-help"],
+			intervalMessages: ["The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj", "Connect with xQc: Stream: http://twitch.tv/xqcow Twitter: https://twitter.com/xqc YouTube: http://yoube.com/xQcOW Discord: http://discord.gg/xqcow (you don't have to be a sub)", "FAQ for new users on the channel: http://bit.ly/jungle-dj-help", "A list of commands for the bot can be found here: https://git.io/fN5eb#bot-commands"],
 			messageInterval: 11,
 			songstats: false,
 			commandLiteral: '!',
@@ -4209,7 +4209,7 @@
                         var cd = msg.substring(cmd.length + 1);
                         if (!isNaN(cd)) {
                             jungleBot.settings.commandCooldown = cd;
-                            return API.sendChat(subChat(jungleBot.chat.commandscd, {
+                            return API.sendChat(subChat(jungleBot.chat.d, {
                                 name: chat.un,
                                 time: jungleBot.settings.commandCooldown
                             }));
@@ -4220,7 +4220,7 @@
                 }
             },
 
-            usercommandsCommand: {
+            userommand: {
                 command: 'usercommands',
                 rank: 'manager',
                 type: 'exact',
