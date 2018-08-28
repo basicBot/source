@@ -4209,7 +4209,7 @@
                         var cd = msg.substring(cmd.length + 1);
                         if (!isNaN(cd)) {
                             jungleBot.settings.commandCooldown = cd;
-                            return API.sendChat(subChat(jungleBot.chat.d, {
+                            return API.sendChat(subChat(jungleBot.chat.commandscd, {
                                 name: chat.un,
                                 time: jungleBot.settings.commandCooldown
                             }));
@@ -4220,7 +4220,7 @@
                 }
             },
 
-            userommand: {
+            usercommandsCommand: {
                 command: 'usercommands',
                 rank: 'manager',
                 type: 'exact',
