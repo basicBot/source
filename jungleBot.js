@@ -1580,7 +1580,7 @@
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                               if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-          	                       API.sendChat(cmdmsg + 'https://i.imgur.com/mJJdt8h.gif');
+          	                       API.sendChat(cmdmsg + ' https://i.imgur.com/mJJdt8h.gif');
                               }
                           }
                       },
