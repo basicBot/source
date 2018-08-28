@@ -979,7 +979,7 @@
         eventDjadvance: function(obj) {
             if (!obj.dj) return;
             if (basicBot.settings.autowoot) {
-                $('#woot').click(); // autowoot
+                $('.btn-like').click(); // autowoot
             }
 
             var user = basicBot.userUtilities.lookupUser(obj.dj.id)
@@ -1482,7 +1482,7 @@
             API.sendChat('/cap ' + basicBot.settings.startupCap);
             API.setVolume(basicBot.settings.startupVolume);
             if (basicBot.settings.autowoot) {
-                $('#woot').click();
+                $('.btn-like').click();
             }
             if (basicBot.settings.startupEmoji) {
                 var emojibuttonoff = $('.icon-emoji-off');
@@ -4202,7 +4202,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $('#woot').click();
+                        $('.btn-like').click();
                     }
                 }
             },
