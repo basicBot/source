@@ -7,7 +7,7 @@
 
  */
 
-(function() {
+ (function() {
 
     /*window.onerror = function() {
         var room = JSON.parse(localStorage.getItem('jungleBotRoom'));
@@ -1615,7 +1615,7 @@
 
 
   // MrDestructoid clapping
-        				
+
 
 		clapCommand: {
 		  command: 'clap',
@@ -2799,7 +2799,7 @@
             },
 
             helpCommand: {
-                command: 'help',
+                command: ['help','starterhelp'],
                 rank: 'user',
                 type: 'exact',
                 functionality: function(chat, cmd) {
