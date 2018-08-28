@@ -79,20 +79,10 @@
         "Ask again later, currently under maintenance :COGGERS:",
         "The 8Ball servers are currently experiencing heavy traffic. Try again later."
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-	"dab":"%%CMDMSG%% https:\/\/i.imgur.com\/wRwGkxI.gif",
-    "weirdchamp": "%%CMDMSG%% https:\/\/i.imgur.com\/uvSgEW1.png",
-=======
     "attitude": "%%NAME%% Please lose your negative attitude. xqcRage",
     "dab":"%%CMDMSG%% https:\/\/i.imgur.com\/wRwGkxI.gif",
     "weirdchamp": "%%NAME%% https:\/\/i.imgur.com\/uvSgEW1.png",
->>>>>>> 53ef4d3781943d6e7d751df4bc61f75fc50172c7
-=======
-    "attitude": "%%NAME%% Please lose your negative attitude. xqcRage",
-    "dab":"%%CMDMSG%% https:\/\/i.imgur.com\/wRwGkxI.gif",
-    "weirdchamp": "%%NAME%% https:\/\/i.imgur.com\/uvSgEW1.png",
->>>>>>> 53ef4d3781943d6e7d751df4bc61f75fc50172c7
+
     "nodatafound": "No previous data found. WaitWhat",
     "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
     "langerror": "\/me The language you've selected isn't available. List of languages available: %%LINK%%",
@@ -193,15 +183,7 @@
     "youaredj": "\/me @%%NAME%%, you are currently DJing.",
     "eta": "\/me @%%NAME%%, you are position %%POSITION%% in the waitlist and will reach the booth in approximately %%TIME%%.",
     "facebook": "\/me Like us on facebook: %%LINK%%",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "starterhelp": "'How do I play my song?' Starter help here: http:\/\/bit.ly\/xqcs-jungle-help",
-=======
     "starterhelp": "'How do I play my song?' Starter help here: https:\/\/git.io\/fN5eb#how-can-i-dj",
->>>>>>> 53ef4d3781943d6e7d751df4bc61f75fc50172c7
-=======
-    "starterhelp": "'How do I play my song?' Starter help here: https:\/\/git.io\/fN5eb#how-can-i-dj",
->>>>>>> 53ef4d3781943d6e7d751df4bc61f75fc50172c7
     "roulettejoin": "@%%NAME%% joined the roulette! (!leave if you regret it)",
     "jointime": "\/me [@%%NAMEFROM%%] @%%USERNAME%% has been in the room for %%TIME%%.",
     "kickrank": "\/me [@%%NAME%%] you can't kick users with an equal or higher rank than you!",
