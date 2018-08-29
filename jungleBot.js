@@ -1603,10 +1603,10 @@
                             }
                         }
                     }
+                    if (isNaN(id)) API.sendChat ('invalid user');
                     API.sendChat ('@' + chat.un + ' The specified user\'s ID is "' + id + '".');
-                    };
-                }
-            },
+                    }
+                },
 
    // no u
           		nouCommand: {
