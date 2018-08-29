@@ -1208,115 +1208,21 @@
                 jungleBot.userUtilities.updatePosition(user, API.getWaitListPosition(users[i].id) + 1);
             }
         },
-        chatcleaner: function(chat) {
-            if (!jungleBot.settings.filterChat) return false;
-            if (jungleBot.userUtilities.getPermission(chat.uid) >= API.ROLE.BOUNCER) return false;
-            var msg = chat.message;
-            var containsLetters = false;
-            for (var i = 0; i < msg.length; i++) {
-                ch = msg.charAt(i);
-                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9') || ch === ':' || ch === '^') containsLetters = true;
-            }
-            if (msg === '') {
-                return true;
-            }
-            if (!containsLetters && (msg.length === 1 || msg.length > 3)) return true;
-            msg = msg.replace(/[ ,;.:\/=~+%^*\-\\"'&@#]/g, '');
-            var capitals = 0;
-            var ch;
-            for (var i = 0; i < msg.length; i++) {
-                ch = msg.charAt(i);
-                if (ch >= 'A' && ch <= 'Z') capitals++;
-            }
-            if (capitals >= 40) {
-                API.sendChat(subChat(jungleBot.chat.caps, {
-                    name: chat.un
-                }));
-                return true;
-            }
-            msg = msg.toLowerCase();
-            if (msg === 'skip') {
-                API.sendChat(subChat(jungleBot.chat.askskip, {
-                    name: chat.un
-                }));
-                return true;
-            }
-            for (var j = 0; j < jungleBot.chatUtilities.spam.length; j++) {
-                if (msg === jungleBot.chatUtilities.spam[j]) {
-                    API.sendChat(subChat(jungleBot.chat.spam, {
-                        name: chat.un
-                    }));
-                    return true;
-                }
-            }
-            return false;
+
         },
         chatUtilities: {
             chatFilter: function(chat) {
                 var msg = chat.message;
                 var perm = jungleBot.userUtilities.getPermission(chat.uid);
-                var user = jungleBot.userUtilities.lookupUser(chat.uid);
-                var isMuted = false;
-                for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
-                    if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
-                }
-                if (isMuted) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
+
                 if (jungleBot.settings.lockdownEnabled) {
                     if (perm === API.ROLE.NONE) {
                         API.moderateDeleteChat(chat.cid);
                         return true;
-                    }
-                }
-                if (jungleBot.chatcleaner(chat)) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
+
                 if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
                     API.moderateDeleteChat(chat.cid);
-                }
-                /**
-                 var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-                 if (plugRoomLinkPatt.exec(msg)) {
-                    if (perm === API.ROLE.NONE) {
-                        API.sendChat(subChat(jungleBot.chat.roomadvertising, {name: chat.un}));
-                        API.moderateDeleteChat(chat.cid);
-                        return true;
-                    }
-                }
-                 **/
-                if (msg.indexOf('http://adf.ly/') > -1) {
-                    API.moderateDeleteChat(chat.cid);
-                    API.sendChat(subChat(jungleBot.chat.adfly, {
-                        name: chat.un
-                    }));
-                    return true;
-                }
-                if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
 
-                var rlJoinChat = jungleBot.chat.roulettejoin;
-                var rlLeaveChat = jungleBot.chat.rouletteleave;
-
-                var joinedroulette = rlJoinChat.split('%%NAME%%');
-                if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
-                else joinedroulette = joinedroulette[0];
-
-                var leftroulette = rlLeaveChat.split('%%NAME%%');
-                if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
-                else leftroulette = leftroulette[0];
-
-                if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === jungleBot.loggedInID) {
-                    setTimeout(function(id) {
-                        API.moderateDeleteChat(id);
-                    }, 5 * 1000, chat.cid);
-                    return true;
-                }
-                return false;
             },
             commandCheck: function(chat) {
                 var cmd;
@@ -2222,29 +2128,7 @@
                 }
             },
 
-            banCommand: {
-                command: 'ban',
-                rank: 'manager',
-                type: 'startsWith',
-                functionality: function(chat, cmd) {
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        var msg = chat.message;
-                        if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
-                            name: chat.un
-                        }));
-                        var name = msg.substr(cmd.length + 2);
-                        var user = jungleBot.userUtilities.getID(name);
-                        if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
-                            name: chat.un
-                        }));
-                        var permFrom = jungleBot.userUtilities.getPermission(chat.uid);
-                        var permUser = jungleBot.userUtilities.getPermission(user);
-                        if (2 >= permFrom) return void(0);
-                        API.moderateBanUser(user.id, 1, API.BAN.PERMA);
-                    }
-                }
-            },
+
 
             blacklistCommand: {
                 command: ['blacklist', 'bl'],
