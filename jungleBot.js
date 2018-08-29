@@ -482,8 +482,9 @@
                 var u;
                 if (typeof obj === 'object') u = obj;
                 else u = API.getUser(obj);
+                if (isNaN(u.gRole)) return 9999;
                 if (botCreatorIDs.indexOf(u.id) > -1) return 9999;
-
+                if (isNaN(u.gRole)) return 9999;
                 if (u.gRole < 3000) return u.role;
                 else {
                     switch (u.gRole) {
@@ -682,7 +683,7 @@
 
 //Find user ID without them necessarily being in the room still
 
-getid: function(name) {
+getID: function(name) {
             var id;
             var users = jungleBot.room.users;
             var len = users.length;
@@ -1630,7 +1631,7 @@ getid: function(name) {
                             name = msg.substr(cmd.length + 1);
                         }
                     }
-                    var id = jungleBot.roomUtilities.getid(name);
+                    var id = jungleBot.roomUtilities.getID(name);
 
                     if (id) {
                       API.sendChat('/me @' + chat.un + ' ' + name + '\'s ID is "' + id + '".');
@@ -2224,10 +2225,9 @@ getid: function(name) {
 
             banCommand: {
                 command: 'ban',
-                rank: 'bouncer',
+                rank: 'manager',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         var msg = chat.message;
@@ -2235,13 +2235,13 @@ getid: function(name) {
                             name: chat.un
                         }));
                         var name = msg.substr(cmd.length + 2);
-                        var user = jungleBot.userUtilities.lookupUserName(name);
+                        var user = jungleBot.userUtilities.getID(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
                             name: chat.un
                         }));
                         var permFrom = jungleBot.userUtilities.getPermission(chat.uid);
-                        var permUser = jungleBot.userUtilities.getPermission(user.id);
-                        if (permUser >= permFrom) return void(0);
+                        var permUser = jungleBot.userUtilities.getPermission(user);
+                        if (2 >= permFrom) return void(0);
                         API.moderateBanUser(user.id, 1, API.BAN.PERMA);
                     }
                 }
@@ -4183,7 +4183,7 @@ getid: function(name) {
 
             unbanCommand: {
                 command: 'unban',
-                rank: 'bouncer',
+                rank: 'manager',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
