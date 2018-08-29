@@ -1228,7 +1228,8 @@
                         return true;
                     }
                 else {
-                    var user = jungleBot.userUtilities.lookupUser(chat.uid);
+                    //var user isn't used afterwards in the function
+                    //var user = jungleBot.userUtilities.lookupUser(chat.uid);
                     /*
                     var isMuted = false;
                     for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
@@ -1582,6 +1583,35 @@
             },
             */
 
+            idCommand: {
+                command: 'id',
+                rank: 'user',
+                type: 'startsWith',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        var msg = chat.message;
+                        var name;
+                        if (msg.length === cmd.length) name = chat.un;
+                        else {
+                            name = msg.substr(cmd.length + 1);
+                        }
+                        users = jungleBot.room.users;
+                        var len = users.length;
+                        for (var i = 0; i < len; ++i) {
+                            if (users[i].username == name) {
+
+                                var id = users[i].id;
+
+                            }
+                        }
+                    }
+                    if (isNaN(id)) API.sendChat ('Didn\'t find user');
+                    API.sendChat ('@' + chat.un + ' The specified user\'s ID is "' + id + '".');
+                    });
+                }
+            },
 
    // chu say brug?
           		chusayCommand: {
@@ -1596,7 +1626,7 @@
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                               if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-          	                       API.sendChat(cmdmsg + ' https://i.imgur.com/mJJdt8h.gif');
+          	                       API.sendChat(cmdmsg + ' https://i.imgur.com/Y5Zx98w.gif');
                               }
                           }
                       },
