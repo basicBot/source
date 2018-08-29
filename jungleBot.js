@@ -1210,22 +1210,72 @@
         },
 
         chatUtilities: {
-            chatFilter: function(chat) {
-                var msg = chat.message;
-                var perm = jungleBot.userUtilities.getPermission(chat.uid);
-
-                if (jungleBot.settings.lockdownEnabled) {
-                    if (perm === API.ROLE.NONE) {
-                        API.moderateDeleteChat(chat.cid);
-                        return true;
-                    }
-                }
-
-                if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
-                    API.moderateDeleteChat(chat.cid);
+          chatFilter: function(chat) {
+              var msg = chat.message;
+              var perm = jungleBot.userUtilities.getPermission(chat.uid);
+              var user = jungleBot.userUtilities.lookupUser(chat.uid);
+              var isMuted = false;
+              for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
+                  if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
+              }
+              if (isMuted) {
+                  API.moderateDeleteChat(chat.cid);
+                  return true;
+              }
+              if (jungleBot.settings.lockdownEnabled) {
+                  if (perm === API.ROLE.NONE) {
+                      API.moderateDeleteChat(chat.cid);
+                      return true;
                   }
+              }
+              if (jungleBot.chatcleaner(chat)) {
+                  API.moderateDeleteChat(chat.cid);
+                  return true;
+              }
+              if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
+                  API.moderateDeleteChat(chat.cid);
+              }
+              /**
+               var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+               if (plugRoomLinkPatt.exec(msg)) {
+                  if (perm === API.ROLE.NONE) {
+                      API.sendChat(subChat(jungleBot.chat.roomadvertising, {name: chat.un}));
+                      API.moderateDeleteChat(chat.cid);
+                      return true;
+                  }
+              }
+               **/
+              if (msg.indexOf('http://adf.ly/') > -1) {
+                  API.moderateDeleteChat(chat.cid);
+                  API.sendChat(subChat(jungleBot.chat.adfly, {
+                      name: chat.un
+                  }));
+                  return true;
+              }
+              if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
+                  API.moderateDeleteChat(chat.cid);
+                  return true;
+              }
 
-            },
+              var rlJoinChat = jungleBot.chat.roulettejoin;
+              var rlLeaveChat = jungleBot.chat.rouletteleave;
+
+              var joinedroulette = rlJoinChat.split('%%NAME%%');
+              if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
+              else joinedroulette = joinedroulette[0];
+
+              var leftroulette = rlLeaveChat.split('%%NAME%%');
+              if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
+              else leftroulette = leftroulette[0];
+
+              if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === jungleBot.loggedInID) {
+                  setTimeout(function(id) {
+                      API.moderateDeleteChat(id);
+                  }, 5 * 1000, chat.cid);
+                  return true;
+              }
+              return false;
+          },
             commandCheck: function(chat) {
                 var cmd;
                 if (chat.message.charAt(0) === jungleBot.settings.commandLiteral) {
