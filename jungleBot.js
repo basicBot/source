@@ -269,7 +269,7 @@
 			autoskip: true,
 			smartSkip: true,
 			cmdDeletion: true,
-			maximumAfk: 200,
+			maximumAfk: 180,
 			afkRemoval: true,
 			maximumDc: 60,
 			bouncerPlus: false,
@@ -1222,27 +1222,33 @@
             chatFilter: function(chat) {
                 var msg = chat.message;
                 var perm = jungleBot.userUtilities.getPermission(chat.uid);
-                var user = jungleBot.userUtilities.lookupUser(chat.uid);
-                var isMuted = false;
-                for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
-                    if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
-                }
-                if (isMuted) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
                 if (jungleBot.settings.lockdownEnabled) {
                     if (perm === API.ROLE.NONE) {
                         API.moderateDeleteChat(chat.cid);
                         return true;
                     }
+                else {
+                    var user = jungleBot.userUtilities.lookupUser(chat.uid);
+                    /*
+                    var isMuted = false;
+                    for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
+                        if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
+                    }
+                    if (isMuted) {
+                        API.moderateDeleteChat(chat.cid);
+                        return true;
+                    }
+
+                  }*/
+
+
+                    if (jungleBot.chatcleaner(chat)) {
+                        API.moderateDeleteChat(chat.cid);
+                        return true;
+                    }
+                    if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
+                        API.moderateDeleteChat(chat.cid);
                 }
-                if (jungleBot.chatcleaner(chat)) {
-                    API.moderateDeleteChat(chat.cid);
-                    return true;
-                }
-                if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
-                    API.moderateDeleteChat(chat.cid);
                 }
                 /**
                  var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
