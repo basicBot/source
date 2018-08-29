@@ -1604,7 +1604,7 @@
                         }
                     }
                     API.sendChat ('@' + chat.un + ' The specified user\'s ID is "' + id + '".');
-                    });
+                    };
                 }
             },
 
