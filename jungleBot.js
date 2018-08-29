@@ -1218,6 +1218,8 @@
                     if (perm === API.ROLE.NONE) {
                         API.moderateDeleteChat(chat.cid);
                         return true;
+                    }
+                }
 
                 if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
                     API.moderateDeleteChat(chat.cid);
