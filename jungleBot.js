@@ -689,6 +689,16 @@
                                 var inactivity = Date.now() - lastActive;
                                 var time = jungleBot.roomUtilities.msToStr(inactivity);
                                 var warncount = user.afkWarningCount;
+                          /*
+                                //Prevent users that were in the room but not in queue to be affected by afk removal
+
+                                if (inactivity > jungleBot.settings.maximumAfk * 60 * 1500) {
+
+                                    jungleBot.userUtilities.setLastActivity(user);
+
+                                }
+
+                          */
                                 if (inactivity > jungleBot.settings.maximumAfk * 60 * 1000) {
                                     if (warncount === 0) {
                                         API.sendChat(subChat(jungleBot.chat.warning1, {
