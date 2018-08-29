@@ -977,10 +977,23 @@
             }
         },
         eventDjadvance: function(obj) {
-            if (!obj.dj) return;
-            if (basicBot.settings.autowoot) {
-                $('.btn-like').click(); // autowoot
-            }
+                if (!obj.dj) return;
+                if (basicBot.settings.autowoot) {
+                    $.ajax({
+                        url: '/_/votes',
+                        type: 'POST',
+                        data: JSON.stringify({
+                            direction: 1,
+                            historyID: _.find(require.s.contexts._.defined, (m) => m && m.updateElapsedBind).get('historyID'),
+                        }),
+                        error: function(err) {
+                            console.error(err);
+                        },
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    });
+
+                }
 
             var user = basicBot.userUtilities.lookupUser(obj.dj.id)
             for (var i = 0; i < basicBot.room.users.length; i++) {
@@ -1482,7 +1495,19 @@
             API.sendChat('/cap ' + basicBot.settings.startupCap);
             API.setVolume(basicBot.settings.startupVolume);
             if (basicBot.settings.autowoot) {
-                $('.btn-like').click();
+                $.ajax({
+                    url: '/_/votes',
+                    type: 'POST',
+                    data: JSON.stringify({
+                        direction: 1,
+                        historyID: _.find(require.s.contexts._.defined, (m) => m && m.updateElapsedBind).get('historyID'),
+                    }),
+                    error: function(err) {
+                        console.error(err);
+                    },
+                    dataType: 'json',
+                    contentType: 'application/json'
+                });
             }
             if (basicBot.settings.startupEmoji) {
                 var emojibuttonoff = $('.icon-emoji-off');
@@ -3025,7 +3050,19 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $('#meh').click();
+                        $.ajax({
+                            url: '/_/votes',
+                            type: 'POST',
+                            data: JSON.stringify({
+                                direction: -1,
+                                historyID: _.find(require.s.contexts._.defined, (m) => m && m.updateElapsedBind).get('historyID'),
+                            }),
+                            error: function(err) {
+                                console.error(err);
+                            },
+                            dataType: 'json',
+                            contentType: 'application/json'
+                        });
                     }
                 }
             },
@@ -4202,7 +4239,19 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $('.btn-like').click();
+                        $.ajax({
+                            url: '/_/votes',
+                            type: 'POST',
+                            data: JSON.stringify({
+                                direction: 1,
+                                historyID: _.find(require.s.contexts._.defined, (m) => m && m.updateElapsedBind).get('historyID'),
+                            }),
+                            error: function(err) {
+                                console.error(err);
+                            },
+                            dataType: 'json',
+                            contentType: 'application/json'
+                        });
                     }
                 }
             },
