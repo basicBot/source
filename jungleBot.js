@@ -1221,34 +1221,34 @@
         chatUtilities: {
             chatFilter: function(chat) {
                 var msg = chat.message;
-                var perm = basicBot.userUtilities.getPermission(chat.uid);
-                var user = basicBot.userUtilities.lookupUser(chat.uid);
+                var perm = jungleBot.userUtilities.getPermission(chat.uid);
+                var user = jungleBot.userUtilities.lookupUser(chat.uid);
                 var isMuted = false;
-                for (var i = 0; i < basicBot.room.mutedUsers.length; i++) {
-                    if (basicBot.room.mutedUsers[i] === chat.uid) isMuted = true;
+                for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
+                    if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
                 }
                 if (isMuted) {
                     API.moderateDeleteChat(chat.cid);
                     return true;
                 }
-                if (basicBot.settings.lockdownEnabled) {
+                if (jungleBot.settings.lockdownEnabled) {
                     if (perm === API.ROLE.NONE) {
                         API.moderateDeleteChat(chat.cid);
                         return true;
                     }
                 }
-                if (basicBot.chatcleaner(chat)) {
+                if (jungleBot.chatcleaner(chat)) {
                     API.moderateDeleteChat(chat.cid);
                     return true;
                 }
-                if (basicBot.settings.cmdDeletion && msg.startsWith(basicBot.settings.commandLiteral)) {
+                if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
                     API.moderateDeleteChat(chat.cid);
                 }
                 /**
                  var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
                  if (plugRoomLinkPatt.exec(msg)) {
                     if (perm === API.ROLE.NONE) {
-                        API.sendChat(subChat(basicBot.chat.roomadvertising, {name: chat.un}));
+                        API.sendChat(subChat(jungleBot.chat.roomadvertising, {name: chat.un}));
                         API.moderateDeleteChat(chat.cid);
                         return true;
                     }
@@ -1256,7 +1256,7 @@
                  **/
                 if (msg.indexOf('http://adf.ly/') > -1) {
                     API.moderateDeleteChat(chat.cid);
-                    API.sendChat(subChat(basicBot.chat.adfly, {
+                    API.sendChat(subChat(jungleBot.chat.adfly, {
                         name: chat.un
                     }));
                     return true;
@@ -1266,8 +1266,8 @@
                     return true;
                 }
 
-                var rlJoinChat = basicBot.chat.roulettejoin;
-                var rlLeaveChat = basicBot.chat.rouletteleave;
+                var rlJoinChat = jungleBot.chat.roulettejoin;
+                var rlLeaveChat = jungleBot.chat.rouletteleave;
 
                 var joinedroulette = rlJoinChat.split('%%NAME%%');
                 if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
@@ -1277,7 +1277,7 @@
                 if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
                 else leftroulette = leftroulette[0];
 
-                if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === basicBot.loggedInID) {
+                if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === jungleBot.loggedInID) {
                     setTimeout(function(id) {
                         API.moderateDeleteChat(id);
                     }, 5 * 1000, chat.cid);
@@ -1287,21 +1287,21 @@
             },
             commandCheck: function(chat) {
                 var cmd;
-                if (chat.message.charAt(0) === basicBot.settings.commandLiteral) {
+                if (chat.message.charAt(0) === jungleBot.settings.commandLiteral) {
                     var space = chat.message.indexOf(' ');
                     if (space === -1) {
                         cmd = chat.message;
                     } else cmd = chat.message.substring(0, space);
                 } else return false;
-                var userPerm = basicBot.userUtilities.getPermission(chat.uid);
+                var userPerm = jungleBot.userUtilities.getPermission(chat.uid);
                 //console.log('name: ' + chat.un + ', perm: ' + userPerm);
-                if (chat.message !== basicBot.settings.commandLiteral + 'join' && chat.message !== basicBot.settings.commandLiteral + 'leave') {
-                    if (userPerm === API.ROLE.NONE && !basicBot.room.usercommand) return void(0);
-                    if (!basicBot.room.allcommand) return void(0);
+                if (chat.message !== jungleBot.settings.commandLiteral + 'join' && chat.message !== jungleBot.settings.commandLiteral + 'leave') {
+                    if (userPerm === API.ROLE.NONE && !jungleBot.room.usercommand) return void(0);
+                    if (!jungleBot.room.allcommand) return void(0);
                 }
-                if (chat.message === basicBot.settings.commandLiteral + 'eta' && basicBot.settings.etaRestriction) {
+                if (chat.message === jungleBot.settings.commandLiteral + 'eta' && jungleBot.settings.etaRestriction) {
                     if (userPerm < API.ROLE.BOUNCER) {
-                        var u = basicBot.userUtilities.lookupUser(chat.uid);
+                        var u = jungleBot.userUtilities.lookupUser(chat.uid);
                         if (u.lastEta !== null && (Date.now() - u.lastEta) < 1 * 60 * 60 * 1000) {
                             API.moderateDeleteChat(chat.cid);
                             return void(0);
@@ -1310,14 +1310,14 @@
                 }
                 var executed = false;
 
-                for (var comm in basicBot.commands) {
-                    var cmdCall = basicBot.commands[comm].command;
+                for (var comm in jungleBot.commands) {
+                    var cmdCall = jungleBot.commands[comm].command;
                     if (!Array.isArray(cmdCall)) {
                         cmdCall = [cmdCall]
                     }
                     for (var i = 0; i < cmdCall.length; i++) {
-                        if (basicBot.settings.commandLiteral + cmdCall[i] === cmd) {
-                            basicBot.commands[comm].functionality(chat, basicBot.settings.commandLiteral + cmdCall[i]);
+                        if (jungleBot.settings.commandLiteral + cmdCall[i] === cmd) {
+                            jungleBot.commands[comm].functionality(chat, jungleBot.settings.commandLiteral + cmdCall[i]);
                             executed = true;
                             break;
                         }
@@ -1325,34 +1325,34 @@
                 }
 
                 if (executed && userPerm === API.ROLE.NONE) {
-                    basicBot.room.usercommand = false;
+                    jungleBot.room.usercommand = false;
                     setTimeout(function() {
-                        basicBot.room.usercommand = true;
-                    }, basicBot.settings.commandCooldown * 1000);
+                        jungleBot.room.usercommand = true;
+                    }, jungleBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
-                    /*if (basicBot.settings.cmdDeletion) {
+                    /*if (jungleBot.settings.cmdDeletion) {
                         API.moderateDeleteChat(chat.cid);
                     }*/
 
-                    //basicBot.room.allcommand = false;
+                    //jungleBot.room.allcommand = false;
                     //setTimeout(function () {
-                    basicBot.room.allcommand = true;
+                    jungleBot.room.allcommand = true;
                     //}, 5 * 1000);
                 }
                 return executed;
             },
             action: function(chat) {
-                var user = basicBot.userUtilities.lookupUser(chat.uid);
+                var user = jungleBot.userUtilities.lookupUser(chat.uid);
                 if (chat.type === 'message') {
-                    for (var j = 0; j < basicBot.room.users.length; j++) {
-                        if (basicBot.userUtilities.getUser(basicBot.room.users[j]).id === chat.uid) {
-                            basicBot.userUtilities.setLastActivity(basicBot.room.users[j]);
+                    for (var j = 0; j < jungleBot.room.users.length; j++) {
+                        if (jungleBot.userUtilities.getUser(jungleBot.room.users[j]).id === chat.uid) {
+                            jungleBot.userUtilities.setLastActivity(jungleBot.room.users[j]);
                         }
 
                     }
                 }
-                basicBot.room.roomstats.chatmessages++;
+                jungleBot.room.roomstats.chatmessages++;
             },
             spam: [
                 '???????????????'
