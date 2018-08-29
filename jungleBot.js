@@ -671,6 +671,37 @@
                     clearTimeout(jungleBot.roomUtilities.booth.lockTimer);
                 }
             },
+
+
+
+
+
+//START CUSTOM FUNCTIONS
+
+
+
+//Find user ID without them necessarily being in the room still
+
+getid: function(name) {
+            var id;
+            for (var i = 0; i < len; ++i) {
+                if (users[i].username == name) {
+                    var id = users[i].id;
+                }
+            }
+
+        if (isNaN(id)) return false;
+        else return id;
+    },
+
+
+//END CUSTOM FUNCTIONS
+
+
+
+
+
+
             afkCheck: function() {
                 if (!jungleBot.status || !jungleBot.settings.afkRemoval) return void(0);
                 var rank = jungleBot.roomUtilities.rankToNumber(jungleBot.settings.afkRankCheck);
@@ -1579,7 +1610,8 @@
 
 
 
-            //Find user ID without them necessarily being in the room still
+
+            //Print ID of user in chat, regardless of if they are still in the room.
 
             idCommand: {
                 command: 'id',
@@ -1595,16 +1627,12 @@
                         else {
                             name = msg.substr(cmd.length + 1);
                         }
-                        var users = jungleBot.room.users;
-                        var len = users.length;
-                        for (var i = 0; i < len; ++i) {
-                            if (users[i].username == name) {
-                                var id = users[i].id;
-                            }
-                        }
                     }
-                    if (isNaN(id)) API.sendChat ('invalid user');
-                    API.sendChat ('@' + chat.un + ' The specified user\'s ID is "' + id + '".');
+                    var id = getid(name);
+
+                    if (id) API.sendChat ('/me @' + chat.un + ' ' + name +'\'s ID is "' + id + '".');
+                    else API.sendChat ('/me @' + chat.un ' Invalid user specified.');
+
                     }
                 },
 
@@ -2208,7 +2236,7 @@
                         var permFrom = jungleBot.userUtilities.getPermission(chat.uid);
                         var permUser = jungleBot.userUtilities.getPermission(user.id);
                         if (permUser >= permFrom) return void(0);
-                        API.moderateBanUser(user.id, 1, API.BAN.DAY);
+                        API.moderateBanUser(user.id, 1, API.BAN.PERMA);
                     }
                 }
             },
