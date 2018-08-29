@@ -1628,7 +1628,7 @@ getid: function(name) {
                             name = msg.substr(cmd.length + 1);
                         }
                     }
-                    var id = jungleBot.getid(name);
+                    var id = jungleBot.roomUtilities.getid(name);
 
                     if (id) {
                       API.sendChat('/me @' + chat.un + ' ' + name + '\'s ID is "' + id + '".');
