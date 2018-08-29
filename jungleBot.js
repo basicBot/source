@@ -1221,41 +1221,34 @@
         chatUtilities: {
             chatFilter: function(chat) {
                 var msg = chat.message;
-                var perm = jungleBot.userUtilities.getPermission(chat.uid);
-                if (jungleBot.settings.lockdownEnabled) {
+                var perm = basicBot.userUtilities.getPermission(chat.uid);
+                var user = basicBot.userUtilities.lookupUser(chat.uid);
+                var isMuted = false;
+                for (var i = 0; i < basicBot.room.mutedUsers.length; i++) {
+                    if (basicBot.room.mutedUsers[i] === chat.uid) isMuted = true;
+                }
+                if (isMuted) {
+                    API.moderateDeleteChat(chat.cid);
+                    return true;
+                }
+                if (basicBot.settings.lockdownEnabled) {
                     if (perm === API.ROLE.NONE) {
                         API.moderateDeleteChat(chat.cid);
                         return true;
                     }
-                else {
-                    //var user isn't used afterwards in the function
-                    //var user = jungleBot.userUtilities.lookupUser(chat.uid);
-                    /*
-                    var isMuted = false;
-                    for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
-                        if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
-                    }
-                    if (isMuted) {
-                        API.moderateDeleteChat(chat.cid);
-                        return true;
-                    }
-
-                  }*/
-
-
-                    if (jungleBot.chatcleaner(chat)) {
-                        API.moderateDeleteChat(chat.cid);
-                        return true;
-                    }
-                    if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
-                        API.moderateDeleteChat(chat.cid);
                 }
+                if (basicBot.chatcleaner(chat)) {
+                    API.moderateDeleteChat(chat.cid);
+                    return true;
+                }
+                if (basicBot.settings.cmdDeletion && msg.startsWith(basicBot.settings.commandLiteral)) {
+                    API.moderateDeleteChat(chat.cid);
                 }
                 /**
                  var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
                  if (plugRoomLinkPatt.exec(msg)) {
                     if (perm === API.ROLE.NONE) {
-                        API.sendChat(subChat(jungleBot.chat.roomadvertising, {name: chat.un}));
+                        API.sendChat(subChat(basicBot.chat.roomadvertising, {name: chat.un}));
                         API.moderateDeleteChat(chat.cid);
                         return true;
                     }
@@ -1263,7 +1256,7 @@
                  **/
                 if (msg.indexOf('http://adf.ly/') > -1) {
                     API.moderateDeleteChat(chat.cid);
-                    API.sendChat(subChat(jungleBot.chat.adfly, {
+                    API.sendChat(subChat(basicBot.chat.adfly, {
                         name: chat.un
                     }));
                     return true;
@@ -1273,8 +1266,8 @@
                     return true;
                 }
 
-                var rlJoinChat = jungleBot.chat.roulettejoin;
-                var rlLeaveChat = jungleBot.chat.rouletteleave;
+                var rlJoinChat = basicBot.chat.roulettejoin;
+                var rlLeaveChat = basicBot.chat.rouletteleave;
 
                 var joinedroulette = rlJoinChat.split('%%NAME%%');
                 if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
@@ -1284,7 +1277,7 @@
                 if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
                 else leftroulette = leftroulette[0];
 
-                if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === jungleBot.loggedInID) {
+                if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === basicBot.loggedInID) {
                     setTimeout(function(id) {
                         API.moderateDeleteChat(id);
                     }, 5 * 1000, chat.cid);
@@ -1294,21 +1287,21 @@
             },
             commandCheck: function(chat) {
                 var cmd;
-                if (chat.message.charAt(0) === jungleBot.settings.commandLiteral) {
+                if (chat.message.charAt(0) === basicBot.settings.commandLiteral) {
                     var space = chat.message.indexOf(' ');
                     if (space === -1) {
                         cmd = chat.message;
                     } else cmd = chat.message.substring(0, space);
                 } else return false;
-                var userPerm = jungleBot.userUtilities.getPermission(chat.uid);
+                var userPerm = basicBot.userUtilities.getPermission(chat.uid);
                 //console.log('name: ' + chat.un + ', perm: ' + userPerm);
-                if (chat.message !== jungleBot.settings.commandLiteral + 'join' && chat.message !== jungleBot.settings.commandLiteral + 'leave') {
-                    if (userPerm === API.ROLE.NONE && !jungleBot.room.usercommand) return void(0);
-                    if (!jungleBot.room.allcommand) return void(0);
+                if (chat.message !== basicBot.settings.commandLiteral + 'join' && chat.message !== basicBot.settings.commandLiteral + 'leave') {
+                    if (userPerm === API.ROLE.NONE && !basicBot.room.usercommand) return void(0);
+                    if (!basicBot.room.allcommand) return void(0);
                 }
-                if (chat.message === jungleBot.settings.commandLiteral + 'eta' && jungleBot.settings.etaRestriction) {
+                if (chat.message === basicBot.settings.commandLiteral + 'eta' && basicBot.settings.etaRestriction) {
                     if (userPerm < API.ROLE.BOUNCER) {
-                        var u = jungleBot.userUtilities.lookupUser(chat.uid);
+                        var u = basicBot.userUtilities.lookupUser(chat.uid);
                         if (u.lastEta !== null && (Date.now() - u.lastEta) < 1 * 60 * 60 * 1000) {
                             API.moderateDeleteChat(chat.cid);
                             return void(0);
@@ -1317,14 +1310,14 @@
                 }
                 var executed = false;
 
-                for (var comm in jungleBot.commands) {
-                    var cmdCall = jungleBot.commands[comm].command;
+                for (var comm in basicBot.commands) {
+                    var cmdCall = basicBot.commands[comm].command;
                     if (!Array.isArray(cmdCall)) {
                         cmdCall = [cmdCall]
                     }
                     for (var i = 0; i < cmdCall.length; i++) {
-                        if (jungleBot.settings.commandLiteral + cmdCall[i] === cmd) {
-                            jungleBot.commands[comm].functionality(chat, jungleBot.settings.commandLiteral + cmdCall[i]);
+                        if (basicBot.settings.commandLiteral + cmdCall[i] === cmd) {
+                            basicBot.commands[comm].functionality(chat, basicBot.settings.commandLiteral + cmdCall[i]);
                             executed = true;
                             break;
                         }
@@ -1332,42 +1325,43 @@
                 }
 
                 if (executed && userPerm === API.ROLE.NONE) {
-                    jungleBot.room.usercommand = false;
+                    basicBot.room.usercommand = false;
                     setTimeout(function() {
-                        jungleBot.room.usercommand = true;
-                    }, jungleBot.settings.commandCooldown * 1000);
+                        basicBot.room.usercommand = true;
+                    }, basicBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
-                    /*if (jungleBot.settings.cmdDeletion) {
+                    /*if (basicBot.settings.cmdDeletion) {
                         API.moderateDeleteChat(chat.cid);
                     }*/
 
-                    //jungleBot.room.allcommand = false;
+                    //basicBot.room.allcommand = false;
                     //setTimeout(function () {
-                    jungleBot.room.allcommand = true;
+                    basicBot.room.allcommand = true;
                     //}, 5 * 1000);
                 }
                 return executed;
             },
             action: function(chat) {
-                var user = jungleBot.userUtilities.lookupUser(chat.uid);
+                var user = basicBot.userUtilities.lookupUser(chat.uid);
                 if (chat.type === 'message') {
-                    for (var j = 0; j < jungleBot.room.users.length; j++) {
-                        if (jungleBot.userUtilities.getUser(jungleBot.room.users[j]).id === chat.uid) {
-                            jungleBot.userUtilities.setLastActivity(jungleBot.room.users[j]);
+                    for (var j = 0; j < basicBot.room.users.length; j++) {
+                        if (basicBot.userUtilities.getUser(basicBot.room.users[j]).id === chat.uid) {
+                            basicBot.userUtilities.setLastActivity(basicBot.room.users[j]);
                         }
 
                     }
                 }
-                jungleBot.room.roomstats.chatmessages++;
+                basicBot.room.roomstats.chatmessages++;
             },
             spam: [
-                '??????????????????????????????????????'
+                '???????????????'
             ],
             curses: [
                 'heck'
             ]
         },
+
         connectAPI: function() {
             this.proxy = {
                 eventChat: $.proxy(this.eventChat, this),
@@ -1631,7 +1625,7 @@
                           }
 		      },
 
-		
+
    // chu say brug?
           		chusayCommand: {
                           command: ['chusay', 'brug', 'feelsweirdbrug'],
