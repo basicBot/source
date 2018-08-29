@@ -1577,6 +1577,10 @@
             },
             */
 
+
+
+            //Find user ID without them necessarily being in the room still
+
             idCommand: {
                 command: 'id',
                 rank: 'user',
@@ -1591,17 +1595,14 @@
                         else {
                             name = msg.substr(cmd.length + 1);
                         }
-                        users = jungleBot.room.users;
+                        var users = jungleBot.room.users;
                         var len = users.length;
                         for (var i = 0; i < len; ++i) {
                             if (users[i].username == name) {
-
                                 var id = users[i].id;
-
                             }
                         }
                     }
-                    if (isNaN(id)) API.sendChat ('Didn\'t find user');
                     API.sendChat ('@' + chat.un + ' The specified user\'s ID is "' + id + '".');
                     });
                 }
