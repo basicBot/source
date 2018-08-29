@@ -1631,10 +1631,10 @@ getid: function(name) {
                     var id = getid(name);
 
                     if (id) {
-                      API.sendChat('/me @' + chat.un + ' ' + name +'\'s ID is "' + id + '".');
+                      API.sendChat('/me @' + chat.un + ' ' + name + '\'s ID is "' + id + '".');
                     }
                     else {
-                      API.sendChat('/me @' + chat.un ' Invalid user specified.');
+                      API.sendChat('/me @' + chat.un + ' Invalid user specified.');
                     }
 
                     }
