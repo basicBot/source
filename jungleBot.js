@@ -1221,6 +1221,7 @@
 
                 if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
                     API.moderateDeleteChat(chat.cid);
+                  }
 
             },
             commandCheck: function(chat) {
