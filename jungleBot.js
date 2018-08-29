@@ -684,6 +684,8 @@
 
 getid: function(name) {
             var id;
+            var users = jungleBot.room.users;
+            var len = users.length;
             for (var i = 0; i < len; ++i) {
                 if (users[i].username == name) {
                     var id = users[i].id;
