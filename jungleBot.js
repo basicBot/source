@@ -425,6 +425,26 @@
             this.lastKnownPosition = null;
         },
         userUtilities: {
+
+          //START CUSTOM FUNCTIONS
+
+          //Find user ID without them necessarily being in the room still
+          getID: function(name) {
+                      var id;
+                      var users = jungleBot.room.users;
+                      var len = users.length;
+                      for (var i = 0; i < len; ++i) {
+                          if (users[i].username == name) {
+                              var id = users[i].id;
+                          }
+                      }
+
+                  if (isNaN(id)) return false;
+                  else return id;
+              },
+
+          //END CUSTOM FUNCTIONS
+
             getJointime: function(user) {
                 return user.jointime;
             },
@@ -677,28 +697,7 @@
 
 
 
-//START CUSTOM FUNCTIONS
 
-
-
-//Find user ID without them necessarily being in the room still
-
-getID: function(name) {
-            var id;
-            var users = jungleBot.room.users;
-            var len = users.length;
-            for (var i = 0; i < len; ++i) {
-                if (users[i].username == name) {
-                    var id = users[i].id;
-                }
-            }
-
-        if (isNaN(id)) return false;
-        else return id;
-    },
-
-
-//END CUSTOM FUNCTIONS
 
 
 
@@ -1631,7 +1630,7 @@ getID: function(name) {
                             name = msg.substr(cmd.length + 1);
                         }
                     }
-                    var id = jungleBot.roomUtilities.getID(name);
+                    var id = jungleBot.userUtilities.getID(name);
 
                     if (id) {
                       API.sendChat('/me @' + chat.un + ' ' + name + '\'s ID is "' + id + '".');
