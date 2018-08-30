@@ -1613,9 +1613,9 @@
             */
 
 
-                  //blacklist the previous song
-
-                  blacklistpreviousCommand: {
+            //blacklist the previous song
+/*
+            blacklistpreviousCommand: {
                             command: ['blacklistprevious', 'blp'],
                             rank: 'bouncer',
                             type: 'exact',
@@ -1650,7 +1650,7 @@
                                       }
                                   }
                                },
-
+*/
             //Print ID of user in chat, regardless of if they are still in the room.
 
             idCommand: {
@@ -1675,35 +1675,52 @@
                     }
                     else {
                       API.sendChat('/me @' + chat.un + ' Invalid user specified.');
-                    }
+                       }
 
-                    }
-                },
+                      }
+                   },
 
+            // no u
+        		nouCommand: {
+                        command: ['nou'],
+                        rank: 'residentdj',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
 
-              // no u
-          		nouCommand: {
-                          command: ['nou'],
-                          rank: 'residentdj',
-                          type: 'startsWith',
-                          functionality: function(chat, cmd) {
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
 
-          					var msg = chat.message;
-          					var cmdmsg = msg.substr(cmd.length + 1);
-
-                              if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                              else {
-          	                       API.sendChat(cmdmsg + ' no u');
-                              }
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat(cmdmsg + ' no u');
+                             }
                           }
-		      },
+                      },
 
+            // chu say brug?
 
-              // chu say brug?
+          	chusayCommand: {
+                        command: ['chusay', 'brug', 'feelsweirdbrug'],
+                        rank: 'residentdj',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
 
-            	chusayCommand: {
-                          command: ['chusay', 'brug', 'feelsweirdbrug'],
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
+
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat(cmdmsg + ' https://i.imgur.com/Y5Zx98w.gif');
+                            }
+                        }
+                    },
+
+            // @user with WeirdChamp
+
+          	weirdchampCommand: {
+                          command: ['weirdchamp', 'weird'],
                           rank: 'residentdj',
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
@@ -1714,261 +1731,239 @@
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                               if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-          	                       API.sendChat(cmdmsg + ' https://i.imgur.com/Y5Zx98w.gif');
+
+          						API.sendChat(subChat(jungleBot.chat.weirdchamp, {
+                                      name: cmdmsg,
+                                  }));
                               }
                           }
                       },
 
-  // @user with WeirdChamp
+          	//(◕‿◕✿) CHAT IS RUNNING IN POSITIVE CHAT OR BAN MODE (◕‿◕✿)
 
-		weirdchampCommand: {
-                command: ['weirdchamp', 'weird'],
-                rank: 'residentdj',
-                type: 'startsWith',
-                functionality: function(chat, cmd) {
+          	attitudeCommand: {
+                          command: ['attitude', 'negativity'],
+                          rank: 'residentdj',
+                          type: 'startsWith',
+                          functionality: function(chat, cmd) {
 
-					var msg = chat.message;
-					var cmdmsg = msg.substr(cmd.length + 1);
+          					var msg = chat.message;
+          					var cmdmsg = msg.substr(cmd.length + 1);
 
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
+                              if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              else {
 
-						API.sendChat(subChat(jungleBot.chat.weirdchamp, {
-                            name: cmdmsg,
-                        }));
+          						API.sendChat(subChat(jungleBot.chat.attitude, {
+                                      name: cmdmsg,
+                                  }));
+                              }
+                          }
+                      },
+
+            // MrDestructoid clapping
+
+          	clapCommand: {
+          		  command: 'clap',
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat(":MrDestructoid: :bttvClap:");
+                      }
                     }
-                }
-            },
+                  },
 
 
-	//(◕‿◕✿) CHAT IS RUNNING IN POSITIVE CHAT OR BAN MODE (◕‿◕✿)
-
-		attitudeCommand: {
-                command: ['attitude', 'negativity'],
-                rank: 'residentdj',
-                type: 'startsWith',
-                functionality: function(chat, cmd) {
-
-					var msg = chat.message;
-					var cmdmsg = msg.substr(cmd.length + 1);
-
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-
-						API.sendChat(subChat(jungleBot.chat.attitude, {
-                            name: cmdmsg,
-                        }));
+                  //MrDestructoid in natural habitat
+                  mackygeeCommand: {
+                    command: ['mackygee', 'macky'],
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("https://i.imgur.com/LABtfS6.gif");
+                      }
                     }
-                }
-            },
+                  },
 
+                  //MrDestructoid woots
+                  wootCommand: {
+                    command: 'woot',
+                    rank: 'residentdj',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("/woot");
+                        API.sendChat(":MrDestructoid: :bttvClap:");
+                      }
+                    }
+                  },
 
-  // MrDestructoid clapping
+                  //MrDestructoid ResidentSleeper
+                  ResidentSleeperCommand: {
+                    command: 'sleeper',
+                    rank: 'residentdj',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("ResidentSleeper Clap");
+                      }
+                    }
+                  },
 
+                  //MrDestructoid sparkle
+                  sparkleCommand: {
+                    command: 'sparkle',
+                    rank: 'residentdj',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("/sparkle");
+                      }
+                    }
+                  },
 
-		clapCommand: {
-		  command: 'clap',
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat(":MrDestructoid: :bttvClap:");
-            }
-          }
-        },
+                  //Exports the chat to local storage .txt
+                  exportchatCommand: {
+                    command: 'exportchat',
+                    rank: 'manager',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("/exportchat");
+                      }
+                    }
+                  },
 
+                  //cute robot
+                  ayayaCommand: {
+                    command: 'ayaya',
+                    rank: 'residentdj',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("AYAYA Clap");
+                      }
+                    }
+                  },
 
-        //MrDestructoid in natural habitat
-        mackygeeCommand: {
-          command: ['mackygee', 'macky'],
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("https://i.imgur.com/LABtfS6.gif");
-            }
-          }
-        },
+                  //MrDestructoid voteemotespam
+                  voteemotespamCommand: {
+                    command: 'votespam',
+                    rank: 'manager',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("/voteemotespam");
+                      }
+                    }
+                  },
 
-        //MrDestructoid woots
-        wootCommand: {
-          command: 'woot',
-          rank: 'residentdj',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("/woot");
-              API.sendChat(":MrDestructoid: :bttvClap:");
-            }
-          }
-        },
+                  // Nightcore command
+                  nightcoreCommand: {
+                    command: 'nightcore',
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("MrDestructoid says: If you're about to queue a nightcore song, just look up the original and queue that instead.");
+                      }
+                    }
+                  },
 
-        //MrDestructoid ResidentSleeper
-        ResidentSleeperCommand: {
-          command: 'sleeper',
-          rank: 'residentdj',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("ResidentSleeper Clap");
-            }
-          }
-        },
+                  // Show commands
+                  commandsCommand: {
+                    command: 'commands',
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("Find the bot commands for this channel here: https://git.io/fN5eb#bot-commands");
+                      }
+                    }
+                  },
 
-        //MrDestructoid sparkle
-        sparkleCommand: {
-          command: 'sparkle',
-          rank: 'residentdj',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("/sparkle");
-            }
-          }
-        },
+                   // RCS help
+                  rcsCommand: {
+                    command: 'rcs',
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj");
+                      }
+                    }
+                  },
 
-        //Exports the chat to local storage .txt
-        exportchatCommand: {
-          command: 'exportchat',
-          rank: 'manager',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("/exportchat");
-            }
-          }
-        },
+                   // Emotes help
+                  emotesCommand: {
+                    command: ['emotes', 'downloadpoggers'],
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("To use emotes when you have RCS installed type colons like :this:. Alternatively, install the GTE extension and add xqcow in the settings: https://chrome.google.com/webstore/detail/global-twitch-emotes/pgniedifoejifjkndekolimjeclnokkb");
+                      }
+                    }
+                  },
 
-        //cute robot
-        ayayaCommand: {
-          command: 'ayaya',
-          rank: 'residentdj',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("AYAYA Clap");
-            }
-          }
-        },
+                   // Twitch link
+                  twitchCommand: {
+                    command: 'twitch',
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("xQc's Twitch: https://www.twitch.tv/xqcow");
+                      }
+                    }
+                  },
 
-        //MrDestructoid voteemotespam
-        voteemotespamCommand: {
-          command: 'votespam',
-          rank: 'manager',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("/voteemotespam");
-            }
-          }
-        },
-
-        // Nightcore command
-        nightcoreCommand: {
-          command: 'nightcore',
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("MrDestructoid says: If you're about to queue a nightcore song, just look up the original and queue that instead.");
-            }
-          }
-        },
-
-        // Show commands
-        commandsCommand: {
-          command: 'commands',
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("Find the bot commands for this channel here: https://git.io/fN5eb#bot-commands");
-            }
-          }
-        },
-
-         // RCS help
-        rcsCommand: {
-          command: 'rcs',
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj");
-            }
-          }
-        },
-
-         // Emotes help
-        emotesCommand: {
-          command: ['emotes', 'downloadpoggers'],
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("To use emotes when you have RCS installed type colons like :this:. Alternatively, install the GTE extension and add xqcow in the settings: https://chrome.google.com/webstore/detail/global-twitch-emotes/pgniedifoejifjkndekolimjeclnokkb");
-            }
-          }
-        },
-
-         // Twitch link
-        twitchCommand: {
-          command: 'twitch',
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("xQc's Twitch: https://www.twitch.tv/xqcow");
-            }
-          }
-        },
-
-         // Discord link
-        discordCommand: {
-          command: 'discord',
-          rank: 'user',
-          type: 'exact',
-          functionality: function (chat, cmd) {
-            if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-            if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-            else {
-              API.sendChat("xQc's Discord: https://discord.gg/xqcow");
-            }
-          }
-        },
+                   // Discord link
+                  discordCommand: {
+                    command: 'discord',
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("xQc's Discord: https://discord.gg/xqcow");
+                      }
+                    }
+                  },
 
 
 
 
-		//END OF CUSTOM COMMANDS
+          		//END OF CUSTOM COMMANDS
 
 
             activeCommand: {
@@ -2039,30 +2034,30 @@
             },
 
             afklimitCommand: {
-			command: ['afklimit', 'maximumafk', 'maxafktime'],
-                rank: 'manager',
-                type: 'startsWith',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        var msg = chat.message;
-                        if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nolimitspecified, {
-                            name: chat.un
-                        }));
-                        var limit = msg.substring(cmd.length + 1);
-                        if (!isNaN(limit)) {
-                            jungleBot.settings.maximumAfk = parseInt(limit, 10);
-                            API.sendChat(subChat(jungleBot.chat.maximumafktimeset, {
-                                name: chat.un,
-                                time: jungleBot.settings.maximumAfk
-                            }));
-                        } else API.sendChat(subChat(jungleBot.chat.invalidlimitspecified, {
-                            name: chat.un
-                        }));
-                    }
-                }
-            },
+            			command: ['afklimit', 'maximumafk', 'maxafktime'],
+                            rank: 'manager',
+                            type: 'startsWith',
+                            functionality: function(chat, cmd) {
+                                if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                                if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                else {
+                                    var msg = chat.message;
+                                    if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nolimitspecified, {
+                                        name: chat.un
+                                    }));
+                                    var limit = msg.substring(cmd.length + 1);
+                                    if (!isNaN(limit)) {
+                                        jungleBot.settings.maximumAfk = parseInt(limit, 10);
+                                        API.sendChat(subChat(jungleBot.chat.maximumafktimeset, {
+                                            name: chat.un,
+                                            time: jungleBot.settings.maximumAfk
+                                        }));
+                                    } else API.sendChat(subChat(jungleBot.chat.invalidlimitspecified, {
+                                        name: chat.un
+                                    }));
+                                }
+                            }
+                        },
 
             afkremovalCommand: {
                 command: 'afkremoval',
@@ -2262,9 +2257,6 @@
                 }
             },
 
-
-//blacklist the current song
-
             blacklistCommand: {
                 command: ['blacklist', 'bl'],
                 rank: 'bouncer',
@@ -2303,12 +2295,10 @@
                         }
                         if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
                             jungleBot.room.newBlacklistedSongFunction(track);
-                        }
-                    }
-                }
-        },
-
-
+                              }
+                          }
+                      }
+                  },
 
             blinfoCommand: {
                 command: 'blinfo',
@@ -2449,8 +2439,6 @@
                     }
                 }
             },
-
-
 
             cookieCommand: {
                 command: 'cookie',
@@ -2774,8 +2762,6 @@
                     }
                 }
             },
-
-
 
             filterCommand: {
                 command: 'filter',
@@ -4414,8 +4400,6 @@
                 }
             },
 
-
-
             welcomeCommand: {
                 command: 'welcome',
                 rank: 'mod',
@@ -4534,7 +4518,6 @@
                     }
                 }
             },
-
 
             youtubeCommand: {
                 command: 'youtube',
