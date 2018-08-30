@@ -1617,7 +1617,7 @@
                                     var list;
                                     if (msg.length === cmd.length) list = 'BANNED';
                                     else list = msg.substring(cmd.length + 1);
-                                    var media = lastplay.getMedia();
+                                    var media = lastplay.media();
 
                                     var track = {
                                         list: list,
