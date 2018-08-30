@@ -257,71 +257,71 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: 'JungleBot',
-			language: 'english',
-			chatLink: 'https://rawgit.com/HarryMcKenzie/source/master/lang/en.json',
-			scriptLink: 'https://rawgit.com/HarryMcKenzie/source/master/jungleBot.js',
-			roomLock: false, // Requires an extension to re-load the script
-			startupCap: 1, // 1-200
-			startupVolume: 0, // 0-100
-			startupEmoji: false, // true or false
-			autowoot: false,
-			autoskip: true,
-			smartSkip: true,
-			cmdDeletion: true,
-			maximumAfk: 180,
-			afkRemoval: true,
-			maximumDc: 60,
-			bouncerPlus: false,
-			blacklistEnabled: true,
-			lockdownEnabled: false,
-			lockGuard: false,
-			maximumLocktime: 10,
-			cycleGuard: true,
-			maximumCycletime: 10,
-			voteSkip: false,
-			voteSkipLimit: 69,
-			historySkip: false,
-			timeGuard: true,
-			strictTimeGuard: true,
-			maximumSongLength: 10,
-			autodisable: false,
-			commandCooldown: 30,
-			usercommandsEnabled: true,
-			thorCommand: false,
-			thorCooldown: 500,
-			skipPosition: 0,
-			skipReasons: [
-				['theme', 'This song does not fit the room theme. '],
-				['op', 'This song is on the OP list. '],
-				['history', 'This song is in the history. '],
-				['mix', 'You played a mix, which is against the rules. '],
-				['sound', 'The song you played had bad sound quality or no sound. '],
-				['nsfw', 'The song you played was NSFW (image or sound). '],
-				['unavailable', 'The song you played was not available for some users. ']
-				['staff', 'a Staff member didn´t enjoy the song and abused their powers for everyone´s sake. ']
-			],
-			afkpositionCheck: 50,
-			afkRankCheck: 'user',
-			motdEnabled: false,
-			motdInterval: 15,
-			motd: 'Allo',
-			filterChat: false,
-			etaRestriction: true,
-			welcome: false,
-			opLink: null,
-			rulesLink: 'http://bit.ly/xqcs-jungle',
-			themeLink: null,
-			fbLink: null,
-			youtubeLink: 'http://youtube.com/xqcow',
-			website: 'http://twitch.tv/xqcow',
-			intervalMessages: ["The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj", "Connect with xQc: Stream: http://twitch.tv/xqcow Twitter: https://twitter.com/xqc YouTube: http://yoube.com/xQcOW Discord: http://discord.gg/xqcow (you don't have to be a sub)", "FAQ for new users on the channel: http://bit.ly/jungle-dj-help", "A list of commands for the bot can be found here: https://git.io/fN5eb#bot-commands"],
-			messageInterval: 11,
-			songstats: false,
-			commandLiteral: '!',
-			blacklists: {
-				BANNED: 'https://rawgit.com/HarryMcKenzie/source/master/blacklists/BANNEDlist.json'
-						}
+        botName: 'JungleBot',
+  			language: 'english',
+  			chatLink: 'https://rawgit.com/HarryMcKenzie/source/master/lang/en.json',
+  			scriptLink: 'https://rawgit.com/HarryMcKenzie/source/master/jungleBot.js',
+  			roomLock: false, // Requires an extension to re-load the script
+  			startupCap: 1, // 1-200
+  			startupVolume: 0, // 0-100
+  			startupEmoji: false, // true or false
+  			autowoot: false,
+  			autoskip: true,
+  			smartSkip: true,
+  			cmdDeletion: true,
+  			maximumAfk: 180,
+  			afkRemoval: true,
+  			maximumDc: 60,
+  			bouncerPlus: false,
+  			blacklistEnabled: true,
+  			lockdownEnabled: false,
+  			lockGuard: false,
+  			maximumLocktime: 10,
+  			cycleGuard: true,
+  			maximumCycletime: 10,
+  			voteSkip: false,
+  			voteSkipLimit: 69,
+  			historySkip: false,
+  			timeGuard: true,
+  			strictTimeGuard: true,
+  			maximumSongLength: 10,
+  			autodisable: false,
+  			commandCooldown: 30,
+  			usercommandsEnabled: true,
+  			thorCommand: false,
+  			thorCooldown: 500,
+  			skipPosition: 0,
+  			skipReasons: [
+  				['theme', 'This song does not fit the room theme. '],
+  				['op', 'This song is on the OP list. '],
+  				['history', 'This song is in the history. '],
+  				['mix', 'You played a mix, which is against the rules. '],
+  				['sound', 'The song you played had bad sound quality or no sound. '],
+  				['nsfw', 'The song you played was NSFW (image or sound). '],
+  				['unavailable', 'The song you played was not available for some users. ']
+  				['staff', 'a Staff member didn´t enjoy the song and abused their powers for everyone´s sake. ']
+  			],
+  			afkpositionCheck: 50,
+  			afkRankCheck: 'user',
+  			motdEnabled: false,
+  			motdInterval: 15,
+  			motd: 'Allo',
+  			filterChat: false,
+  			etaRestriction: true,
+  			welcome: false,
+  			opLink: null,
+  			rulesLink: 'http://bit.ly/xqcs-jungle',
+  			themeLink: null,
+  			fbLink: null,
+  			youtubeLink: 'http://youtube.com/xqcow',
+  			website: 'http://twitch.tv/xqcow',
+  			intervalMessages: ["The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj", "Connect with xQc: Stream: http://twitch.tv/xqcow Twitter: https://twitter.com/xqc YouTube: http://yoube.com/xQcOW Discord: http://discord.gg/xqcow (you don't have to be a sub)", "FAQ for new users on the channel: http://bit.ly/jungle-dj-help", "A list of commands for the bot can be found here: https://git.io/fN5eb#bot-commands"],
+  			messageInterval: 11,
+  			songstats: false,
+  			commandLiteral: '!',
+  			blacklists: {
+  				BANNED: 'https://rawgit.com/HarryMcKenzie/source/master/blacklists/BANNEDlist.json'
+  						}
         },
         room: {
             name: null,
@@ -690,19 +690,8 @@
                 unlockBooth: function() {
                     API.moderateLockWaitList(jungleBot.roomUtilities.booth.locked);
                     clearTimeout(jungleBot.roomUtilities.booth.lockTimer);
-                }
-            },
-
-
-
-
-
-
-
-
-
-
-
+                      }
+                  },
 
             afkCheck: function() {
                 if (!jungleBot.status || !jungleBot.settings.afkRemoval) return void(0);
@@ -894,659 +883,659 @@
                     });
                 }
                 return list;
-            }
-        },
-        eventChat: function(chat) {
-            chat.message = linkFixer(chat.message);
-            chat.message = decodeEntities(chat.message);
-            chat.message = chat.message.trim();
-
-            jungleBot.room.chatMessages.push([chat.cid, chat.message, chat.sub, chat.timestamp, chat.type, chat.uid, chat.un]);
-
-            for (var i = 0; i < jungleBot.room.users.length; i++) {
-                if (jungleBot.room.users[i].id === chat.uid) {
-                    jungleBot.userUtilities.setLastActivity(jungleBot.room.users[i]);
-                    if (jungleBot.room.users[i].username !== chat.un) {
-                        jungleBot.room.users[i].username = chat.un;
-                    }
                 }
-            }
-            if (jungleBot.chatUtilities.chatFilter(chat)) return void(0);
-            if (!jungleBot.chatUtilities.commandCheck(chat))
-                jungleBot.chatUtilities.action(chat);
-        },
-        eventUserjoin: function(user) {
-            var known = false;
-            var index = null;
-            for (var i = 0; i < jungleBot.room.users.length; i++) {
-                if (jungleBot.room.users[i].id === user.id) {
-                    known = true;
-                    index = i;
-                }
-            }
-            var greet = true;
-            var welcomeback = null;
-            if (known) {
-                jungleBot.room.users[index].inRoom = true;
-                var u = jungleBot.userUtilities.lookupUser(user.id);
-                var jt = u.jointime;
-                var t = Date.now() - jt;
-                if (t < 10 * 1000) greet = false;
-                else welcomeback = true;
-            } else {
-                jungleBot.room.users.push(new jungleBot.User(user.id, user.username));
-                welcomeback = false;
-            }
-            for (var j = 0; j < jungleBot.room.users.length; j++) {
-                if (jungleBot.userUtilities.getUser(jungleBot.room.users[j]).id === user.id) {
-                    jungleBot.userUtilities.setLastActivity(jungleBot.room.users[j]);
-                    jungleBot.room.users[j].jointime = Date.now();
-                }
+              },
+            eventChat: function(chat) {
+                chat.message = linkFixer(chat.message);
+                chat.message = decodeEntities(chat.message);
+                chat.message = chat.message.trim();
 
-            }
+                jungleBot.room.chatMessages.push([chat.cid, chat.message, chat.sub, chat.timestamp, chat.type, chat.uid, chat.un]);
 
-            if (botCreatorIDs.indexOf(user.id) > -1) {
-              console.log(true);
-                API.sendChat('@'+user.username+' '+':sparkles: :bow: :sparkles:');
-            } else if (jungleBot.settings.welcome && greet) {
-              console.log(false);
-              console.log(botCreatorIDs);
-                welcomeback ?
-                    setTimeout(function(user) {
-                        API.sendChat(subChat(jungleBot.chat.welcomeback, {
-                            name: user.username
-                        }));
-                    }, 1 * 1000, user) :
-                    setTimeout(function(user) {
-                        API.sendChat(subChat(jungleBot.chat.welcome, {
-                            name: user.username
-                        }));
-                    }, 1 * 1000, user);
-            }
-        },
-        eventUserleave: function(user) {
-            var lastDJ = API.getHistory()[0].user.id;
-            for (var i = 0; i < jungleBot.room.users.length; i++) {
-                if (jungleBot.room.users[i].id === user.id) {
-                    jungleBot.userUtilities.updateDC(jungleBot.room.users[i]);
-                    jungleBot.room.users[i].inRoom = false;
-                    if (lastDJ == user.id) {
-                        var user = jungleBot.userUtilities.lookupUser(jungleBot.room.users[i].id);
-                        jungleBot.userUtilities.updatePosition(user, 0);
-                        user.lastDC.time = null;
-                        user.lastDC.position = user.lastKnownPosition;
-                    }
-                }
-            }
-        },
-        eventVoteupdate: function(obj) {
-            for (var i = 0; i < jungleBot.room.users.length; i++) {
-                if (jungleBot.room.users[i].id === obj.user.id) {
-                    if (obj.vote === 1) {
-                        jungleBot.room.users[i].votes.woot++;
-                    } else {
-                        jungleBot.room.users[i].votes.meh++;
-                    }
-                }
-            }
-
-            var mehs = API.getScore().negative;
-            var woots = API.getScore().positive;
-            var dj = API.getDJ();
-            var timeLeft = API.getTimeRemaining();
-            var timeElapsed = API.getTimeElapsed();
-
-            if (jungleBot.settings.voteSkip) {
-                if ((mehs - woots) >= (jungleBot.settings.voteSkipLimit)) {
-                    API.sendChat(subChat(jungleBot.chat.voteskipexceededlimit, {
-                        name: dj.username,
-                        limit: jungleBot.settings.voteSkipLimit
-                    }));
-                    if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
-                        jungleBot.roomUtilities.smartSkip();
-                    } else {
-                        API.moderateForceSkip();
-                    }
-                }
-            }
-
-        },
-        eventCurateupdate: function(obj) {
-            for (var i = 0; i < jungleBot.room.users.length; i++) {
-                if (jungleBot.room.users[i].id === obj.user.id) {
-                    jungleBot.room.users[i].votes.curate++;
-                }
-            }
-        },
-        eventDjadvance: function(obj) {
-            if (!obj.dj) return;
-            if (jungleBot.settings.autowoot) {
-                $('#woot').click(); // autowoot
-            }
-
-            var user = jungleBot.userUtilities.lookupUser(obj.dj.id)
-            for (var i = 0; i < jungleBot.room.users.length; i++) {
-                if (jungleBot.room.users[i].id === user.id) {
-                    jungleBot.room.users[i].lastDC = {
-                        time: null,
-                        position: null,
-                        songCount: 0
-                    };
-                }
-            }
-
-            var lastplay = obj.lastPlay;
-            if (typeof lastplay === 'undefined') return;
-            if (jungleBot.settings.songstats) {
-                if (typeof jungleBot.chat.songstatistics === 'undefined') {
-                    API.sendChat('/me ' + lastplay.media.author + ' - ' + lastplay.media.title + ': ' + lastplay.score.positive + 'W/' + lastplay.score.grabs + 'G/' + lastplay.score.negative + 'M.')
-                } else {
-                    API.sendChat(subChat(jungleBot.chat.songstatistics, {
-                        artist: lastplay.media.author,
-                        title: lastplay.media.title,
-                        woots: lastplay.score.positive,
-                        grabs: lastplay.score.grabs,
-                        mehs: lastplay.score.negative
-                    }))
-                }
-            }
-            jungleBot.room.roomstats.totalWoots += lastplay.score.positive;
-            jungleBot.room.roomstats.totalMehs += lastplay.score.negative;
-            jungleBot.room.roomstats.totalCurates += lastplay.score.grabs;
-            jungleBot.room.roomstats.songCount++;
-            jungleBot.roomUtilities.intervalMessage();
-            jungleBot.room.currentDJID = obj.dj.id;
-
-            var blacklistSkip = setTimeout(function() {
-                var mid = obj.media.format + ':' + obj.media.cid;
-                for (var bl in jungleBot.room.blacklists) {
-                    if (jungleBot.settings.blacklistEnabled) {
-                        if (jungleBot.room.blacklists[bl].indexOf(mid) > -1) {
-                            API.sendChat(subChat(jungleBot.chat.isblacklisted, {
-                                blacklist: bl
-                            }));
-                            if (jungleBot.settings.smartSkip) {
-                                return jungleBot.roomUtilities.smartSkip();
-                            } else {
-                                return API.moderateForceSkip();
-                            }
+                for (var i = 0; i < jungleBot.room.users.length; i++) {
+                    if (jungleBot.room.users[i].id === chat.uid) {
+                        jungleBot.userUtilities.setLastActivity(jungleBot.room.users[i]);
+                        if (jungleBot.room.users[i].username !== chat.un) {
+                            jungleBot.room.users[i].username = chat.un;
                         }
                     }
                 }
-            }, 1);
-            var newMedia = obj.media;
-            clearTimeout(jungleBot.room.tgSkip);
-            var timeLimitSkip = setTimeout(function() {
-                if (jungleBot.settings.timeGuard && newMedia.duration > jungleBot.settings.maximumSongLength * 60 && !jungleBot.room.roomevent) {
-                    if (typeof jungleBot.settings.strictTimeGuard === 'undefined' || jungleBot.settings.strictTimeGuard) {
-                        var name = obj.dj.username;
-                        API.sendChat(subChat(jungleBot.chat.timelimit, {
-                            name: name,
-                            maxlength: jungleBot.settings.maximumSongLength
-                        }));
-                        if (jungleBot.settings.smartSkip) {
-                            return jungleBot.roomUtilities.smartSkip();
+                if (jungleBot.chatUtilities.chatFilter(chat)) return void(0);
+                if (!jungleBot.chatUtilities.commandCheck(chat))
+                    jungleBot.chatUtilities.action(chat);
+            },
+            eventUserjoin: function(user) {
+                var known = false;
+                var index = null;
+                for (var i = 0; i < jungleBot.room.users.length; i++) {
+                    if (jungleBot.room.users[i].id === user.id) {
+                        known = true;
+                        index = i;
+                    }
+                }
+                var greet = true;
+                var welcomeback = null;
+                if (known) {
+                    jungleBot.room.users[index].inRoom = true;
+                    var u = jungleBot.userUtilities.lookupUser(user.id);
+                    var jt = u.jointime;
+                    var t = Date.now() - jt;
+                    if (t < 10 * 1000) greet = false;
+                    else welcomeback = true;
+                } else {
+                    jungleBot.room.users.push(new jungleBot.User(user.id, user.username));
+                    welcomeback = false;
+                }
+                for (var j = 0; j < jungleBot.room.users.length; j++) {
+                    if (jungleBot.userUtilities.getUser(jungleBot.room.users[j]).id === user.id) {
+                        jungleBot.userUtilities.setLastActivity(jungleBot.room.users[j]);
+                        jungleBot.room.users[j].jointime = Date.now();
+                    }
+
+                }
+
+                if (botCreatorIDs.indexOf(user.id) > -1) {
+                  console.log(true);
+                    API.sendChat('@'+user.username+' '+':sparkles: :bow: :sparkles:');
+                } else if (jungleBot.settings.welcome && greet) {
+                  console.log(false);
+                  console.log(botCreatorIDs);
+                    welcomeback ?
+                        setTimeout(function(user) {
+                            API.sendChat(subChat(jungleBot.chat.welcomeback, {
+                                name: user.username
+                            }));
+                        }, 1 * 1000, user) :
+                        setTimeout(function(user) {
+                            API.sendChat(subChat(jungleBot.chat.welcome, {
+                                name: user.username
+                            }));
+                        }, 1 * 1000, user);
+                }
+            },
+            eventUserleave: function(user) {
+                var lastDJ = API.getHistory()[0].user.id;
+                for (var i = 0; i < jungleBot.room.users.length; i++) {
+                    if (jungleBot.room.users[i].id === user.id) {
+                        jungleBot.userUtilities.updateDC(jungleBot.room.users[i]);
+                        jungleBot.room.users[i].inRoom = false;
+                        if (lastDJ == user.id) {
+                            var user = jungleBot.userUtilities.lookupUser(jungleBot.room.users[i].id);
+                            jungleBot.userUtilities.updatePosition(user, 0);
+                            user.lastDC.time = null;
+                            user.lastDC.position = user.lastKnownPosition;
+                        }
+                    }
+                }
+            },
+            eventVoteupdate: function(obj) {
+                for (var i = 0; i < jungleBot.room.users.length; i++) {
+                    if (jungleBot.room.users[i].id === obj.user.id) {
+                        if (obj.vote === 1) {
+                            jungleBot.room.users[i].votes.woot++;
                         } else {
-                            return API.moderateForceSkip();
+                            jungleBot.room.users[i].votes.meh++;
                         }
+                    }
+                }
+
+                var mehs = API.getScore().negative;
+                var woots = API.getScore().positive;
+                var dj = API.getDJ();
+                var timeLeft = API.getTimeRemaining();
+                var timeElapsed = API.getTimeElapsed();
+
+                if (jungleBot.settings.voteSkip) {
+                    if ((mehs - woots) >= (jungleBot.settings.voteSkipLimit)) {
+                        API.sendChat(subChat(jungleBot.chat.voteskipexceededlimit, {
+                            name: dj.username,
+                            limit: jungleBot.settings.voteSkipLimit
+                        }));
+                        if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
+                            jungleBot.roomUtilities.smartSkip();
+                        } else {
+                            API.moderateForceSkip();
+                        }
+                    }
+                }
+
+            },
+            eventCurateupdate: function(obj) {
+                for (var i = 0; i < jungleBot.room.users.length; i++) {
+                    if (jungleBot.room.users[i].id === obj.user.id) {
+                        jungleBot.room.users[i].votes.curate++;
+                    }
+                }
+            },
+            eventDjadvance: function(obj) {
+                if (!obj.dj) return;
+                if (jungleBot.settings.autowoot) {
+                    $('#woot').click(); // autowoot
+                }
+
+                var user = jungleBot.userUtilities.lookupUser(obj.dj.id)
+                for (var i = 0; i < jungleBot.room.users.length; i++) {
+                    if (jungleBot.room.users[i].id === user.id) {
+                        jungleBot.room.users[i].lastDC = {
+                            time: null,
+                            position: null,
+                            songCount: 0
+                        };
+                    }
+                }
+
+                var lastplay = obj.lastPlay;
+                if (typeof lastplay === 'undefined') return;
+                if (jungleBot.settings.songstats) {
+                    if (typeof jungleBot.chat.songstatistics === 'undefined') {
+                        API.sendChat('/me ' + lastplay.media.author + ' - ' + lastplay.media.title + ': ' + lastplay.score.positive + 'W/' + lastplay.score.grabs + 'G/' + lastplay.score.negative + 'M.')
                     } else {
-                        jungleBot.room.tgSkip = setTimeout(function() {
-                            if (jungleBot.settings.timeGuard) return API.moderateForceSkip();
-                            return;
-                        }, jungleBot.settings.maximumSongLength*60*1000);
+                        API.sendChat(subChat(jungleBot.chat.songstatistics, {
+                            artist: lastplay.media.author,
+                            title: lastplay.media.title,
+                            woots: lastplay.score.positive,
+                            grabs: lastplay.score.grabs,
+                            mehs: lastplay.score.negative
+                        }))
                     }
                 }
-            }, 2000);
-            var format = obj.media.format;
-            var cid = obj.media.cid;
-            var naSkip = setTimeout(function() {
-                if (format == 1) {
-                    $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + cid + '&key=AIzaSyDcfWu9cGaDnTjPKhg_dy9mUh6H7i4ePZ0&part=snippet&callback=?', function(track) {
-                        if (typeof(track.items[0]) === 'undefined') {
-                            var name = obj.dj.username;
-                            API.sendChat(subChat(jungleBot.chat.notavailable, {
-                                name: name
-                            }));
-                            if (jungleBot.settings.smartSkip) {
-                                return jungleBot.roomUtilities.smartSkip();
-                            } else {
-                                return API.moderateForceSkip();
+                jungleBot.room.roomstats.totalWoots += lastplay.score.positive;
+                jungleBot.room.roomstats.totalMehs += lastplay.score.negative;
+                jungleBot.room.roomstats.totalCurates += lastplay.score.grabs;
+                jungleBot.room.roomstats.songCount++;
+                jungleBot.roomUtilities.intervalMessage();
+                jungleBot.room.currentDJID = obj.dj.id;
+
+                var blacklistSkip = setTimeout(function() {
+                    var mid = obj.media.format + ':' + obj.media.cid;
+                    for (var bl in jungleBot.room.blacklists) {
+                        if (jungleBot.settings.blacklistEnabled) {
+                            if (jungleBot.room.blacklists[bl].indexOf(mid) > -1) {
+                                API.sendChat(subChat(jungleBot.chat.isblacklisted, {
+                                    blacklist: bl
+                                }));
+                                if (jungleBot.settings.smartSkip) {
+                                    return jungleBot.roomUtilities.smartSkip();
+                                } else {
+                                    return API.moderateForceSkip();
+                                }
                             }
                         }
-                    });
-                } else {
-                    var checkSong = SC.get('/tracks/' + cid, function(track) {
-                        if (typeof track.title === 'undefined') {
-                            var name = obj.dj.username;
-                            API.sendChat(subChat(jungleBot.chat.notavailable, {
-                                name: name
-                            }));
-                            if (jungleBot.settings.smartSkip) {
-                                return jungleBot.roomUtilities.smartSkip();
-                            } else {
-                                return API.moderateForceSkip();
-                            }
-                        }
-                    });
-                }
-            }, 1);
-            clearTimeout(historySkip);
-            if (jungleBot.settings.historySkip) {
-                var alreadyPlayed = false;
-                var apihistory = API.getHistory();
-                var name = obj.dj.username;
-                var historySkip = setTimeout(function() {
-                    for (var i = 0; i < apihistory.length; i++) {
-                        if (apihistory[i].media.cid === obj.media.cid) {
-                            jungleBot.room.historyList[i].push(+new Date());
-                            alreadyPlayed = true;
-                            API.sendChat(subChat(jungleBot.chat.songknown, {
-                                name: name
-                            }));
-                            if (jungleBot.settings.smartSkip) {
-                                return jungleBot.roomUtilities.smartSkip();
-                            } else {
-                                return API.moderateForceSkip();
-                            }
-                        }
-                    }
-                    if (!alreadyPlayed) {
-                        jungleBot.room.historyList.push([obj.media.cid, +new Date()]);
                     }
                 }, 1);
-            }
-            if (user.ownSong) {
-                API.sendChat(subChat(jungleBot.chat.permissionownsong, {
-                    name: user.username
-                }));
-                user.ownSong = false;
-            }
-            clearTimeout(jungleBot.room.autoskipTimer);
-            if (jungleBot.settings.autoskip) {
-                var remaining = obj.media.duration * 1000;
-                var startcid = API.getMedia().cid;
-                jungleBot.room.autoskipTimer = setTimeout(function() {
-                    if (!API.getMedia()) return;
-
-                    var endcid = API.getMedia().cid;
-                    if (startcid === endcid) {
-                        //API.sendChat('Song stuck, skipping...');
-                        API.moderateForceSkip();
+                var newMedia = obj.media;
+                clearTimeout(jungleBot.room.tgSkip);
+                var timeLimitSkip = setTimeout(function() {
+                    if (jungleBot.settings.timeGuard && newMedia.duration > jungleBot.settings.maximumSongLength * 60 && !jungleBot.room.roomevent) {
+                        if (typeof jungleBot.settings.strictTimeGuard === 'undefined' || jungleBot.settings.strictTimeGuard) {
+                            var name = obj.dj.username;
+                            API.sendChat(subChat(jungleBot.chat.timelimit, {
+                                name: name,
+                                maxlength: jungleBot.settings.maximumSongLength
+                            }));
+                            if (jungleBot.settings.smartSkip) {
+                                return jungleBot.roomUtilities.smartSkip();
+                            } else {
+                                return API.moderateForceSkip();
+                            }
+                        } else {
+                            jungleBot.room.tgSkip = setTimeout(function() {
+                                if (jungleBot.settings.timeGuard) return API.moderateForceSkip();
+                                return;
+                            }, jungleBot.settings.maximumSongLength*60*1000);
+                        }
                     }
-                }, remaining + 5000);
-            }
-            storeToStorage();
-            //sendToSocket();
-        },
-        eventWaitlistupdate: function(users) {
-            if (users.length < 50) {
-                if (jungleBot.room.queue.id.length > 0 && jungleBot.room.queueable) {
-                    jungleBot.room.queueable = false;
-                    setTimeout(function() {
-                        jungleBot.room.queueable = true;
-                    }, 500);
-                    jungleBot.room.queueing++;
-                    var id, pos;
-                    setTimeout(
-                        function() {
-                            id = jungleBot.room.queue.id.splice(0, 1)[0];
-                            pos = jungleBot.room.queue.position.splice(0, 1)[0];
-                            API.moderateAddDJ(id, pos);
-                            setTimeout(
-                                function(id, pos) {
-                                    API.moderateMoveDJ(id, pos);
-                                    jungleBot.room.queueing--;
-                                    if (jungleBot.room.queue.id.length === 0) setTimeout(function() {
-                                        jungleBot.roomUtilities.booth.unlockBooth();
-                                    }, 1000);
-                                }, 1000, id, pos);
-                        }, 1000 + jungleBot.room.queueing * 2500);
+                }, 2000);
+                var format = obj.media.format;
+                var cid = obj.media.cid;
+                var naSkip = setTimeout(function() {
+                    if (format == 1) {
+                        $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + cid + '&key=AIzaSyDcfWu9cGaDnTjPKhg_dy9mUh6H7i4ePZ0&part=snippet&callback=?', function(track) {
+                            if (typeof(track.items[0]) === 'undefined') {
+                                var name = obj.dj.username;
+                                API.sendChat(subChat(jungleBot.chat.notavailable, {
+                                    name: name
+                                }));
+                                if (jungleBot.settings.smartSkip) {
+                                    return jungleBot.roomUtilities.smartSkip();
+                                } else {
+                                    return API.moderateForceSkip();
+                                }
+                            }
+                        });
+                    } else {
+                        var checkSong = SC.get('/tracks/' + cid, function(track) {
+                            if (typeof track.title === 'undefined') {
+                                var name = obj.dj.username;
+                                API.sendChat(subChat(jungleBot.chat.notavailable, {
+                                    name: name
+                                }));
+                                if (jungleBot.settings.smartSkip) {
+                                    return jungleBot.roomUtilities.smartSkip();
+                                } else {
+                                    return API.moderateForceSkip();
+                                }
+                            }
+                        });
+                    }
+                }, 1);
+                clearTimeout(historySkip);
+                if (jungleBot.settings.historySkip) {
+                    var alreadyPlayed = false;
+                    var apihistory = API.getHistory();
+                    var name = obj.dj.username;
+                    var historySkip = setTimeout(function() {
+                        for (var i = 0; i < apihistory.length; i++) {
+                            if (apihistory[i].media.cid === obj.media.cid) {
+                                jungleBot.room.historyList[i].push(+new Date());
+                                alreadyPlayed = true;
+                                API.sendChat(subChat(jungleBot.chat.songknown, {
+                                    name: name
+                                }));
+                                if (jungleBot.settings.smartSkip) {
+                                    return jungleBot.roomUtilities.smartSkip();
+                                } else {
+                                    return API.moderateForceSkip();
+                                }
+                            }
+                        }
+                        if (!alreadyPlayed) {
+                            jungleBot.room.historyList.push([obj.media.cid, +new Date()]);
+                        }
+                    }, 1);
                 }
-            }
-            for (var i = 0; i < users.length; i++) {
-                var user = jungleBot.userUtilities.lookupUser(users[i].id);
-                jungleBot.userUtilities.updatePosition(user, API.getWaitListPosition(users[i].id) + 1);
-            }
-        },
+                if (user.ownSong) {
+                    API.sendChat(subChat(jungleBot.chat.permissionownsong, {
+                        name: user.username
+                    }));
+                    user.ownSong = false;
+                }
+                clearTimeout(jungleBot.room.autoskipTimer);
+                if (jungleBot.settings.autoskip) {
+                    var remaining = obj.media.duration * 1000;
+                    var startcid = API.getMedia().cid;
+                    jungleBot.room.autoskipTimer = setTimeout(function() {
+                        if (!API.getMedia()) return;
 
-        chatcleaner: function(chat) {
-            if (!jungleBot.settings.filterChat) return false;
-            if (jungleBot.userUtilities.getPermission(chat.uid) >= API.ROLE.BOUNCER) return false;
-            var msg = chat.message;
-            var containsLetters = false;
-            for (var i = 0; i < msg.length; i++) {
-                ch = msg.charAt(i);
-                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9') || ch === ':' || ch === '^') containsLetters = true;
-            }
-            if (msg === '') {
-                return true;
-            }
-            if (!containsLetters && (msg.length === 1 || msg.length > 3)) return true;
-            msg = msg.replace(/[ ,;.:\/=~+%^*\-\\"'&@#]/g, '');
-            var capitals = 0;
-            var ch;
-            for (var i = 0; i < msg.length; i++) {
-                ch = msg.charAt(i);
-                if (ch >= 'A' && ch <= 'Z') capitals++;
-            }
-            if (capitals >= 40) {
-                API.sendChat(subChat(jungleBot.chat.caps, {
-                    name: chat.un
-                }));
-                return true;
-            }
-            msg = msg.toLowerCase();
-            if (msg === 'skip') {
-                API.sendChat(subChat(jungleBot.chat.askskip, {
-                    name: chat.un
-                }));
-                return true;
-            }
-            for (var j = 0; j < jungleBot.chatUtilities.spam.length; j++) {
-                if (msg === jungleBot.chatUtilities.spam[j]) {
-                    API.sendChat(subChat(jungleBot.chat.spam, {
+                        var endcid = API.getMedia().cid;
+                        if (startcid === endcid) {
+                            //API.sendChat('Song stuck, skipping...');
+                            API.moderateForceSkip();
+                        }
+                    }, remaining + 5000);
+                }
+                storeToStorage();
+                //sendToSocket();
+            },
+            eventWaitlistupdate: function(users) {
+                if (users.length < 50) {
+                    if (jungleBot.room.queue.id.length > 0 && jungleBot.room.queueable) {
+                        jungleBot.room.queueable = false;
+                        setTimeout(function() {
+                            jungleBot.room.queueable = true;
+                        }, 500);
+                        jungleBot.room.queueing++;
+                        var id, pos;
+                        setTimeout(
+                            function() {
+                                id = jungleBot.room.queue.id.splice(0, 1)[0];
+                                pos = jungleBot.room.queue.position.splice(0, 1)[0];
+                                API.moderateAddDJ(id, pos);
+                                setTimeout(
+                                    function(id, pos) {
+                                        API.moderateMoveDJ(id, pos);
+                                        jungleBot.room.queueing--;
+                                        if (jungleBot.room.queue.id.length === 0) setTimeout(function() {
+                                            jungleBot.roomUtilities.booth.unlockBooth();
+                                        }, 1000);
+                                    }, 1000, id, pos);
+                            }, 1000 + jungleBot.room.queueing * 2500);
+                    }
+                }
+                for (var i = 0; i < users.length; i++) {
+                    var user = jungleBot.userUtilities.lookupUser(users[i].id);
+                    jungleBot.userUtilities.updatePosition(user, API.getWaitListPosition(users[i].id) + 1);
+                }
+            },
+
+            chatcleaner: function(chat) {
+                if (!jungleBot.settings.filterChat) return false;
+                if (jungleBot.userUtilities.getPermission(chat.uid) >= API.ROLE.BOUNCER) return false;
+                var msg = chat.message;
+                var containsLetters = false;
+                for (var i = 0; i < msg.length; i++) {
+                    ch = msg.charAt(i);
+                    if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9') || ch === ':' || ch === '^') containsLetters = true;
+                }
+                if (msg === '') {
+                    return true;
+                }
+                if (!containsLetters && (msg.length === 1 || msg.length > 3)) return true;
+                msg = msg.replace(/[ ,;.:\/=~+%^*\-\\"'&@#]/g, '');
+                var capitals = 0;
+                var ch;
+                for (var i = 0; i < msg.length; i++) {
+                    ch = msg.charAt(i);
+                    if (ch >= 'A' && ch <= 'Z') capitals++;
+                }
+                if (capitals >= 40) {
+                    API.sendChat(subChat(jungleBot.chat.caps, {
                         name: chat.un
                     }));
                     return true;
                 }
-            }
-            return false;
-        },
-
-        chatUtilities: {
-          chatFilter: function(chat) {
-              var msg = chat.message;
-              var perm = jungleBot.userUtilities.getPermission(chat.uid);
-              var user = jungleBot.userUtilities.lookupUser(chat.uid);
-              var isMuted = false;
-              for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
-                  if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
-              }
-              if (isMuted) {
-                  API.moderateDeleteChat(chat.cid);
-                  return true;
-              }
-              if (jungleBot.settings.lockdownEnabled) {
-                  if (perm === API.ROLE.NONE) {
-                      API.moderateDeleteChat(chat.cid);
-                      return true;
-                  }
-              }
-              if (jungleBot.chatcleaner(chat)) {
-                  API.moderateDeleteChat(chat.cid);
-                  return true;
-              }
-              if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
-                  API.moderateDeleteChat(chat.cid);
-              }
-              /**
-               var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-               if (plugRoomLinkPatt.exec(msg)) {
-                  if (perm === API.ROLE.NONE) {
-                      API.sendChat(subChat(jungleBot.chat.roomadvertising, {name: chat.un}));
-                      API.moderateDeleteChat(chat.cid);
-                      return true;
-                  }
-              }
-               **/
-              if (msg.indexOf('http://adf.ly/') > -1) {
-                  API.moderateDeleteChat(chat.cid);
-                  API.sendChat(subChat(jungleBot.chat.adfly, {
-                      name: chat.un
-                  }));
-                  return true;
-              }
-              if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
-                  API.moderateDeleteChat(chat.cid);
-                  return true;
-              }
-
-              var rlJoinChat = jungleBot.chat.roulettejoin;
-              var rlLeaveChat = jungleBot.chat.rouletteleave;
-
-              var joinedroulette = rlJoinChat.split('%%NAME%%');
-              if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
-              else joinedroulette = joinedroulette[0];
-
-              var leftroulette = rlLeaveChat.split('%%NAME%%');
-              if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
-              else leftroulette = leftroulette[0];
-
-              if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === jungleBot.loggedInID) {
-                  setTimeout(function(id) {
-                      API.moderateDeleteChat(id);
-                  }, 5 * 1000, chat.cid);
-                  return true;
-              }
-              return false;
-          },
-            commandCheck: function(chat) {
-                var cmd;
-                if (chat.message.charAt(0) === jungleBot.settings.commandLiteral) {
-                    var space = chat.message.indexOf(' ');
-                    if (space === -1) {
-                        cmd = chat.message;
-                    } else cmd = chat.message.substring(0, space);
-                } else return false;
-                var userPerm = jungleBot.userUtilities.getPermission(chat.uid);
-                //console.log('name: ' + chat.un + ', perm: ' + userPerm);
-                if (chat.message !== jungleBot.settings.commandLiteral + 'join' && chat.message !== jungleBot.settings.commandLiteral + 'leave') {
-                    if (userPerm === API.ROLE.NONE && !jungleBot.room.usercommand) return void(0);
-                    if (!jungleBot.room.allcommand) return void(0);
+                msg = msg.toLowerCase();
+                if (msg === 'skip') {
+                    API.sendChat(subChat(jungleBot.chat.askskip, {
+                        name: chat.un
+                    }));
+                    return true;
                 }
-                if (chat.message === jungleBot.settings.commandLiteral + 'eta' && jungleBot.settings.etaRestriction) {
-                    if (userPerm < API.ROLE.BOUNCER) {
-                        var u = jungleBot.userUtilities.lookupUser(chat.uid);
-                        if (u.lastEta !== null && (Date.now() - u.lastEta) < 1 * 60 * 60 * 1000) {
+                for (var j = 0; j < jungleBot.chatUtilities.spam.length; j++) {
+                    if (msg === jungleBot.chatUtilities.spam[j]) {
+                        API.sendChat(subChat(jungleBot.chat.spam, {
+                            name: chat.un
+                        }));
+                        return true;
+                    }
+                }
+                return false;
+            },
+
+            chatUtilities: {
+              chatFilter: function(chat) {
+                  var msg = chat.message;
+                  var perm = jungleBot.userUtilities.getPermission(chat.uid);
+                  var user = jungleBot.userUtilities.lookupUser(chat.uid);
+                  var isMuted = false;
+                  for (var i = 0; i < jungleBot.room.mutedUsers.length; i++) {
+                      if (jungleBot.room.mutedUsers[i] === chat.uid) isMuted = true;
+                  }
+                  if (isMuted) {
+                      API.moderateDeleteChat(chat.cid);
+                      return true;
+                  }
+                  if (jungleBot.settings.lockdownEnabled) {
+                      if (perm === API.ROLE.NONE) {
+                          API.moderateDeleteChat(chat.cid);
+                          return true;
+                      }
+                  }
+                  if (jungleBot.chatcleaner(chat)) {
+                      API.moderateDeleteChat(chat.cid);
+                      return true;
+                  }
+                  if (jungleBot.settings.cmdDeletion && msg.startsWith(jungleBot.settings.commandLiteral)) {
+                      API.moderateDeleteChat(chat.cid);
+                  }
+                  /**
+                   var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+                   if (plugRoomLinkPatt.exec(msg)) {
+                      if (perm === API.ROLE.NONE) {
+                          API.sendChat(subChat(jungleBot.chat.roomadvertising, {name: chat.un}));
+                          API.moderateDeleteChat(chat.cid);
+                          return true;
+                      }
+                  }
+                   **/
+                  if (msg.indexOf('http://adf.ly/') > -1) {
+                      API.moderateDeleteChat(chat.cid);
+                      API.sendChat(subChat(jungleBot.chat.adfly, {
+                          name: chat.un
+                      }));
+                      return true;
+                  }
+                  if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
+                      API.moderateDeleteChat(chat.cid);
+                      return true;
+                  }
+
+                  var rlJoinChat = jungleBot.chat.roulettejoin;
+                  var rlLeaveChat = jungleBot.chat.rouletteleave;
+
+                  var joinedroulette = rlJoinChat.split('%%NAME%%');
+                  if (joinedroulette[1].length > joinedroulette[0].length) joinedroulette = joinedroulette[1];
+                  else joinedroulette = joinedroulette[0];
+
+                  var leftroulette = rlLeaveChat.split('%%NAME%%');
+                  if (leftroulette[1].length > leftroulette[0].length) leftroulette = leftroulette[1];
+                  else leftroulette = leftroulette[0];
+
+                  if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) && chat.uid === jungleBot.loggedInID) {
+                      setTimeout(function(id) {
+                          API.moderateDeleteChat(id);
+                      }, 5 * 1000, chat.cid);
+                      return true;
+                  }
+                  return false;
+              },
+                commandCheck: function(chat) {
+                    var cmd;
+                    if (chat.message.charAt(0) === jungleBot.settings.commandLiteral) {
+                        var space = chat.message.indexOf(' ');
+                        if (space === -1) {
+                            cmd = chat.message;
+                        } else cmd = chat.message.substring(0, space);
+                    } else return false;
+                    var userPerm = jungleBot.userUtilities.getPermission(chat.uid);
+                    //console.log('name: ' + chat.un + ', perm: ' + userPerm);
+                    if (chat.message !== jungleBot.settings.commandLiteral + 'join' && chat.message !== jungleBot.settings.commandLiteral + 'leave') {
+                        if (userPerm === API.ROLE.NONE && !jungleBot.room.usercommand) return void(0);
+                        if (!jungleBot.room.allcommand) return void(0);
+                    }
+                    if (chat.message === jungleBot.settings.commandLiteral + 'eta' && jungleBot.settings.etaRestriction) {
+                        if (userPerm < API.ROLE.BOUNCER) {
+                            var u = jungleBot.userUtilities.lookupUser(chat.uid);
+                            if (u.lastEta !== null && (Date.now() - u.lastEta) < 1 * 60 * 60 * 1000) {
+                                API.moderateDeleteChat(chat.cid);
+                                return void(0);
+                            } else u.lastEta = Date.now();
+                        }
+                    }
+                    var executed = false;
+
+                    for (var comm in jungleBot.commands) {
+                        var cmdCall = jungleBot.commands[comm].command;
+                        if (!Array.isArray(cmdCall)) {
+                            cmdCall = [cmdCall]
+                        }
+                        for (var i = 0; i < cmdCall.length; i++) {
+                            if (jungleBot.settings.commandLiteral + cmdCall[i] === cmd) {
+                                jungleBot.commands[comm].functionality(chat, jungleBot.settings.commandLiteral + cmdCall[i]);
+                                executed = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (executed && userPerm === API.ROLE.NONE) {
+                        jungleBot.room.usercommand = false;
+                        setTimeout(function() {
+                            jungleBot.room.usercommand = true;
+                        }, jungleBot.settings.commandCooldown * 1000);
+                    }
+                    if (executed) {
+                        /*if (jungleBot.settings.cmdDeletion) {
                             API.moderateDeleteChat(chat.cid);
-                            return void(0);
-                        } else u.lastEta = Date.now();
-                    }
-                }
-                var executed = false;
+                        }*/
 
-                for (var comm in jungleBot.commands) {
-                    var cmdCall = jungleBot.commands[comm].command;
-                    if (!Array.isArray(cmdCall)) {
-                        cmdCall = [cmdCall]
+                        //jungleBot.room.allcommand = false;
+                        //setTimeout(function () {
+                        jungleBot.room.allcommand = true;
+                        //}, 5 * 1000);
                     }
-                    for (var i = 0; i < cmdCall.length; i++) {
-                        if (jungleBot.settings.commandLiteral + cmdCall[i] === cmd) {
-                            jungleBot.commands[comm].functionality(chat, jungleBot.settings.commandLiteral + cmdCall[i]);
-                            executed = true;
-                            break;
+                    return executed;
+                },
+                action: function(chat) {
+                    var user = jungleBot.userUtilities.lookupUser(chat.uid);
+                    if (chat.type === 'message') {
+                        for (var j = 0; j < jungleBot.room.users.length; j++) {
+                            if (jungleBot.userUtilities.getUser(jungleBot.room.users[j]).id === chat.uid) {
+                                jungleBot.userUtilities.setLastActivity(jungleBot.room.users[j]);
+                            }
+
                         }
                     }
-                }
-
-                if (executed && userPerm === API.ROLE.NONE) {
-                    jungleBot.room.usercommand = false;
-                    setTimeout(function() {
-                        jungleBot.room.usercommand = true;
-                    }, jungleBot.settings.commandCooldown * 1000);
-                }
-                if (executed) {
-                    /*if (jungleBot.settings.cmdDeletion) {
-                        API.moderateDeleteChat(chat.cid);
-                    }*/
-
-                    //jungleBot.room.allcommand = false;
-                    //setTimeout(function () {
-                    jungleBot.room.allcommand = true;
-                    //}, 5 * 1000);
-                }
-                return executed;
+                    jungleBot.room.roomstats.chatmessages++;
+                },
+                spam: [
+                    '???????????????'
+                ],
+                curses: [
+                    'heck'
+                ]
             },
-            action: function(chat) {
-                var user = jungleBot.userUtilities.lookupUser(chat.uid);
-                if (chat.type === 'message') {
-                    for (var j = 0; j < jungleBot.room.users.length; j++) {
-                        if (jungleBot.userUtilities.getUser(jungleBot.room.users[j]).id === chat.uid) {
-                            jungleBot.userUtilities.setLastActivity(jungleBot.room.users[j]);
+
+            connectAPI: function() {
+                this.proxy = {
+                    eventChat: $.proxy(this.eventChat, this),
+                    eventUserskip: $.proxy(this.eventUserskip, this),
+                    eventUserjoin: $.proxy(this.eventUserjoin, this),
+                    eventUserleave: $.proxy(this.eventUserleave, this),
+                    //eventFriendjoin: $.proxy(this.eventFriendjoin, this),
+                    eventVoteupdate: $.proxy(this.eventVoteupdate, this),
+                    eventCurateupdate: $.proxy(this.eventCurateupdate, this),
+                    eventRoomscoreupdate: $.proxy(this.eventRoomscoreupdate, this),
+                    eventDjadvance: $.proxy(this.eventDjadvance, this),
+                    //eventDjupdate: $.proxy(this.eventDjupdate, this),
+                    eventWaitlistupdate: $.proxy(this.eventWaitlistupdate, this),
+                    eventVoteskip: $.proxy(this.eventVoteskip, this),
+                    eventModskip: $.proxy(this.eventModskip, this),
+                    eventChatcommand: $.proxy(this.eventChatcommand, this),
+                    eventHistoryupdate: $.proxy(this.eventHistoryupdate, this),
+
+                };
+                API.on(API.CHAT, this.proxy.eventChat);
+                API.on(API.USER_SKIP, this.proxy.eventUserskip);
+                API.on(API.USER_JOIN, this.proxy.eventUserjoin);
+                API.on(API.USER_LEAVE, this.proxy.eventUserleave);
+                API.on(API.VOTE_UPDATE, this.proxy.eventVoteupdate);
+                API.on(API.GRAB_UPDATE, this.proxy.eventCurateupdate);
+                API.on(API.ROOM_SCORE_UPDATE, this.proxy.eventRoomscoreupdate);
+                API.on(API.ADVANCE, this.proxy.eventDjadvance);
+                API.on(API.WAIT_LIST_UPDATE, this.proxy.eventWaitlistupdate);
+                API.on(API.MOD_SKIP, this.proxy.eventModskip);
+                API.on(API.CHAT_COMMAND, this.proxy.eventChatcommand);
+                API.on(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
+            },
+            disconnectAPI: function() {
+                API.off(API.CHAT, this.proxy.eventChat);
+                API.off(API.USER_SKIP, this.proxy.eventUserskip);
+                API.off(API.USER_JOIN, this.proxy.eventUserjoin);
+                API.off(API.USER_LEAVE, this.proxy.eventUserleave);
+                API.off(API.VOTE_UPDATE, this.proxy.eventVoteupdate);
+                API.off(API.CURATE_UPDATE, this.proxy.eventCurateupdate);
+                API.off(API.ROOM_SCORE_UPDATE, this.proxy.eventRoomscoreupdate);
+                API.off(API.ADVANCE, this.proxy.eventDjadvance);
+                API.off(API.WAIT_LIST_UPDATE, this.proxy.eventWaitlistupdate);
+                API.off(API.MOD_SKIP, this.proxy.eventModskip);
+                API.off(API.CHAT_COMMAND, this.proxy.eventChatcommand);
+                API.off(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
+            },
+            startup: function() {
+                var u = API.getUser();
+                if (jungleBot.userUtilities.getPermission(u) < API.ROLE.BOUNCER) return API.chatLog(jungleBot.chat.greyuser);
+                if (jungleBot.userUtilities.getPermission(u) === API.ROLE.BOUNCER) API.chatLog(jungleBot.chat.bouncer);
+                jungleBot.connectAPI();
+                API.moderateDeleteChat = function(cid) {
+                    $.ajax({
+                        url: '/_/chat/' + cid,
+                        type: 'DELETE'
+                    })
+                };
+
+                jungleBot.room.name = window.location.pathname;
+                var Check;
+
+                console.log(jungleBot.room.name);
+
+                var detect = function() {
+                    if (jungleBot.room.name != window.location.pathname) {
+                        console.log('Killing bot after room change.');
+                        storeToStorage();
+                        jungleBot.disconnectAPI();
+                        setTimeout(function() {
+                            kill();
+                        }, 1000);
+                        if (jungleBot.settings.roomLock) {
+                            window.location = jungleBot.room.name;
+                        } else {
+                            clearInterval(Check);
                         }
-
                     }
+                };
+
+                Check = setInterval(function() {
+                    detect()
+                }, 20000);
+
+                retrieveSettings();
+                retrieveFromStorage();
+                window.bot = jungleBot;
+                jungleBot.roomUtilities.updateBlacklists();
+                setInterval(jungleBot.roomUtilities.updateBlacklists, 60 * 60 * 1000);
+                jungleBot.getNewBlacklistedSongs = jungleBot.roomUtilities.exportNewBlacklistedSongs;
+                jungleBot.logNewBlacklistedSongs = jungleBot.roomUtilities.logNewBlacklistedSongs;
+                if (jungleBot.room.roomstats.launchTime === null) {
+                    jungleBot.room.roomstats.launchTime = Date.now();
                 }
-                jungleBot.room.roomstats.chatmessages++;
-            },
-            spam: [
-                '???????????????'
-            ],
-            curses: [
-                'heck'
-            ]
-        },
 
-        connectAPI: function() {
-            this.proxy = {
-                eventChat: $.proxy(this.eventChat, this),
-                eventUserskip: $.proxy(this.eventUserskip, this),
-                eventUserjoin: $.proxy(this.eventUserjoin, this),
-                eventUserleave: $.proxy(this.eventUserleave, this),
-                //eventFriendjoin: $.proxy(this.eventFriendjoin, this),
-                eventVoteupdate: $.proxy(this.eventVoteupdate, this),
-                eventCurateupdate: $.proxy(this.eventCurateupdate, this),
-                eventRoomscoreupdate: $.proxy(this.eventRoomscoreupdate, this),
-                eventDjadvance: $.proxy(this.eventDjadvance, this),
-                //eventDjupdate: $.proxy(this.eventDjupdate, this),
-                eventWaitlistupdate: $.proxy(this.eventWaitlistupdate, this),
-                eventVoteskip: $.proxy(this.eventVoteskip, this),
-                eventModskip: $.proxy(this.eventModskip, this),
-                eventChatcommand: $.proxy(this.eventChatcommand, this),
-                eventHistoryupdate: $.proxy(this.eventHistoryupdate, this),
-
-            };
-            API.on(API.CHAT, this.proxy.eventChat);
-            API.on(API.USER_SKIP, this.proxy.eventUserskip);
-            API.on(API.USER_JOIN, this.proxy.eventUserjoin);
-            API.on(API.USER_LEAVE, this.proxy.eventUserleave);
-            API.on(API.VOTE_UPDATE, this.proxy.eventVoteupdate);
-            API.on(API.GRAB_UPDATE, this.proxy.eventCurateupdate);
-            API.on(API.ROOM_SCORE_UPDATE, this.proxy.eventRoomscoreupdate);
-            API.on(API.ADVANCE, this.proxy.eventDjadvance);
-            API.on(API.WAIT_LIST_UPDATE, this.proxy.eventWaitlistupdate);
-            API.on(API.MOD_SKIP, this.proxy.eventModskip);
-            API.on(API.CHAT_COMMAND, this.proxy.eventChatcommand);
-            API.on(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
-        },
-        disconnectAPI: function() {
-            API.off(API.CHAT, this.proxy.eventChat);
-            API.off(API.USER_SKIP, this.proxy.eventUserskip);
-            API.off(API.USER_JOIN, this.proxy.eventUserjoin);
-            API.off(API.USER_LEAVE, this.proxy.eventUserleave);
-            API.off(API.VOTE_UPDATE, this.proxy.eventVoteupdate);
-            API.off(API.CURATE_UPDATE, this.proxy.eventCurateupdate);
-            API.off(API.ROOM_SCORE_UPDATE, this.proxy.eventRoomscoreupdate);
-            API.off(API.ADVANCE, this.proxy.eventDjadvance);
-            API.off(API.WAIT_LIST_UPDATE, this.proxy.eventWaitlistupdate);
-            API.off(API.MOD_SKIP, this.proxy.eventModskip);
-            API.off(API.CHAT_COMMAND, this.proxy.eventChatcommand);
-            API.off(API.HISTORY_UPDATE, this.proxy.eventHistoryupdate);
-        },
-        startup: function() {
-            var u = API.getUser();
-            if (jungleBot.userUtilities.getPermission(u) < API.ROLE.BOUNCER) return API.chatLog(jungleBot.chat.greyuser);
-            if (jungleBot.userUtilities.getPermission(u) === API.ROLE.BOUNCER) API.chatLog(jungleBot.chat.bouncer);
-            jungleBot.connectAPI();
-            API.moderateDeleteChat = function(cid) {
-                $.ajax({
-                    url: '/_/chat/' + cid,
-                    type: 'DELETE'
-                })
-            };
-
-            jungleBot.room.name = window.location.pathname;
-            var Check;
-
-            console.log(jungleBot.room.name);
-
-            var detect = function() {
-                if (jungleBot.room.name != window.location.pathname) {
-                    console.log('Killing bot after room change.');
-                    storeToStorage();
-                    jungleBot.disconnectAPI();
-                    setTimeout(function() {
-                        kill();
-                    }, 1000);
-                    if (jungleBot.settings.roomLock) {
-                        window.location = jungleBot.room.name;
-                    } else {
-                        clearInterval(Check);
-                    }
-                }
-            };
-
-            Check = setInterval(function() {
-                detect()
-            }, 20000);
-
-            retrieveSettings();
-            retrieveFromStorage();
-            window.bot = jungleBot;
-            jungleBot.roomUtilities.updateBlacklists();
-            setInterval(jungleBot.roomUtilities.updateBlacklists, 60 * 60 * 1000);
-            jungleBot.getNewBlacklistedSongs = jungleBot.roomUtilities.exportNewBlacklistedSongs;
-            jungleBot.logNewBlacklistedSongs = jungleBot.roomUtilities.logNewBlacklistedSongs;
-            if (jungleBot.room.roomstats.launchTime === null) {
-                jungleBot.room.roomstats.launchTime = Date.now();
-            }
-
-            for (var j = 0; j < jungleBot.room.users.length; j++) {
-                jungleBot.room.users[j].inRoom = false;
-            }
-            var userlist = API.getUsers();
-            for (var i = 0; i < userlist.length; i++) {
-                var known = false;
-                var ind = null;
                 for (var j = 0; j < jungleBot.room.users.length; j++) {
-                    if (jungleBot.room.users[j].id === userlist[i].id) {
-                        known = true;
-                        ind = j;
+                    jungleBot.room.users[j].inRoom = false;
+                }
+                var userlist = API.getUsers();
+                for (var i = 0; i < userlist.length; i++) {
+                    var known = false;
+                    var ind = null;
+                    for (var j = 0; j < jungleBot.room.users.length; j++) {
+                        if (jungleBot.room.users[j].id === userlist[i].id) {
+                            known = true;
+                            ind = j;
+                        }
                     }
+                    if (known) {
+                        jungleBot.room.users[ind].inRoom = true;
+                    } else {
+                        jungleBot.room.users.push(new jungleBot.User(userlist[i].id, userlist[i].username));
+                        ind = jungleBot.room.users.length - 1;
+                    }
+                    var wlIndex = API.getWaitListPosition(jungleBot.room.users[ind].id) + 1;
+                    jungleBot.userUtilities.updatePosition(jungleBot.room.users[ind], wlIndex);
                 }
-                if (known) {
-                    jungleBot.room.users[ind].inRoom = true;
+                jungleBot.room.afkInterval = setInterval(function() {
+                    jungleBot.roomUtilities.afkCheck()
+                }, 10 * 1000);
+                jungleBot.room.autodisableInterval = setInterval(function() {
+                    jungleBot.room.autodisableFunc();
+                }, 60 * 60 * 1000);
+                jungleBot.loggedInID = API.getUser().id;
+                jungleBot.status = true;
+                API.sendChat('/cap ' + jungleBot.settings.startupCap);
+                API.setVolume(jungleBot.settings.startupVolume);
+                if (jungleBot.settings.autowoot) {
+                    $('#woot').click();
+                }
+                if (jungleBot.settings.startupEmoji) {
+                    var emojibuttonoff = $('.icon-emoji-off');
+                    if (emojibuttonoff.length > 0) {
+                        emojibuttonoff[0].click();
+                    }
+                    API.chatLog(':smile: Emojis enabled.');
                 } else {
-                    jungleBot.room.users.push(new jungleBot.User(userlist[i].id, userlist[i].username));
-                    ind = jungleBot.room.users.length - 1;
+                    var emojibuttonon = $('.icon-emoji-on');
+                    if (emojibuttonon.length > 0) {
+                        emojibuttonon[0].click();
+                    }
+                    API.chatLog('Emojis disabled.');
                 }
-                var wlIndex = API.getWaitListPosition(jungleBot.room.users[ind].id) + 1;
-                jungleBot.userUtilities.updatePosition(jungleBot.room.users[ind], wlIndex);
-            }
-            jungleBot.room.afkInterval = setInterval(function() {
-                jungleBot.roomUtilities.afkCheck()
-            }, 10 * 1000);
-            jungleBot.room.autodisableInterval = setInterval(function() {
-                jungleBot.room.autodisableFunc();
-            }, 60 * 60 * 1000);
-            jungleBot.loggedInID = API.getUser().id;
-            jungleBot.status = true;
-            API.sendChat('/cap ' + jungleBot.settings.startupCap);
-            API.setVolume(jungleBot.settings.startupVolume);
-            if (jungleBot.settings.autowoot) {
-                $('#woot').click();
-            }
-            if (jungleBot.settings.startupEmoji) {
-                var emojibuttonoff = $('.icon-emoji-off');
-                if (emojibuttonoff.length > 0) {
-                    emojibuttonoff[0].click();
-                }
-                API.chatLog(':smile: Emojis enabled.');
-            } else {
-                var emojibuttonon = $('.icon-emoji-on');
-                if (emojibuttonon.length > 0) {
-                    emojibuttonon[0].click();
-                }
-                API.chatLog('Emojis disabled.');
-            }
-            API.chatLog('Avatars capped at ' + jungleBot.settings.startupCap);
-            API.chatLog('Volume set to ' + jungleBot.settings.startupVolume);
-            //socket();
-            loadChat(API.sendChat(subChat(jungleBot.chat.online, {
-                botname: jungleBot.settings.botName,
-                version: jungleBot.version
-            })));
-        },
+                API.chatLog('Avatars capped at ' + jungleBot.settings.startupCap);
+                API.chatLog('Volume set to ' + jungleBot.settings.startupVolume);
+                //socket();
+                loadChat(API.sendChat(subChat(jungleBot.chat.online, {
+                    botname: jungleBot.settings.botName,
+                    version: jungleBot.version
+                })));
+            },
         commands: {
             executable: function(minRank, chat) {
                 var id = chat.uid;
@@ -1614,7 +1603,7 @@
 
 
             //blacklist the previous song
-/*
+
             blacklistpreviousCommand: {
                             command: ['blacklistprevious', 'blp'],
                             rank: 'bouncer',
@@ -1623,7 +1612,8 @@
                                 if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                 else {
                                     var msg = chat.message;
-                                    var lastplay = obj.lastPlay;
+                                    var obj = jung
+                                    var lastplay = this.proxy.lastPlay;
                                     if (typeof lastplay === 'undefined') return;
                                     var list = 'BANNED';
                                     var media = lastplay.getMedia();
@@ -1650,7 +1640,7 @@
                                       }
                                   }
                                },
-*/
+
             //Print ID of user in chat, regardless of if they are still in the room.
 
             idCommand: {
