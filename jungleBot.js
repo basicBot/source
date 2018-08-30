@@ -2279,37 +2279,36 @@
                             name: chat.un
                         }));
                         var list = 'BANNED';
-                        else {
-                            var media = API.getMedia();
-                            var timeLeft = API.getTimeRemaining();
-                            var timeElapsed = API.getTimeElapsed();
-                            var track = {
-                                list: list,
-                                author: media.author,
-                                title: media.title,
-                                mid: media.format + ':' + media.cid
-                            };
-                            jungleBot.room.newBlacklisted.push(track);
-                            jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
-                            API.sendChat(subChat(jungleBot.chat.newblacklisted, {
-                                name: chat.un,
-                                blacklist: list,
-                                author: media.author,
-                                title: media.title,
-                                mid: media.format + ':' + media.cid
-                            }));
-                            if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
-                                jungleBot.roomUtilities.smartSkip();
-                            } else {
-                                API.moderateForceSkip();
-                            }
-                            if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
-                                jungleBot.room.newBlacklistedSongFunction(track);
-                            }
+                        var media = API.getMedia();
+                        var timeLeft = API.getTimeRemaining();
+                        var timeElapsed = API.getTimeElapsed();
+                        var track = {
+                            list: list,
+                            author: media.author,
+                            title: media.title,
+                            mid: media.format + ':' + media.cid
+                        };
+                        jungleBot.room.newBlacklisted.push(track);
+                        jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
+                        API.sendChat(subChat(jungleBot.chat.newblacklisted, {
+                            name: chat.un,
+                            blacklist: list,
+                            author: media.author,
+                            title: media.title,
+                            mid: media.format + ':' + media.cid
+                        }));
+                        if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
+                            jungleBot.roomUtilities.smartSkip();
+                        } else {
+                            API.moderateForceSkip();
+                        }
+                        if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
+                            jungleBot.room.newBlacklistedSongFunction(track);
                         }
                     }
                 }
-            },
+            }
+        },
 
 
 
