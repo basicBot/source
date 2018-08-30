@@ -1073,7 +1073,7 @@
                         }
                     }
                 }
-            }, 10);
+            }, 1);
             var newMedia = obj.media;
             clearTimeout(jungleBot.room.tgSkip);
             var timeLimitSkip = setTimeout(function() {
@@ -1207,6 +1207,50 @@
                 var user = jungleBot.userUtilities.lookupUser(users[i].id);
                 jungleBot.userUtilities.updatePosition(user, API.getWaitListPosition(users[i].id) + 1);
             }
+        },
+        
+        chatcleaner: function(chat) {
+            if (!basicBot.settings.filterChat) return false;
+            if (basicBot.userUtilities.getPermission(chat.uid) >= API.ROLE.BOUNCER) return false;
+            var msg = chat.message;
+            var containsLetters = false;
+            for (var i = 0; i < msg.length; i++) {
+                ch = msg.charAt(i);
+                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9') || ch === ':' || ch === '^') containsLetters = true;
+            }
+            if (msg === '') {
+                return true;
+            }
+            if (!containsLetters && (msg.length === 1 || msg.length > 3)) return true;
+            msg = msg.replace(/[ ,;.:\/=~+%^*\-\\"'&@#]/g, '');
+            var capitals = 0;
+            var ch;
+            for (var i = 0; i < msg.length; i++) {
+                ch = msg.charAt(i);
+                if (ch >= 'A' && ch <= 'Z') capitals++;
+            }
+            if (capitals >= 40) {
+                API.sendChat(subChat(basicBot.chat.caps, {
+                    name: chat.un
+                }));
+                return true;
+            }
+            msg = msg.toLowerCase();
+            if (msg === 'skip') {
+                API.sendChat(subChat(basicBot.chat.askskip, {
+                    name: chat.un
+                }));
+                return true;
+            }
+            for (var j = 0; j < basicBot.chatUtilities.spam.length; j++) {
+                if (msg === basicBot.chatUtilities.spam[j]) {
+                    API.sendChat(subChat(basicBot.chat.spam, {
+                        name: chat.un
+                    }));
+                    return true;
+                }
+            }
+            return false;
         },
 
         chatUtilities: {
@@ -1702,7 +1746,7 @@
 
         //MrDestructoid in natural habitat
         mackygeeCommand: {
-          command: 'mackygee',
+          command: []'mackygee', 'macky'],
           rank: 'user',
           type: 'exact',
           functionality: function (chat, cmd) {
