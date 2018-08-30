@@ -1612,7 +1612,6 @@
                                 if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                 else {
                                     var msg = chat.message;
-                                    var obj = jung
                                     var lastplay = this.proxy.lastPlay;
                                     if (typeof lastplay === 'undefined') return;
                                     var list = 'BANNED';
