@@ -426,7 +426,7 @@
         },
         userUtilities: {
 
-          //START CUSTOM FUNCTIONS
+          //START CUSTOM USERUTILITIES FUNCTIONS
 
           //Find user ID without them necessarily being in the room still
           getID: function(name) {
@@ -1613,7 +1613,44 @@
             */
 
 
+                  //blacklist the previous song
 
+                  blacklistpreviousCommand: {
+                            command: ['blacklistprevious', 'blp'],
+                            rank: 'bouncer',
+                            type: 'startsWith',
+                            functionality: function(chat, cmd) {
+                                if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                else {
+                                    var msg = chat.message;
+                                    var lastplay = obj.lastPlay;
+                                    if (typeof lastplay === 'undefined') return;
+                                    var list = 'BANNED';
+                                    else {
+                                        var media = lastplay.getMedia();
+
+                                        var track = {
+                                            list: list,
+                                            author: media.author,
+                                            title: media.title,
+                                            mid: media.format + ':' + media.cid
+                                        };
+                                        jungleBot.room.newBlacklisted.push(track);
+                                        jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
+                                        API.sendChat(subChat(jungleBot.chat.newblacklisted, {
+                                            name: chat.un,
+                                            blacklist: list,
+                                            author: media.author,
+                                            title: media.title,
+                                            mid: media.format + ':' + media.cid
+                                        }));
+                                        }
+                                        if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
+                                            jungleBot.room.newBlacklistedSongFunction(track);
+                                        }
+                                    }
+                                }
+                            },
 
             //Print ID of user in chat, regardless of if they are still in the room.
 
@@ -2227,6 +2264,7 @@
             },
 
 
+//blacklist the current song
 
             blacklistCommand: {
                 command: ['blacklist', 'bl'],
@@ -2236,45 +2274,11 @@
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
 
-                      if (chat.message.length == cmd.length) {
-                        var msg = chat.message;
-                        var list = 'BANNED';
-                        var media = API.getMedia();
-                        var timeLeft = API.getTimeRemaining();
-                        var timeElapsed = API.getTimeElapsed();
-                        var track = {
-                            list: list,
-                            author: media.author,
-                            title: media.title,
-                            mid: media.format + ':' + media.cid
-                        };
-                        jungleBot.room.newBlacklisted.push(track);
-                        jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
-                        API.sendChat(subChat(jungleBot.chat.newblacklisted, {
-                            name: chat.un,
-                            blacklist: list,
-                            author: media.author,
-                            title: media.title,
-                            mid: media.format + ':' + media.cid
-                        }));
-                        if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
-                            jungleBot.roomUtilities.smartSkip();
-                        } else {
-                            API.moderateForceSkip();
-                        }
-                        if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
-                            jungleBot.room.newBlacklistedSongFunction(track);
-                        }
-
-                      }
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nolistspecified, {
                             name: chat.un
                         }));
-                        var list = msg.substr(cmd.length + 1);
-                        if (typeof jungleBot.room.blacklists[list] === 'undefined') return API.sendChat(subChat(jungleBot.chat.invalidlistspecified, {
-                            name: chat.un
-                        }));
+                        var list = 'BANNED';
                         else {
                             var media = API.getMedia();
                             var timeLeft = API.getTimeRemaining();
@@ -2306,6 +2310,8 @@
                     }
                 }
             },
+
+
 
             blinfoCommand: {
                 command: 'blinfo',
