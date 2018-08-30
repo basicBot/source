@@ -1607,14 +1607,16 @@
             blacklistpreviousCommand: {
                             command: ['blacklistprevious', 'blp'],
                             rank: 'bouncer',
-                            type: 'exact',
+                            type: 'startsWith',
                             functionality: function(chat, cmd) {
                                 if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                 else {
                                     var msg = chat.message;
-                                    var lastplay = this.proxy.lastPlay;
+                                    var lastplay = API.getHistory()[0];
                                     if (typeof lastplay === 'undefined') return;
-                                    var list = 'BANNED';
+                                    var list;
+                                    if (msg.length === cmd.length) list = 'BANNED';
+                                    else list = msg.substring(cmd.length + 1);
                                     var media = lastplay.getMedia();
 
                                     var track = {
@@ -2249,16 +2251,16 @@
             blacklistCommand: {
                 command: ['blacklist', 'bl'],
                 rank: 'bouncer',
-                type: 'exact',
+                type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-
+                        var list;
                         var msg = chat.message;
-                        if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nolistspecified, {
-                            name: chat.un
-                        }));
-                        var list = 'BANNED';
+
+                        if (msg.length === cmd.length) list = 'BANNED';
+                        else list = msg.substring(cmd.length + 1);
+
                         var media = API.getMedia();
                         var timeLeft = API.getTimeRemaining();
                         var timeElapsed = API.getTimeElapsed();
