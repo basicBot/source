@@ -1208,7 +1208,7 @@
                 jungleBot.userUtilities.updatePosition(user, API.getWaitListPosition(users[i].id) + 1);
             }
         },
-        
+
         chatcleaner: function(chat) {
             if (!basicBot.settings.filterChat) return false;
             if (basicBot.userUtilities.getPermission(chat.uid) >= API.ROLE.BOUNCER) return false;
@@ -1746,7 +1746,7 @@
 
         //MrDestructoid in natural habitat
         mackygeeCommand: {
-          command: []'mackygee', 'macky'],
+          command: ['mackygee', 'macky'],
           rank: 'user',
           type: 'exact',
           functionality: function (chat, cmd) {
