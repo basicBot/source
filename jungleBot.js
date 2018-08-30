@@ -1129,7 +1129,7 @@
                         }
                     });
                 }
-            }, 2000);
+            }, 1);
             clearTimeout(historySkip);
             if (jungleBot.settings.historySkip) {
                 var alreadyPlayed = false;
@@ -1153,7 +1153,7 @@
                     if (!alreadyPlayed) {
                         jungleBot.room.historyList.push([obj.media.cid, +new Date()]);
                     }
-                }, 2000);
+                }, 1);
             }
             if (user.ownSong) {
                 API.sendChat(subChat(jungleBot.chat.permissionownsong, {
