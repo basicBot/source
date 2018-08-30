@@ -1073,7 +1073,7 @@
                         }
                     }
                 }
-            }, 2000);
+            }, 10);
             var newMedia = obj.media;
             clearTimeout(jungleBot.room.tgSkip);
             var timeLimitSkip = setTimeout(function() {
