@@ -1210,8 +1210,8 @@
         },
 
         chatcleaner: function(chat) {
-            if (!basicBot.settings.filterChat) return false;
-            if (basicBot.userUtilities.getPermission(chat.uid) >= API.ROLE.BOUNCER) return false;
+            if (!jungleBot.settings.filterChat) return false;
+            if (jungleBot.userUtilities.getPermission(chat.uid) >= API.ROLE.BOUNCER) return false;
             var msg = chat.message;
             var containsLetters = false;
             for (var i = 0; i < msg.length; i++) {
@@ -1230,21 +1230,21 @@
                 if (ch >= 'A' && ch <= 'Z') capitals++;
             }
             if (capitals >= 40) {
-                API.sendChat(subChat(basicBot.chat.caps, {
+                API.sendChat(subChat(jungleBot.chat.caps, {
                     name: chat.un
                 }));
                 return true;
             }
             msg = msg.toLowerCase();
             if (msg === 'skip') {
-                API.sendChat(subChat(basicBot.chat.askskip, {
+                API.sendChat(subChat(jungleBot.chat.askskip, {
                     name: chat.un
                 }));
                 return true;
             }
-            for (var j = 0; j < basicBot.chatUtilities.spam.length; j++) {
-                if (msg === basicBot.chatUtilities.spam[j]) {
-                    API.sendChat(subChat(basicBot.chat.spam, {
+            for (var j = 0; j < jungleBot.chatUtilities.spam.length; j++) {
+                if (msg === jungleBot.chatUtilities.spam[j]) {
+                    API.sendChat(subChat(jungleBot.chat.spam, {
                         name: chat.un
                     }));
                     return true;
