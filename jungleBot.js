@@ -1618,7 +1618,7 @@
                   blacklistpreviousCommand: {
                             command: ['blacklistprevious', 'blp'],
                             rank: 'bouncer',
-                            type: 'startsWith',
+                            type: 'exact',
                             functionality: function(chat, cmd) {
                                 if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                 else {
@@ -1626,31 +1626,30 @@
                                     var lastplay = obj.lastPlay;
                                     if (typeof lastplay === 'undefined') return;
                                     var list = 'BANNED';
-                                    else {
-                                        var media = lastplay.getMedia();
+                                    var media = lastplay.getMedia();
 
-                                        var track = {
-                                            list: list,
-                                            author: media.author,
-                                            title: media.title,
-                                            mid: media.format + ':' + media.cid
-                                        };
-                                        jungleBot.room.newBlacklisted.push(track);
-                                        jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
-                                        API.sendChat(subChat(jungleBot.chat.newblacklisted, {
-                                            name: chat.un,
-                                            blacklist: list,
-                                            author: media.author,
-                                            title: media.title,
-                                            mid: media.format + ':' + media.cid
-                                        }));
-                                        }
-                                        if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
-                                            jungleBot.room.newBlacklistedSongFunction(track);
-                                        }
-                                    }
-                                }
-                            },
+                                    var track = {
+                                        list: list,
+                                        author: media.author,
+                                        title: media.title,
+                                        mid: media.format + ':' + media.cid
+                                    };
+                                    jungleBot.room.newBlacklisted.push(track);
+                                    jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
+                                    API.sendChat(subChat(jungleBot.chat.newblacklisted, {
+                                        name: chat.un,
+                                        blacklist: list,
+                                        author: media.author,
+                                        title: media.title,
+                                        mid: media.format + ':' + media.cid
+                                    }));
+
+                                    if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
+                                        jungleBot.room.newBlacklistedSongFunction(track);
+                                          }
+                                      }
+                                  }
+                               },
 
             //Print ID of user in chat, regardless of if they are still in the room.
 
@@ -2269,7 +2268,7 @@
             blacklistCommand: {
                 command: ['blacklist', 'bl'],
                 rank: 'bouncer',
-                type: 'startsWith',
+                type: 'exact',
                 functionality: function(chat, cmd) {
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
@@ -2307,7 +2306,6 @@
                         }
                     }
                 }
-            }
         },
 
 
