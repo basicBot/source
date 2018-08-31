@@ -1628,7 +1628,7 @@
                                     jungleBot.room.newBlacklisted.push(track);
                                     jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
                                     API.sendChat('/me Added.');
-                                    console.log(subChat(jungleBot.chat.newblacklisted, {
+                                    API.chatLog(subChat(jungleBot.chat.newblacklisted, {
                                         name: chat.un,
                                         blacklist: list,
                                         author: media.author,
@@ -2293,7 +2293,7 @@
                         jungleBot.room.newBlacklisted.push(track);
                         jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
                         API.sendChat('/me Added.');
-                        console.log(subChat(jungleBot.chat.newblacklisted, {
+                        API.chatLog(subChat(jungleBot.chat.newblacklisted, {
                             name: chat.un,
                             blacklist: list,
                             author: media.author,
