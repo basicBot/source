@@ -1612,7 +1612,7 @@
                                 if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                 else {
                                     var msg = chat.message;
-                                    var lastplay = API.getHistory()[0];
+                                    var lastplay = API.getHistory()[1];
                                     if (typeof lastplay === 'undefined') return;
                                     var list;
                                     if (msg.length === cmd.length) list = 'BANNED';
@@ -1688,25 +1688,6 @@
                              }
                           }
                       },
-
-            // say
-
-            	sayCommand: {
-                        command: ['say'],
-                        rank: 'manager',
-                        type: 'startsWith',
-                        functionality: function(chat, cmd) {
-          
-                  				var msg = chat.message;
-                  				var cmdmsg = msg.substr(cmd.length + 1);
-          
-                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                            else {
-                                       API.sendChat(cmdmsg);
-                            }
-                        }
-                    },
 
             // chu say brug?
 
