@@ -245,7 +245,7 @@
     var botCreatorIDs = [3851534, 4105209, 3941421, 37218461];
 
     var alertBot = {
-        version: '2.12.2',
+        version: '0.0.1',
         status: false,
         name: 'alertBot',
         loggedInID: null,
@@ -318,7 +318,7 @@
   			intervalMessages: [],
   			messageInterval: 11,
   			songstats: false,
-  			commandLiteral: '?',
+  			commandLiteral: '.',
   			blacklists: {
   				BANNED: 'https://rawgit.com/HarryMcKenzie/source/master/blacklists/BANNEDlist.json'
   						}
@@ -331,7 +331,7 @@
             mutedUsers: [],
             bannedUsers: [],
             skippable: true,
-            usercommand: true,
+            usercommand: false,
             allcommand: true,
             afkInterval: null,
             //autoskip: false,
