@@ -4354,7 +4354,7 @@
 
             voteratioCommand: {
                 command: 'voteratio',
-                rank: 'bouncer',
+                rank: 'residentdj',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
@@ -4439,7 +4439,7 @@
 
             whoisCommand: {
                 command: 'whois',
-                rank: 'bouncer',
+                rank: 'residentdj',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
