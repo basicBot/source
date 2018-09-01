@@ -1602,31 +1602,5 @@
                    },
 
 
-
-            cmddeletionCommand: {
-                command: ['commanddeletionuser',
-                rank: 'mod',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!alertBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        if (alertBot.settings.cmdDeletion) {
-                            alertBot.settings.cmdDeletion = !alertBot.settings.cmdDeletion;
-                            API.sendChat(subChat(alertBot.chat.toggleoff, {
-                                name: chat.un,
-                                'function': alertBot.chat.cmddeletion
-                            }));
-                        } else {
-                            alertBot.settings.cmdDeletion = !alertBot.settings.cmdDeletion;
-                            API.sendChat(subChat(alertBot.chat.toggleon, {
-                                name: chat.un,
-                                'function': alertBot.chat.cmddeletion
-                            }));
-                        }
-                    }
-                }
-            },
-
     loadChat(alertBot.startup);
 }).call(this);
