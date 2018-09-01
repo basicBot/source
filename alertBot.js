@@ -318,7 +318,7 @@
   			intervalMessages: [],
   			messageInterval: 11,
   			songstats: false,
-  			commandLiteral: '!!',
+  			commandLiteral: '?',
   			blacklists: {
   				BANNED: 'https://rawgit.com/HarryMcKenzie/source/master/blacklists/BANNEDlist.json'
   						}
