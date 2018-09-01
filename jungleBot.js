@@ -1536,50 +1536,7 @@
                     version: jungleBot.version
                 })));
             },
-        commands: {
-            executable: function(minRank, chat) {
-                var id = chat.uid;
-                var perm = jungleBot.userUtilities.getPermission(id);
-                var minPerm;
-                switch (minRank) {
-                    case 'admin':
-                        minPerm = (2*(API.ROLE.HOST-API.ROLE.COHOST))+API.ROLE.HOST;
-                        break;
-                    case 'ambassador':
-                        minPerm = (1*(API.ROLE.HOST-API.ROLE.COHOST))+API.ROLE.HOST;
-                        break;
-                    case 'host':
-                    case 'host':
-                        minPerm = API.ROLE.HOST;
-                        break;
-                    case 'cohost':
-                        minPerm = API.ROLE.COHOST;
-                        break;
-                    case 'manager':
-                        minPerm = API.ROLE.MANAGER;
-                        break;
-                    case 'mod':
-                        if (jungleBot.settings.bouncerPlus) {
-                            minPerm = API.ROLE.BOUNCER;
-                        } else {
-                            minPerm = API.ROLE.MANAGER;
-                        }
-                        break;
-                    case 'bouncer':
-                        minPerm = API.ROLE.BOUNCER;
-                        break;
-                    case 'residentdj':
-                        minPerm = API.ROLE.DJ;
-                        break;
-                    case 'user':
-                        minPerm = API.ROLE.NONE;
-                        break;
-                    default:
-                        API.chatLog('error assigning minimum permission');
-                }
-                return perm >= minPerm;
 
-            },
 
 
 	// START OF COMMANDS
@@ -1642,6 +1599,28 @@
                                       }
                                   }
                                },
+
+
+
+//Explain Resident DJ role
+
+           rdjCommand: {
+                     command: ['rdj'],
+                     rank: 'user',
+                     type: 'startsWith',
+                     functionality: function(chat, cmd) {
+
+                       var msg = chat.message;
+                       var cmdmsg = msg.substr(cmd.length + 1);
+
+                         if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                         if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                         else {
+                                    API.sendChat(cmdmsg + 'The resident DJ role is given to people who have made creative contributions to the community with songs, emotes, etc. RDJs are not part of staff but they get a custom icon, color and other stuff.');
+                         }
+                     }
+                 },
+
 
             //Print ID of user in chat, regardless of if they are still in the room.
 
