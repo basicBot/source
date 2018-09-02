@@ -381,6 +381,7 @@
                     jungleBot.room.roulette.countdown = setTimeout(function() {
                         jungleBot.room.roulette.endRoulette();
                     }, 60 * 1000);
+                    API.sendChat('@djs');
                     API.sendChat(jungleBot.chat.isopen);
                 },
                 endRoulette: function() {
@@ -1698,7 +1699,7 @@
                                      }
                                  }
                              },
-		
+
 
             //blacklist the previous song
 
