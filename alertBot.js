@@ -1628,10 +1628,7 @@
                       }
                    }
 
-                    }
-                }
-            }
-        }
+      }
     };
 
     loadChat(alertBot.startup);
