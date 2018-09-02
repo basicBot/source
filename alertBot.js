@@ -1010,164 +1010,26 @@
             eventDjadvance: function(obj) {
                 if (!obj.dj) return;
 
-                //var queue = jungleBot.room.queue;
-                API.chatLog('next DJ');
+                var wlist = API.getWaitList();
 
+                var queue = alertBot.room.queue;
 
-                var user = alertBot.userUtilities.lookupUser(obj.dj.id)
-                for (var i = 0; i < alertBot.room.users.length; i++) {
-                    if (alertBot.room.users[i].id === user.id) {
-                        alertBot.room.users[i].lastDC = {
-                            time: null,
-                            position: null,
-                            songCount: 0
-                        };
-                    }
+                var newusers = 0;
+
+                for (var i = 0; i < wlist.length; i++) {
+
+                    var userid = queue.id[i];
+                    var username = alertBot.userUtilities.lookupUserName(userid);
+                    API.chatLog(username);
                 }
 
-                var lastplay = obj.lastPlay;
-                if (typeof lastplay === 'undefined') return;
-                if (alertBot.settings.songstats) {
-                    if (typeof alertBot.chat.songstatistics === 'undefined') {
-                        API.sendChat('/me ' + lastplay.media.author + ' - ' + lastplay.media.title + ': ' + lastplay.score.positive + 'W/' + lastplay.score.grabs + 'G/' + lastplay.score.negative + 'M.')
-                    } else {
-                        API.sendChat(subChat(alertBot.chat.songstatistics, {
-                            artist: lastplay.media.author,
-                            title: lastplay.media.title,
-                            woots: lastplay.score.positive,
-                            grabs: lastplay.score.grabs,
-                            mehs: lastplay.score.negative
-                        }))
-                    }
-                }
-                alertBot.room.roomstats.totalWoots += lastplay.score.positive;
-                alertBot.room.roomstats.totalMehs += lastplay.score.negative;
-                alertBot.room.roomstats.totalCurates += lastplay.score.grabs;
-                alertBot.room.roomstats.songCount++;
-                alertBot.roomUtilities.intervalMessage();
-                alertBot.room.currentDJID = obj.dj.id;
 
-                var blacklistSkip = setTimeout(function() {
-                    var mid = obj.media.format + ':' + obj.media.cid;
-                    for (var bl in alertBot.room.blacklists) {
-                        if (alertBot.settings.blacklistEnabled) {
-                            if (alertBot.room.blacklists[bl].indexOf(mid) > -1) {
-                                API.sendChat(subChat(alertBot.chat.isblacklisted, {
-                                    blacklist: bl
-                                }));
-                                if (alertBot.settings.smartSkip) {
-                                    return alertBot.roomUtilities.smartSkip();
-                                } else {
-                                    return API.moderateForceSkip();
-                                }
-                            }
-                        }
-                    }
-                }, 1);
-                var newMedia = obj.media;
-                clearTimeout(alertBot.room.tgSkip);
-                var timeLimitSkip = setTimeout(function() {
-                    if (alertBot.settings.timeGuard && newMedia.duration > alertBot.settings.maximumSongLength * 60 && !alertBot.room.roomevent) {
-                        if (typeof alertBot.settings.strictTimeGuard === 'undefined' || alertBot.settings.strictTimeGuard) {
-                            var name = obj.dj.username;
-                            API.sendChat(subChat(alertBot.chat.timelimit, {
-                                name: name,
-                                maxlength: alertBot.settings.maximumSongLength
-                            }));
-                            if (alertBot.settings.smartSkip) {
-                                return alertBot.roomUtilities.smartSkip();
-                            } else {
-                                return API.moderateForceSkip();
-                            }
-                        } else {
-                            alertBot.room.tgSkip = setTimeout(function() {
-                                if (alertBot.settings.timeGuard) return API.moderateForceSkip();
-                                return;
-                            }, alertBot.settings.maximumSongLength*60*1000);
-                        }
-                    }
-                }, 2000);
-                var format = obj.media.format;
-                var cid = obj.media.cid;
-                var naSkip = setTimeout(function() {
-                    if (format == 1) {
-                        $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + cid + '&key=AIzaSyDcfWu9cGaDnTjPKhg_dy9mUh6H7i4ePZ0&part=snippet&callback=?', function(track) {
-                            if (typeof(track.items[0]) === 'undefined') {
-                                var name = obj.dj.username;
-                                API.sendChat(subChat(alertBot.chat.notavailable, {
-                                    name: name
-                                }));
-                                if (alertBot.settings.smartSkip) {
-                                    return alertBot.roomUtilities.smartSkip();
-                                } else {
-                                    return API.moderateForceSkip();
-                                }
-                            }
-                        });
-                    } else {
-                        var checkSong = SC.get('/tracks/' + cid, function(track) {
-                            if (typeof track.title === 'undefined') {
-                                var name = obj.dj.username;
-                                API.sendChat(subChat(alertBot.chat.notavailable, {
-                                    name: name
-                                }));
-                                if (alertBot.settings.smartSkip) {
-                                    return alertBot.roomUtilities.smartSkip();
-                                } else {
-                                    return API.moderateForceSkip();
-                                }
-                            }
-                        });
-                    }
-                }, 1);
-                clearTimeout(historySkip);
-                if (alertBot.settings.historySkip) {
-                    var alreadyPlayed = false;
-                    var apihistory = API.getHistory();
-                    var name = obj.dj.username;
-                    var historySkip = setTimeout(function() {
-                        for (var i = 0; i < apihistory.length; i++) {
-                            if (apihistory[i].media.cid === obj.media.cid) {
-                                alertBot.room.historyList[i].push(+new Date());
-                                alreadyPlayed = true;
-                                API.sendChat(subChat(alertBot.chat.songknown, {
-                                    name: name
-                                }));
-                                if (alertBot.settings.smartSkip) {
-                                    return alertBot.roomUtilities.smartSkip();
-                                } else {
-                                    return API.moderateForceSkip();
-                                }
-                            }
-                        }
-                        if (!alreadyPlayed) {
-                            alertBot.room.historyList.push([obj.media.cid, +new Date()]);
-                        }
-                    }, 1);
-                }
-                if (user.ownSong) {
-                    API.sendChat(subChat(alertBot.chat.permissionownsong, {
-                        name: user.username
-                    }));
-                    user.ownSong = false;
-                }
-                clearTimeout(alertBot.room.autoskipTimer);
-                if (alertBot.settings.autoskip) {
-                    var remaining = obj.media.duration * 1000;
-                    var startcid = API.getMedia().cid;
-                    alertBot.room.autoskipTimer = setTimeout(function() {
-                        if (!API.getMedia()) return;
-
-                        var endcid = API.getMedia().cid;
-                        if (startcid === endcid) {
-                            //API.sendChat('Song stuck, skipping...');
-                            API.moderateForceSkip();
-                        }
-                    }, remaining + 5000);
-                }
-                storeToStorage();
-                //sendToSocket();
             },
+//END DJADVANCE FUNCTION
+
+
+
+
             eventWaitlistupdate: function(users) {
                 if (users.length < 50) {
                     if (alertBot.room.queue.id.length > 0 && alertBot.room.queueable) {

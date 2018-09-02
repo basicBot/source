@@ -1009,9 +1009,24 @@
             },
             eventDjadvance: function(obj) {
                 if (!obj.dj) return;
-                if (jungleBot.settings.autowoot) {
-                    $('#woot').click(); // autowoot
-                }
+
+                var blacklistSkip = setTimeout(function() {
+                    var mid = obj.media.format + ':' + obj.media.cid;
+                    for (var bl in jungleBot.room.blacklists) {
+                        if (jungleBot.settings.blacklistEnabled) {
+                            if (jungleBot.room.blacklists[bl].indexOf(mid) > -1) {
+                                API.sendChat(subChat(jungleBot.chat.isblacklisted, {
+                                    blacklist: bl
+                                }));
+                                if (jungleBot.settings.smartSkip) {
+                                    return jungleBot.roomUtilities.smartSkip();
+                                } else {
+                                    return API.moderateForceSkip();
+                                }
+                            }
+                        }
+                    }
+                }, 1);
 
                 var user = jungleBot.userUtilities.lookupUser(obj.dj.id)
                 for (var i = 0; i < jungleBot.room.users.length; i++) {
@@ -1046,23 +1061,7 @@
                 jungleBot.roomUtilities.intervalMessage();
                 jungleBot.room.currentDJID = obj.dj.id;
 
-                var blacklistSkip = setTimeout(function() {
-                    var mid = obj.media.format + ':' + obj.media.cid;
-                    for (var bl in jungleBot.room.blacklists) {
-                        if (jungleBot.settings.blacklistEnabled) {
-                            if (jungleBot.room.blacklists[bl].indexOf(mid) > -1) {
-                                API.sendChat(subChat(jungleBot.chat.isblacklisted, {
-                                    blacklist: bl
-                                }));
-                                if (jungleBot.settings.smartSkip) {
-                                    return jungleBot.roomUtilities.smartSkip();
-                                } else {
-                                    return API.moderateForceSkip();
-                                }
-                            }
-                        }
-                    }
-                }, 1);
+
                 var newMedia = obj.media;
                 clearTimeout(jungleBot.room.tgSkip);
                 var timeLimitSkip = setTimeout(function() {
@@ -1173,7 +1172,7 @@
                         jungleBot.room.queueable = false;
                         setTimeout(function() {
                             jungleBot.room.queueable = true;
-                        }, 500);
+                        }, 350);
                         jungleBot.room.queueing++;
                         var id, pos;
                         setTimeout(
@@ -1625,16 +1624,16 @@
                              },
 
             //pepepls
-                 
+
                        pepeplsCommand: {
                                  command: ['pepepls'],
                                  rank: 'residentdj',
                                  type: 'startsWith',
                                  functionality: function(chat, cmd) {
-                 
+
                                    var msg = chat.message;
                                    var cmdmsg = msg.substr(cmd.length + 1);
-                 
+
                                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                      else {
@@ -1644,16 +1643,16 @@
                              },
 
             //heart
-                                  
+
                        heartCommand: {
                                  command: ['heart'],
                                  rank: 'residentdj',
                                  type: 'startsWith',
                                  functionality: function(chat, cmd) {
-                                  
+
                                   var msg = chat.message;
                                   var cmdmsg = msg.substr(cmd.length + 1);
-                                  
+
                                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                      else {
@@ -1661,18 +1660,18 @@
                                      }
                                  }
                              },
-		
+
             //pole
-                                  
+
                        poleCommand: {
                                  command: ['pole'],
                                  rank: 'residentdj',
                                  type: 'startsWith',
                                  functionality: function(chat, cmd) {
-                                  
+
                                   var msg = chat.message;
                                   var cmdmsg = msg.substr(cmd.length + 1);
-                                  
+
                                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                      else {
@@ -1680,7 +1679,7 @@
                                      }
                                  }
                              },
-		
+
 
             //blacklist the previous song
 
