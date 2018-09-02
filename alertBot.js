@@ -1009,7 +1009,7 @@
             },
             eventDjadvance: function(obj) {
                 if (!obj.dj) return;
-
+                API.chatLog('next dj');
                 var wlist = API.getWaitList();
 
                 var queue = alertBot.room.queue;
