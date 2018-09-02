@@ -310,7 +310,7 @@
   			etaRestriction: true,
   			welcome: false,
   			opLink: null,
-  			rulesLink: 'http://bit.ly/xqcs-jungle',
+  			rulesLink: 'http://bit.ly/xqcs-alert',
   			themeLink: null,
   			fbLink: null,
   			youtubeLink: 'http://youtube.com/xqcow',
@@ -1018,13 +1018,168 @@
 
                 for (var i = 0; i < wlist.length; i++) {
 
-                    var userid = queue.id[i];
-                    var username = alertBot.userUtilities.lookupUserName(userid);
-                    API.chatLog(username);
-                }
+                    var quserid = queue.id[i];
+                    var qusername = alertBot.userUtilities.lookupUserName(quserid);
+                    API.chatLog(qusername);
+                  }
+
+                    var blacklistSkip = setTimeout(function() {
+                        var mid = obj.media.format + ':' + obj.media.cid;
+                        for (var bl in alertBot.room.blacklists) {
+                            if (alertBot.settings.blacklistEnabled) {
+                                if (alertBot.room.blacklists[bl].indexOf(mid) > -1) {
+                                    API.sendChat(subChat(alertBot.chat.isblacklisted, {
+                                        blacklist: bl
+                                    }));
+                                    if (alertBot.settings.smartSkip) {
+                                        return alertBot.roomUtilities.smartSkip();
+                                    } else {
+                                        return API.moderateForceSkip();
+                                    }
+                                }
+                            }
+                        }
+                    }, 1);
+
+                    var user = alertBot.userUtilities.lookupUser(obj.dj.id)
+                    for (var i = 0; i < alertBot.room.users.length; i++) {
+                        if (alertBot.room.users[i].id === user.id) {
+                            alertBot.room.users[i].lastDC = {
+                                time: null,
+                                position: null,
+                                songCount: 0
+                            };
+                        }
+                    }
+
+                    var lastplay = obj.lastPlay;
+                    if (typeof lastplay === 'undefined') return;
+                    if (alertBot.settings.songstats) {
+                        if (typeof alertBot.chat.songstatistics === 'undefined') {
+                            API.sendChat('/me ' + lastplay.media.author + ' - ' + lastplay.media.title + ': ' + lastplay.score.positive + 'W/' + lastplay.score.grabs + 'G/' + lastplay.score.negative + 'M.')
+                        } else {
+                            API.sendChat(subChat(alertBot.chat.songstatistics, {
+                                artist: lastplay.media.author,
+                                title: lastplay.media.title,
+                                woots: lastplay.score.positive,
+                                grabs: lastplay.score.grabs,
+                                mehs: lastplay.score.negative
+                            }))
+                        }
+                    }
+                    alertBot.room.roomstats.totalWoots += lastplay.score.positive;
+                    alertBot.room.roomstats.totalMehs += lastplay.score.negative;
+                    alertBot.room.roomstats.totalCurates += lastplay.score.grabs;
+                    alertBot.room.roomstats.songCount++;
+                    alertBot.roomUtilities.intervalMessage();
+                    alertBot.room.currentDJID = obj.dj.id;
 
 
-            },
+                    var newMedia = obj.media;
+                    clearTimeout(alertBot.room.tgSkip);
+                    var timeLimitSkip = setTimeout(function() {
+                        if (alertBot.settings.timeGuard && newMedia.duration > alertBot.settings.maximumSongLength * 60 && !alertBot.room.roomevent) {
+                            if (typeof alertBot.settings.strictTimeGuard === 'undefined' || alertBot.settings.strictTimeGuard) {
+                                var name = obj.dj.username;
+                                API.sendChat(subChat(alertBot.chat.timelimit, {
+                                    name: name,
+                                    maxlength: alertBot.settings.maximumSongLength
+                                }));
+                                if (alertBot.settings.smartSkip) {
+                                    return alertBot.roomUtilities.smartSkip();
+                                } else {
+                                    return API.moderateForceSkip();
+                                }
+                            } else {
+                                alertBot.room.tgSkip = setTimeout(function() {
+                                    if (alertBot.settings.timeGuard) return API.moderateForceSkip();
+                                    return;
+                                }, alertBot.settings.maximumSongLength*60*1000);
+                            }
+                        }
+                    }, 2000);
+                    var format = obj.media.format;
+                    var cid = obj.media.cid;
+                    var naSkip = setTimeout(function() {
+                        if (format == 1) {
+                            $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + cid + '&key=AIzaSyDcfWu9cGaDnTjPKhg_dy9mUh6H7i4ePZ0&part=snippet&callback=?', function(track) {
+                                if (typeof(track.items[0]) === 'undefined') {
+                                    var name = obj.dj.username;
+                                    API.sendChat(subChat(alertBot.chat.notavailable, {
+                                        name: name
+                                    }));
+                                    if (alertBot.settings.smartSkip) {
+                                        return alertBot.roomUtilities.smartSkip();
+                                    } else {
+                                        return API.moderateForceSkip();
+                                    }
+                                }
+                            });
+                        } else {
+                            var checkSong = SC.get('/tracks/' + cid, function(track) {
+                                if (typeof track.title === 'undefined') {
+                                    var name = obj.dj.username;
+                                    API.sendChat(subChat(alertBot.chat.notavailable, {
+                                        name: name
+                                    }));
+                                    if (alertBot.settings.smartSkip) {
+                                        return alertBot.roomUtilities.smartSkip();
+                                    } else {
+                                        return API.moderateForceSkip();
+                                    }
+                                }
+                            });
+                        }
+                    }, 1);
+                    clearTimeout(historySkip);
+                    if (alertBot.settings.historySkip) {
+                        var alreadyPlayed = false;
+                        var apihistory = API.getHistory();
+                        var name = obj.dj.username;
+                        var historySkip = setTimeout(function() {
+                            for (var i = 0; i < apihistory.length; i++) {
+                                if (apihistory[i].media.cid === obj.media.cid) {
+                                    alertBot.room.historyList[i].push(+new Date());
+                                    alreadyPlayed = true;
+                                    API.sendChat(subChat(alertBot.chat.songknown, {
+                                        name: name
+                                    }));
+                                    if (alertBot.settings.smartSkip) {
+                                        return alertBot.roomUtilities.smartSkip();
+                                    } else {
+                                        return API.moderateForceSkip();
+                                    }
+                                }
+                            }
+                            if (!alreadyPlayed) {
+                                alertBot.room.historyList.push([obj.media.cid, +new Date()]);
+                            }
+                        }, 1);
+                    }
+                    if (user.ownSong) {
+                        API.sendChat(subChat(alertBot.chat.permissionownsong, {
+                            name: user.username
+                        }));
+                        user.ownSong = false;
+                    }
+                    clearTimeout(alertBot.room.autoskipTimer);
+                    if (alertBot.settings.autoskip) {
+                        var remaining = obj.media.duration * 1000;
+                        var startcid = API.getMedia().cid;
+                        alertBot.room.autoskipTimer = setTimeout(function() {
+                            if (!API.getMedia()) return;
+
+                            var endcid = API.getMedia().cid;
+                            if (startcid === endcid) {
+                                //API.sendChat('Song stuck, skipping...');
+                                API.moderateForceSkip();
+                            }
+                        }, remaining + 5000);
+                    }
+                    storeToStorage();
+                    //sendToSocket();
+                },
+
 //END DJADVANCE FUNCTION
 
 
@@ -1453,7 +1608,7 @@
                           type: 'startsWith/exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
 
                               }
@@ -1475,7 +1630,7 @@
                                              var cmdmsg = msg.substr(cmd.length + 1);
 
                                                if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                               if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                               if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                                else {
                                                           API.sendChat(cmdmsg + 'The resident DJ role is given to people who have made creative contributions to the community with songs, emotes, etc. RDJs are not part of staff but they get a custom icon, color and other stuff.');
                                                }
@@ -1500,7 +1655,7 @@
                                              var cmdmsg = msg.substr(cmd.length + 1);
 
                                                if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                               if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                               if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                                else {
                                                           API.sendChat(cmdmsg + ' https://thumbs.gfycat.com/UnconsciousGorgeousAxisdeer-max-1mb.gif');
                                                }
@@ -1519,7 +1674,7 @@
                                             var cmdmsg = msg.substr(cmd.length + 1);
 
                                                if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                               if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                               if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                                else {
                                                           API.sendChat(cmdmsg + 'https://media.giphy.com/media/37QV3rY44VzodzMdX8/giphy.gif');
                                                }
@@ -1535,7 +1690,7 @@
                                       rank: 'bouncer',
                                       type: 'startsWith',
                                       functionality: function(chat, cmd) {
-                                          if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                          if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                           else {
                                               var msg = chat.message;
                                               var lastplay = API.getHistory()[1];
@@ -1551,10 +1706,10 @@
                                                   title: media.title,
                                                   mid: media.format + ':' + media.cid
                                               };
-                                              jungleBot.room.newBlacklisted.push(track);
-                                              jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
+                                              alertBot.room.newBlacklisted.push(track);
+                                              alertBot.room.blacklists[list].push(media.format + ':' + media.cid);
                                               API.sendChat('/me Added.');
-                                              API.chatLog(subChat(jungleBot.chat.newblacklisted, {
+                                              API.chatLog(subChat(alertBot.chat.newblacklisted, {
                                                   name: chat.un,
                                                   blacklist: list,
                                                   author: media.author,
@@ -1562,8 +1717,8 @@
                                                   mid: media.format + ':' + media.cid
                                               }));
 
-                                              if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
-                                                  jungleBot.room.newBlacklistedSongFunction(track);
+                                              if (typeof alertBot.room.newBlacklistedSongFunction === 'function') {
+                                                  alertBot.room.newBlacklistedSongFunction(track);
                                                     }
                                                 }
                                             }
@@ -1578,7 +1733,7 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var name;
@@ -1587,7 +1742,7 @@
                                       name = msg.substr(cmd.length + 1);
                                   }
                               }
-                              var id = jungleBot.userUtilities.getID(name);
+                              var id = alertBot.userUtilities.getID(name);
 
                               if (id) {
                                 API.sendChat('/me @' + chat.un + ' ' + name + '\'s ID is "' + id + '".');
@@ -1610,7 +1765,7 @@
                   					var cmdmsg = msg.substr(cmd.length + 1);
 
                                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                      if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                       else {
                   	                       API.sendChat(cmdmsg + ' no u');
                                        }
@@ -1629,7 +1784,7 @@
                             				var cmdmsg = msg.substr(cmd.length + 1);
 
                                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                      if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                       else {
                                                  API.sendChat(cmdmsg);
                                       }
@@ -1648,7 +1803,7 @@
                   					var cmdmsg = msg.substr(cmd.length + 1);
 
                                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                      if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                       else {
                   	                       API.sendChat(cmdmsg + ' https://i.imgur.com/Y5Zx98w.gif');
                                       }
@@ -1667,10 +1822,10 @@
                     					var cmdmsg = msg.substr(cmd.length + 1);
 
                                         if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                        if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                        if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                         else {
 
-                    						API.sendChat(subChat(jungleBot.chat.weirdchamp, {
+                    						API.sendChat(subChat(alertBot.chat.weirdchamp, {
                                                 name: cmdmsg,
                                             }));
                                         }
@@ -1689,10 +1844,10 @@
                     					var cmdmsg = msg.substr(cmd.length + 1);
 
                                         if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                        if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                        if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                         else {
 
-                    						API.sendChat(subChat(jungleBot.chat.attitude, {
+                    						API.sendChat(subChat(alertBot.chat.attitude, {
                                                 name: cmdmsg,
                                             }));
                                         }
@@ -1707,7 +1862,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat(":MrDestructoid: :bttvClap:");
                                 }
@@ -1722,7 +1877,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("https://i.imgur.com/LABtfS6.gif");
                                 }
@@ -1736,7 +1891,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("/woot");
                                   API.sendChat(":MrDestructoid: :bttvClap:");
@@ -1751,7 +1906,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("ResidentSleeper Clap");
                                 }
@@ -1765,7 +1920,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("/sparkle");
                                 }
@@ -1779,7 +1934,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("/exportchat");
                                 }
@@ -1793,7 +1948,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("AYAYA Clap");
                                 }
@@ -1807,7 +1962,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("/voteemotespam");
                                 }
@@ -1821,7 +1976,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("MrDestructoid says: If you're about to queue a nightcore song, just look up the original and queue that instead.");
                                 }
@@ -1835,7 +1990,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("Find the bot commands for this channel here: https://git.io/fN5eb#bot-commands");
                                 }
@@ -1849,7 +2004,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj");
                                 }
@@ -1863,7 +2018,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("To use emotes when you have RCS installed type colons like :this:. Alternatively, install the GTE extension and add xqcow in the settings: https://chrome.google.com/webstore/detail/global-twitch-emotes/pgniedifoejifjkndekolimjeclnokkb");
                                 }
@@ -1877,7 +2032,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("xQc's Twitch: https://www.twitch.tv/xqcow");
                                 }
@@ -1891,7 +2046,7 @@
                               type: 'exact',
                               functionality: function (chat, cmd) {
                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                                if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                                 else {
                                   API.sendChat("xQc's Discord: https://discord.gg/xqcow");
                                 }
@@ -1910,31 +2065,31 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var now = Date.now();
                                   var chatters = 0;
                                   var time;
 
-                                  var launchT = jungleBot.room.roomstats.launchTime;
+                                  var launchT = alertBot.room.roomstats.launchTime;
                                   var durationOnline = Date.now() - launchT;
                                   var since = durationOnline / 1000;
 
                                   if (msg.length === cmd.length) time = since;
                                   else {
                                       time = msg.substring(cmd.length + 1);
-                                      if (isNaN(time)) return API.sendChat(subChat(jungleBot.chat.invalidtime, {
+                                      if (isNaN(time)) return API.sendChat(subChat(alertBot.chat.invalidtime, {
                                           name: chat.un
                                       }));
                                   }
-                                  for (var i = 0; i < jungleBot.room.users.length; i++) {
-                                      userTime = jungleBot.userUtilities.getLastActivity(jungleBot.room.users[i]);
+                                  for (var i = 0; i < alertBot.room.users.length; i++) {
+                                      userTime = alertBot.userUtilities.getLastActivity(alertBot.room.users[i]);
                                       if ((now - userTime) <= (time * 60 * 1000)) {
                                           chatters++;
                                       }
                                   }
-                                  API.sendChat(subChat(jungleBot.chat.activeusersintime, {
+                                  API.sendChat(subChat(alertBot.chat.activeusersintime, {
                                       name: chat.un,
                                       amount: chatters,
                                       time: time
@@ -1949,21 +2104,21 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var name = msg.substr(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
+                                  var user = alertBot.userUtilities.lookupUserName(name);
                                   if (msg.length > cmd.length + 2) {
                                       if (typeof user !== 'undefined') {
-                                          if (jungleBot.room.roomevent) {
-                                              jungleBot.room.eventArtists.push(user.id);
+                                          if (alertBot.room.roomevent) {
+                                              alertBot.room.eventArtists.push(user.id);
                                           }
                                           API.moderateAddDJ(user.id);
-                                      } else API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                      } else API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                           name: chat.un
                                       }));
                                   }
@@ -1977,20 +2132,20 @@
                                       type: 'startsWith',
                                       functionality: function(chat, cmd) {
                                           if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                          if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                          if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                                           else {
                                               var msg = chat.message;
-                                              if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nolimitspecified, {
+                                              if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nolimitspecified, {
                                                   name: chat.un
                                               }));
                                               var limit = msg.substring(cmd.length + 1);
                                               if (!isNaN(limit)) {
-                                                  jungleBot.settings.maximumAfk = parseInt(limit, 10);
-                                                  API.sendChat(subChat(jungleBot.chat.maximumafktimeset, {
+                                                  alertBot.settings.maximumAfk = parseInt(limit, 10);
+                                                  API.sendChat(subChat(alertBot.chat.maximumafktimeset, {
                                                       name: chat.un,
-                                                      time: jungleBot.settings.maximumAfk
+                                                      time: alertBot.settings.maximumAfk
                                                   }));
-                                              } else API.sendChat(subChat(jungleBot.chat.invalidlimitspecified, {
+                                              } else API.sendChat(subChat(alertBot.chat.invalidlimitspecified, {
                                                   name: chat.un
                                               }));
                                           }
@@ -2003,23 +2158,23 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.afkRemoval) {
-                                      jungleBot.settings.afkRemoval = !jungleBot.settings.afkRemoval;
-                                      clearInterval(jungleBot.room.afkInterval);
-                                      API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.afkRemoval) {
+                                      alertBot.settings.afkRemoval = !alertBot.settings.afkRemoval;
+                                      clearInterval(alertBot.room.afkInterval);
+                                      API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.afkremoval
+                                          'function': alertBot.chat.afkremoval
                                       }));
                                   } else {
-                                      jungleBot.settings.afkRemoval = !jungleBot.settings.afkRemoval;
-                                      jungleBot.room.afkInterval = setInterval(function() {
-                                          jungleBot.roomUtilities.afkCheck()
+                                      alertBot.settings.afkRemoval = !alertBot.settings.afkRemoval;
+                                      alertBot.room.afkInterval = setInterval(function() {
+                                          alertBot.roomUtilities.afkCheck()
                                       }, 2 * 1000);
-                                      API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.afkremoval
+                                          'function': alertBot.chat.afkremoval
                                       }));
                                   }
                               }
@@ -2032,19 +2187,19 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var name = msg.substring(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
-                                  jungleBot.userUtilities.setLastActivity(user);
-                                  API.sendChat(subChat(jungleBot.chat.afkstatusreset, {
+                                  alertBot.userUtilities.setLastActivity(user);
+                                  API.sendChat(subChat(alertBot.chat.afkstatusreset, {
                                       name: chat.un,
                                       username: name
                                   }));
@@ -2058,32 +2213,32 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var name = msg.substring(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
-                                  var lastActive = jungleBot.userUtilities.getLastActivity(user);
+                                  var lastActive = alertBot.userUtilities.getLastActivity(user);
                                   var inactivity = Date.now() - lastActive;
-                                  var time = jungleBot.roomUtilities.msToStr(inactivity);
+                                  var time = alertBot.roomUtilities.msToStr(inactivity);
 
-                                  var launchT = jungleBot.room.roomstats.launchTime;
+                                  var launchT = alertBot.room.roomstats.launchTime;
                                   var durationOnline = Date.now() - launchT;
 
                                   if (inactivity == durationOnline) {
-                                      API.sendChat(subChat(jungleBot.chat.inactivelonger, {
-                                          botname: jungleBot.settings.botName,
+                                      API.sendChat(subChat(alertBot.chat.inactivelonger, {
+                                          botname: alertBot.settings.botName,
                                           name: chat.un,
                                           username: name
                                       }));
                                   } else {
-                                      API.sendChat(subChat(jungleBot.chat.inactivefor, {
+                                      API.sendChat(subChat(alertBot.chat.inactivefor, {
                                           name: chat.un,
                                           username: name,
                                           time: time
@@ -2099,19 +2254,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.autodisable) {
-                                      jungleBot.settings.autodisable = !jungleBot.settings.autodisable;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.autodisable) {
+                                      alertBot.settings.autodisable = !alertBot.settings.autodisable;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.autodisable
+                                          'function': alertBot.chat.autodisable
                                       }));
                                   } else {
-                                      jungleBot.settings.autodisable = !jungleBot.settings.autodisable;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.autodisable = !alertBot.settings.autodisable;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.autodisable
+                                          'function': alertBot.chat.autodisable
                                       }));
                                   }
 
@@ -2125,20 +2280,20 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.autoskip) {
-                                      jungleBot.settings.autoskip = !jungleBot.settings.autoskip;
-                                      clearTimeout(jungleBot.room.autoskipTimer);
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.autoskip) {
+                                      alertBot.settings.autoskip = !alertBot.settings.autoskip;
+                                      clearTimeout(alertBot.room.autoskipTimer);
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.autoskip
+                                          'function': alertBot.chat.autoskip
                                       }));
                                   } else {
-                                      jungleBot.settings.autoskip = !jungleBot.settings.autoskip;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.autoskip = !alertBot.settings.autoskip;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.autoskip
+                                          'function': alertBot.chat.autoskip
                                       }));
                                   }
                               }
@@ -2151,9 +2306,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  API.sendChat(jungleBot.chat.autowoot);
+                                  API.sendChat(alertBot.chat.autowoot);
                               }
                           }
                       },
@@ -2164,9 +2319,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  API.sendChat(jungleBot.chat.brandambassador);
+                                  API.sendChat(alertBot.chat.brandambassador);
                               }
                           }
                       },
@@ -2177,19 +2332,19 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var crowd = API.getUsers();
                                   var msg = chat.message;
                                   var argument = msg.substring(cmd.length + 1).replace(/@/g, '');
                                   var randomUser = Math.floor(Math.random() * crowd.length);
-                                  var randomBall = Math.floor(Math.random() * jungleBot.chat.balls.length);
+                                  var randomBall = Math.floor(Math.random() * alertBot.chat.balls.length);
                                   var randomSentence = Math.floor(Math.random() * 1);
-                                  API.sendChat(subChat(jungleBot.chat.ball, {
+                                  API.sendChat(subChat(alertBot.chat.ball, {
                                       name: chat.un,
-                                      botname: jungleBot.settings.botName,
+                                      botname: alertBot.settings.botName,
                                       question: argument,
-                                      response: jungleBot.chat.balls[randomBall]
+                                      response: alertBot.chat.balls[randomBall]
                                   }));
                               }
                           }
@@ -2200,7 +2355,7 @@
                           rank: 'bouncer',
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var list;
                                   var msg = chat.message;
@@ -2217,23 +2372,23 @@
                                       title: media.title,
                                       mid: media.format + ':' + media.cid
                                   };
-                                  jungleBot.room.newBlacklisted.push(track);
-                                  jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
+                                  alertBot.room.newBlacklisted.push(track);
+                                  alertBot.room.blacklists[list].push(media.format + ':' + media.cid);
                                   API.sendChat('/me Added.');
-                                  API.chatLog(subChat(jungleBot.chat.newblacklisted, {
+                                  API.chatLog(subChat(alertBot.chat.newblacklisted, {
                                       name: chat.un,
                                       blacklist: list,
                                       author: media.author,
                                       title: media.title,
                                       mid: media.format + ':' + media.cid
                                   }));
-                                  if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
-                                      jungleBot.roomUtilities.smartSkip();
+                                  if (alertBot.settings.smartSkip && timeLeft > timeElapsed) {
+                                      alertBot.roomUtilities.smartSkip();
                                   } else {
                                       API.moderateForceSkip();
                                   }
-                                  if (typeof jungleBot.room.newBlacklistedSongFunction === 'function') {
-                                      jungleBot.room.newBlacklistedSongFunction(track);
+                                  if (typeof alertBot.room.newBlacklistedSongFunction === 'function') {
+                                      alertBot.room.newBlacklistedSongFunction(track);
                                         }
                                     }
                                 }
@@ -2245,7 +2400,7 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var author = API.getMedia().author;
                                   var title = API.getMedia().title;
@@ -2254,7 +2409,7 @@
                                   var cid = API.getMedia().cid;
                                   var songid = format + ':' + cid;
 
-                                  API.sendChat(subChat(jungleBot.chat.blinfo, {
+                                  API.sendChat(subChat(alertBot.chat.blinfo, {
                                       name: name,
                                       author: author,
                                       title: title,
@@ -2270,27 +2425,27 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (jungleBot.settings.bouncerPlus) {
-                                      jungleBot.settings.bouncerPlus = false;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.bouncerPlus) {
+                                      alertBot.settings.bouncerPlus = false;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
                                           'function': 'Bouncer+'
                                       }));
                                   } else {
-                                      if (!jungleBot.settings.bouncerPlus) {
+                                      if (!alertBot.settings.bouncerPlus) {
                                           var id = chat.uid;
-                                          var perm = jungleBot.userUtilities.getPermission(id);
+                                          var perm = alertBot.userUtilities.getPermission(id);
                                           if (perm > API.ROLE.BOUNCER) {
-                                              jungleBot.settings.bouncerPlus = true;
-                                              return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                              alertBot.settings.bouncerPlus = true;
+                                              return API.sendChat(subChat(alertBot.chat.toggleon, {
                                                   name: chat.un,
                                                   'function': 'Bouncer+'
                                               }));
                                           }
-                                      } else return API.sendChat(subChat(jungleBot.chat.bouncerplusrank, {
+                                      } else return API.sendChat(subChat(alertBot.chat.bouncerplusrank, {
                                           name: chat.un
                                       }));
                                   }
@@ -2304,17 +2459,17 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length <= cmd.length + 1) return API.sendChat(subChat(jungleBot.chat.currentbotname, {
-                                      botname: jungleBot.settings.botName
+                                  if (msg.length <= cmd.length + 1) return API.sendChat(subChat(alertBot.chat.currentbotname, {
+                                      botname: alertBot.settings.botName
                                   }));
                                   var argument = msg.substring(cmd.length + 1);
                                   if (argument) {
-                                      jungleBot.settings.botName = argument;
-                                      API.sendChat(subChat(jungleBot.chat.botnameset, {
-                                          botName: jungleBot.settings.botName
+                                      alertBot.settings.botName = argument;
+                                      API.sendChat(subChat(alertBot.chat.botnameset, {
+                                          botName: alertBot.settings.botName
                                       }));
                                   }
                               }
@@ -2327,13 +2482,13 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var currentchat = $('#chat-messages').children();
                                   for (var i = 0; i < currentchat.length; i++) {
                                       API.moderateDeleteChat(currentchat[i].getAttribute('data-cid'));
                                   }
-                                  return API.sendChat(subChat(jungleBot.chat.chatcleared, {
+                                  return API.sendChat(subChat(alertBot.chat.chatcleared, {
                                       name: chat.un
                                   }));
                               }
@@ -2346,7 +2501,7 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   localStorage.clear();
                                   API.chatLog('Cleared localstorage, please refresh the page!');
@@ -2360,19 +2515,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.cmdDeletion) {
-                                      jungleBot.settings.cmdDeletion = !jungleBot.settings.cmdDeletion;
-                                      API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.cmdDeletion) {
+                                      alertBot.settings.cmdDeletion = !alertBot.settings.cmdDeletion;
+                                      API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.cmddeletion
+                                          'function': alertBot.chat.cmddeletion
                                       }));
                                   } else {
-                                      jungleBot.settings.cmdDeletion = !jungleBot.settings.cmdDeletion;
-                                      API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.cmdDeletion = !alertBot.settings.cmdDeletion;
+                                      API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.cmddeletion
+                                          'function': alertBot.chat.cmddeletion
                                       }));
                                   }
                               }
@@ -2384,32 +2539,32 @@
                           rank: 'user',
                           type: 'startsWith',
                           getCookie: function(chat) {
-                              var c = Math.floor(Math.random() * jungleBot.chat.cookies.length);
-                              return jungleBot.chat.cookies[c];
+                              var c = Math.floor(Math.random() * alertBot.chat.cookies.length);
+                              return alertBot.chat.cookies[c];
                           },
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
 
                                   var space = msg.indexOf(' ');
                                   if (space === -1) {
-                                      API.sendChat(jungleBot.chat.eatcookie);
+                                      API.sendChat(alertBot.chat.eatcookie);
                                       return false;
                                   } else {
                                       var name = msg.substring(space + 2);
-                                      var user = jungleBot.userUtilities.lookupUserName(name);
+                                      var user = alertBot.userUtilities.lookupUserName(name);
                                       if (user === false || !user.inRoom) {
-                                          return API.sendChat(subChat(jungleBot.chat.nousercookie, {
+                                          return API.sendChat(subChat(alertBot.chat.nousercookie, {
                                               name: name
                                           }));
                                       } else if (user.username === chat.un) {
-                                          return API.sendChat(subChat(jungleBot.chat.selfcookie, {
+                                          return API.sendChat(subChat(alertBot.chat.selfcookie, {
                                               name: name
                                           }));
                                       } else {
-                                          return API.sendChat(subChat(jungleBot.chat.cookie, {
+                                          return API.sendChat(subChat(alertBot.chat.cookie, {
                                               nameto: user.username,
                                               namefrom: chat.un,
                                               cookie: this.getCookie()
@@ -2426,9 +2581,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  jungleBot.roomUtilities.changeDJCycle();
+                                  alertBot.roomUtilities.changeDJCycle();
                               }
                           }
                       },
@@ -2439,19 +2594,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.cycleGuard) {
-                                      jungleBot.settings.cycleGuard = !jungleBot.settings.cycleGuard;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.cycleGuard) {
+                                      alertBot.settings.cycleGuard = !alertBot.settings.cycleGuard;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.cycleguard
+                                          'function': alertBot.chat.cycleguard
                                       }));
                                   } else {
-                                      jungleBot.settings.cycleGuard = !jungleBot.settings.cycleGuard;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.cycleGuard = !alertBot.settings.cycleGuard;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.cycleguard
+                                          'function': alertBot.chat.cycleguard
                                       }));
                                   }
 
@@ -2465,17 +2620,17 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var cycleTime = msg.substring(cmd.length + 1);
                                   if (!isNaN(cycleTime) && cycleTime !== '') {
-                                      jungleBot.settings.maximumCycletime = cycleTime;
-                                      return API.sendChat(subChat(jungleBot.chat.cycleguardtime, {
+                                      alertBot.settings.maximumCycletime = cycleTime;
+                                      return API.sendChat(subChat(alertBot.chat.cycleguardtime, {
                                           name: chat.un,
-                                          time: jungleBot.settings.maximumCycletime
+                                          time: alertBot.settings.maximumCycletime
                                       }));
-                                  } else return API.sendChat(subChat(jungleBot.chat.invalidtime, {
+                                  } else return API.sendChat(subChat(alertBot.chat.invalidtime, {
                                       name: chat.un
                                   }));
 
@@ -2489,23 +2644,23 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var name;
                                   if (msg.length === cmd.length) name = chat.un;
                                   else {
                                       name = msg.substring(cmd.length + 2);
-                                      var perm = jungleBot.userUtilities.getPermission(chat.uid);
-                                      if (perm < API.ROLE.BOUNCER) return API.sendChat(subChat(jungleBot.chat.dclookuprank, {
+                                      var perm = alertBot.userUtilities.getPermission(chat.uid);
+                                      if (perm < API.ROLE.BOUNCER) return API.sendChat(subChat(alertBot.chat.dclookuprank, {
                                           name: chat.un
                                       }));
                                   }
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
-                                  var toChat = jungleBot.userUtilities.dclookup(user.id);
+                                  var toChat = alertBot.userUtilities.dclookup(user.id);
                                   API.sendChat(toChat);
                               }
                           }
@@ -2519,13 +2674,13 @@
                           type: 'startsWith',
                           functionality: function (chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void (0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {name: chat.un}));
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {name: chat.un}));
                                   var name = msg.substring(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {name: chat.un}));
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {name: chat.un}));
                                   var chats = $('.from');
                                   var message = $('.message');
                                   var emote = $('.emote');
@@ -2552,7 +2707,7 @@
                                           }
                                       }
                                   }
-                                  API.sendChat(subChat(jungleBot.chat.deletechat, {name: chat.un, username: name}));
+                                  API.sendChat(subChat(alertBot.chat.deletechat, {name: chat.un, username: name}));
                               }
                           }
                       },
@@ -2564,24 +2719,24 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var name = msg.substring(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
-                                  for (var i = 1; i < jungleBot.room.chatMessages.length; i++) {
-                                      if (jungleBot.room.chatMessages[i].indexOf(user.id) > -1) {
-                                          API.moderateDeleteChat(jungleBot.room.chatMessages[i][0]);
-                                          jungleBot.room.chatMessages[i].splice(0);
+                                  for (var i = 1; i < alertBot.room.chatMessages.length; i++) {
+                                      if (alertBot.room.chatMessages[i].indexOf(user.id) > -1) {
+                                          API.moderateDeleteChat(alertBot.room.chatMessages[i][0]);
+                                          alertBot.room.chatMessages[i].splice(0);
                                       }
                                   }
-                                  API.sendChat(subChat(jungleBot.chat.deletechat, {
+                                  API.sendChat(subChat(alertBot.chat.deletechat, {
                                       name: chat.un,
                                       username: name
                                   }));
@@ -2595,10 +2750,10 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var link = 'http://www.emoji-cheat-sheet.com/';
-                                  API.sendChat(subChat(jungleBot.chat.emojilist, {
+                                  API.sendChat(subChat(alertBot.chat.emojilist, {
                                       link: link
                                   }));
                               }
@@ -2611,13 +2766,13 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   if (chat.message.length === cmd.length) return API.sendChat('/me No user specified.');
                                   var name = chat.message.substring(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
+                                  var user = alertBot.userUtilities.lookupUserName(name);
                                   if (typeof user === 'boolean') return API.sendChat('/me Invalid user specified.');
-                                  var lang = jungleBot.userUtilities.getUser(user).language;
+                                  var lang = alertBot.userUtilities.getUser(user).language;
                                   var ch = '/me @' + name + ' ';
                                   switch (lang) {
                                       case 'en':
@@ -2665,9 +2820,9 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  var perm = jungleBot.userUtilities.getPermission(chat.uid);
+                                  var perm = alertBot.userUtilities.getPermission(chat.uid);
                                   var msg = chat.message;
                                   var dj = API.getDJ().username;
                                   var name;
@@ -2675,25 +2830,25 @@
                                       if (perm < API.ROLE.BOUNCER) return void(0);
                                       name = msg.substring(cmd.length + 2);
                                   } else name = chat.un;
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
                                   var pos = API.getWaitListPosition(user.id);
                                   var realpos = pos + 1;
-                                  if (name == dj) return API.sendChat(subChat(jungleBot.chat.youaredj, {
+                                  if (name == dj) return API.sendChat(subChat(alertBot.chat.youaredj, {
                                       name: name
                                   }));
-                                  if (pos < 0) return API.sendChat(subChat(jungleBot.chat.notinwaitlist, {
+                                  if (pos < 0) return API.sendChat(subChat(alertBot.chat.notinwaitlist, {
                                       name: name
                                   }));
-                                  if (pos == 0) return API.sendChat(subChat(jungleBot.chat.youarenext, {
+                                  if (pos == 0) return API.sendChat(subChat(alertBot.chat.youarenext, {
                                       name: name
                                   }));
                                   var timeRemaining = API.getTimeRemaining();
                                   var estimateMS = ((pos + 1) * 4 * 60 + timeRemaining) * 1000;
-                                  var estimateString = jungleBot.roomUtilities.msToStr(estimateMS);
-                                  API.sendChat(subChat(jungleBot.chat.eta, {
+                                  var estimateString = alertBot.roomUtilities.msToStr(estimateMS);
+                                  API.sendChat(subChat(alertBot.chat.eta, {
                                       name: name,
                                       time: estimateString,
                                       position: realpos
@@ -2708,19 +2863,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.filterChat) {
-                                      jungleBot.settings.filterChat = !jungleBot.settings.filterChat;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.filterChat) {
+                                      alertBot.settings.filterChat = !alertBot.settings.filterChat;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.chatfilter
+                                          'function': alertBot.chat.chatfilter
                                       }));
                                   } else {
-                                      jungleBot.settings.filterChat = !jungleBot.settings.filterChat;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.filterChat = !alertBot.settings.filterChat;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.chatfilter
+                                          'function': alertBot.chat.chatfilter
                                       }));
                                   }
                               }
@@ -2733,15 +2888,15 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  API.sendChat(subChat(jungleBot.chat.forceskip, {
+                                  API.sendChat(subChat(alertBot.chat.forceskip, {
                                       name: chat.un
                                   }));
                                   API.moderateForceSkip();
-                                  jungleBot.room.skippable = false;
+                                  alertBot.room.skippable = false;
                                   setTimeout(function() {
-                                      jungleBot.room.skippable = true
+                                      alertBot.room.skippable = true
                                   }, 5 * 1000);
                               }
                           }
@@ -2753,7 +2908,7 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var name;
@@ -2761,13 +2916,13 @@
                                   else {
                                       name = msg.substr(cmd.length + 2);
                                   }
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
+                                  var user = alertBot.userUtilities.lookupUserName(name);
                                   if (user === false || !user.inRoom) {
-                                      return API.sendChat(subChat(jungleBot.chat.ghosting, {
+                                      return API.sendChat(subChat(alertBot.chat.ghosting, {
                                           name1: chat.un,
                                           name2: name
                                       }));
-                                  } else API.sendChat(subChat(jungleBot.chat.notghosting, {
+                                  } else API.sendChat(subChat(alertBot.chat.notghosting, {
                                       name1: chat.un,
                                       name2: name
                                   }));
@@ -2781,7 +2936,7 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   if (msg.length !== cmd.length) {
@@ -2805,13 +2960,13 @@
                                       var commatag = tag.replace(/ /g, ', ');
                                       get_id(api_key, tag, function(id) {
                                           if (typeof id !== 'undefined') {
-                                              API.sendChat(subChat(jungleBot.chat.validgiftags, {
+                                              API.sendChat(subChat(alertBot.chat.validgiftags, {
                                                   name: chat.un,
                                                   id: id,
                                                   tags: commatag
                                               }));
                                           } else {
-                                              API.sendChat(subChat(jungleBot.chat.invalidgiftags, {
+                                              API.sendChat(subChat(alertBot.chat.invalidgiftags, {
                                                   name: chat.un,
                                                   tags: commatag
                                               }));
@@ -2834,12 +2989,12 @@
                                       var rating = 'pg-13'; // PG 13 gifs
                                       get_random_id(api_key, function(id) {
                                           if (typeof id !== 'undefined') {
-                                              API.sendChat(subChat(jungleBot.chat.validgifrandom, {
+                                              API.sendChat(subChat(alertBot.chat.validgifrandom, {
                                                   name: chat.un,
                                                   id: id
                                               }));
                                           } else {
-                                              API.sendChat(subChat(jungleBot.chat.invalidgifrandom, {
+                                              API.sendChat(subChat(alertBot.chat.invalidgifrandom, {
                                                   name: chat.un
                                               }));
                                           }
@@ -2855,10 +3010,10 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var link = '(Updated link coming soon)';
-                                  API.sendChat(subChat(jungleBot.chat.starterhelp, {
+                                  API.sendChat(subChat(alertBot.chat.starterhelp, {
                                       link: link
                                   }));
                               }
@@ -2871,19 +3026,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.historySkip) {
-                                      jungleBot.settings.historySkip = !jungleBot.settings.historySkip;
-                                      API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.historySkip) {
+                                      alertBot.settings.historySkip = !alertBot.settings.historySkip;
+                                      API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.historyskip
+                                          'function': alertBot.chat.historyskip
                                       }));
                                   } else {
-                                      jungleBot.settings.historySkip = !jungleBot.settings.historySkip;
-                                      API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.historySkip = !alertBot.settings.historySkip;
+                                      API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.historyskip
+                                          'function': alertBot.chat.historyskip
                                       }));
                                   }
                               }
@@ -2896,11 +3051,11 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.room.roulette.rouletteStatus && jungleBot.room.roulette.participants.indexOf(chat.uid) < 0) {
-                                      jungleBot.room.roulette.participants.push(chat.uid);
-                                      API.sendChat(subChat(jungleBot.chat.roulettejoin, {
+                                  if (alertBot.room.roulette.rouletteStatus && alertBot.room.roulette.participants.indexOf(chat.uid) < 0) {
+                                      alertBot.room.roulette.participants.push(chat.uid);
+                                      API.sendChat(subChat(alertBot.chat.roulettejoin, {
                                           name: chat.un
                                       }));
                                   }
@@ -2914,21 +3069,21 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var name = msg.substring(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
-                                  var join = jungleBot.userUtilities.getJointime(user);
+                                  var join = alertBot.userUtilities.getJointime(user);
                                   var time = Date.now() - join;
-                                  var timeString = jungleBot.roomUtilities.msToStr(time);
-                                  API.sendChat(subChat(jungleBot.chat.jointime, {
+                                  var timeString = alertBot.roomUtilities.msToStr(time);
+                                  API.sendChat(subChat(alertBot.chat.jointime, {
                                       namefrom: chat.un,
                                       username: name,
                                       time: timeString
@@ -2943,7 +3098,7 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var lastSpace = msg.lastIndexOf(' ');
@@ -2957,22 +3112,22 @@
                                       name = msg.substring(cmd.length + 2, lastSpace);
                                   }
 
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
+                                  var user = alertBot.userUtilities.lookupUserName(name);
                                   var from = chat.un;
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
 
-                                  var permFrom = jungleBot.userUtilities.getPermission(chat.uid);
-                                  var permTokick = jungleBot.userUtilities.getPermission(user.id);
+                                  var permFrom = alertBot.userUtilities.getPermission(chat.uid);
+                                  var permTokick = alertBot.userUtilities.getPermission(user.id);
 
                                   if (permFrom <= permTokick)
-                                      return API.sendChat(subChat(jungleBot.chat.kickrank, {
+                                      return API.sendChat(subChat(alertBot.chat.kickrank, {
                                           name: chat.un
                                       }));
 
                                   if (!isNaN(time)) {
-                                      API.sendChat(subChat(jungleBot.chat.kick, {
+                                      API.sendChat(subChat(alertBot.chat.kick, {
                                           name: chat.un,
                                           username: name,
                                           time: time
@@ -2983,7 +3138,7 @@
                                           API.moderateUnbanUser(id);
                                           console.log('Unbanned @' + name + '. (' + id + ')');
                                       }, time * 60 * 1000, user.id, name);
-                                  } else API.sendChat(subChat(jungleBot.chat.invalidtime, {
+                                  } else API.sendChat(subChat(alertBot.chat.invalidtime, {
                                       name: chat.un
                                   }));
                               }
@@ -2996,12 +3151,12 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   storeToStorage();
                                   //sendToSocket();
-                                  API.sendChat(jungleBot.chat.kill);
-                                  jungleBot.disconnectAPI();
+                                  API.sendChat(alertBot.chat.kill);
+                                  alertBot.disconnectAPI();
                                   setTimeout(function() {
                                       kill();
                                   }, 1000);
@@ -3015,11 +3170,11 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length <= cmd.length + 1) return API.sendChat(subChat(jungleBot.chat.currentlang, {
-                                      language: jungleBot.settings.language
+                                  if (msg.length <= cmd.length + 1) return API.sendChat(subChat(alertBot.chat.currentlang, {
+                                      language: alertBot.settings.language
                                   }));
                                   var argument = msg.substring(cmd.length + 1);
 
@@ -3027,14 +3182,14 @@
                                       var langIndex = json;
                                       var link = langIndex[argument.toLowerCase()];
                                       if (typeof link === 'undefined') {
-                                          API.sendChat(subChat(jungleBot.chat.langerror, {
+                                          API.sendChat(subChat(alertBot.chat.langerror, {
                                               link: 'http://git.io/vJ9nI'
                                           }));
                                       } else {
-                                          jungleBot.settings.language = argument;
+                                          alertBot.settings.language = argument;
                                           loadChat();
-                                          API.sendChat(subChat(jungleBot.chat.langset, {
-                                              language: jungleBot.settings.language
+                                          API.sendChat(subChat(alertBot.chat.langset, {
+                                              language: alertBot.settings.language
                                           }));
                                       }
                                   });
@@ -3048,12 +3203,12 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  var ind = jungleBot.room.roulette.participants.indexOf(chat.uid);
+                                  var ind = alertBot.room.roulette.participants.indexOf(chat.uid);
                                   if (ind > -1) {
-                                      jungleBot.room.roulette.participants.splice(ind, 1);
-                                      API.sendChat(subChat(jungleBot.chat.rouletteleave, {
+                                      alertBot.room.roulette.participants.splice(ind, 1);
+                                      API.sendChat(subChat(alertBot.chat.rouletteleave, {
                                           name: chat.un
                                       }));
                                   }
@@ -3067,26 +3222,26 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var media = API.getMedia();
                                   var from = chat.un;
-                                  var user = jungleBot.userUtilities.lookupUser(chat.uid);
-                                  var perm = jungleBot.userUtilities.getPermission(chat.uid);
+                                  var user = alertBot.userUtilities.lookupUser(chat.uid);
+                                  var perm = alertBot.userUtilities.getPermission(chat.uid);
                                   var dj = API.getDJ().id;
                                   var isDj = false;
                                   if (dj === chat.uid) isDj = true;
                                   if (perm >= API.ROLE.DJ || isDj) {
                                       if (media.format === 1) {
                                           var linkToSong = 'https://youtu.be/' + media.cid;
-                                          API.sendChat(subChat(jungleBot.chat.songlink, {
+                                          API.sendChat(subChat(alertBot.chat.songlink, {
                                               name: from,
                                               link: linkToSong
                                           }));
                                       }
                                       if (media.format === 2) {
                                           SC.get('/tracks/' + media.cid, function(sound) {
-                                              API.sendChat(subChat(jungleBot.chat.songlink, {
+                                              API.sendChat(subChat(alertBot.chat.songlink, {
                                                   name: from,
                                                   link: sound.permalink_url
                                               }));
@@ -3103,9 +3258,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  jungleBot.roomUtilities.booth.lockBooth();
+                                  alertBot.roomUtilities.booth.lockBooth();
                               }
                           }
                       },
@@ -3116,18 +3271,18 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  var temp = jungleBot.settings.lockdownEnabled;
-                                  jungleBot.settings.lockdownEnabled = !temp;
-                                  if (jungleBot.settings.lockdownEnabled) {
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                  var temp = alertBot.settings.lockdownEnabled;
+                                  alertBot.settings.lockdownEnabled = !temp;
+                                  if (alertBot.settings.lockdownEnabled) {
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.lockdown
+                                          'function': alertBot.chat.lockdown
                                       }));
-                                  } else return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  } else return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                       name: chat.un,
-                                      'function': jungleBot.chat.lockdown
+                                      'function': alertBot.chat.lockdown
                                   }));
                               }
                           }
@@ -3139,19 +3294,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.lockGuard) {
-                                      jungleBot.settings.lockGuard = !jungleBot.settings.lockGuard;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.lockGuard) {
+                                      alertBot.settings.lockGuard = !alertBot.settings.lockGuard;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.lockguard
+                                          'function': alertBot.chat.lockguard
                                       }));
                                   } else {
-                                      jungleBot.settings.lockGuard = !jungleBot.settings.lockGuard;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.lockGuard = !alertBot.settings.lockGuard;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.lockguard
+                                          'function': alertBot.chat.lockguard
                                       }));
                                   }
                               }
@@ -3164,31 +3319,31 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.room.skippable) {
+                                  if (alertBot.room.skippable) {
                                       var dj = API.getDJ();
                                       var id = dj.id;
                                       var name = dj.username;
                                       var msgSend = '@' + name + ': ';
-                                      jungleBot.room.queueable = false;
+                                      alertBot.room.queueable = false;
 
                                       if (chat.message.length === cmd.length) {
-                                          API.sendChat(subChat(jungleBot.chat.usedlockskip, {
+                                          API.sendChat(subChat(alertBot.chat.usedlockskip, {
                                               name: chat.un
                                           }));
-                                          jungleBot.roomUtilities.booth.lockBooth();
+                                          alertBot.roomUtilities.booth.lockBooth();
                                           setTimeout(function(id) {
                                               API.moderateForceSkip();
-                                              jungleBot.room.skippable = false;
+                                              alertBot.room.skippable = false;
                                               setTimeout(function() {
-                                                  jungleBot.room.skippable = true
+                                                  alertBot.room.skippable = true
                                               }, 5 * 1000);
                                               setTimeout(function(id) {
-                                                  jungleBot.userUtilities.moveUser(id, jungleBot.settings.lockskipPosition, false);
-                                                  jungleBot.room.queueable = true;
+                                                  alertBot.userUtilities.moveUser(id, alertBot.settings.lockskipPosition, false);
+                                                  alertBot.room.queueable = true;
                                                   setTimeout(function() {
-                                                      jungleBot.roomUtilities.booth.unlockBooth();
+                                                      alertBot.roomUtilities.booth.unlockBooth();
                                                   }, 1000);
                                               }, 1500, id);
                                           }, 1000, id);
@@ -3197,30 +3352,30 @@
                                       var validReason = false;
                                       var msg = chat.message;
                                       var reason = msg.substring(cmd.length + 1);
-                                      for (var i = 0; i < jungleBot.settings.lockskipReasons.length; i++) {
-                                          var r = jungleBot.settings.lockskipReasons[i][0];
+                                      for (var i = 0; i < alertBot.settings.lockskipReasons.length; i++) {
+                                          var r = alertBot.settings.lockskipReasons[i][0];
                                           if (reason.indexOf(r) !== -1) {
                                               validReason = true;
-                                              msgSend += jungleBot.settings.lockskipReasons[i][1];
+                                              msgSend += alertBot.settings.lockskipReasons[i][1];
                                           }
                                       }
                                       if (validReason) {
-                                          API.sendChat(subChat(jungleBot.chat.usedlockskip, {
+                                          API.sendChat(subChat(alertBot.chat.usedlockskip, {
                                               name: chat.un
                                           }));
-                                          jungleBot.roomUtilities.booth.lockBooth();
+                                          alertBot.roomUtilities.booth.lockBooth();
                                           setTimeout(function(id) {
                                               API.moderateForceSkip();
-                                              jungleBot.room.skippable = false;
+                                              alertBot.room.skippable = false;
                                               API.sendChat(msgSend);
                                               setTimeout(function() {
-                                                  jungleBot.room.skippable = true
+                                                  alertBot.room.skippable = true
                                               }, 5 * 1000);
                                               setTimeout(function(id) {
-                                                  jungleBot.userUtilities.moveUser(id, jungleBot.settings.lockskipPosition, false);
-                                                  jungleBot.room.queueable = true;
+                                                  alertBot.userUtilities.moveUser(id, alertBot.settings.lockskipPosition, false);
+                                                  alertBot.room.queueable = true;
                                                   setTimeout(function() {
-                                                      jungleBot.roomUtilities.booth.unlockBooth();
+                                                      alertBot.roomUtilities.booth.unlockBooth();
                                                   }, 1000);
                                               }, 1500, id);
                                           }, 1000, id);
@@ -3237,17 +3392,17 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var lockTime = msg.substring(cmd.length + 1);
                                   if (!isNaN(lockTime) && lockTime !== '') {
-                                      jungleBot.settings.maximumLocktime = lockTime;
-                                      return API.sendChat(subChat(jungleBot.chat.lockguardtime, {
+                                      alertBot.settings.maximumLocktime = lockTime;
+                                      return API.sendChat(subChat(alertBot.chat.lockguardtime, {
                                           name: chat.un,
-                                          time: jungleBot.settings.maximumLocktime
+                                          time: alertBot.settings.maximumLocktime
                                       }));
-                                  } else return API.sendChat(subChat(jungleBot.chat.invalidtime, {
+                                  } else return API.sendChat(subChat(alertBot.chat.invalidtime, {
                                       name: chat.un
                                   }));
                               }
@@ -3260,11 +3415,11 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  API.sendChat(subChat(jungleBot.chat.logout, {
+                                  API.sendChat(subChat(alertBot.chat.logout, {
                                       name: chat.un,
-                                      botname: jungleBot.settings.botName
+                                      botname: alertBot.settings.botName
                                   }));
                                   setTimeout(function() {
                                       $('.logout').mousedown()
@@ -3279,17 +3434,17 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var maxTime = msg.substring(cmd.length + 1);
                                   if (!isNaN(maxTime)) {
-                                      jungleBot.settings.maximumSongLength = maxTime;
-                                      return API.sendChat(subChat(jungleBot.chat.maxlengthtime, {
+                                      alertBot.settings.maximumSongLength = maxTime;
+                                      return API.sendChat(subChat(alertBot.chat.maxlengthtime, {
                                           name: chat.un,
-                                          time: jungleBot.settings.maximumSongLength
+                                          time: alertBot.settings.maximumSongLength
                                       }));
-                                  } else return API.sendChat(subChat(jungleBot.chat.invalidtime, {
+                                  } else return API.sendChat(subChat(alertBot.chat.invalidtime, {
                                       name: chat.un
                                   }));
                               }
@@ -3302,7 +3457,7 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   $('#meh').click();
                               }
@@ -3315,21 +3470,21 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length <= cmd.length + 1) return API.sendChat('/me MotD: ' + jungleBot.settings.motd);
+                                  if (msg.length <= cmd.length + 1) return API.sendChat('/me MotD: ' + alertBot.settings.motd);
                                   var argument = msg.substring(cmd.length + 1);
-                                  if (!jungleBot.settings.motdEnabled) jungleBot.settings.motdEnabled = !jungleBot.settings.motdEnabled;
+                                  if (!alertBot.settings.motdEnabled) alertBot.settings.motdEnabled = !alertBot.settings.motdEnabled;
                                   if (isNaN(argument)) {
-                                      jungleBot.settings.motd = argument;
-                                      API.sendChat(subChat(jungleBot.chat.motdset, {
-                                          msg: jungleBot.settings.motd
+                                      alertBot.settings.motd = argument;
+                                      API.sendChat(subChat(alertBot.chat.motdset, {
+                                          msg: alertBot.settings.motd
                                       }));
                                   } else {
-                                      jungleBot.settings.motdInterval = argument;
-                                      API.sendChat(subChat(jungleBot.chat.motdintervalset, {
-                                          interval: jungleBot.settings.motdInterval
+                                      alertBot.settings.motdInterval = argument;
+                                      API.sendChat(subChat(alertBot.chat.motdintervalset, {
+                                          interval: alertBot.settings.motdInterval
                                       }));
                                   }
                               }
@@ -3342,10 +3497,10 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var firstSpace = msg.indexOf(' ');
@@ -3359,19 +3514,19 @@
                                       pos = parseInt(msg.substring(lastSpace + 1));
                                       name = msg.substring(cmd.length + 2, lastSpace);
                                   }
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
-                                  if (user.id === jungleBot.loggedInID) return API.sendChat(subChat(jungleBot.chat.addbotwaitlist, {
+                                  if (user.id === alertBot.loggedInID) return API.sendChat(subChat(alertBot.chat.addbotwaitlist, {
                                       name: chat.un
                                   }));
                                   if (!isNaN(pos)) {
-                                      API.sendChat(subChat(jungleBot.chat.move, {
+                                      API.sendChat(subChat(alertBot.chat.move, {
                                           name: chat.un
                                       }));
-                                      jungleBot.userUtilities.moveUser(user.id, pos, false);
-                                  } else return API.sendChat(subChat(jungleBot.chat.invalidpositionspecified, {
+                                      alertBot.userUtilities.moveUser(user.id, pos, false);
+                                  } else return API.sendChat(subChat(alertBot.chat.invalidpositionspecified, {
                                       name: chat.un
                                   }));
                               }
@@ -3384,10 +3539,10 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var lastSpace = msg.lastIndexOf(' ');
@@ -3399,55 +3554,55 @@
                                   } else {
                                       time = msg.substring(lastSpace + 1);
                                       if (isNaN(time) || time == '' || time == null || typeof time == 'undefined') {
-                                          return API.sendChat(subChat(jungleBot.chat.invalidtime, {
+                                          return API.sendChat(subChat(alertBot.chat.invalidtime, {
                                               name: chat.un
                                           }));
                                       }
                                       name = msg.substring(cmd.length + 2, lastSpace);
                                   }
                                   var from = chat.un;
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (typeof user === 'boolean') return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
-                                  var permUser = jungleBot.userUtilities.getPermission(user.id);
+                                  var permUser = alertBot.userUtilities.getPermission(user.id);
                                   if (permUser == API.ROLE.NONE) {
                                       if (time > 45) {
                                           API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
-                                          API.sendChat(subChat(jungleBot.chat.mutedmaxtime, {
+                                          API.sendChat(subChat(alertBot.chat.mutedmaxtime, {
                                               name: chat.un,
                                               time: '45'
                                           }));
                                       } else if (time === 45) {
                                           API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
-                                          API.sendChat(subChat(jungleBot.chat.mutedtime, {
+                                          API.sendChat(subChat(alertBot.chat.mutedtime, {
                                               name: chat.un,
                                               username: name,
                                               time: time
                                           }));
                                       } else if (time > 30) {
                                           API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
-                                          API.sendChat(subChat(jungleBot.chat.mutedtime, {
+                                          API.sendChat(subChat(alertBot.chat.mutedtime, {
                                               name: chat.un,
                                               username: name,
                                               time: time
                                           }));
                                       } else if (time > 15) {
                                           API.moderateMuteUser(user.id, 1, API.MUTE.MEDIUM);
-                                          API.sendChat(subChat(jungleBot.chat.mutedtime, {
+                                          API.sendChat(subChat(alertBot.chat.mutedtime, {
                                               name: chat.un,
                                               username: name,
                                               time: time
                                           }));
                                       } else {
                                           API.moderateMuteUser(user.id, 1, API.MUTE.SHORT);
-                                          API.sendChat(subChat(jungleBot.chat.mutedtime, {
+                                          API.sendChat(subChat(alertBot.chat.mutedtime, {
                                               name: chat.un,
                                               username: name,
                                               time: time
                                           }));
                                       }
-                                  } else API.sendChat(subChat(jungleBot.chat.muterank, {
+                                  } else API.sendChat(subChat(alertBot.chat.muterank, {
                                       name: chat.un
                                   }));
                               }
@@ -3460,11 +3615,11 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (typeof jungleBot.settings.opLink === 'string')
-                                      return API.sendChat(subChat(jungleBot.chat.oplist, {
-                                          link: jungleBot.settings.opLink
+                                  if (typeof alertBot.settings.opLink === 'string')
+                                      return API.sendChat(subChat(alertBot.chat.oplist, {
+                                          link: alertBot.settings.opLink
                                       }));
                               }
                           }
@@ -3476,9 +3631,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  API.sendChat(jungleBot.chat.pong)
+                                  API.sendChat(alertBot.chat.pong)
                               }
                           }
                       },
@@ -3489,11 +3644,11 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   //sendToSocket();
                                   storeToStorage();
-                                  jungleBot.disconnectAPI();
+                                  alertBot.disconnectAPI();
                                   setTimeout(function() {
                                       window.location.reload(false);
                                   }, 1000);
@@ -3508,15 +3663,15 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  API.sendChat(jungleBot.chat.reload);
+                                  API.sendChat(alertBot.chat.reload);
                                   //sendToSocket();
                                   storeToStorage();
-                                  jungleBot.disconnectAPI();
+                                  alertBot.disconnectAPI();
                                   kill();
                                   setTimeout(function() {
-                                      $.getScript(jungleBot.settings.scriptLink);
+                                      $.getScript(alertBot.settings.scriptLink);
                                   }, 2000);
                               }
                           }
@@ -3528,12 +3683,12 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   if (msg.length > cmd.length + 2) {
                                       var name = msg.substr(cmd.length + 2);
-                                      var user = jungleBot.userUtilities.lookupUserName(name);
+                                      var user = alertBot.userUtilities.lookupUserName(name);
                                       if (typeof user !== 'boolean') {
                                           user.lastDC = {
                                               time: null,
@@ -3546,11 +3701,11 @@
                                                   API.moderateRemoveDJ(user.id);
                                               }, 1 * 1000, user);
                                           } else API.moderateRemoveDJ(user.id);
-                                      } else API.sendChat(subChat(jungleBot.chat.removenotinwl, {
+                                      } else API.sendChat(subChat(alertBot.chat.removenotinwl, {
                                           name: chat.un,
                                           username: name
                                       }));
-                                  } else API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  } else API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                               }
@@ -3563,19 +3718,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.etaRestriction) {
-                                      jungleBot.settings.etaRestriction = !jungleBot.settings.etaRestriction;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.etaRestriction) {
+                                      alertBot.settings.etaRestriction = !alertBot.settings.etaRestriction;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.etarestriction
+                                          'function': alertBot.chat.etarestriction
                                       }));
                                   } else {
-                                      jungleBot.settings.etaRestriction = !jungleBot.settings.etaRestriction;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.etaRestriction = !alertBot.settings.etaRestriction;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.etarestriction
+                                          'function': alertBot.chat.etarestriction
                                       }));
                                   }
                               }
@@ -3588,10 +3743,10 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (!jungleBot.room.roulette.rouletteStatus) {
-                                      jungleBot.room.roulette.startRoulette();
+                                  if (!alertBot.room.roulette.rouletteStatus) {
+                                      alertBot.room.roulette.startRoulette();
                                   }
                               }
                           }
@@ -3603,11 +3758,11 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (typeof jungleBot.settings.rulesLink === 'string')
-                                      return API.sendChat(subChat(jungleBot.chat.roomrules, {
-                                          link: jungleBot.settings.rulesLink
+                                  if (typeof alertBot.settings.rulesLink === 'string')
+                                      return API.sendChat(subChat(alertBot.chat.roomrules, {
+                                          link: alertBot.settings.rulesLink
                                       }));
                               }
                           }
@@ -3619,13 +3774,13 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var from = chat.un;
-                                  var woots = jungleBot.room.roomstats.totalWoots;
-                                  var mehs = jungleBot.room.roomstats.totalMehs;
-                                  var grabs = jungleBot.room.roomstats.totalCurates;
-                                  API.sendChat(subChat(jungleBot.chat.sessionstats, {
+                                  var woots = alertBot.room.roomstats.totalWoots;
+                                  var mehs = alertBot.room.roomstats.totalMehs;
+                                  var grabs = alertBot.room.roomstats.totalCurates;
+                                  API.sendChat(subChat(alertBot.chat.sessionstats, {
                                       name: from,
                                       woots: woots,
                                       mehs: mehs,
@@ -3641,9 +3796,9 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.room.skippable) {
+                                  if (alertBot.room.skippable) {
 
                                       var timeLeft = API.getTimeRemaining();
                                       var timeElapsed = API.getTimeElapsed();
@@ -3652,11 +3807,11 @@
                                       var msgSend = '@' + name + ', ';
 
                                       if (chat.message.length === cmd.length) {
-                                          API.sendChat(subChat(jungleBot.chat.usedskip, {
+                                          API.sendChat(subChat(alertBot.chat.usedskip, {
                                               name: chat.un
                                           }));
-                                          if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
-                                              jungleBot.roomUtilities.smartSkip();
+                                          if (alertBot.settings.smartSkip && timeLeft > timeElapsed) {
+                                              alertBot.roomUtilities.smartSkip();
                                           } else {
                                               API.moderateForceSkip();
                                           }
@@ -3664,19 +3819,19 @@
                                       var validReason = false;
                                       var msg = chat.message;
                                       var reason = msg.substring(cmd.length + 1);
-                                      for (var i = 0; i < jungleBot.settings.skipReasons.length; i++) {
-                                          var r = jungleBot.settings.skipReasons[i][0];
+                                      for (var i = 0; i < alertBot.settings.skipReasons.length; i++) {
+                                          var r = alertBot.settings.skipReasons[i][0];
                                           if (reason.indexOf(r) !== -1) {
                                               validReason = true;
-                                              msgSend += jungleBot.settings.skipReasons[i][1];
+                                              msgSend += alertBot.settings.skipReasons[i][1];
                                           }
                                       }
                                       if (validReason) {
-                                          API.sendChat(subChat(jungleBot.chat.usedskip, {
+                                          API.sendChat(subChat(alertBot.chat.usedskip, {
                                               name: chat.un
                                           }));
-                                          if (jungleBot.settings.smartSkip && timeLeft > timeElapsed) {
-                                              jungleBot.roomUtilities.smartSkip(msgSend);
+                                          if (alertBot.settings.smartSkip && timeLeft > timeElapsed) {
+                                              alertBot.roomUtilities.smartSkip(msgSend);
                                           } else {
                                               API.moderateForceSkip();
                                               setTimeout(function() {
@@ -3695,17 +3850,17 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var pos = msg.substring(cmd.length + 1);
                                   if (!isNaN(pos)) {
-                                      jungleBot.settings.skipPosition = pos;
-                                      return API.sendChat(subChat(jungleBot.chat.skippos, {
+                                      alertBot.settings.skipPosition = pos;
+                                      return API.sendChat(subChat(alertBot.chat.skippos, {
                                           name: chat.un,
-                                          position: jungleBot.settings.skipPosition
+                                          position: alertBot.settings.skipPosition
                                       }));
-                                  } else return API.sendChat(subChat(jungleBot.chat.invalidpositionspecified, {
+                                  } else return API.sendChat(subChat(alertBot.chat.invalidpositionspecified, {
                                       name: chat.un
                                   }));
                               }
@@ -3718,19 +3873,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.songstats) {
-                                      jungleBot.settings.songstats = !jungleBot.settings.songstats;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.songstats) {
+                                      alertBot.settings.songstats = !alertBot.settings.songstats;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.songstats
+                                          'function': alertBot.chat.songstats
                                       }));
                                   } else {
-                                      jungleBot.settings.songstats = !jungleBot.settings.songstats;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.songstats = !alertBot.settings.songstats;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.songstats
+                                          'function': alertBot.chat.songstats
                                       }));
                                   }
                               }
@@ -3743,9 +3898,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  API.sendChat('/me jungleBot is an open-source bot for plug.dj. More info can be found here: https://github.com/jungleBot/source');
+                                  API.sendChat('/me alertBot is an open-source bot for plug.dj. More info can be found here: https://github.com/alertBot/source');
                               }
                           }
                       },
@@ -3756,74 +3911,74 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var from = chat.un;
                                   var msg = '[@' + from + '] ';
 
-                                  msg += jungleBot.chat.afkremoval + ': ';
-                                  if (jungleBot.settings.afkRemoval) msg += 'ON';
+                                  msg += alertBot.chat.afkremoval + ': ';
+                                  if (alertBot.settings.afkRemoval) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
-                                  msg += jungleBot.chat.afksremoved + ': ' + jungleBot.room.afkList.length + '. ';
-                                  msg += jungleBot.chat.afklimit + ': ' + jungleBot.settings.maximumAfk + '. ';
+                                  msg += alertBot.chat.afksremoved + ': ' + alertBot.room.afkList.length + '. ';
+                                  msg += alertBot.chat.afklimit + ': ' + alertBot.settings.maximumAfk + '. ';
 
                                   msg += 'Bouncer+: ';
-                                  if (jungleBot.settings.bouncerPlus) msg += 'ON';
+                                  if (alertBot.settings.bouncerPlus) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.blacklist + ': ';
-                                  if (jungleBot.settings.blacklistEnabled) msg += 'ON';
+                                  msg += alertBot.chat.blacklist + ': ';
+                                  if (alertBot.settings.blacklistEnabled) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.lockguard + ': ';
-                                  if (jungleBot.settings.lockGuard) msg += 'ON';
+                                  msg += alertBot.chat.lockguard + ': ';
+                                  if (alertBot.settings.lockGuard) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.cycleguard + ': ';
-                                  if (jungleBot.settings.cycleGuard) msg += 'ON';
+                                  msg += alertBot.chat.cycleguard + ': ';
+                                  if (alertBot.settings.cycleGuard) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.timeguard + ': ';
-                                  if (jungleBot.settings.timeGuard) msg += 'ON';
+                                  msg += alertBot.chat.timeguard + ': ';
+                                  if (alertBot.settings.timeGuard) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.chatfilter + ': ';
-                                  if (jungleBot.settings.filterChat) msg += 'ON';
+                                  msg += alertBot.chat.chatfilter + ': ';
+                                  if (alertBot.settings.filterChat) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.historyskip + ': ';
-                                  if (jungleBot.settings.historySkip) msg += 'ON';
+                                  msg += alertBot.chat.historyskip + ': ';
+                                  if (alertBot.settings.historySkip) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.voteskip + ': ';
-                                  if (jungleBot.settings.voteSkip) msg += 'ON';
+                                  msg += alertBot.chat.voteskip + ': ';
+                                  if (alertBot.settings.voteSkip) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.cmddeletion + ': ';
-                                  if (jungleBot.settings.cmdDeletion) msg += 'ON';
+                                  msg += alertBot.chat.cmddeletion + ': ';
+                                  if (alertBot.settings.cmdDeletion) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
-                                  msg += jungleBot.chat.autoskip + ': ';
-                                  if (jungleBot.settings.autoskip) msg += 'ON';
+                                  msg += alertBot.chat.autoskip + ': ';
+                                  if (alertBot.settings.autoskip) msg += 'ON';
                                   else msg += 'OFF';
                                   msg += '. ';
 
                                   // TODO: Display more toggleable bot settings.
 
-                                  var launchT = jungleBot.room.roomstats.launchTime;
+                                  var launchT = alertBot.room.roomstats.launchTime;
                                   var durationOnline = Date.now() - launchT;
-                                  var since = jungleBot.roomUtilities.msToStr(durationOnline);
-                                  msg += subChat(jungleBot.chat.activefor, {
+                                  var since = alertBot.roomUtilities.msToStr(durationOnline);
+                                  msg += subChat(alertBot.chat.activefor, {
                                       time: since
                                   });
 
@@ -3866,52 +4021,52 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var firstSpace = msg.indexOf(' ');
                                   var lastSpace = msg.lastIndexOf(' ');
                                   var name1 = msg.split('@')[1].trim();
                                   var name2 = msg.split('@')[2].trim();
-                                  var user1 = jungleBot.userUtilities.lookupUserName(name1);
-                                  var user2 = jungleBot.userUtilities.lookupUserName(name2);
-                                  if (typeof user1 === 'boolean' || typeof user2 === 'boolean') return API.sendChat(subChat(jungleBot.chat.swapinvalid, {
+                                  var user1 = alertBot.userUtilities.lookupUserName(name1);
+                                  var user2 = alertBot.userUtilities.lookupUserName(name2);
+                                  if (typeof user1 === 'boolean' || typeof user2 === 'boolean') return API.sendChat(subChat(alertBot.chat.swapinvalid, {
                                       name: chat.un
                                   }));
-                                  if (user1.id === jungleBot.loggedInID || user2.id === jungleBot.loggedInID) return API.sendChat(subChat(jungleBot.chat.addbottowaitlist, {
+                                  if (user1.id === alertBot.loggedInID || user2.id === alertBot.loggedInID) return API.sendChat(subChat(alertBot.chat.addbottowaitlist, {
                                       name: chat.un
                                   }));
                                   var p1 = API.getWaitListPosition(user1.id) + 1;
                                   var p2 = API.getWaitListPosition(user2.id) + 1;
-                                  if (p1 < 0 && p2 < 0) return API.sendChat(subChat(jungleBot.chat.swapwlonly, {
+                                  if (p1 < 0 && p2 < 0) return API.sendChat(subChat(alertBot.chat.swapwlonly, {
                                       name: chat.un
                                   }));
-                                  API.sendChat(subChat(jungleBot.chat.swapping, {
+                                  API.sendChat(subChat(alertBot.chat.swapping, {
                                       'name1': name1,
                                       'name2': name2
                                   }));
                                   if (p1 === -1) {
                                       API.moderateRemoveDJ(user2.id);
                                       setTimeout(function(user1, p2) {
-                                          jungleBot.userUtilities.moveUser(user1.id, p2, true);
+                                          alertBot.userUtilities.moveUser(user1.id, p2, true);
                                       }, 2000, user1, p2);
                                   } else if (p2 === -1) {
                                       API.moderateRemoveDJ(user1.id);
                                       setTimeout(function(user2, p1) {
-                                          jungleBot.userUtilities.moveUser(user2.id, p1, true);
+                                          alertBot.userUtilities.moveUser(user2.id, p1, true);
                                       }, 2000, user2, p1);
                                   } else if (p1 < p2) {
-                                      jungleBot.userUtilities.moveUser(user2.id, p1, false);
+                                      alertBot.userUtilities.moveUser(user2.id, p1, false);
                                       setTimeout(function(user1, p2) {
-                                          jungleBot.userUtilities.moveUser(user1.id, p2, false);
+                                          alertBot.userUtilities.moveUser(user1.id, p2, false);
                                       }, 2000, user1, p2);
                                   } else {
-                                      jungleBot.userUtilities.moveUser(user1.id, p2, false);
+                                      alertBot.userUtilities.moveUser(user1.id, p2, false);
                                       setTimeout(function(user2, p1) {
-                                          jungleBot.userUtilities.moveUser(user2.id, p1, false);
+                                          alertBot.userUtilities.moveUser(user2.id, p1, false);
                                       }, 2000, user2, p1);
                                   }
                               }
@@ -3924,11 +4079,11 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (typeof jungleBot.settings.themeLink === 'string')
-                                      API.sendChat(subChat(jungleBot.chat.genres, {
-                                          link: jungleBot.settings.themeLink
+                                  if (typeof alertBot.settings.themeLink === 'string')
+                                      API.sendChat(subChat(alertBot.chat.genres, {
+                                          link: alertBot.settings.themeLink
                                       }));
                               }
                           }
@@ -3940,9 +4095,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.thorCommand) {
+                                  if (alertBot.settings.thorCommand) {
                                       var id = chat.uid,
                                           isDj = API.getDJ().id == id ? true : false,
                                           from = chat.un,
@@ -3969,19 +4124,19 @@
                                       }
 
                                       if (inDjList) {
-                                          for (var i = 0; i < jungleBot.room.usersUsedThor.length; i++) {
-                                              if (jungleBot.room.usersUsedThor[i].id == id) {
-                                                  oldTime = jungleBot.room.usersUsedThor[i].time;
+                                          for (var i = 0; i < alertBot.room.usersUsedThor.length; i++) {
+                                              if (alertBot.room.usersUsedThor[i].id == id) {
+                                                  oldTime = alertBot.room.usersUsedThor[i].time;
                                                   usedThor = true;
                                                   indexArrUsedThor = i;
                                               }
                                           }
 
                                           if (usedThor) {
-                                              timeInMinutes = (jungleBot.settings.thorCooldown + 1) - (Math.floor((oldTime - Date.now()) * Math.pow(10, -5)) * -1);
+                                              timeInMinutes = (alertBot.settings.thorCooldown + 1) - (Math.floor((oldTime - Date.now()) * Math.pow(10, -5)) * -1);
                                               thorCd = timeInMinutes > 0 ? true : false;
                                               if (thorCd == false)
-                                                  jungleBot.room.usersUsedThor.splice(indexArrUsedThor, 1);
+                                                  alertBot.room.usersUsedThor.splice(indexArrUsedThor, 1);
                                           }
 
                                           if (thorCd == false || usedThor == false) {
@@ -3989,16 +4144,16 @@
                                                   id: id,
                                                   time: Date.now()
                                               };
-                                              jungleBot.room.usersUsedThor.push(user);
+                                              alertBot.room.usersUsedThor.push(user);
                                           }
                                       }
 
                                       if (!inDjList) {
-                                          return API.sendChat(subChat(jungleBot.chat.thorNotClose, {
+                                          return API.sendChat(subChat(alertBot.chat.thorNotClose, {
                                               name: from
                                           }));
                                       } else if (thorCd) {
-                                          return API.sendChat(subChat(jungleBot.chat.thorcd, {
+                                          return API.sendChat(subChat(alertBot.chat.thorcd, {
                                               name: from,
                                               time: timeInMinutes
                                           }));
@@ -4006,14 +4161,14 @@
 
                                       if (worthy) {
                                           if (API.getWaitListPosition(id) != 0)
-                                              jungleBot.userUtilities.moveUser(id, 1, false);
-                                          API.sendChat(subChat(jungleBot.chat.thorWorthy, {
+                                              alertBot.userUtilities.moveUser(id, 1, false);
+                                          API.sendChat(subChat(alertBot.chat.thorWorthy, {
                                               name: from
                                           }));
                                       } else {
                                           if (API.getWaitListPosition(id) != djlist.length - 1)
-                                              jungleBot.userUtilities.moveUser(id, djlist.length, false);
-                                          API.sendChat(subChat(jungleBot.chat.thorNotWorthy, {
+                                              alertBot.userUtilities.moveUser(id, djlist.length, false);
+                                          API.sendChat(subChat(alertBot.chat.thorNotWorthy, {
                                               name: from
                                           }));
                                       }
@@ -4028,19 +4183,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.timeGuard) {
-                                      jungleBot.settings.timeGuard = !jungleBot.settings.timeGuard;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.timeGuard) {
+                                      alertBot.settings.timeGuard = !alertBot.settings.timeGuard;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.timeguard
+                                          'function': alertBot.chat.timeguard
                                       }));
                                   } else {
-                                      jungleBot.settings.timeGuard = !jungleBot.settings.timeGuard;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.timeGuard = !alertBot.settings.timeGuard;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.timeguard
+                                          'function': alertBot.chat.timeguard
                                       }));
                                   }
 
@@ -4054,18 +4209,18 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  var temp = jungleBot.settings.blacklistEnabled;
-                                  jungleBot.settings.blacklistEnabled = !temp;
-                                  if (jungleBot.settings.blacklistEnabled) {
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                  var temp = alertBot.settings.blacklistEnabled;
+                                  alertBot.settings.blacklistEnabled = !temp;
+                                  if (alertBot.settings.blacklistEnabled) {
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.blacklist
+                                          'function': alertBot.chat.blacklist
                                       }));
-                                  } else return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  } else return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                       name: chat.un,
-                                      'function': jungleBot.chat.blacklist
+                                      'function': alertBot.chat.blacklist
                                   }));
                               }
                           }
@@ -4077,19 +4232,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.motdEnabled) {
-                                      jungleBot.settings.motdEnabled = !jungleBot.settings.motdEnabled;
-                                      API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.motdEnabled) {
+                                      alertBot.settings.motdEnabled = !alertBot.settings.motdEnabled;
+                                      API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.motd
+                                          'function': alertBot.chat.motd
                                       }));
                                   } else {
-                                      jungleBot.settings.motdEnabled = !jungleBot.settings.motdEnabled;
-                                      API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.motdEnabled = !alertBot.settings.motdEnabled;
+                                      API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.motd
+                                          'function': alertBot.chat.motd
                                       }));
                                   }
                               }
@@ -4102,19 +4257,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.voteSkip) {
-                                      jungleBot.settings.voteSkip = !jungleBot.settings.voteSkip;
-                                      API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.voteSkip) {
+                                      alertBot.settings.voteSkip = !alertBot.settings.voteSkip;
+                                      API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.voteskip
+                                          'function': alertBot.chat.voteskip
                                       }));
                                   } else {
-                                      jungleBot.settings.voteSkip = !jungleBot.settings.voteSkip;
-                                      API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.voteSkip = !alertBot.settings.voteSkip;
+                                      API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.voteskip
+                                          'function': alertBot.chat.voteskip
                                       }));
                                   }
                               }
@@ -4127,7 +4282,7 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   $.getJSON('/_/bans', function(json) {
                                       var msg = chat.message;
@@ -4143,7 +4298,7 @@
                                               found = true;
                                           }
                                       }
-                                      if (!found) return API.sendChat(subChat(jungleBot.chat.notbanned, {
+                                      if (!found) return API.sendChat(subChat(alertBot.chat.notbanned, {
                                           name: chat.un
                                       }));
                                       API.moderateUnbanUser(bannedUser.id);
@@ -4159,9 +4314,9 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  jungleBot.roomUtilities.booth.unlockBooth();
+                                  alertBot.roomUtilities.booth.unlockBooth();
                               }
                           }
                       },
@@ -4172,7 +4327,7 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   $.getJSON('/_/mutes', function(json) {
                                       var msg = chat.message;
@@ -4182,16 +4337,16 @@
                                       var mutedUsers = json.data;
                                       var found = false;
                                       var mutedUser = null;
-                                      var permFrom = jungleBot.userUtilities.getPermission(chat.uid);
+                                      var permFrom = alertBot.userUtilities.getPermission(chat.uid);
                                       if (msg.indexOf('@') === -1 && arg === 'all') {
                                           if (permFrom > API.ROLE.BOUNCER) {
                                               for (var i = 0; i < mutedUsers.length; i++) {
                                                   API.moderateUnmuteUser(mutedUsers[i].id);
                                               }
-                                              API.sendChat(subChat(jungleBot.chat.unmutedeveryone, {
+                                              API.sendChat(subChat(alertBot.chat.unmutedeveryone, {
                                                   name: chat.un
                                               }));
-                                          } else API.sendChat(subChat(jungleBot.chat.unmuteeveryonerank, {
+                                          } else API.sendChat(subChat(alertBot.chat.unmuteeveryonerank, {
                                               name: chat.un
                                           }));
                                       } else {
@@ -4202,7 +4357,7 @@
                                                   found = true;
                                               }
                                           }
-                                          if (!found) return API.sendChat(subChat(jungleBot.chat.notbanned, {
+                                          if (!found) return API.sendChat(subChat(alertBot.chat.notbanned, {
                                               name: chat.un
                                           }));
                                           API.moderateUnmuteUser(mutedUser.id);
@@ -4219,12 +4374,12 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  var launchT = jungleBot.room.roomstats.launchTime;
+                                  var launchT = alertBot.room.roomstats.launchTime;
                                   var durationOnline = Date.now() - launchT;
-                                  var since = jungleBot.roomUtilities.msToStr(durationOnline);
-                                  API.sendChat(subChat(jungleBot.chat.activefor, {
+                                  var since = alertBot.roomUtilities.msToStr(durationOnline);
+                                  API.sendChat(subChat(alertBot.chat.activefor, {
                                       time: since
                                   }));
                               }
@@ -4237,17 +4392,17 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var cd = msg.substring(cmd.length + 1);
                                   if (!isNaN(cd)) {
-                                      jungleBot.settings.commandCooldown = cd;
-                                      return API.sendChat(subChat(jungleBot.chat.commandscd, {
+                                      alertBot.settings.commandCooldown = cd;
+                                      return API.sendChat(subChat(alertBot.chat.commandscd, {
                                           name: chat.un,
-                                          time: jungleBot.settings.commandCooldown
+                                          time: alertBot.settings.commandCooldown
                                       }));
-                                  } else return API.sendChat(subChat(jungleBot.chat.invalidtime, {
+                                  } else return API.sendChat(subChat(alertBot.chat.invalidtime, {
                                       name: chat.un
                                   }));
                               }
@@ -4260,20 +4415,20 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.usercommandsEnabled) {
-                                      API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.usercommandsEnabled) {
+                                      API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.usercommands
+                                          'function': alertBot.chat.usercommands
                                       }));
-                                      jungleBot.settings.usercommandsEnabled = !jungleBot.settings.usercommandsEnabled;
+                                      alertBot.settings.usercommandsEnabled = !alertBot.settings.usercommandsEnabled;
                                   } else {
-                                      API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.usercommands
+                                          'function': alertBot.chat.usercommands
                                       }));
-                                      jungleBot.settings.usercommandsEnabled = !jungleBot.settings.usercommandsEnabled;
+                                      alertBot.settings.usercommandsEnabled = !alertBot.settings.usercommandsEnabled;
                                   }
                               }
                           }
@@ -4285,20 +4440,20 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length === cmd.length) return API.sendChat(subChat(jungleBot.chat.nouserspecified, {
+                                  if (msg.length === cmd.length) return API.sendChat(subChat(alertBot.chat.nouserspecified, {
                                       name: chat.un
                                   }));
                                   var name = msg.substring(cmd.length + 2);
-                                  var user = jungleBot.userUtilities.lookupUserName(name);
-                                  if (user === false) return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                                  var user = alertBot.userUtilities.lookupUserName(name);
+                                  if (user === false) return API.sendChat(subChat(alertBot.chat.invaliduserspecified, {
                                       name: chat.un
                                   }));
                                   var vratio = user.votes;
                                   var ratio = vratio.woot / vratio.meh;
-                                  API.sendChat(subChat(jungleBot.chat.voteratio, {
+                                  API.sendChat(subChat(alertBot.chat.voteratio, {
                                       name: chat.un,
                                       username: name,
                                       woot: vratio.woot,
@@ -4315,24 +4470,24 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
-                                  if (msg.length <= cmd.length + 1) return API.sendChat(subChat(jungleBot.chat.voteskiplimit, {
+                                  if (msg.length <= cmd.length + 1) return API.sendChat(subChat(alertBot.chat.voteskiplimit, {
                                       name: chat.un,
-                                      limit: jungleBot.settings.voteSkipLimit
+                                      limit: alertBot.settings.voteSkipLimit
                                   }));
                                   var argument = msg.substring(cmd.length + 1);
-                                  if (!jungleBot.settings.voteSkip) jungleBot.settings.voteSkip = !jungleBot.settings.voteSkip;
+                                  if (!alertBot.settings.voteSkip) alertBot.settings.voteSkip = !alertBot.settings.voteSkip;
                                   if (isNaN(argument)) {
-                                      API.sendChat(subChat(jungleBot.chat.voteskipinvalidlimit, {
+                                      API.sendChat(subChat(alertBot.chat.voteskipinvalidlimit, {
                                           name: chat.un
                                       }));
                                   } else {
-                                      jungleBot.settings.voteSkipLimit = argument;
-                                      API.sendChat(subChat(jungleBot.chat.voteskipsetlimit, {
+                                      alertBot.settings.voteSkipLimit = argument;
+                                      API.sendChat(subChat(alertBot.chat.voteskipsetlimit, {
                                           name: chat.un,
-                                          limit: jungleBot.settings.voteSkipLimit
+                                          limit: alertBot.settings.voteSkipLimit
                                       }));
                                   }
                               }
@@ -4345,19 +4500,19 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (jungleBot.settings.welcome) {
-                                      jungleBot.settings.welcome = !jungleBot.settings.welcome;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleoff, {
+                                  if (alertBot.settings.welcome) {
+                                      alertBot.settings.welcome = !alertBot.settings.welcome;
+                                      return API.sendChat(subChat(alertBot.chat.toggleoff, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.welcomemsg
+                                          'function': alertBot.chat.welcomemsg
                                       }));
                                   } else {
-                                      jungleBot.settings.welcome = !jungleBot.settings.welcome;
-                                      return API.sendChat(subChat(jungleBot.chat.toggleon, {
+                                      alertBot.settings.welcome = !alertBot.settings.welcome;
+                                      return API.sendChat(subChat(alertBot.chat.toggleon, {
                                           name: chat.un,
-                                          'function': jungleBot.chat.welcomemsg
+                                          'function': alertBot.chat.welcomemsg
                                       }));
                                   }
                               }
@@ -4370,7 +4525,7 @@
                           type: 'startsWith',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
                                   var msg = chat.message;
                                   var name;
@@ -4441,7 +4596,7 @@
                                               var profile = '~';
                                           }
 
-                                          API.sendChat(subChat(jungleBot.chat.whois, {
+                                          API.sendChat(subChat(alertBot.chat.whois, {
                                               name1: chat.un,
                                               name2: name,
                                               id: id,
@@ -4464,12 +4619,12 @@
                           type: 'exact',
                           functionality: function(chat, cmd) {
                               if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                              if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                              if (!alertBot.commands.executable(this.rank, chat)) return void(0);
                               else {
-                                  if (typeof jungleBot.settings.youtubeLink === 'string')
-                                      API.sendChat(subChat(jungleBot.chat.youtube, {
+                                  if (typeof alertBot.settings.youtubeLink === 'string')
+                                      API.sendChat(subChat(alertBot.chat.youtube, {
                                           name: chat.un,
-                                          link: jungleBot.settings.youtubeLink
+                                          link: alertBot.settings.youtubeLink
                                       }));
                               }
                           }
