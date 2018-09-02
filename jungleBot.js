@@ -1656,7 +1656,7 @@
                                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                      else {
-                                                API.sendChat(cmdmsg + 'https://media.giphy.com/media/37QV3rY44VzodzMdX8/giphy.gif');
+                                                API.sendChat(cmdmsg + ' https://media.giphy.com/media/37QV3rY44VzodzMdX8/giphy.gif');
                                      }
                                  }
                              },
@@ -1675,7 +1675,7 @@
                                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                      else {
-                                                API.sendChat(cmdmsg + 'https://i.imgur.com/CWOpSUe.gif');
+                                                API.sendChat(cmdmsg + ' https://i.imgur.com/CWOpSUe.gif');
                                      }
                                  }
                              },
