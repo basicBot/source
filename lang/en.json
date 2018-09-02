@@ -194,7 +194,7 @@
     "songlink": "\/me [@%%NAME%%] Here is a link to the current song: %%LINK%%",
     "usedlockskip": "\/me [%%NAME%% used lockskip]",
     "usedskip": "\/me [%%NAME%% used skip]",
-    "skippos": "\/me [@%%NAME%%] DJs will now be moved to position %%POSITION%% when skipped.",
+    "skippos": "\/me [@%%NAME%%] DJs will now be moved to position %%POSITION%% when skipped by me.",
     "lockguardtime": "\/me [@%%NAME%%] The lockguard is set to %%TIME%% minute(s).",
     "maxlengthtime": "\/me [@%%NAME%%] The maximum song duration is set to %%TIME%% minutes.",
     "motdset": "\/me MotD set to:  %%MSG%%",
