@@ -1394,10 +1394,7 @@
                 API.chatLog('Avatars capped at ' + alertBot.settings.startupCap);
                 API.chatLog('Volume set to ' + alertBot.settings.startupVolume);
                 //socket();
-                loadChat(API.sendChat(subChat(alertBot.chat.online, {
-                    botname: alertBot.settings.botName,
-                    version: alertBot.version
-                })));
+                API.chatLog('AlertBot 0.0.1 online COGGERS');
             },
         commands: {
             executable: function(minRank, chat) {
