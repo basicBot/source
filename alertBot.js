@@ -1013,7 +1013,6 @@
                 //var queue = jungleBot.room.queue;
                 API.chatLog('next DJ');
 
-                }
 
                 var user = alertBot.userUtilities.lookupUser(obj.dj.id)
                 for (var i = 0; i < alertBot.room.users.length; i++) {
