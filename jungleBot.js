@@ -1539,6 +1539,7 @@
 
 
 
+
 	// START OF COMMANDS
 
 		// START OF CUSTOM COMMANDS
@@ -1605,7 +1606,7 @@
 //Explain Resident DJ role
 
            rdjCommand: {
-                     command: ['rdj'],
+                     command: 'rdj',
                      rank: 'user',
                      type: 'startsWith',
                      functionality: function(chat, cmd) {
