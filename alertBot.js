@@ -1010,13 +1010,12 @@
             eventDjadvance: function(obj) {
                 if (!obj.dj) return;
                 API.chatLog('next dj');
-                var wlist = API.getWaitList();
 
                 var queue = alertBot.room.queue;
 
                 var newusers = 0;
 
-                for (var i = 0; i < wlist.length; i++) {
+                for (var i = 0; i < queue.length; i++) {
 
                     var quserid = queue.id[i];
                     var qusername = alertBot.userUtilities.lookupUserName(quserid);
