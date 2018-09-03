@@ -100,7 +100,7 @@
     "permissionownsong": "\/me :up: @%%NAME%% has permission to play their own production!",
     "isblacklisted": "\/me This track is on the %%BLACKLIST%% blacklist! Skipping...",
     "isopen": "\/me The roulette is now open! Type !join to participate! (A game where a random participant is moved to a random position in the waitlist)",
-    "winnerpicked": "\/me %%PARTICIPANTS%% people entered the roulette and a winner has been picked! @%%NAME%% to position %%POSITION%%. :bttvClap:",
+    "winnerpicked": "\/me A winner has been picked out of %%PARTICIPANTS%% participants! @%%NAME%% to position %%POSITION%%. :bttvClap:",
     "ball": "\/me %%NAME%%'s question was: \"%%QUESTION%%\" and %%BOTNAME%%'s response is: \"%%RESPONSE%%\"",
     "notghosting": "[%%NAME1%%] %%NAME2%% is not ghosting.",
     "ghosting": "[%%NAME1%%] %%NAME2%% is either ghosting or not here.",
