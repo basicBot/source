@@ -216,7 +216,7 @@
     "sessionstats": "\/me [@%%NAME%%] Total woots: %%WOOTS%%, total mehs: %%MEHS%%, total grabs: %%GRABS%%.",
     "forceskip": "\/me [%%NAME%% used forceskip]",
     "madeby": "\/me This bot was made by %%NAME%%.",
-    "activefor": "I have been active for %%TIME%%.",
+    "activefor": "I have bee active for %%TIME%%. :bUrself:",
     "swapinvalid": "\/me [@%%NAME%%] Invalid user specified. (No names with spaces!)",
     "swapwlonly": "\/me [@%%NAME%%] Please only swap users that are in the waitlist!",
     "swapping": "\/me Swapping %%NAME1%% with %%NAME2%%.",
