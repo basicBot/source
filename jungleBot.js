@@ -1701,7 +1701,7 @@
                                      }
                                  }
                              },
-		
+
             //housechamp
 
                        housechampCommand: {
@@ -1747,7 +1747,7 @@
                                     };
                                     jungleBot.room.newBlacklisted.push(track);
                                     jungleBot.room.blacklists[list].push(media.format + ':' + media.cid);
-                                    API.sendChat('/me Added.');
+                                    API.sendChat('! confirmed');
                                     API.chatLog(subChat(jungleBot.chat.newblacklisted, {
                                         name: chat.un,
                                         blacklist: list,
