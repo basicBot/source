@@ -1709,7 +1709,7 @@
                                               };
                                               alertBot.room.newBlacklisted.push(track);
                                               alertBot.room.blacklists[list].push(media.format + ':' + media.cid);
-                                              API.sendChat('/me Added.');
+                                              API.sendChat('! Confirmed.');
                                               API.chatLog(subChat(alertBot.chat.newblacklisted, {
                                                   name: chat.un,
                                                   blacklist: list,
