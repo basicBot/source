@@ -1630,7 +1630,7 @@
 
                        pepeplsCommand: {
                                  command: ['pepepls'],
-                                 rank: 'residentdj',
+                                 rank: 'user',
                                  type: 'startsWith',
                                  functionality: function(chat, cmd) {
 
