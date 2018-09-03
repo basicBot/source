@@ -1011,9 +1011,11 @@
                 if (!obj.dj) return;
                 API.chatLog('next dj');
 
-                var queue = alertBot.room.queue;
+                var queue = alertBot.room.queue[];
 
+                var queuelength = queue.length;
                 var newusers = 0;
+                API.chatLog(queuelenth);
 
                 for (var i = 0; i < 5; i++) {
 
