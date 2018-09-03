@@ -393,6 +393,7 @@
                     var user = jungleBot.userUtilities.lookupUser(winner);
                     var name = user.username;
                     API.sendChat(subChat(jungleBot.chat.winnerpicked, {
+                        participants: jungleBot.room.roulette.participants.length,
                         name: name,
                         position: pos
                     }));
