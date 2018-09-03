@@ -387,13 +387,14 @@
                 endRoulette: function() {
                     jungleBot.room.roulette.rouletteStatus = false;
                     var ind = Math.floor(Math.random() * jungleBot.room.roulette.participants.length);
+                    var participants = jungleBot.room.roulette.participants.length;
                     var winner = jungleBot.room.roulette.participants[ind];
                     jungleBot.room.roulette.participants = [];
                     var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
                     var user = jungleBot.userUtilities.lookupUser(winner);
                     var name = user.username;
                     API.sendChat(subChat(jungleBot.chat.winnerpicked, {
-                        participants: jungleBot.room.roulette.participants.length,
+                        participants: participants,
                         name: name,
                         position: pos
                     }));
