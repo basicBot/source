@@ -3947,12 +3947,12 @@
                         if (jungleBot.settings.bouncerPlus) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
-
+/*
                         msg += jungleBot.chat.blacklist + ': ';
                         if (jungleBot.settings.blacklistEnabled) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
-
+*/
                         msg += jungleBot.chat.lockguard + ': ';
                         if (jungleBot.settings.lockGuard) msg += 'ON';
                         else msg += 'OFF';
