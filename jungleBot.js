@@ -1605,7 +1605,35 @@
             },
             */
 
-
+	   //Scuffed(?) afk command
+		
+            afkCommand: {
+                command: ['afk', 'brb'],
+                rank: 'residentdj',
+                type: 'startsWith',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        var msg = chat.message;
+                        var name;
+                        if (msg.length === cmd.length) name = chat.un;
+                        else {
+                            name = msg.substring(cmd.length + 1);
+                            var perm = jungleBot.userUtilities.getPermission(chat.uid);
+                            if (perm < API.ROLE.DJ) return API.sendChat(subChat(jungleBot.chat.noperms, {
+                                name: chat.un
+                            }));
+                        }
+                        var user = jungleBot.userUtilities.lookupUserName(name);
+                        if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                            name: chat.un
+                        }));
+                        var toChat = jungleBot.userUtilities.afk(user.id);
+                        API.sendChat(toChat);
+		    }
+		}
+	    },
 
             //Explain Resident DJ role
 
