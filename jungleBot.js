@@ -1605,7 +1605,7 @@
             },
             */
 
-	   //Scuffed(?) afk command
+	   //Scuffed(!) afk command
 		
             afkCommand: {
                 command: ['afk', 'brb'],
@@ -1619,17 +1619,17 @@
                         var name;
                         if (msg.length === cmd.length) name = chat.un;
                         else {
-                            name = msg.substring(cmd.length + 1);
+                            name = msg.substring(cmd.length + 2);
                             var perm = jungleBot.userUtilities.getPermission(chat.uid);
                             if (perm < API.ROLE.DJ) return API.sendChat(subChat(jungleBot.chat.noperms, {
                                 name: chat.un
                             }));
                         }
                         var user = jungleBot.userUtilities.lookupUserName(name);
-                        if (typeof user === 'boolean') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
+                        if (typeof user === 'exact') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
                             name: chat.un
                         }));
-                        var toChat = jungleBot.userUtilities.afk(user.id);
+                        var toChat = jungleBot.chat.afk(user.id);
                         API.sendChat(toChat);
 		    }
 		}
