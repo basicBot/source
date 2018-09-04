@@ -83,7 +83,7 @@
     "noperms": "\/me @%%NAME%% You don't have the permission to do that.",
     "afk": "\/me @%%NAME%% is now AFK :residentsleeper:",
     "attitude": "\/me %%NAME%% Please lose your negative attitude. :xqcRage:",
-    "dab":"%%CMDMSG%% https:\/\/i.imgur.com\/wRwGkxI.gif",
+    "dab":"%%NAME%% https:\/\/i.imgur.com\/wRwGkxI.gif",
     "weirdchamp": "%%NAME%% https:\/\/i.imgur.com\/uvSgEW1.png",
     "nodatafound": "\/me No previous data found. WaitWhat",
     "currentlang": "\/me Language currently set to: %%LANGUAGE%%",
