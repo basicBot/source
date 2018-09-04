@@ -80,6 +80,8 @@
         "Just a little."
     ],
 
+    "noperms": "\/me @%%NAME%% You don't have the permission to do that.",
+    "afk": "\/me @%%NAME%% is now AFK :residentsleeper:",
     "attitude": "%%NAME%% Please lose your negative attitude. :xqcRage:",
     "dab":"%%CMDMSG%% https:\/\/i.imgur.com\/wRwGkxI.gif",
     "weirdchamp": "%%NAME%% https:\/\/i.imgur.com\/uvSgEW1.png",
