@@ -1605,8 +1605,27 @@
             },
             */
 
-	   //Scuffed(!) afk command
-		
+
+        //Infinite PogChamp works
+
+                  pogcycleCommand: {
+                             command: ['pogchamps', 'pogcycle'],
+                             rank: 'user',
+                             type: 'startsWith',
+                             functionality: function(chat, cmd) {
+
+                               var msg = chat.message;
+                               var cmdmsg = msg.substr(cmd.length + 1);
+
+                                 if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                                 if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                 else {
+                                            API.sendChat(cmdmsg + ' https://media.giphy.com/media/Pwno8LO6ZWJ0c/giphy.gif');
+                                 }
+                             }
+                         },
+	   //(formerly scuffed) afk command
+
             afkCommand: {
                 command: ['afk', 'brb'],
                 rank: 'user',
@@ -1615,25 +1634,10 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        var msg = chat.message;
-                        var name;
-                        if (msg.length === cmd.length) name = chat.un;
-                        else {
-                            name = msg.substring(cmd.length + 1);
-                            var perm = jungleBot.userUtilities.getPermission(chat.uid);
-                            if (perm < API.ROLE.DJ) return API.sendChat(subChat(jungleBot.chat.noperms, {
-                                name: chat.un
-                            }));
-                        }
-                        var user = jungleBot.userUtilities.lookupUserName(name);
-                        if (typeof user === 'exact') return API.sendChat(subChat(jungleBot.chat.invaliduserspecified, {
-                            name: chat.un
-                        }));
-                        var toChat = jungleBot.chat.afk(user.id);
-                        API.sendChat(toChat);
-		    }
-		}
-	    },
+                        API.sendChat('/me @'chat.un' is now afk.');
+      		          }
+      		      }
+      	    },
 
             //Explain Resident DJ role
 
@@ -1898,7 +1902,7 @@
                               }
                           }
                       },
-		
+
             // @user with dab
 
           	dabCommand: {
