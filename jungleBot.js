@@ -1609,7 +1609,7 @@
 		
             afkCommand: {
                 command: ['afk', 'brb'],
-                rank: 'residentdj',
+                rank: 'user',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
@@ -1619,7 +1619,7 @@
                         var name;
                         if (msg.length === cmd.length) name = chat.un;
                         else {
-                            name = msg.substring(cmd.length + 2);
+                            name = msg.substring(cmd.length + 1);
                             var perm = jungleBot.userUtilities.getPermission(chat.uid);
                             if (perm < API.ROLE.DJ) return API.sendChat(subChat(jungleBot.chat.noperms, {
                                 name: chat.un
