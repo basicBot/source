@@ -245,7 +245,7 @@
     var botCreatorIDs = [3851534, 4105209, 3941421, 37218461];
 
     var jungleBot = {
-        version: '2.12.2',
+        version: '3.0',
         status: false,
         name: 'jungleBot',
         loggedInID: null,
