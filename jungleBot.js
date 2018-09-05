@@ -2087,48 +2087,62 @@
                     }
                   },
 
-                   // RCS help
-                  rcsCommand: {
-                    command: ['rcs', 'downloadpoggers'],
-                    rank: 'user',
-                    type: 'exact',
-                    functionality: function (chat, cmd) {
-                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-                      else {
-                        API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension");
-                      }
-                    }
-                  },
+            // RCS help
 
-                   // Emotes help
-                  emotesCommand: {
-                    command: ['emotes'],
-                    rank: 'user',
-                    type: 'exact',
-                    functionality: function (chat, cmd) {
-                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-                      else {
-                        API.sendChat("To use emotes when you have RCS installed type colons like :this:");
-                      }
-                    }
-                  },
+        	rcsCommand: {
+                        command: ['rcs','downloadpoggers'],
+                        rank: 'user',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
 
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
 
-                   // GTE help
-                  gteCommand: {
-                    command: ['gte', 'downloadgte'],
-                    rank: 'user',
-                    type: 'exact',
-                    functionality: function (chat, cmd) {
-                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-                      else {
-                        API.sendChat("The GTE extension lets you see twitch emotes from any channel everywhere on the web: https://git.io/fN5eb#gte-extension");
-                      }
-                    }
-                  },
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat(cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension');
+                             }
+                          }
+                      },
+		
+            // Emotes Help
+
+        	emotesCommand: {
+                        command: ['emotes'],
+                        rank: 'user',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
+
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
+
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat(cmdmsg + ' To use emotes when you have RCS installed type colons like :this:');
+                             }
+                          }
+                      },
+
+            // GTE Help
+
+        	gteCommand: {
+                        command: ['gte','downloadgte'],
+                        rank: 'user',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
+
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
+
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat(cmdmsg + ' The GTE extension lets you see twitch emotes from any channel everywhere on the web: https://git.io/fN5eb#gte-extension');
+                             }
+                          }
+                      },
 
                    // Twitch link
                   twitchCommand: {
@@ -2159,6 +2173,24 @@
                   },
 
 
+            	  //New Rules Command (might be scuffed)
+
+                       junglerulesCommand: {
+                                 command: ['rules','info'],
+                                 rank: 'user',
+                                 type: 'startsWith',
+                                 functionality: function(chat, cmd) {
+
+                                   var msg = chat.message;
+                                   var cmdmsg = msg.substr(cmd.length + 1);
+
+                                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                                     else {
+                                                API.sendChat('/me ' + cmdmsg + ' Please find the room rules here: http://bit.ly/xqcs-jungle');
+                                     }
+                                 }
+},
 
 
           		//END OF CUSTOM COMMANDS
@@ -3857,21 +3889,7 @@
                 }
             },
 
-            rulesCommand: {
-                command: 'rules',
-                rank: 'user',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        if (typeof jungleBot.settings.rulesLink === 'string')
-                            return API.sendChat(subChat(jungleBot.chat.roomrules, {
-                                link: jungleBot.settings.rulesLink
-                            }));
-                    }
-                }
-            },
+            rulesCommand: {},
 
             sessionstatsCommand: {
                 command: 'sessionstats',
