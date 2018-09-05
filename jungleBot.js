@@ -286,7 +286,7 @@
   			strictTimeGuard: true,
   			maximumSongLength: 10,
   			autodisable: false,
-  			commandCooldown: 30,
+  			commandCooldown: 10,
   			usercommandsEnabled: true,
   			thorCommand: false,
   			thorCooldown: 1440,
@@ -1659,7 +1659,7 @@
             //pepepls
 
                        pepeplsCommand: {
-                                 command: ['pepepls'],
+                                 command: ['pepepls', 'dance'],
                                  rank: 'user',
                                  type: 'startsWith',
                                  functionality: function(chat, cmd) {
