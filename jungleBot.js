@@ -289,7 +289,7 @@
   			commandCooldown: 30,
   			usercommandsEnabled: true,
   			thorCommand: false,
-  			thorCooldown: 600,
+  			thorCooldown: 1440,
   			skipPosition: 0,
   			skipReasons: [
   				['theme', 'This song does not fit the room theme. '],
@@ -1901,7 +1901,7 @@
                           }
                       },
 
-            // @user with dab
+      // @user with dab
 
         	dabCommand: {
                         command: ['dab','xqcdab'],
@@ -2633,10 +2633,10 @@
                         jungleBot.settings.thorCommand = !jungleBot.settings.thorCommand;
                         if (jungleBot.settings.thorCommand) {
 
-                            API.sendChat('Thor command enabled.');
+                            API.sendChat('/me Thor command enabled.');
                         }
                         else {
-                            API.sendChat('Thor command disabled.');
+                            API.sendChat('/me Thor command disabled.');
                         }
                     }
                 }
@@ -4204,8 +4204,8 @@
                                 indexArrUsedThor,
                                 thorCd = false,
                                 timeInMinutes = 0,
-								pos = API.getWaitListPosition(chat.uid),
-                                worthyAlg = Math.floor(Math.random() * pos) + 1,
+								                pos = API.getWaitListPosition(chat.uid),
+                                worthyAlg = Math.floor(Math.random() * ((1 / 36) * (pos + 10) * (pos +10)) + 1),
                                 worthy = worthyAlg == 1 ? true : false;
 
                             // sly benzi 👀
@@ -4264,9 +4264,7 @@
                             } else {
                                 if (API.getWaitListPosition(id) != djlist.length - 1)
                                     API.moderateRemoveDJ(id);
-                                API.sendChat(subChat(jungleBot.chat.thorNotWorthy, {
-                                    name: from
-                                }));
+                                API.sendChat('/me @' + from + 'you\'re not worthy of the hammer. Was at position ' + pos + ' in the waitlist. Come back another day.');
                             }
                         }
                     }
