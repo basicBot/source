@@ -2068,7 +2068,7 @@
                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                       if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
                       else {
-                        API.sendChat("MrDestructoid says: If you're about to queue a nightcore song, just look up the original and queue that instead.");
+                        API.sendChat("/me says: If you're about to queue a nightcore song, just look up the original and queue that instead.");
                       }
                     }
                   },
@@ -2082,7 +2082,7 @@
                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                       if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
                       else {
-                        API.sendChat("Find the bot commands for this channel here: https://git.io/fN5eb#bot-commands");
+                        API.sendChat("/me Find the bot commands for this channel here: https://git.io/fN5eb#bot-commands");
                       }
                     }
                   },
@@ -2101,7 +2101,7 @@
                             if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                             if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                             else {
-        	                       API.sendChat(cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension');
+        	                       API.sendChat('/me ' + cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension');
                              }
                           }
                       },
@@ -2120,7 +2120,7 @@
                             if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                             if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                             else {
-        	                       API.sendChat(cmdmsg + ' To use emotes when you have RCS installed type colons like :this:');
+        	                       API.sendChat('/me ' + cmdmsg + ' To use emotes when you have RCS installed, type colons like :this:');
                              }
                           }
                       },
@@ -2139,7 +2139,7 @@
                             if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                             if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                             else {
-        	                       API.sendChat(cmdmsg + ' The GTE extension lets you see twitch emotes from any channel everywhere on the web: https://git.io/fN5eb#gte-extension');
+        	                       API.sendChat('/me ' + cmdmsg + ' The GTE extension lets you see twitch emotes from any channel everywhere on the web: https://git.io/fN5eb#gte-extension');
                              }
                           }
                       },
@@ -2153,7 +2153,7 @@
                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                       if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
                       else {
-                        API.sendChat("xQc's Twitch: https://www.twitch.tv/xqcow");
+                        API.sendChat("/me xQc's Twitch: https://www.twitch.tv/xqcow");
                       }
                     }
                   },
@@ -2167,13 +2167,13 @@
                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                       if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
                       else {
-                        API.sendChat("xQc's Discord: https://discord.gg/xqcow");
+                        API.sendChat("/me xQc's Discord: https://discord.gg/xqcow");
                       }
                     }
                   },
 
 
-            	  //New Rules Command (might be scuffed)
+            	  //New Rules Command (replaced the default command)
 
                        junglerulesCommand: {
                                  command: ['rules','info'],
