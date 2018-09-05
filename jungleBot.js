@@ -1624,6 +1624,7 @@
                                  }
                              }
                          },
+		
 	   //(formerly scuffed) afk command
 
             afkCommand: {
@@ -1653,7 +1654,7 @@
                                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                                      if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                                      else {
-                                                API.sendChat(cmdmsg + 'The resident DJ role is given to people who have made creative contributions to the community with songs, emotes, etc. RDJs are not part of staff but they get a custom icon, color and other stuff.');
+                                                API.sendChat('/me ' + cmdmsg + 'The resident DJ role is given to people who have made creative contributions to the community with songs, emotes, etc. RDJs are not part of staff but they get a custom icon, color and other stuff.');
                                      }
                                  }
                              },
@@ -2120,7 +2121,7 @@
                             if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                             if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                             else {
-        	                       API.sendChat('/me ' + cmdmsg + ' To use emotes when you have RCS installed, type colons like :this:');
+        	                       API.sendChat('/me ' + cmdmsg + ' To use emotes when you have RCS installed, type colons like :this: | Download RCS here: https://git.io/fN5eb#rcs-extension');
                              }
                           }
                       },
