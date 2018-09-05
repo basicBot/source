@@ -1621,7 +1621,7 @@
                                  }
                              }
                          },
-		
+
 	   //(formerly scuffed) afk command
 
             afkCommand: {
@@ -2085,7 +2085,6 @@
                     }
                   },
 
-<<<<<<< HEAD
                    // RCS help
                   rcsCommand: {
                     command: 'rcs',
@@ -2113,64 +2112,6 @@
                       }
                     }
                   },
-=======
-            // RCS help
-
-        	rcsCommand: {
-                        command: ['rcs','downloadpoggers'],
-                        rank: 'user',
-                        type: 'startsWith',
-                        functionality: function(chat, cmd) {
-
-        					var msg = chat.message;
-        					var cmdmsg = msg.substr(cmd.length + 1);
-
-                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                            else {
-        	                       API.sendChat('/me ' + cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension');
-                             }
-                          }
-                      },
-		
-            // Emotes Help
-
-        	emotesCommand: {
-                        command: ['emotes'],
-                        rank: 'user',
-                        type: 'startsWith',
-                        functionality: function(chat, cmd) {
-
-        					var msg = chat.message;
-        					var cmdmsg = msg.substr(cmd.length + 1);
-
-                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                            else {
-        	                       API.sendChat('/me ' + cmdmsg + ' To use emotes when you have RCS installed, type colons like :this: | Download RCS here: https://git.io/fN5eb#rcs-extension');
-                             }
-                          }
-                      },
-
-            // GTE Help
-
-        	gteCommand: {
-                        command: ['gte','downloadgte'],
-                        rank: 'user',
-                        type: 'startsWith',
-                        functionality: function(chat, cmd) {
-
-        					var msg = chat.message;
-        					var cmdmsg = msg.substr(cmd.length + 1);
-
-                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                            else {
-        	                       API.sendChat('/me ' + cmdmsg + ' The GTE extension lets you see twitch emotes from any channel everywhere on the web: https://git.io/fN5eb#gte-extension');
-                             }
-                          }
-                      },
->>>>>>> 8723cea241f99627edc7297ce8a26cc6ab18b0a7
 
                    // Twitch link
                   twitchCommand: {
@@ -2201,27 +2142,6 @@
                   },
 
 
-<<<<<<< HEAD
-=======
-            	  //New Rules Command (replaced the default command)
-
-                       junglerulesCommand: {
-                                 command: ['rules','info'],
-                                 rank: 'user',
-                                 type: 'startsWith',
-                                 functionality: function(chat, cmd) {
-
-                                   var msg = chat.message;
-                                   var cmdmsg = msg.substr(cmd.length + 1);
-
-                                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                                     else {
-                                                API.sendChat('/me ' + cmdmsg + ' Please find the room rules here: http://bit.ly/xqcs-jungle');
-                                     }
-                                 }
-},
->>>>>>> 8723cea241f99627edc7297ce8a26cc6ab18b0a7
 
 
           		//END OF CUSTOM COMMANDS
