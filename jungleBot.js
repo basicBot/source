@@ -1698,7 +1698,7 @@
 
                        poleCommand: {
                                  command: ['pole'],
-                                 rank: 'residentdj',
+                                 rank: 'user',
                                  type: 'startsWith',
                                  functionality: function(chat, cmd) {
 
