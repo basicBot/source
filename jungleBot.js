@@ -1634,7 +1634,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        API.sendChat('/me @' + chat.un + ' is now afk.');
+                        API.sendChat('/me @' + chat.un + ' is now AFK :residentsleeper: ');
       		          }
       		      }
       	    },
