@@ -289,7 +289,7 @@
   			commandCooldown: 30,
   			usercommandsEnabled: true,
   			thorCommand: false,
-  			thorCooldown: 500,
+  			thorCooldown: 600,
   			skipPosition: 0,
   			skipReasons: [
   				['theme', 'This song does not fit the room theme. '],
@@ -1018,9 +1018,6 @@
                     for (var bl in jungleBot.room.blacklists) {
                         if (jungleBot.settings.blacklistEnabled) {
                             if (jungleBot.room.blacklists[bl].indexOf(mid) > -1) {
-                                API.sendChat(subChat(jungleBot.chat.isblacklisted, {
-                                    blacklist: bl
-                                }));
                                 if (jungleBot.settings.smartSkip) {
                                     return jungleBot.roomUtilities.smartSkip();
                                 } else {
@@ -1087,7 +1084,7 @@
                             }, jungleBot.settings.maximumSongLength*60*1000);
                         }
                     }
-                }, 2000);
+                }, 500);
                 var format = obj.media.format;
                 var cid = obj.media.cid;
                 var naSkip = setTimeout(function() {
@@ -1164,7 +1161,7 @@
                             //API.sendChat('Song stuck, skipping...');
                             API.moderateForceSkip();
                         }
-                    }, remaining + 5000);
+                    }, remaining + 4000);
                 }
                 storeToStorage();
                 //sendToSocket();
@@ -1634,7 +1631,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        API.sendChat('/me @' + chat.un + ' is now AFK :residentsleeper: ');
+                        API.sendChat('/me @' + chat.un + ' is now AFK :ResidentSleeper: ');
       		          }
       		      }
       	    },
@@ -1998,7 +1995,7 @@
                       if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                       if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
                       else {
-                        API.sendChat(":residentsleeper: :bttvclap: ");
+                        API.sendChat("ResidentSleeper Clap");
                       }
                     }
                   },
@@ -2031,7 +2028,7 @@
                     }
                   },
 
-                  //cute robot (scuffed with RCS)
+                  //cute robot
                   ayayaCommand: {
                     command: 'ayaya',
                     rank: 'residentdj',
@@ -2087,62 +2084,33 @@
                     }
                   },
 
-            // RCS help
+                   // RCS help
+                  rcsCommand: {
+                    command: 'rcs',
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj");
+                      }
+                    }
+                  },
 
-        	rcsCommand: {
-                        command: ['rcs','downloadpoggers'],
-                        rank: 'user',
-                        type: 'startsWith',
-                        functionality: function(chat, cmd) {
-
-        					var msg = chat.message;
-        					var cmdmsg = msg.substr(cmd.length + 1);
-
-                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                            else {
-        	                       API.sendChat(cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension');
-                             }
-                          }
-                      },
-		
-            // Emotes Help
-
-        	emotesCommand: {
-                        command: ['emotes'],
-                        rank: 'user',
-                        type: 'startsWith',
-                        functionality: function(chat, cmd) {
-
-        					var msg = chat.message;
-        					var cmdmsg = msg.substr(cmd.length + 1);
-
-                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                            else {
-        	                       API.sendChat(cmdmsg + ' To use emotes when you have RCS installed type colons like :this:');
-                             }
-                          }
-                      },
-
-            // GTE Help
-
-        	gteCommand: {
-                        command: ['gte','downloadgte'],
-                        rank: 'user',
-                        type: 'startsWith',
-                        functionality: function(chat, cmd) {
-
-        					var msg = chat.message;
-        					var cmdmsg = msg.substr(cmd.length + 1);
-
-                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                            else {
-        	                       API.sendChat(cmdmsg + ' The GTE extension lets you see twitch emotes from any channel everywhere on the web: https://git.io/fN5eb#gte-extension');
-                             }
-                          }
-                      },
+                   // Emotes help
+                  emotesCommand: {
+                    command: ['emotes', 'downloadpoggers'],
+                    rank: 'user',
+                    type: 'exact',
+                    functionality: function (chat, cmd) {
+                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
+                      else {
+                        API.sendChat("To use emotes when you have RCS installed type colons like :this:. Alternatively, install the GTE extension and add xqcow in the settings: https://chrome.google.com/webstore/detail/global-twitch-emotes/pgniedifoejifjkndekolimjeclnokkb");
+                      }
+                    }
+                  },
 
                    // Twitch link
                   twitchCommand: {
@@ -2173,24 +2141,6 @@
                   },
 
 
-            	  //New Rules Command (might be scuffed)
-
-                       junglerulesCommand: {
-                                 command: ['rules','info'],
-                                 rank: 'user',
-                                 type: 'startsWith',
-                                 functionality: function(chat, cmd) {
-
-                                   var msg = chat.message;
-                                   var cmdmsg = msg.substr(cmd.length + 1);
-
-                                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                                     if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                                     else {
-                                                API.sendChat('/me ' + cmdmsg + ' Please find the room rules here: http://bit.ly/xqcs-jungle');
-                                     }
-                                 }
-},
 
 
           		//END OF CUSTOM COMMANDS
@@ -2666,6 +2616,26 @@
                                 name: chat.un,
                                 'function': jungleBot.chat.cmddeletion
                             }));
+                        }
+                    }
+                }
+            },
+
+            togglethorCommand: {
+                command: ['togglethor', 'thortoggle'],
+                rank: 'mod',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        jungleBot.settings.thorCommand = !jungleBot.settings.thorCommand;
+                        if (jungleBot.settings.thorCommand) {
+
+                            API.sendChat('Thor command enabled.');
+                        }
+                        else {
+                            API.sendChat('Thor command disabled.');
                         }
                     }
                 }
@@ -3588,18 +3558,6 @@
                 }
             },
 
-            mehCommand: {
-                command: 'meh',
-                rank: 'mod',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
-                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        $('#meh').click();
-                    }
-                }
-            },
 
             motdCommand: {
                 command: 'motd',
@@ -3889,7 +3847,21 @@
                 }
             },
 
-            rulesCommand: {},
+            rulesCommand: {
+                command: 'rules',
+                rank: 'user',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                    if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        if (typeof jungleBot.settings.rulesLink === 'string')
+                            return API.sendChat(subChat(jungleBot.chat.roomrules, {
+                                link: jungleBot.settings.rulesLink
+                            }));
+                    }
+                }
+            },
 
             sessionstatsCommand: {
                 command: 'sessionstats',
@@ -4290,7 +4262,7 @@
                                 }));
                             } else {
                                 if (API.getWaitListPosition(id) != djlist.length - 1)
-                                    jungleBot.userUtilities.moveUser(id, djlist.length, false);
+                                    API.moderateRemoveDJ(id);
                                 API.sendChat(subChat(jungleBot.chat.thorNotWorthy, {
                                     name: from
                                 }));
