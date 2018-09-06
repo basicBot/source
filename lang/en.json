@@ -80,6 +80,7 @@
         "Just a little."
     ],
 
+    "empty": null,
     "noperms": "\/me @%%NAME%% You don't have the permission to do that.",
     "afk": "\/me @%%NAME%% is now AFK :residentsleeper:",
     "attitude": "\/me %%NAME%% Please lose your negative attitude. :xqcRage:",
