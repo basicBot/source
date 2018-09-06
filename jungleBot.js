@@ -1876,11 +1876,11 @@
                           if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                           else {
                             var currentdate = new Date();
-                              var calitime = 'Current time for xQc in California: '
+                            var calitime = 'Current time for xQc in California: '
                                           + ((currentdate.getHours() + 15) % 24) + ":"
                                           + currentdate.getMinutes() + ":"
                                           + currentdate.getSeconds();
-                               API.sendChat('/me 'cmdmsg + calitime);
+                               API.sendChat('/me ' + cmdmsg + calitime);
                           }
                       }
                   },
