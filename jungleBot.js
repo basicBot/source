@@ -1880,7 +1880,7 @@
                                           + ((currentdate.getHours() + 15) % 24) + ":"
                                           + currentdate.getMinutes() + ":"
                                           + currentdate.getSeconds();
-                               API.sendChat('/me ' + cmdmsg + calitime);
+                               API.sendChat('/me ' + cmdmsg + ' ' + calitime);
                           }
                       }
                   },
