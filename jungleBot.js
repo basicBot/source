@@ -1861,10 +1861,10 @@
 
 
 
-          // Display xqc's local time
+          // Display xqc's local time (this is hardcoded to work for Berlin time because laziness)
 
           xqtimeCommand: {
-                      command: ['time', 'localtime'],
+                      command: ['time', 'localtime', 'calitime'],
                       rank: 'user',
                       type: 'startsWith',
                       functionality: function(chat, cmd) {
@@ -1875,9 +1875,12 @@
                           if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                           if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                           else {
-                              var d = new Date();
-
-                               API.sendChat(cmdmsg + 'Current time for Mr. Destructoid: ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds());
+                            var currentdate = new Date();
+                              var calitime = 'Current time for xQc in California: '
+                                          + ((currentdate.getHours() + 14) % 24) + ":"
+                                          + currentdate.getMinutes() + ":"
+                                          + currentdate.getSeconds();
+                               API.sendChat(cmdmsg + calitime);
                           }
                       }
                   },
