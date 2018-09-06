@@ -2085,33 +2085,63 @@
                     }
                   },
 
-                   // RCS help
-                  rcsCommand: {
-                    command: 'rcs',
-                    rank: 'user',
-                    type: 'exact',
-                    functionality: function (chat, cmd) {
-                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-                      else {
-                        API.sendChat("The RCS extension is an enhancement for plug.dj. Install it so you can see our custom channel theme! https://rcs.radiant.dj");
-                      }
-                    }
-                  },
 
-                   // Emotes help
-                  emotesCommand: {
-                    command: ['emotes', 'downloadpoggers'],
-                    rank: 'user',
-                    type: 'exact',
-                    functionality: function (chat, cmd) {
-                      if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                      if (!jungleBot.commands.executable(this.rank, chat)) return void (0);
-                      else {
-                        API.sendChat("To use emotes when you have RCS installed type colons like :this:. Alternatively, install the GTE extension and add xqcow in the settings: https://chrome.google.com/webstore/detail/global-twitch-emotes/pgniedifoejifjkndekolimjeclnokkb");
-                      }
-                    }
-                  },
+            // RCS help
+
+        	rcsCommand: {
+                        command: ['rcs','downloadpoggers'],
+                        rank: 'user',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
+
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
+
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat('/me ' + cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension');
+                             }
+                          }
+                      },
+		
+            // Emotes Help
+
+        	emotesCommand: {
+                        command: ['emotes'],
+                        rank: 'user',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
+
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
+
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat('/me ' + cmdmsg + ' To use emotes when you have RCS installed, type colons like :this: | Download RCS here: https://git.io/fN5eb#rcs-extension');
+                             }
+                          }
+                      },
+
+            // GTE Help
+
+        	gteCommand: {
+                        command: ['gte','downloadgte'],
+                        rank: 'user',
+                        type: 'startsWith',
+                        functionality: function(chat, cmd) {
+
+        					var msg = chat.message;
+        					var cmdmsg = msg.substr(cmd.length + 1);
+
+                            if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
+                            if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
+                            else {
+        	                       API.sendChat('/me ' + cmdmsg + ' The GTE extension lets you see twitch emotes from any channel everywhere on the web: https://git.io/fN5eb#gte-extension');
+                             }
+                          }
+                      },
 
                    // Twitch link
                   twitchCommand: {
