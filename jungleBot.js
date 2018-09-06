@@ -1084,7 +1084,7 @@
                             }, jungleBot.settings.maximumSongLength*60*1000);
                         }
                     }
-                }, 500);
+                }, 1);
                 var format = obj.media.format;
                 var cid = obj.media.cid;
                 var naSkip = setTimeout(function() {
@@ -1172,7 +1172,7 @@
                         jungleBot.room.queueable = false;
                         setTimeout(function() {
                             jungleBot.room.queueable = true;
-                        }, 350);
+                        }, 300);
                         jungleBot.room.queueing++;
                         var id, pos;
                         setTimeout(
