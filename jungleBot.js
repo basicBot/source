@@ -1877,10 +1877,10 @@
                           else {
                             var currentdate = new Date();
                               var calitime = 'Current time for xQc in California: '
-                                          + ((currentdate.getHours() + 14) % 24) + ":"
+                                          + ((currentdate.getHours() + 15) % 24) + ":"
                                           + currentdate.getMinutes() + ":"
                                           + currentdate.getSeconds();
-                               API.sendChat(cmdmsg + calitime);
+                               API.sendChat('/me 'cmdmsg + calitime);
                           }
                       }
                   },
