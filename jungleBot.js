@@ -1813,7 +1813,7 @@
                     var id = jungleBot.userUtilities.getID(name);
 
                     if (id) {
-                      API.sendChat('/me @' + chat.un + 'Specified user\'s  ID is "' + id + '".');
+                      API.sendChat('/me @' + chat.un + ' Specified user\'s  ID is "' + id + '".');
                     }
                     else {
                       API.sendChat('/me @' + chat.un + ' Invalid user specified.');
