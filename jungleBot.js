@@ -2190,7 +2190,7 @@
                             if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                             if (!jungleBot.commands.executable(this.rank, chat)) return void(0);
                             else {
-        	                       API.sendChat('/me ' + cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://git.io/fN5eb#rcs-extension');
+        	                       API.sendChat('/me ' + cmdmsg + ' The RCS extension is an enhancement for plug.dj. Install it so you can see emotes and our custom channel theme! https://rcs.radiant.dj/');
                              }
                           }
                       },
