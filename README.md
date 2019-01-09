@@ -20,6 +20,21 @@ If this does not work, go to [basicBot.js](https://raw.githubusercontent.com/bas
 
 These can be found in [the commands list](commands.md).
 
+### Bot DJ
+
+Bots can now join the wait list and dj along with you. See the noted commands in the commands section.
+Anyone with a role of Bouncer or higher can run the bot's dj commands.
+
+Expected usage:
+1. Ensure the account running the bot has at least one playlist and a playlist set to active and start the bot as usual.
+2. Others can then type !listjoin, !jumpup, or !dj into the room chat to have your bot join the waitlist.
+3. When done, type !listleave, !jumpdown, or !dj to have your bot leave the waitlist.
+
+Grab - Adding to the bot playlist:
+Run the !grab command to tell the bot to grab the current song. The song will be added to the bot's current active playlist.
+
+Users can also use !showplaylists or !botpls to list the bot's available playlists and !switchplaylist or !botpl to switch the bot's current playlist.
+
 ### Blacklists
 
 Examples of blacklists can be found in [the customization repository](https://github.com/basicBot/custom/tree/master/blacklists).

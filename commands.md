@@ -62,10 +62,14 @@
 | !eta | (@user) | shows when user will reach the booth. |
 | !filter | — | toggles the chat filter. |
 | !forceskip / !fs | — | forceskips the current song. |
+| !grab | - | Tells the bot to grab the current song and add to their current playlist. (See Bot DJ section of README.md) |
 | !historyskip | — | toggles the history skip. |
 | !jointime | @user | shows how long the user has been in the room. |
 | !kick | (X) | kicks user for X minutes, default is 0.25 minutes (15 seconds). |
 | !kill | — | shut down the bot. |
+| !listjoin / !jumpup | - | Tell the bot to start djing or join the wait list. (See Bot DJ section of README.md) |
+| !listleave / !jumpdown | - | Tell the bot to stop djing or leave the wait list. (See Bot DJ section of README.md) |
+| !listtoggle / !botdj / !dj | - | Shortcut to do !listjoin or !listleave as appropriate. (See Bot DJ section of README.md) |
 | !lockguard | — | toggle the lockguard. |
 | !lockskip | (reason) | skips, locks and moves the dj back up (the position can be set with `!skippos)`. |
 | !motd | (X)/(message) | when no argument is specified, returns the Message of the Day, when X is specified, the MotD is given every X songs, when "message" is given, it sets the MotD to message. |
@@ -73,8 +77,11 @@
 | !reload | — | reload the bot. |
 | !restricteta | — | toggles the restriction on eta: grey users can use it once an hour. |
 | !sessionstats | — | display stats for the current session. |
+| !showplaylists / !botpls | - | makes the bot list its playlists. (See Bot DJ section of README.md) |
+| !shuffle | - | Tell the bot to shuffle their playlist, useful after !grab if the bot is djing. (See Bot DJ section of README.md) |
 | !skip / !smartskip | (reason) | skips the dj using smartskip. actions such as locking and moving user depends on various factors (the position the dj is moved to can be set with `!skippos`). |
 | !status | — | display the bot's status and some settings. |
+| !switchplaylist / !botpl | @playlistID | playlistID can be either the full playlist name, or the id of the playlist in the list displayed by !showplaylists (See Bot DJ section of README.md) |
 | !timeguard | — | toggle the timeguard. |
 | !togglebl | — | toggle the blacklist. |
 | !togglemotd | — | toggle the motd. |
