@@ -265,6 +265,7 @@
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
             startupEmoji: false, // true or false
+            googleApiKey: '', // Specify the Google API key that will be used by the bot to fetch data from YouTube. Please visit https://developers.google.com/youtube/v3/getting-started#before-you-start for guidance.
             autowoot: true,
             autoskip: false,
             smartSkip: true,
@@ -1059,7 +1060,7 @@
             var cid = obj.media.cid;
             var naSkip = setTimeout(function() {
                 if (format == 1) {
-                    $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + cid + '&key=AIzaSyDcfWu9cGaDnTjPKhg_dy9mUh6H7i4ePZ0&part=snippet&callback=?', function(track) {
+                    $.getJSON('https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=' + cid + '&key=' + basicBot.settings.googleApiKey, function(track) {
                         if (typeof(track.items[0]) === 'undefined') {
                             var name = obj.dj.username;
                             API.sendChat(subChat(basicBot.chat.notavailable, {
